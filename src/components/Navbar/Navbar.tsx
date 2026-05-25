@@ -1,87 +1,102 @@
 import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const [active, setActive] = useState("home");
+
+  const location = useLocation();
 
   const navItems = [
     { id: "concept", label: "CONCEPT", type: "section" },
     { id: "speakers", label: "SPEAKERS", type: "section" },
     { id: "agenda", label: "AGENDA", type: "section" },
     { id: "sponsors", label: "SPONSORS", type: "section" },
-    {
-      id: "https://your-external-link.com",
-      label: "PAST EDITIONS",
-      type: "external",
-    },
-    { id: "connect", label: "CONNECT", type: "section" },
 
+    {
+      id: "/past-edition",
+      label: "PAST EDITIONS",
+      type: "route",
+    },
+
+    { id: "connect", label: "CONNECT", type: "section" },
   ];
 
-useEffect(() => {
-  const sections = document.querySelectorAll("section[id]");
+  useEffect(() => {
+    if (location.pathname !== "/") return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      let bestEntry = null;
+    const sections = document.querySelectorAll("section[id]");
 
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let bestEntry = null;
 
-        if (
-          !bestEntry ||
-          Math.abs(entry.boundingClientRect.top) <
-            Math.abs(bestEntry.boundingClientRect.top)
-        ) {
-          bestEntry = entry;
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+
+          if (
+            !bestEntry ||
+            Math.abs(entry.boundingClientRect.top) <
+              Math.abs(bestEntry.boundingClientRect.top)
+          ) {
+            bestEntry = entry;
+          }
         }
-      }
 
-      if (bestEntry) {
-        setActive(bestEntry.target.id);
-      }
-    },
-    {
-      root: null,
-      threshold: 0.3,
-    }
-  );
+        if (bestEntry) {
+          setActive(bestEntry.target.id);
+        }
+      },
+      {
+        threshold: 0.3,
+      },
+    );
 
-  sections.forEach((sec) => observer.observe(sec));
+    sections.forEach((sec) => observer.observe(sec));
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   return (
-    <nav className="w-full bg-[#E9E9E9] shadow-md fixed top-0 left-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 h-[100px] flex items-center justify-between">
+    <nav className="fixed top-0 left-0 z-50 w-full bg-[#E9E9E9] shadow-md">
+      <div className="mx-auto flex h-25 max-w-6xl items-center justify-between ">
         {/* Logo */}
-        <a href="#" className="text-3xl font-bold text-[#D0252D] tracking-wide">
+        <Link
+          to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="text-3xl font-bold tracking-wide text-[#D0252D]"
+        >
           #TGM2026
-        </a>
+        </Link>
 
-        {/* Links */}
-        <ul className="hidden md:flex items-center space-x-6 text-[#000] font-semibold text-sm tracking-wide">
+        {/* Nav Links */}
+        <ul className="font-custom hidden items-center space-x-6 text-sm font-bold leading-[15px] tracking-wide text-black md:flex">
           {navItems.map((item) => {
-            const isActive = active === item.id && item.type === "section";
-
-            if (item.type === "external") {
+            // Route Link
+            if (item.type === "route") {
               return (
-                <a
+                <Link
                   key={item.id}
-                  href={item.id}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative text-black hover:text-[#D0252D] transition"
+                  to={item.id}
+                  className={`transition hover:text-[#D0252D] ${
+                    location.pathname === item.id
+                      ? "text-[#D0252D]"
+                      : "text-black"
+                  }`}
                 >
                   {item.label}
-                </a>
+                </Link>
               );
             }
+
+            // Section Link
+            const isActive = active === item.id;
 
             return (
               <a
                 key={item.id}
-                href={`#${item.id}`}
+                href={
+                  location.pathname === "/" ? `#${item.id}` : `/#${item.id}`
+                }
                 className={`relative transition ${
                   isActive
                     ? "text-[#D0252D]"
@@ -90,7 +105,6 @@ useEffect(() => {
               >
                 {item.label}
 
-                {/* underline */}
                 <span
                   className={`absolute left-0 -bottom-1 h-[2px] bg-[#D0252D] transition-all duration-300 ${
                     isActive ? "w-full" : "w-0"
@@ -101,9 +115,9 @@ useEffect(() => {
           })}
         </ul>
 
-        {/* Register Button */}
+        {/* Button */}
         <a href="#register">
-          <button className="text-[#D0252D] px-5 py-2 font-semibold text-lg tracking-widest border cursor-pointer border-[#D0252D] rounded-md hover:bg-[#D0252D] hover:text-white transition">
+          <button className="font-custom rounded-sm border border-[#D0252D] px-2 py-3 text-[14px] font-bold uppercase leading-[18px] tracking-[4px] text-[#D0252D] transition-all duration-300 hover:bg-[#D0252D] hover:text-white cursor-pointer">
             Register Now
           </button>
         </a>

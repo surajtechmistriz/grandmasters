@@ -1,6 +1,10 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPricing = () => {
+
+  const navigate = useNavigate()
+  
   const tiers = [
     {
       title: "Corporate Registrations",
@@ -13,7 +17,7 @@ const RegisterPricing = () => {
         "1 Seat – INR 10000 per Seat",
         "2 Seats – INR 7500 per Seat",
         "3 Seats – INR 7000 per Seat",
-      ]
+      ],
     },
     {
       title: "Law Firms & Solutions Providers",
@@ -25,7 +29,7 @@ const RegisterPricing = () => {
         "1 Seat – INR 12000 per Seat",
         "2 Seats – INR 10000 per Seat",
         "3 Seats – INR 9000 per Seat",
-      ]
+      ],
     },
     {
       title: "International Delegates",
@@ -37,7 +41,7 @@ const RegisterPricing = () => {
         "1 Seat – INR 30000 per Seat",
         "2 Seats – INR 25000 per Seat",
         "3 Seats – INR 20000 per Seat",
-      ]
+      ],
     },
     {
       title: "The Lex Witness Annual Pass",
@@ -53,8 +57,8 @@ const RegisterPricing = () => {
         "1 Pass: INR 60000 per pass",
         "2 Passes: INR 50000 per pass",
         "3 Passes: INR 40000 per pass",
-      ]
-    }
+      ],
+    },
   ];
 
   return (
@@ -63,37 +67,52 @@ const RegisterPricing = () => {
         <div className="flex justify-center mb-4">
           <span className="text-4xl text-red-500">📋</span>
         </div>
-        <h2 className="text-5xl font-medium text-gray-800 mb-2">Delegate Registrations</h2>
-        <p className="text-gray-600 ">It's a Race Against Time. Avail Best Possible Discounts Now.</p>
+        <h2 className="text-5xl font-medium text-gray-800 mb-2">
+          Delegate Registrations
+        </h2>
+        <p className="text-gray-600 ">
+          It's a Race Against Time. Avail Best Possible Discounts Now.
+        </p>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
         {tiers.map((tier, index) => (
-          <div 
-            key={index} 
-className={`relative flex flex-col pt-8 pb-5 px-6 rounded-xl shadow-xl transition-transform hover:shadow-2xl ${tier.bgColor}`}          >
+          <div
+            key={index}
+            className={`relative flex flex-col pt-8 pb-5 px-6 rounded-xl shadow-xl transition-transform hover:shadow-2xl ${tier.bgColor}`}
+          >
             {tier.tag && (
-              <div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-1 py-1 rounded text-white text-xs font-bold tracking-wider ${tier.tagColor}`}>
+              <div
+                className={`absolute -top-3 left-1/2 -translate-x-1/2 px-1 py-1 rounded text-white text-xs font-bold tracking-wider ${tier.tagColor}`}
+              >
                 {tier.tag}
               </div>
             )}
 
-<h3 className="text-red-700 font-bold text-lg mb-1 h-10 flex items-center justify-center text-center">              {tier.title}
+            <h3 className="text-red-700 font-bold text-lg mb-1 h-10 flex items-center justify-center text-center">
+              {" "}
+              {tier.title}
             </h3>
-            
-          <div className="text-2xl font-black text-gray-800 mb-4">
+
+            <div className="text-2xl font-black text-gray-800 mb-4">
               {tier.price}
             </div>
 
             <div className="flex-grow space-y-2 mb-8">
               {tier.details.map((line, i) => (
-                <p key={i} className={`text-sm ${tier.isPremium && i < 2 ? 'font-semibold' : 'text-gray-700'}`}>
+                <p
+                  key={i}
+                  className={`text-sm ${tier.isPremium && i < 2 ? "font-semibold" : "text-gray-700"}`}
+                >
                   {line}
                 </p>
               ))}
             </div>
 
-            <button className={`mt-auto py-2 px-8 border rounded-md font-bold text-[#D2520D] hover:bg-[#D2520D] hover:text-white  cursor-pointer transition-colors ${tier.buttonBorder}`}>
+            <button
+            onClick={()=> navigate("/cart")}
+              className={`mt-auto py-2 px-8 border rounded-md font-bold text-[#D2520D] hover:bg-[#D2520D] hover:text-white  cursor-pointer transition-colors ${tier.buttonBorder}`}
+            >
               Book Now
             </button>
           </div>

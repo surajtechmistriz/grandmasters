@@ -7,6 +7,7 @@ import img1 from "../assets/images/Mr-Justice-Manmohan-1.jpg";
 import img2 from "../assets/images/lalit-bhasin-1.jpg";
 import img3 from "../assets/images/BS-Profile-1000-1.jpg";
 import img4 from "../assets/images/veta-217x300-1.jpg";
+import { useNavigate } from "react-router-dom";
 
 /* ---------------- TABS ---------------- */
 const tabs = [
@@ -45,6 +46,8 @@ const luminaries = [
 const Concept = () => {
   const [active, setActive] = useState("agenda");
 
+  const navigation = useNavigate()
+
   return (
     <section
       className="relative w-full min-h-screen bg-center bg-cover bg-fixed"
@@ -57,62 +60,62 @@ const Concept = () => {
         <div className="backdrop-blur-md bg-white shadow-xl p-10 flex flex-col items-center">
           <FaMicrophone className="text-4xl text-red-500" />
 
-          <h2 className="text-5xl font-semibold text-gray-800 my-6">
+          <h2 className="text-5xl font-normal text-gray-800 my-6">
             Are You A Grand Master?
           </h2>
 
-          <p className="text-gray-600">
+          <p className="font-roboto text-[15px] font-normal text-gray-600">
             Join India’s Elite{" "}
             <span className="text-red-500 font-semibold">In House</span> Counsel
             Gathering
           </p>
 
           {/* TABS */}
-       <div className="relative flex justify-center gap-24 mt-10 border-b border-gray-300 pb-4 flex-wrap">
-  {tabs.map((tab) => (
-    <button
-      key={tab.id}
-      onClick={() => setActive(tab.id)}
-      className={`flex items-center gap-2 font-medium transition cursor-pointer ${
-        active === tab.id
-          ? "text-[#D0252D]"
-          : "text-gray-600 hover:text-[#D0252D]"
-      }`}
-    >
-      {tab.icon}
-      {tab.label}
-    </button>
-  ))}
+          <div className="relative flex justify-center gap-34 mt-10 border-b border-gray-300 pb-4 flex-wrap">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActive(tab.id)}
+                className={`font-roboto flex items-center gap-2 font-bold text-[15px] transition cursor-pointer ${
+                  active === tab.id
+                    ? "text-[#D0252D]"
+                    : "text-gray-600 hover:text-[#D0252D]"
+                }`}
+              >
+                {tab.icon}
+                {tab.label}
+              </button>
+            ))}
 
-  {/* 🔺 TRIANGLE UNDER ACTIVE TAB */}
-  {tabs.map((tab, i) =>
-    active === tab.id ? (
-      <span
-        key={i}
-        className="absolute bottom-0 "
-        style={{
-          left: `${(100 / tabs.length) * i + 100 / tabs.length / 2}%`,
-          transform: "translateX(-50%) translateY(100%)",
-        }}
-      >
-        <span
-          className="block w-0 h-0 "
-          style={{
-            borderLeft: "15px solid transparent",
-            borderRight: "15px solid transparent",
-            borderTop: "8px solid #D0252D",
-          }}
-        />
-      </span>
-    ) : null
-  )}
-</div>
+            {/* 🔺 TRIANGLE UNDER ACTIVE TAB */}
+            {tabs.map((tab, i) =>
+              active === tab.id ? (
+                <span
+                  key={i}
+                  className="absolute bottom-0 "
+                  style={{
+                    left: `${(100 / tabs.length) * i + 100 / tabs.length / 2}%`,
+                    transform: "translateX(-50%) translateY(100%)",
+                  }}
+                >
+                  <span
+                    className="block w-0 h-0 "
+                    style={{
+                      borderLeft: "15px solid transparent",
+                      borderRight: "15px solid transparent",
+                      borderTop: "8px solid #D0252D",
+                    }}
+                  />
+                </span>
+              ) : null,
+            )}
+          </div>
 
           {/* ---------------- TAB CONTENT ---------------- */}
 
           {/* AGENDA TAB */}
           {active === "agenda" && (
-            <div className="grid md:grid-cols-2 gap-6 mt-12 items-center text-left">
+            <div className="font-roboto text[15px]  grid md:grid-cols-2 gap-6 mt-12  items-center text-left">
               <div className="flex justify-center">
                 <img
                   src="/src/assets/images/agenda-highlights1.jpg"
@@ -154,14 +157,14 @@ const Concept = () => {
 
           {/* AUDIENCE TAB */}
           {active === "audience" && (
-            <div className="mt-12 flex gap-10 text-left max-w-4xl mx-auto items-start">
+            <div className="mt-12 flex gap-10 px-8 text-left max-w-4xl mx-auto items-start">
               {/* TEXT SECTION */}
               <div className="space-y-4 text-gray-700 flex-1">
-                <h3 className="text-xl font-bold">
+                <h3 className="text-[15px] font-bold leading-[28px]">
                   Organizational Participation
                 </h3>
 
-                <p className="leading-relaxed">
+                <p className="text-[15px] font-normal leading-[28px]">
                   3M India, 9X Media, ABB India, Accel Partners, Accenture,
                   ACCOR, Accuracy Adani Group, Adani Parts And SEZ, Adidas
                   Group, Aditya Birla Fashion and Retail ADP India, Advaya
@@ -186,8 +189,8 @@ const Concept = () => {
                   Director Human Resources
                 </p>
 
-                <button className="mt-4 text-[#D0252D] px-5 py-2 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition">
-                  REGISTER NOW
+                <button onClick={()=> navigation("/audience-profile")} className="mt-4 text-[#D0252D] px-5 py-2 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer">
+                  VIEW MORE
                 </button>
               </div>
 
@@ -203,7 +206,7 @@ const Concept = () => {
 
           {/* SPONSOR TAB */}
           {active === "sponsor" && (
-            <div className="grid md:grid-cols-2 gap-6 mt-12 items-center max-w-4xl text-left">
+            <div className="grid md:grid-cols-2 px-8 gap-6 mt-12 items-center max-w-4xl text-left">
               <div className="flex justify-center">
                 <img
                   src="/src/assets/images/agenda-highlights1.jpg"
@@ -223,10 +226,12 @@ const Concept = () => {
                   <span className="font-bold">For more details, contact:</span>
                 </p>
 
-                <p>Bhupinder Kaur | +91-9654155065 | bhupinder@witnesslive.in</p>
-                <p>Bhupinder Kaur | +91-9654155065 | bhupinder@witnesslive.in</p>
-
-                
+                <p>
+                  Bhupinder Kaur | +91-9654155065 | bhupinder@witnesslive.in
+                </p>
+                <p>
+                  Bhupinder Kaur | +91-9654155065 | bhupinder@witnesslive.in
+                </p>
               </div>
             </div>
           )}
@@ -234,13 +239,13 @@ const Concept = () => {
 
         {/* STATS */}
         <div className="w-full bg-black/30 py-18 px-4">
-          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="font-roboto max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
               <div key={i}>
-                <div className="text-5xl md:text-7xl font-bold text-white">
+                <div className="text-5xl md:text-[80px] font-bold text-white">
                   {stat.value}
                 </div>
-                <div className="text-white font-semibold">{stat.label}</div>
+                <div className="text-white text-[11px] font-semibold tracking-[0.3rem]">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -251,7 +256,8 @@ const Concept = () => {
           <div className="max-w-6xl mx-auto text-center">
             <HiUserGroup className="text-red-700 text-4xl mx-auto" />
 
-            <h2 className="text-3xl font-bold mt-2">Past Official Messages</h2>
+            <h2 className="text-[50px] font-roboto font-normal mt-2">Past Official Messages</h2>
+            <p className="text-[15px] font-normal leading-[28px] text-[#8d93a0]">Messages from <span className="text-[#D0252D]">Various Legal Luminaries</span></p>
 
             <div className="grid md:grid-cols-4 gap-6 mt-10">
               {luminaries.map((p, i) => (
@@ -260,8 +266,8 @@ const Concept = () => {
                     src={p.image}
                     className="w-64 h-64 rounded-full mx-auto object-cover"
                   />
-                  <h3 className="font-semibold mt-4">{p.name}</h3>
-                  <p className="text-sm text-gray-600">{p.title}</p>
+                  <h3 className="font-roboto text-[20px] leading-[23px] text-[#D0252D] hover:underline cursor-pointer font-normal mt-4">{p.name}</h3>
+                  <p className="font-roboto font-normal text-[15px]  text-gray-600 mt-2">{p.title}</p>
                 </div>
               ))}
             </div>
@@ -270,14 +276,14 @@ const Concept = () => {
 
         {/* CTA */}
         <div className="w-full bg-black/30 py-18 px-4 text-white">
-          <h1 className="text-5xl font-bold">Get Involved</h1>
-          <p className="my-4">All about The Grand Masters 2026</p>
+          <h1 className="font-roboto text-[50px] font-bold leading-[55px]">Get Involved</h1>
+          <p className="my-4 font-roboto text-[15px] font-normal leading-[28px]">All that You’d Like to Know about The Grand Masters 2026</p>
 
           <div className="flex gap-10 justify-center flex-wrap mt-8">
             {["SPEAK", "SPONSOR", "REGISTER NOW", "CONNECT"].map((btn) => (
               <button
                 key={btn}
-                className="w-52 border border-white py-3 hover:bg-[#D0252D] rounded-md"
+                className="w-52 border border-white py-3 hover:bg-[#D0252D] rounded-md cursor-pointer"
               >
                 {btn}
               </button>
