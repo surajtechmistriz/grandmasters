@@ -22,65 +22,7 @@ const organizations = [
   ["Air Infotech", "Airtel", "AkzoNobel India"],
 ];
 
-const messageYears = [
-  {
-    year: "2025",
-    messages: [
-      {
-        name: "Hon'ble Justice Manmohan",
-        role: "Judge",
-        org: "Supreme Court of India",
-      },
-      {
-        name: "Dr. Lalit Bhasin",
-        role: "President",
-        org: "Society of Indian Law Firms",
-      },
-      {
-        name: "Bansuri Swaraj",
-        role: "Senior Advocate",
-        org: "Supreme Court of India",
-      },
-      {
-        name: "Ms. Veta T. Richardson",
-        role: "President & CEO, ACC",
-        org: "",
-      },
-    ],
-  },
 
-  {
-    year: "2024",
-    messages: [
-      {
-        name: "Justice Rajiv Shakdher",
-        role: "Judge",
-        org: "Delhi High Court",
-      },
-      {
-        name: "Dr. Abhishek Manu Singhvi",
-        role: "Senior Advocate",
-        org: "Supreme Court of India",
-      },
-    ],
-  },
-
-  {
-    year: "2023",
-    messages: [
-      {
-        name: "Justice Indu Malhotra",
-        role: "Former Judge",
-        org: "Supreme Court of India",
-      },
-      {
-        name: "Harish Salve",
-        role: "Senior Advocate",
-        org: "Supreme Court of India",
-      },
-    ],
-  },
-];
 
 const AudienceProfile = () => {
   return (
@@ -166,21 +108,9 @@ const AudienceProfile = () => {
           </div>
 
           {/* Right */}
-          <div>
-            {messageYears.map((yearData, yearIndex) => (
-              <div key={yearIndex}>
-                <OfficialMessages
-                  year={yearData.year}
-                  messages={yearData.messages}
-                />
-
-                {/* Divider */}
-                {yearIndex !== messageYears.length - 1 && (
-                  <div className="border-b border-gray-300 my-8"></div>
-                )}
-              </div>
-            ))}
-          </div>
+        <div>
+  <OfficialMessages />
+</div>
           
         </div>
         <h1 className="text-4xl text-center my-16">Sponsors & Partners</h1>
