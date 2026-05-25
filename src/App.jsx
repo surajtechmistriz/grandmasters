@@ -11,6 +11,7 @@ import AudienceProfile from "./pages/AudienceProfile";
 import AboutUs from "./pages/About-Us";
 import OfficialMessage from "./pages/Official-Message";
 import Cart from "./components/Cart";
+import SummitSecretariat from "./pages/SummitSecretariat";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,6 +39,7 @@ function App() {
         <Route path="/about-us"  element={<AboutUs/>} />
         <Route path="/official-message"  element={<OfficialMessage/>} />
         <Route path="/cart"  element={<Cart/>} />
+        <Route path="/summit-secretariat"  element={<SummitSecretariat/>} />
       </Routes>
 
       <Footer />

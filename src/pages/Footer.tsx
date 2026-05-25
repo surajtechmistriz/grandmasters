@@ -176,9 +176,9 @@ export default function Footer() {
               About Lex Witness
             </button>
 
-            <a href="#" className="hover:text-red-500 transition">
+            <p onClick={()=> navigate("/summit-secretariat")}  className="hover:text-red-500 transition cursor-pointer">
               Summit Secretariat
-            </a>
+            </p>
           </div>
         </div>
       </div>
