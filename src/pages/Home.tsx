@@ -25,7 +25,6 @@ const Home = () => {
     >
       <div className="relative z-10 flex justify-start pt-28 px-4">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
-
           <div className="flex gap-8 my-4">
             {socials.map((s, i) => {
               const Icon = s.icon;
@@ -37,45 +36,48 @@ const Home = () => {
             })}
           </div>
 
-          <img src={logo} alt="logo" className="h-18 mb-2" />
+          <img src={logo} alt="logo" className="w-[190px] mb-1" />
 
-          <h1 className="text-lg tracking-[0.3em] font-bold text-[#333] mb-2">
+          <h1 className="font-roboto text-lg tracking-[0.2em] font-bold text-[#333] my-2">
             presents
           </h1>
 
-          <h1 className="font-pt text-[40px] font-bold leading-[44px] text-[#D0252D] mb-2">
+          <h1 className="font-roboto text-[40px] font-bold leading-[44px] text-[#D0252D] mb-2">
             The 12th Annual Grand Masters 2026 Series
           </h1>
 
-          <p className="text-[19px] font-normal tracking-wide leading-[22px] text-[#4b4949c2] max-w-3xl mb-3">
-            A 7 City pan India Corporate Counsel Legal Best Practices Summit Series
+          <p className="font-roboto text-[19.968px] font-light leading-[21.9648px] text-[#333333] max-w-3xl mb-3">
+            A 7 City pan India Corporate Counsel Legal Best Practices Summit
+            Series
           </p>
 
-          <div className="flex flex-col gap-2 text-[18px] font-semibold text-[#333] mb-2">
-
+          <div className="font-roboto flex flex-col gap-2 text-[18px] leading-[31px] tracking-[4px] font-semibold text-[#333] mb-2">
             <div className="flex items-center justify-center gap-2 flex-wrap">
               <FaRegCalendarAlt className="text-[#D0252D]" />
               17th July 2026, NOVOTEL HICC Complex,
               <FaMapMarkerAlt className="text-[#D0252D]" />
               Hyderabad{" "}
-              <span className="text-[#D0252D] animate-pulse">LIVE NOW</span>
+              <span className="text-[#D0252D] animate-pulse text-[14px]">
+                LIVE NOW
+              </span>
             </div>
 
-            <div className="flex items-center justify-center gap-2 flex-wrap">
+            <div className="flex items-center justify-center  gap-2 flex-wrap">
               <FaRegCalendarAlt className="text-[#D0252D]" />
               24th July 2026, ITC Narmada,
               <FaMapMarkerAlt className="text-[#D0252D]" />
               Ahmedabad{" "}
-              <span className="text-[#D0252D] animate-pulse">LIVE NOW</span>
+              <span className="text-[#D0252D] animate-pulse text-[14px]">
+                LIVE NOW
+              </span>
             </div>
-
           </div>
 
-          <h2 className="text-[18px] tracking-widest text-black/50">
+          <h2 className="font-roboto text-[18px] leading-[31px] font-semibold tracking-[4px] text-black/50">
             Pune, Chennai, New Delhi,
           </h2>
 
-          <h2 className="text-[18px] tracking-widest text-black/50 mb-4">
+          <h2 className="font-roboto text-[18px] leading-[31px] font-semibold  tracking-[4px] text-black/50 mb-4">
             Mumbai & Bengaluru Editions - Launching Soon!
           </h2>
 
@@ -92,7 +94,6 @@ const Home = () => {
               PAST EDITIONS
             </button>
           </div>
-
         </div>
       </div>
     </section>

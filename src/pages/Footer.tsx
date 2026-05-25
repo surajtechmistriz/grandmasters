@@ -1,7 +1,10 @@
 import React from 'react';
 import logo from "../assets/images/image.png";
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
+
+  const navigate = useNavigate()
   return (
     <footer className="w-full">
       {/* Top Section */}
@@ -169,9 +172,9 @@ export default function Footer() {
 
           {/* Right */}
           <div className="flex items-center gap-10 text-[14px]">
-            <a href="#" className="hover:text-red-500 transition">
+            <button onClick={()=>navigate("/about-us")} className="hover:text-red-500 transition cursor-pointer">
               About Lex Witness
-            </a>
+            </button>
 
             <a href="#" className="hover:text-red-500 transition">
               Summit Secretariat
