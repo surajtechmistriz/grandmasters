@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { ThumbsUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const SummitGallery = () => {
   const [activeTab, setActiveTab] = useState('Bengaluru Edition');
+
+  const navigate = useNavigate();
 
   const tabs = [
     "Bengaluru Edition", "Mumbai Edition", "New Delhi Edition", 
@@ -57,7 +60,7 @@ const SummitGallery = () => {
             </div>
           ))}
         </div>
-      <button className="text-[#D0252D] mt-10 cursor-pointer rounded-sm px-5 py-2 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition">
+      <button onClick={()=> navigate("/past-event-detail")} className="text-[#D0252D] mt-10 cursor-pointer rounded-sm px-5 py-2 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition">
               VIEW MORE
             </button>
       </div>
