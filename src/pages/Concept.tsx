@@ -7,6 +7,9 @@ import img1 from "../assets/images/Mr-Justice-Manmohan-1.jpg";
 import img2 from "../assets/images/lalit-bhasin-1.jpg";
 import img3 from "../assets/images/BS-Profile-1000-1.jpg";
 import img4 from "../assets/images/veta-217x300-1.jpg";
+import agendaImg from "../assets/images/agenda-highlights1.jpg";
+import audienceImg from "../assets/images/audience-profile1.jpg";
+import sponsorImg from "../assets/images/agenda-highlights1.jpg";
 import { useNavigate } from "react-router-dom";
 
 /* ---------------- TABS ---------------- */
@@ -118,7 +121,7 @@ const Concept = () => {
             <div className="font-roboto text[15px]  grid md:grid-cols-2 gap-6 mt-12  items-center text-left">
               <div className="flex justify-center">
                 <img
-                  src="/src/assets/images/agenda-highlights1.jpg"
+                  src={agendaImg}
                   className="w-[300px] rounded-lg object-contain"
                 />
               </div>
@@ -197,7 +200,7 @@ const Concept = () => {
               {/* IMAGE SECTION */}
               <div className="w-[300px] flex-shrink-0">
                 <img
-                  src="/src/assets/images/audience-profile1.jpg"
+                  src={audienceImg}
                   className="rounded-xl w-full object-cover"
                 />
               </div>
@@ -209,7 +212,7 @@ const Concept = () => {
             <div className="grid md:grid-cols-2 px-8 gap-6 mt-12 items-center max-w-4xl text-left">
               <div className="flex justify-center">
                 <img
-                  src="/src/assets/images/agenda-highlights1.jpg"
+                  src={sponsorImg}
                   className="w-[300px] rounded-lg object-contain"
                 />
               </div>
