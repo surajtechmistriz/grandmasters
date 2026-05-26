@@ -89,7 +89,7 @@ const SummitSecretariat = () => {
 
             <p className="mb-6 text-[16px] font-bold text-gray-800">
               Meanwhile here's a gist of The Lex{" "}
-              <span className="text-red-600">Witness</span> Summits so far;
+              <span className="text-[#d2232a]">Witness</span> Summits so far;
             </p>
 
             <div className="space-y-2 ">
@@ -113,7 +113,7 @@ const SummitSecretariat = () => {
                       {isOpen ? (
                         <FaCaretUp />
                       ) : (
-                        <FaCaretDown className="text-red-600" />
+                        <FaCaretDown className="text-[#d2232a]" />
                       )}
                       <span className="text-[15px] font-medium">
                         {item.title}

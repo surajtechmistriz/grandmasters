@@ -18,10 +18,10 @@ const GetInvolved = () => {
         
         {/* Left Side: Text */}
         <div className="w-full  lg:w-1/2 text-center lg:text-center text-white -mt-20">
-          <h2 className="text-5xl font-medium leading-tight mb-4">
+          <h2 className=" mb-4 text-[50px] font-normal leading-[55px] font-roboto">
             Get <br /> Involved
           </h2>
-          <p className="text-md font-medium  tracking-wide text-white">
+          <p className="  tracking-wide text-white text-[15px] font-normal leading-[28px] font-roboto">
             All that You'd Like to Know about The Grand Masters 2026
           </p>
         </div>
@@ -52,7 +52,7 @@ const GetInvolved = () => {
                 id="updates"
                 className="mt-1.5 h-4 w-4 accent-gray-500 cursor-pointer"
               />
-              <label htmlFor="updates" className="text-white text-sm leading-tight opacity-90 cursor-pointer">
+              <label htmlFor="updates" className="text-white   opacity-90 cursor-pointer text-[15px] font-normal leading-[28px] font-roboto">
                 Please send me all Lex Witness Magazine, Events and other initiatives related updates.
               </label>
             </div>
@@ -61,7 +61,7 @@ const GetInvolved = () => {
             <div className="bg-white p-3 rounded-sm flex items-center justify-between w-[300px]">
               <div className="flex items-center gap-3">
                 <input type="checkbox" className="h-6 w-6" />
-                <span className="text-gray-700 text-sm">I'm not a robot</span>
+                <span className="text-gray-700 text-[15px] font-normal leading-[28px] font-roboto">I'm not a robot</span>
               </div>
               <div className="flex flex-col items-center">
                 <img 
@@ -77,7 +77,7 @@ const GetInvolved = () => {
             <div className="pt-4">
               <button
                 type="submit"
-                className="px-10 py-2 border rounded-sm border-white text-white font-medium uppercase text-sm hover:bg-[#D2520D] hover:text-white cursor-pointer transition-all duration-300 bg-black/30"
+                className="px-10 py-2 border rounded-sm border-white text-white font-medium uppercase text-sm hover:bg-[#d0252d] hover:text-white cursor-pointer transition-all duration-300 bg-black/30"
               >
                 Submit
               </button>

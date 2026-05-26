@@ -23,7 +23,7 @@ const Cart = () => {
     <div className="max-w-6xl mx-auto p-4 font-roboto text-gray-700 my-[120px]">
       {/* Success Alert */}
       <div className="flex items-center gap-3 border border-black p-4 mb-8 bg-white">
-        <FaCheckCircle className="text-red-700 text-lg" />
+        <FaCheckCircle className="text-[#d2232a] text-lg" />
         <p className="text-[15px]">"For Corporates" has been added to your cart.</p>
       </div>
 
@@ -31,7 +31,7 @@ const Cart = () => {
       <div className="overflow-x-auto border border-gray-200">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[#D12229] text-white uppercase text-[13px] font-bold tracking-wider">
+            <tr className="bg-[#d2232a] text-white uppercase text-[13px] font-bold tracking-wider">
               <th className="p-3 w-16"></th>
               <th className="p-3 w-20"></th>
               <th className="p-3">Product</th>
@@ -44,7 +44,7 @@ const Cart = () => {
             {cartItems.map((item) => (
               <tr key={item.id} className="text-[15px]">
                 <td className="p-4 text-center">
-                  <FaTimes className="text-red-700 cursor-pointer mx-auto " />
+                  <FaTimes className="text-[#d2232a] cursor-pointer mx-auto " />
                 </td>
                 <td className="p-4 ">
                   {/* <div className="w-10 h-10 bg-[#D12229] flex items-center justify-center text-white font-bold text-xl rounded-sm italic">
@@ -52,7 +52,7 @@ const Cart = () => {
                   </div> */}
                   <img src={img} alt=""  className="cursor-pointer"/>
                 </td>
-                <td className="p-4 text-red-600 hover:underline cursor-pointer">
+                <td className="p-4 text-[#d2232a] hover:underline cursor-pointer">
                   {item.name}
                 </td>
                 <td className="p-4">₹{item.price.toLocaleString("en-IN")}.00</td>

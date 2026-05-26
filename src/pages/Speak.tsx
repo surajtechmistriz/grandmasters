@@ -82,14 +82,14 @@ const SpeakersSection = () => {
         {/* Heading */}
         <div className="text-center mb-6">
           <div className="flex justify-center my-6">
-            <LuNotepadText className="text-red-700 text-5xl " />
+            <LuNotepadText className="text-[#d2232a] text-5xl " />
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+          <h2 className="text-[50px] md:text-[50px] font-normal leading-[55px] text-gray-900 mb-3">
             Meet The Grand Masters!
           </h2>
 
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-lg font-roboto font-normal leading-[34px]">
             Invited & <span className="text-[#D0252D]">Confirmed Speakers</span>
           </p>
         </div>
@@ -100,7 +100,7 @@ const SpeakersSection = () => {
             <span
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`px-16 py-2 text-lg font-semibold cursor-pointer transition ${
+              className={`px-16 font-roboto py-2 text-[15px] font-semibold cursor-pointer transition ${
                 active === tab.id
                   ? "text-[#D0252D]"
                   : "text-gray-700 hover:text-[#D0252D]"
@@ -150,11 +150,11 @@ const SpeakersSection = () => {
                 className="w-full h-auto mx-auto rounded-full object-cover"
               />
 
-              <h3 className="mt-4 font-semibold text-gray-900">
+              <h3 className="mt-4 font-bold font-roboto text-[15px] leading-4.75 text-[#D0252D] tracking-wide">
                 {speaker.name}
               </h3>
 
-              <p className="text-sm text-gray-600">{speaker.title}</p>
+              <p className="text-sm font-normal leading-[22px] font-roboto text-[#8d93a0]">{speaker.title}</p>
 
               <a
                 href={speaker.linkedin}
@@ -170,20 +170,20 @@ const SpeakersSection = () => {
       </div>
 
       {/* Bottom CTA */}
-      <div className="w-full bg-black/30 py-14 px-4">
+      <div className="font-roboto w-full bg-black/30 py-14 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-white text-5xl font-bold">Get Involved</h1>
-            <p className="text-white my-4">
+            <h1 className="text-white text-[50px] font-bold leading-[55px]">Get Involved</h1>
+            <p className="text-white my-4 text-[15px] font-normal leading-[28px]">
               All that You’d Like to Know about The Grand Masters 2026
             </p>
           </div>
 
-          <div className="flex gap-10 justify-center items-center mt-8 flex-wrap">
+          <div className=" font-custom flex gap-20 justify-center items-center mt-8 flex-wrap">
             {["SPEAK", "SPONSOR", "REGISTER NOW", "CONNECT"].map((btn) => (
               <button
                 key={btn}
-                className="w-52 text-white px-10 py-3 border border-white hover:bg-[#D0252D] transition rounded-md"
+                className="text-sm font-bold leading-[14px] tracking-[0.2rem] text-white px-10 py-4 cursor-pointer border border-white hover:bg-[#D0252D] transition rounded-md"
               >
                 {btn}
               </button>

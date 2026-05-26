@@ -1,10 +1,9 @@
-import React from 'react';
+import React from "react";
 import logo from "../assets/images/image.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <footer className="w-full">
       {/* Top Section */}
@@ -12,64 +11,60 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-14 max-w-6xl mx-auto">
           {/* Left Column */}
           <div>
-            <h2 className="text-[18px] font-bold mb-6">
-              About Lex <span className="text-red-600">Witness</span>
+            <h2 className="text-[20px] font-bold mb-6 leading-[23px] font-roboto">
+              About Lex <span className="text-[#d2232a]">Witness</span>
             </h2>
 
-            <p className="text-[13px] leading-6 text-black">
-              Lex Witness, ever since its inception in 2009, has become
-              India’s most credible platform for the legal luminaries here to
-              opine, comment and share their views. With an interesting blend
-              of opinion pieces, commentary, reportage, analysis, interviews
-              and movements, Lex Witness is for the entire fraternity of In
-              House and External Counsel besides key decision makers,
-              luminaries, experts, policy makers, bureaucracy and the industry
-              captains in India.
+            <p className="text-[13px]   text-black   font-normal leading-[22px] font-roboto">
+              Lex Witness, ever since its inception in 2009, has become India’s
+              most credible platform for the legal luminaries here to opine,
+              comment and share their views. With an interesting blend of
+              opinion pieces, commentary, reportage, analysis, interviews and
+              movements, Lex Witness is for the entire fraternity of In House
+              and External Counsel besides key decision makers, luminaries,
+              experts, policy makers, bureaucracy and the industry captains in
+              India.
             </p>
 
             {/* Logo */}
             <div className="mt-10">
-              <img
-                src={logo}
-                alt="Lex Witness"
-                className="w-[220px]"
-              />
+              <img src={logo} alt="Lex Witness" className="w-[220px]" />
             </div>
           </div>
 
           {/* Middle Column */}
-          <div>
-            <h2 className="text-[18px] font-bold mb-8">
-              Lex <span className="text-red-600">Witness</span> Summits
+          <div className="font-roboto">
+            <h2 className="text-[20px] font-bold mb-6   leading-[23px] font-roboto">
+              Lex <span className="text-[#d2232a]">Witness</span> Summits
               Showcase
             </h2>
 
             <div className="space-y-4">
               <div>
-                <h3 className="font-bold text-[13px] ">
+                <h3 className="font-bold text-[13px] leading-[25px] ">
                   The 11th Annual IT Legal Summit 2026 / Bengaluru
                 </h3>
 
-                <p className="text-[13px] mt-1">
+                <p className="text-[13px] font-normal leading-[25px]">
                   IT / ITeS / e-Commerce / Gaming & More
                 </p>
 
-                <p className="text-[13px] mt-3">
+                <p className="text-[13px] mt-1">
                   To access past editions, visit{" "}
-                  <span className="text-red-600">www.itlegalsummit.com</span>
+                  <span className="text-[#d2232a]">www.itlegalsummit.com</span>
                 </p>
               </div>
 
               <div>
-                <h3 className="font-bold text-[13px] ">
+                <h3 className="text-[13px] font-bold leading-[25px] ">
                   The 12th Annual Grand Masters 2026
                 </h3>
 
-                <p className="text-[13px] mt-2">
+                <p className="text-[13px] font-normal font-roboto mt-2">
                   A 7-city pan-India General Counsel Summit Series
                 </p>
 
-                <ul className="mt-4 space-y-2 font-bold text-[13px]">
+                <ul className="mt-4 space-y-1 font-bold text-[13px] leading-[25px]">
                   <li>Hyderabad Edition</li>
                   <li>Pune Edition</li>
                   <li>Chennai Edition</li>
@@ -79,75 +74,75 @@ export default function Footer() {
                   <li>Bengaluru Edition</li>
                 </ul>
 
-                <p className="text-[13px] mt-5">
+                <p className="text-[13px] font-roboto font-normal leading-[25px] mt-5">
                   To access past editions, visit{" "}
-                  <span className="text-red-600">www.grandmasters.in</span>
+                  <span className="text-[#d2232a]">www.grandmasters.in</span>
                 </p>
               </div>
             </div>
           </div>
 
           {/* Right Column */}
-          <div className="space-y-4">
+          <div className="space-y-4 font-roboto">
             <div>
-              <h3 className="font-bold text-[13px] ">
+              <h3 className="font-bold text-[13px] leading-[25px] ">
                 The 11th Annual Media, Advertising & Entertainment Legal Summit
                 2026 / Mumbai
               </h3>
 
-              <p className="text-[13px] mt-2">
+              <p className="font-normal text-[13px] leading-[25px]   ">
                 A Cross-Sectional Legal Dig on M&E Sector & More
               </p>
 
-              <p className="text-[13px] mt-3">
+              <p className="text-[13px] ">
                 To access past editions, visit{" "}
-                <span className="text-red-600">www.maels.in</span>
+                <span className="text-[#d2232a]">www.maels.in</span>
               </p>
             </div>
 
             <div>
-              <h3 className="font-bold text-[13px] ">
+              <h3 className="font-bold text-[13px] leading-[25px]  ">
                 The 12th Annual Pharma Legal & Compliance Summit 2026 / Mumbai
               </h3>
 
-              <p className="text-[13px] mt-2">
+              <p className="text-[13px] font-normal leading-[25px]  ">
                 Pharma / Healthcare / Medical Devices & More
               </p>
 
-              <p className="text-[13px] mt-3">
+              <p className="text-[13px] font-normal leading-[25px]  ">
                 To access past editions, visit{" "}
-                <span className="text-red-600">www.plcs.co.in</span>
+                <span className="text-[#d2232a]">www.plcs.co.in</span>
               </p>
             </div>
 
             <div>
-              <h3 className="font-bold text-[13px] ">
+              <h3 className="font-bold text-[13px] leading-[25px] ">
                 The 9th Annual Banking & Finance Legal Summit 2026 / Mumbai
               </h3>
 
-              <p className="text-[13px] mt-2">
+              <p className="text-[13px] font-normal leading-[25px] ">
                 Banking / Crypto / Fintech & More
               </p>
 
-              <p className="text-[13px] mt-3">
+              <p className="text-[13px] ">
                 To access past editions, visit{" "}
-                <span className="text-red-600">www.bfls.in</span>
+                <span className="text-[#d2232a]">www.bfls.in</span>
               </p>
             </div>
 
             <div>
-              <h3 className="font-bold text-[13px]">
+              <h3 className="font-bold text-[13px] leading-[25px] ">
                 The 13th Annual Real Estate & Construction Legal Summit 2027 /
                 New Delhi
               </h3>
 
-              <p className="text-[13px] mt-2">
+              <p className="text-[13px] font-normal leading-[25px]">
                 Real Estate / Infra / Construction & More
               </p>
 
-              <p className="text-[13px] mt-3">
+              <p className="text-[13px] font-normal leading-[25px]">
                 To access past editions, visit{" "}
-                <span className="text-red-600">www.rcls.in</span>
+                <span className="text-[#d2232a]">www.rcls.in</span>
               </p>
             </div>
           </div>
@@ -155,28 +150,36 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-[#1f2125] text-white px-10 md:px-20 py-7 ">
+      <div className="font-roboto bg-[#1f2125] text-white px-10 md:px-20 py-[20px] ">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-6xl mx-auto">
           {/* Left */}
-          <div className="text-[14px] ">
-            <p>Lex Witness - India's 1st Magazine on Legal & Corporate Affairs</p>
+          <div className="text-[13px] font-normal leading-[22px] ">
+            <p>
+              Lex Witness - India's 1st Magazine on Legal & Corporate Affairs
+            </p>
             <p>A Unit of SriGro Interactive Pvt Ltd.</p>
           </div>
 
           {/* Center */}
-          <div className="hidden md:flex items-center gap-12 text-[14px]">
+          <div className="hidden md:flex items-center gap-12 text-[13px] font-normal leading-[22px]">
             <span>|</span>
             <span>Rights of Admission Reserved</span>
             <span>|</span>
           </div>
 
           {/* Right */}
-          <div className="flex items-center gap-10 text-[14px]">
-            <button onClick={()=>navigate("/about-us")} className="hover:text-red-500 transition cursor-pointer">
+          <div className="flex items-center gap-10 text-[13px] font-normal leading-[22px]">
+            <button
+              onClick={() => navigate("/about-us")}
+              className="hover:text-[#d2232a] transition cursor-pointer"
+            >
               About Lex Witness
             </button>
 
-            <p onClick={()=> navigate("/summit-secretariat")}  className="hover:text-red-500 transition cursor-pointer">
+            <p
+              onClick={() => navigate("/summit-secretariat")}
+              className="hover:text-[#d2232a] transition cursor-pointer  text-[13px] font-normal leading-[22px]"
+            >
               Summit Secretariat
             </p>
           </div>
@@ -200,4 +203,3 @@ export default function Footer() {
     </footer>
   );
 }
-

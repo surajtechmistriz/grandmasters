@@ -20,11 +20,11 @@ const SummitGallery = () => {
       <div className="max-w-5xl mx-auto px-4 text-center">
         {/* Header */}
         <div className="flex justify-center mb-4">
-          <ThumbsUp size={40} className="text-red-500 stroke-[1.5px]" />
+          <ThumbsUp size={40} className="text-[#d2232a] stroke-[1.5px]" />
         </div>
-        <h2 className="text-5xl font-bold text-gray-800 mb-2">Summit Gallery</h2>
-        <p className="text-gray-500 text-sm mb-12">
-          A Visual <span className="text-red-600">Overview of Past</span> Summit Proceedings
+        <h2 className=" text-gray-800 mb-2 text-[50px] font-normal leading-[55px] font-roboto">Summit Gallery</h2>
+        <p className="font-roboto text-gray-500 text-sm mb-12">
+          A Visual <span className=" text-[#d2232a] text-[15px] font-normal leading-[28px] ">Overview of Past</span> Summit Proceedings
         </p>
 
         {/* Tab Navigation */}
@@ -33,15 +33,15 @@ const SummitGallery = () => {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`pb-4 text-sm font-bold transition-all relative ${
-                activeTab === tab ? 'text-red-600' : 'text-gray-600 hover:text-black'
+              className={`pb-4 text-sm font-bold transition-all relative text-[15px] tracking-widest leading-[28px] font-roboto cursor-pointer ${
+                activeTab === tab ? 'text-[#d2232a]' : 'text-gray-600 hover:text-black'
               }`}
             >
               {tab}
               {activeTab === tab && (
                 <>
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-red-600"></div>
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-red-600"></div>
+                  {/* <div className="absolute bottom-0 left-0 w-full h-1 bg-[#d2232a]"></div> */}
+                  <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[10px] border-t-[#d2232a]"></div>
                 </>
               )}
             </button>
@@ -60,7 +60,7 @@ const SummitGallery = () => {
             </div>
           ))}
         </div>
-      <button onClick={()=> navigate("/past-event-detail")} className="text-[#D0252D] mt-10 cursor-pointer rounded-sm px-5 py-2 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition">
+      <button onClick={()=> navigate("/past-event-detail")} className="text-[#D0252D] mt-10 cursor-pointer rounded-sm px-5 py-4 tracking-[0.3rem] border border-[#D0252D] text-[11px] font-bold leading-[11px] font-roboto hover:bg-[#D0252D] hover:text-white transition">
               VIEW MORE
             </button>
       </div>

@@ -3,18 +3,18 @@ export default function ContactSection() {
     <div className="bg-[#ffffff] h-120 flex items-center justify-center px-4">
       <div className="text-center max-w-3xl">
         {/* Heading */}
-        <h1 className="text-5xl font-semibold text-gray-800 mb-6">
+        <h1 className="text-gray-800 mb-6 text-[50px] font-normal leading-[55px] font-roboto">
           Connect
         </h1>
 
         {/* Intro Text */}
-        <p className="text-[15px] font-bold text-gray-900 mb-2">
+        <p className=" font-bold text-gray-900 mb-2 text-[15px]   leading-[28px] font-roboto">
           In order to participate at The Grand Masters 2026 Summit Series,
           please get in touch with:
         </p>
 
         {/* Contacts */}
-        <div className="space-y-2 text-[15px] text-gray-800">
+        <div className="space-y-2 text-gray-800 text-[15px] font-normal leading-[28px] font-roboto">
           <p>
             Bhupinder Kaur | +91-9654155065 |{" "}
             <a
@@ -38,12 +38,12 @@ export default function ContactSection() {
 
         {/* Company Info */}
         <div className="mt-10 space-y-4 text-gray-800">
-          <h2 className="text-[15px] font-semibold">
+          <h2 className="text-[15px] font-bold leading-[28px] font-roboto">
             <span className="text-[#D2520D]">Lex Witness</span> – India’s 1st
             Magazine on Legal & Corporate Affairs
           </h2>
 
-          <p className="text-[15px] ">
+          <p className="text-[15px] font-normal leading-[28px] font-roboto">
             Suite 1/6, Lower Ground Floor, Block B, Hauz Khas,
             <br />
             New Delhi - 110016

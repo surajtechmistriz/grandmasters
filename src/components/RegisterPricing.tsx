@@ -10,7 +10,7 @@ const RegisterPricing = () => {
       title: "Corporate Registrations",
       price: "₹7,000 Onwards",
       tag: "TRENDING",
-      tagColor: "bg-red-600",
+      tagColor: "bg-[#d2232a]",
       bgColor: "bg-[#d1e9e3]",
       buttonBorder: "border-gray-400",
       details: [
@@ -47,7 +47,7 @@ const RegisterPricing = () => {
       title: "The Lex Witness Annual Pass",
       price: "₹40,000 Onwards",
       tag: "MOST PREFERRED",
-      tagColor: "bg-red-600",
+      tagColor: "bg-[#d2232a]",
       bgColor: "bg-[#fef0b3]",
       buttonBorder: "border-red-400",
       isPremium: true,
@@ -63,14 +63,14 @@ const RegisterPricing = () => {
 
   return (
     <section className="py-16 px-4 font-sans bg-[#f5f5f5]">
-      <div className="max-w-7xl mx-auto text-center mb-12">
+      <div className="font-roboto  max-w-7xl mx-auto text-center mb-12">
         <div className="flex justify-center mb-4">
-          <span className="text-4xl text-red-500">📋</span>
+          <span className="text-4xl text-[#d2232a]">📋</span>
         </div>
-        <h2 className="text-5xl font-medium text-gray-800 mb-2">
+        <h2 className="text-[50px]  font-normal leading-[55px] text-gray-800 mb-2">
           Delegate Registrations
         </h2>
-        <p className="text-gray-600 ">
+        <p className="text-gray-600 text-[15px] font-normal leading-[28px]" >
           It's a Race Against Time. Avail Best Possible Discounts Now.
         </p>
       </div>
@@ -83,22 +83,22 @@ const RegisterPricing = () => {
           >
             {tier.tag && (
               <div
-                className={`absolute -top-3 left-1/2 -translate-x-1/2 px-1 py-1 rounded text-white text-xs font-bold tracking-wider ${tier.tagColor}`}
+                className={`absolute text-[15px] font-normal font-roboto leading-[28px] -top-3 left-1/2 -translate-x-1/2 px-1 py-1 rounded text-white text-xs  tracking-wider ${tier.tagColor}`}
               >
                 {tier.tag}
               </div>
             )}
 
-            <h3 className="text-red-700 font-bold text-lg mb-1 h-10 flex items-center justify-center text-center">
+            <h3 className="font-roboto text-[#d2232a] font-bold text-[17px] leading-[18px] mb-1 h-10 flex items-center justify-center text-center">
               {" "}
               {tier.title}
             </h3>
 
-            <div className="text-2xl font-black text-gray-800 mb-4">
+            <div className="text-[26px] font-bold font-roboto leading-[30px]   text-gray-800 mb-4">
               {tier.price}
             </div>
 
-            <div className="flex-grow space-y-2 mb-8">
+            <div className="font-roboto flex-grow space-y-2 mb-8">
               {tier.details.map((line, i) => (
                 <p
                   key={i}
@@ -111,7 +111,7 @@ const RegisterPricing = () => {
 
             <button
             onClick={()=> navigate("/cart")}
-              className={`mt-auto py-2 px-8 border rounded-md font-bold text-[#D2520D] hover:bg-[#D2520D] hover:text-white  cursor-pointer transition-colors ${tier.buttonBorder}`}
+              className={`font-custom mt-auto py-2 px-8 border rounded-md font-bold text-[#D2520D] hover:bg-[#D2520D] hover:text-white  cursor-pointer transition-colors ${tier.buttonBorder}`}
             >
               Book Now
             </button>

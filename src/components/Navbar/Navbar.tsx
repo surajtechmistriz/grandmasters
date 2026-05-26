@@ -8,9 +8,9 @@ const Navbar = () => {
 
   const navItems = [
     { id: "concept", label: "CONCEPT", type: "section" },
-    { id: "speakers", label: "SPEAKERS", type: "section" },
+    { id: "speakers", label: "SPEAK", type: "section" },
     { id: "agenda", label: "AGENDA", type: "section" },
-    { id: "sponsors", label: "SPONSORS", type: "section" },
+    { id: "sponsors", label: "SPONSOR", type: "section" },
 
     {
       id: "/past-edition",
@@ -21,41 +21,44 @@ const Navbar = () => {
     { id: "connect", label: "CONNECT", type: "section" },
   ];
 
-  useEffect(() => {
-    if (location.pathname !== "/") return;
+useEffect(() => {
+  // Reset active state on other pages
+  if (location.pathname !== "/") {
+    setActive("");
+    return;
+  }
 
-    const sections = document.querySelectorAll("section[id]");
+  const sections = document.querySelectorAll("section[id]");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let bestEntry = null;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      let bestEntry = null;
 
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
 
-          if (
-            !bestEntry ||
-            Math.abs(entry.boundingClientRect.top) <
-              Math.abs(bestEntry.boundingClientRect.top)
-          ) {
-            bestEntry = entry;
-          }
+        if (
+          !bestEntry ||
+          Math.abs(entry.boundingClientRect.top) <
+            Math.abs(bestEntry.boundingClientRect.top)
+        ) {
+          bestEntry = entry;
         }
+      }
 
-        if (bestEntry) {
-          setActive(bestEntry.target.id);
-        }
-      },
-      {
-        threshold: 0.3,
-      },
-    );
+      if (bestEntry) {
+        setActive(bestEntry.target.id);
+      }
+    },
+    {
+      threshold: 0.3,
+    }
+  );
 
-    sections.forEach((sec) => observer.observe(sec));
+  sections.forEach((sec) => observer.observe(sec));
 
-    return () => observer.disconnect();
-  }, [location.pathname]);
-
+  return () => observer.disconnect();
+}, [location.pathname]);
   return (
     <nav className="fixed top-0 left-0 z-50 w-full bg-[#E9E9E9] shadow-md">
       <div className="mx-auto flex h-25 max-w-6xl items-center justify-between ">

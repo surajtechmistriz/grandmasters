@@ -106,35 +106,35 @@ const SummitAgenda = () => {
       {/* HEADER */}
       <div className="text-center mb-12">
         <div className="flex justify-center mb-4">
-          <div className="p-2 border-2 border-red-600 rounded-md">
-            <span className="text-red-600 text-2xl font-bold">📋</span>
+          <div className="p-2 border-2 border-[#d2232a]rounded-md">
+            <span className="text-[#d2232a]text-2xl font-bold">📋</span>
           </div>
         </div>
-        <h1 className="text-5xl font-light text-gray-800 mb-8">
+        <h1 className=" font-roboto text-[50px] font-normal leading-[55px] text-gray-800 mb-8">
           The Summit Agenda
         </h1>
 
         {/*  TABS (UI SAME STYLE, ONLY LOGIC ADDED) */}
-        <div className="flex justify-center gap-16 border-b border-gray-200 pb-0 relative">
+        <div className="flex justify-center gap-16 border-b border-gray-200 pb-0 relative font-roboto">
           {/* HYDERABAD */}
           <div
             onClick={() => {
               setActiveTab("hyderabad");
               setExpandedId(5);
             }}
-            className="pb-4 cursor-pointer relative text-center"
+            className="pb-4 cursor-pointer relative text-center "
           >
             <p
-              className={`font-bold text-sm ${
-                activeTab === "hyderabad" ? "text-red-600" : "text-gray-700"
+              className={` text-[15px] font-bold leading-[28px] tracking-widest ${
+                activeTab === "hyderabad" ? "text-[#d2232a]" : "text-gray-700"
               }`}
             >
               17TH JULY
             </p>
 
             <p
-              className={`font-black tracking-widest text-xs uppercase ${
-                activeTab === "hyderabad" ? "text-red-600" : "text-gray-700"
+              className={`text-[15px] font-bold leading-[28px] tracking-widest  uppercase ${
+                activeTab === "hyderabad" ? "text-[#d2232a]" : "text-gray-700"
               }`}
             >
               Hyderabad Edition
@@ -142,7 +142,7 @@ const SummitAgenda = () => {
 
             {/* 🔻 TRIANGLE */}
             {activeTab === "hyderabad" && (
-              <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-red-600" />
+              <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-[#d2232a]" />
             )}
           </div>
 
@@ -155,16 +155,16 @@ const SummitAgenda = () => {
             className="pb-4 cursor-pointer relative text-center"
           >
             <p
-              className={`font-bold text-sm ${
-                activeTab === "ahmedabad" ? "text-red-600" : "text-gray-700"
+              className={`text-[15px] font-bold leading-[28px] tracking-widest ${
+                activeTab === "ahmedabad" ? "text-[#d2232a]" : "text-gray-700"
               }`}
             >
               22ND JULY
             </p>
 
             <p
-              className={`font-black tracking-widest text-xs uppercase ${
-                activeTab === "ahmedabad" ? "text-red-600" : "text-gray-700"
+              className={`text-[15px] font-bold leading-[28px] tracking-widest  uppercase ${
+                activeTab === "ahmedabad" ? "text-[#d2232a]" : "text-gray-700"
               }`}
             >
               Ahmedabad Edition
@@ -172,21 +172,21 @@ const SummitAgenda = () => {
 
             {/* 🔻 TRIANGLE */}
             {activeTab === "ahmedabad" && (
-              <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-red-600" />
+              <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-[#d2232a]" />
             )}
           </div>
         </div>
       </div>
 
       {/* TIMELINE (UNCHANGED UI) */}
-      <div className="relative">
+      <div className="relative ml-20">
         <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-gray-200"></div>
 
         <div className="space-y-0">
           {agendaItems.map((item) => (
             <div key={item.id} className="relative pl-20 group">
               {/* marker */}
-              <div className="absolute left-4 top-4 z-10 w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-white italic font-black text-sm shadow-md">
+              <div className="absolute left-4 top-4 z-10 w-8 h-8 rounded-full bg-[#d2232a]flex items-center justify-center text-white italic font-black text-sm shadow-md">
                 W
               </div>
 
@@ -207,10 +207,10 @@ const SummitAgenda = () => {
                 </div>
 
                 {/* title */}
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-bold text-gray-800 tracking-tight">
+                <div className=" font-roboto flex justify-between items-center">
+                  <h3 className="text-[22px] font-bold leading-[24px] text-gray-800 tracking-tight">
                     {item.title}
-                    <span className="text-red-600">{item.highlight}</span>
+                    <span className="text-[#d2232a]">{item.highlight}</span>
                     {item.suffix}
                   </h3>
 
@@ -235,7 +235,7 @@ const SummitAgenda = () => {
                           />
                         </div>
 
-                        <h4 className="text-red-700 font-black text-[11px] mt-2 uppercase">
+                        <h4 className="text-[#d2232a] font-black text-[11px] mt-2 uppercase">
                           {speaker.name}
                         </h4>
                         <p className="text-[10px] text-gray-600">

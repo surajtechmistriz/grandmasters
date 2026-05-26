@@ -49,7 +49,7 @@ const luminaries = [
 const Concept = () => {
   const [active, setActive] = useState("agenda");
 
-  const navigation = useNavigate()
+  const navigation = useNavigate();
 
   return (
     <section
@@ -61,7 +61,7 @@ const Concept = () => {
       <div className="relative z-10 mx-auto mt-14 text-center">
         {/* HEADER */}
         <div className="backdrop-blur-md bg-white shadow-xl p-10 flex flex-col items-center">
-          <FaMicrophone className="text-4xl text-red-500" />
+          <FaMicrophone className="text-4xl text-[#d2232a]" />
 
           <h2 className="text-5xl font-normal text-gray-800 my-6">
             Are You A Grand Master?
@@ -69,7 +69,7 @@ const Concept = () => {
 
           <p className="font-roboto text-[15px] font-normal text-gray-600">
             Join India’s Elite{" "}
-            <span className="text-red-500 font-semibold">In House</span> Counsel
+            <span className="text-[#d2232a] font-semibold">In House</span> Counsel
             Gathering
           </p>
 
@@ -192,7 +192,10 @@ const Concept = () => {
                   Director Human Resources
                 </p>
 
-                <button onClick={()=> navigation("/audience-profile")} className="mt-4 text-[#D0252D] px-5 py-2 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer">
+                <button
+                  onClick={() => navigation("/audience-profile")}
+                  className="mt-4 text-[#D0252D] px-5 py-2 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
+                >
                   VIEW MORE
                 </button>
               </div>
@@ -248,7 +251,9 @@ const Concept = () => {
                 <div className="text-5xl md:text-[80px] font-bold text-white">
                   {stat.value}
                 </div>
-                <div className="text-white text-[11px] font-semibold tracking-[0.3rem]">{stat.label}</div>
+                <div className="text-white text-[11px] font-semibold tracking-[0.3rem]">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -257,10 +262,15 @@ const Concept = () => {
         {/* LUMINARIES */}
         <div className="w-full bg-white py-16 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <HiUserGroup className="text-red-700 text-4xl mx-auto" />
+            <HiUserGroup className="text-[#d2232a] text-4xl mx-auto" />
 
-            <h2 className="text-[50px] font-roboto font-normal mt-2">Past Official Messages</h2>
-            <p className="text-[15px] font-normal leading-[28px] text-[#8d93a0]">Messages from <span className="text-[#D0252D]">Various Legal Luminaries</span></p>
+            <h2 className="text-[50px] font-roboto font-normal mt-2">
+              Past Official Messages
+            </h2>
+            <p className="text-[15px] font-normal leading-[28px] text-[#8d93a0]">
+              Messages from{" "}
+              <span className="text-[#D0252D]">Various Legal Luminaries</span>
+            </p>
 
             <div className="grid md:grid-cols-4 gap-6 mt-10">
               {luminaries.map((p, i) => (
@@ -269,8 +279,12 @@ const Concept = () => {
                     src={p.image}
                     className="w-64 h-64 rounded-full mx-auto object-cover"
                   />
-                  <h3 className="font-roboto text-[20px] leading-[23px] text-[#D0252D] hover:underline cursor-pointer font-normal mt-4">{p.name}</h3>
-                  <p className="font-roboto font-normal text-[15px]  text-gray-600 mt-2">{p.title}</p>
+                  <h3 className="font-roboto text-[20px] leading-[23px] text-[#D0252D] hover:underline cursor-pointer font-normal mt-4">
+                    {p.name}
+                  </h3>
+                  <p className="font-roboto font-normal text-[15px]  text-gray-600 mt-2">
+                    {p.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -279,8 +293,12 @@ const Concept = () => {
 
         {/* CTA */}
         <div className="w-full bg-black/30 py-18 px-4 text-white">
-          <h1 className="font-roboto text-[50px] font-bold leading-[55px]">Get Involved</h1>
-          <p className="my-4 font-roboto text-[15px] font-normal leading-[28px]">All that You’d Like to Know about The Grand Masters 2026</p>
+          <h1 className="font-roboto text-[50px] font-bold leading-[55px]">
+            Get Involved
+          </h1>
+          <p className="my-4 font-roboto text-[15px] font-normal leading-[28px]">
+            All that You’d Like to Know about The Grand Masters 2026
+          </p>
 
           <div className="flex gap-10 justify-center flex-wrap mt-8">
             {["SPEAK", "SPONSOR", "REGISTER NOW", "CONNECT"].map((btn) => (

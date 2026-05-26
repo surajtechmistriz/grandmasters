@@ -60,12 +60,12 @@ export default function SponsorsPartners() {
         <div className="flex justify-center mb-4">
           <Bookmark
             size={42}
-            className="text-red-500 stroke-[1.5]"
+            className="text-[#d2232a] stroke-[1.5]"
           />
         </div>
 
         {/* Heading */}
-        <h2 className="text-6xl font-medium text-center text-gray-800 mb-16">
+        <h2 className="text-center text-gray-800 mb-16 text-[50px] font-normal leading-[55px] font-roboto">
           Sponsors & Partners
         </h2>
 
@@ -74,10 +74,10 @@ export default function SponsorsPartners() {
           {sponsors.map((item, index) => (
             <div
               key={index}
-              className="border border-gray-300 bg-[#ffffff] flex flex-col items-center justify-center py-14 px-6"
+              className="border border-gray-300 bg-[#ffffff] flex flex-col items-center justify-center py-10 px-4"
             >
               {/* Partner Type */}
-              <h3 className="text-2xl font-semibold text-gray-900 mb-12">
+              <h3 className="  text-gray-900 mb-12 text-[15px] font-bold leading-[28px] font-roboto">
                 {item.title}
               </h3>
 
