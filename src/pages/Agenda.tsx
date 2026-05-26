@@ -186,7 +186,7 @@ const SummitAgenda = () => {
           {agendaItems.map((item) => (
             <div key={item.id} className="relative pl-20 group">
               {/* marker */}
-              <div className="absolute left-4 top-4 z-10 w-8 h-8 rounded-full bg-[#d2232a]flex items-center justify-center text-white italic font-black text-sm shadow-md">
+              <div className="absolute left-4 top-4 z-10 w-8 h-8 rounded-full bg-[#d2232a] flex items-center justify-center text-white italic font-black text-sm shadow-md">
                 W
               </div>
 
