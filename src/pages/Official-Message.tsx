@@ -1,6 +1,6 @@
 import React from "react";
 import OfficialMessages from "../components/OfficialMessageSidebar";
-import img from "../assets/images/lalit-bhasin-1.jpg"
+import img from "../assets/images/lalit-bhasin-1.jpg";
 
 const OfficialMessage = () => {
   return (
@@ -13,7 +13,7 @@ const OfficialMessage = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-6 py-14">
+      <div className="max-w-7xl mx-auto px-6 py-14">
         <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-10 px-6">
           <section className="max-w-5xl mx-auto p-6 font-roboto text-[15px] leading-[24px] text-gray-800">
             {/* --- TOP SECTION: Text wrapping around image --- */}
@@ -22,10 +22,11 @@ const OfficialMessage = () => {
               <img
                 src={img}
                 alt="Speaker"
-                className="float-right ml-6 mb-4 w-[320px] h-auto object-cover"
+                className="float-right ml-6 mb-4 w-[260px] h-auto object-cover"
               />
 
               <div className="text-justify">
+                <h1 className="text-[15px] font-bold leading-[28px] mb-4">  MESSAGE</h1>
                 <p className="mb-4">
                   It's a great honor for us at{" "}
                   <span className="text-[#d12229] font-bold">
@@ -96,9 +97,9 @@ const OfficialMessage = () => {
           </section>
 
           {/* Right */}
-         <div>
-  <OfficialMessages />
-</div>
+          <div>
+            <OfficialMessages />
+          </div>
         </div>
         <h1 className="text-4xl text-center my-16">Sponsors & Partners</h1>
       </div>

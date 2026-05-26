@@ -29,7 +29,7 @@ const AudienceProfile = () => {
     <div className="min-h-screen bg-[#white] mt-[100px]">
       {/* Header */}
       <div className="bg-[#d61f26] py-6">
-        <h1 className="text-white text-center text-[50px] font-normal leading-[55px] tracking-tighter">
+        <h1 className="font-roboto text-white text-center text-[50px] font-normal leading-[55px] tracking-tighter">
           Meet The Legal Maestros
         </h1>
       </div>
@@ -40,7 +40,7 @@ const AudienceProfile = () => {
           {/* Left */}
           <div>
             {/* Paragraph */}
-            <p className="text-[15px] leading-[28px] text-[#1d2b44] font-normal">
+            <p className=" font-roboto text-[15px] leading-[28px] text-[#1d2b44] font-normal">
               <span className="text-[#d61f26] font-bold cursor-pointer hover:underline">
                 The Grand Masters Summit Series
               </span>{" "}
@@ -55,7 +55,7 @@ const AudienceProfile = () => {
             {/* Table */}
             <div className="mt-5 overflow-hidden  ">
               {/* Heading */}
-              <div className="bg-[#d61f26] text-white font-semibold uppercase   leading-[24px] px-5 py-3 text-[14px]">
+              <div className="font-roboto bg-[#d61f26] text-white font-semibold uppercase   leading-[28px] px-5 py-3 text-[14px]">
                 Organizational Participation
               </div>
 
@@ -70,7 +70,7 @@ const AudienceProfile = () => {
                   {row.map((item, i) => (
                     <div
                       key={i}
-                      className="px-4 py-3 border font-normal leading-[28px] border-[#dbdbdb] text-[14px] text-[#1d2b44]"
+                      className="font-roboto px-4 py-3 border font-normal leading-[28px] border-[#dbdbdb] text-[14px] text-[#1d2b44]"
                     >
                       {item}
                     </div>

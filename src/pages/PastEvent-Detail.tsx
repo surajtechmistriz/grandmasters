@@ -5,20 +5,20 @@ import React, { useState } from "react";
 import img1 from "../assets/images/detail.jpg";
 
 const speakers = [
-  "AAKANKSHA MUNJHAL, Partner, Saikrishna & Associates",
-  "ALPA SOOD, Director – Legal, India, Marvell Technology",
-  "AMIT ANAND, Director – Legal, Adobe",
-  "DHARA DOSHI, Head – Legal, Decathlon",
-  "DR. JAYARAM RAGHUNATH, Professor & Dean, School Of Law, Mahindra University",
-  "DR. SONAL VERMA, Partner & Global Leader (Markets & Strategy), Dhir & Dhir Associates",
-  "GITANJALI MIRIAM MATHEW, Associate Partner, Saikrishna & Associates",
-  "HARISH CHANDRAN AVARONNAN, Head Of Intellectual Property & Licensing, India, Novonesis",
-  "HIRANMAI RALLABANDI, General Counsel & Chief Governance Officer, India, WeWork",
-  "K. VIJAYSHYAM ACHARYA, Head – Legal & Company Secretary, Redington",
-  "KARTIKAY SINGH, Senior Associate, ADP Law Offices",
-  "LAHAR APPAIAH, Counsel, IBM India",
-  "NATASHA WILSON, General Counsel, SUN Mobility",
-  "NEHA SACHDEV MUNJRAL, Director – Legal, United Breweries",
+  "Aakanksha Munjhal, Partner, Saikrishna & Associates",
+  "Alpa Sood, Director – Legal, India, Marvell Technology",
+  "Amit Anand, Director – Legal, Adobe",
+  "Dhara Doshi, Head – Legal, Decathlon",
+  "Dr. Jayaram Raghunath, Professor & Dean, School Of Law, Mahindra University",
+  "Dr. Sonal Verma, Partner & Global Leader (Markets & Strategy), Dhir & Dhir Associates",
+  "Gitanjali Miriam Mathew, Associate Partner, Saikrishna & Associates",
+  "Harish Chandran Avaronnan, Head Of Intellectual Property & Licensing, India, Novonesis",
+  "Hiranmai Rallabandi, General Counsel & Chief Governance Officer, India, WeWork",
+  "K. Vijayshyam Acharya, Head – Legal & Company Secretary, Redington",
+  "Kartikay Singh, Senior Associate, ADP Law Offices",
+  "Lahar Appaiah, Counsel, IBM India",
+  "Natasha Wilson, General Counsel, SUN Mobility",
+  "Neha Sachdev Munjral, Director – Legal, United Breweries",
 ];
 
 // Demo gallery images
@@ -76,9 +76,9 @@ const EditionOverview = () => {
                 return (
                   <p
                     key={index}
-                    className="text-[15px] leading-[28px] text-[#444]"
+                    className=" font-roboto text-[15px] leading-[28px]  text-[#444]"
                   >
-                    <span className="font-bold uppercase">{parts[0]}</span>
+                    <span className="font-roboto font-bold capitalize">{parts[0]}</span>
                     {","}
                     {parts.slice(1).join(",")}
                   </p>

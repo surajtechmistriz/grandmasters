@@ -67,9 +67,9 @@ const OfficialMessagesSidebar = () => {
   return (
     <div>
       {messageYears.map((yearData, yearIndex) => (
-        <div key={yearIndex}>
+        <div key={yearIndex} className="font-roboto">
           {/* Heading */}
-          <h2 className="text-[20px] font-normal text-[#1d2b44] mb-5">
+          <h2 className="text-[20px] font-normal leading-[23px] text-[#1d2b44] mb-5">
             {yearData.year} Official Messages
           </h2>
 
@@ -77,23 +77,23 @@ const OfficialMessagesSidebar = () => {
           <div className="space-y-6">
             {yearData.messages.map((item, index) => (
               <div key={index}>
-                <h3 className="font-bold text-[15px] text-[#1d2b44]">
+                <h3 className="font-bold text-[15px] leading-[28px] text-[#1d2b44]">
                   {item.name}
                 </h3>
 
-                <p className="text-[15px] font-normal text-[#1d2b44] mt-1">
+                <p className="text-[15px] font-normal leading-[28px] text-[#1d2b44] mt-1">
                   {item.role}
                 </p>
 
                 {item.org && (
-                  <p className="text-[12px] font-normal text-[#1d2b44] mt-1">
+                  <p className="text-[12px] font-normal leading-[23px] text-[#1d2b44] mt-1">
                     {item.org}
                   </p>
                 )}
 
                 <button
                   onClick={() => navigate("/official-message")}
-                  className="text-[#d61f26] text-[15px] font-normal mt-1 hover:underline cursor-pointer"
+                  className="text-[#d61f26] text-[15px] font-normal leading-[28px] mt-1 hover:underline cursor-pointer"
                 >
                   Read More...
                 </button>

@@ -194,7 +194,7 @@ const Concept = () => {
 
                 <button
                   onClick={() => navigation("/audience-profile")}
-                  className="mt-4 text-[#D0252D] px-5 py-2 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
+                  className="mt-4 text-[#D0252D] px-5 py-2 border rounded-sm border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
                 >
                   VIEW MORE
                 </button>

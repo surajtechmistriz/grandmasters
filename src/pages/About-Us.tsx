@@ -3,7 +3,7 @@ import OfficialMessages from "../components/OfficialMessageSidebar";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-[#white] mt-[100px]">
+    <div className="font-roboto min-h-screen bg-[#white] mt-[100px]">
       {/* Header */}
       <div className="bg-[#d61f26] py-6">
         <h1 className="text-white text-center text-[50px] font-normal leading-[55px] tracking-tighter">
@@ -20,7 +20,7 @@ const AboutUs = () => {
             <h2 className="font-roboto text-black text-start text-[15px] font-bold leading-[28px] tracking-tight ">
               Why Lex <span className="text-[#d12229]">Witness?</span>
             </h2>
-            <p className="text-[15px] leading-[28px] text-[#1d2b44] font-normal">
+            <p className="text-[15px] font-roboto leading-[28px] text-[#1d2b44] font-normal">
               The Indian legal universe has close to 5 million individuals. This
               represents highest number in the world who, directly or
               indirectly, are a part of it. Lex Witness is a high quality
@@ -37,8 +37,8 @@ const AboutUs = () => {
               makers, bureaucracy and the industry captains in India.
             </p>
 
-            <h2 className="font-semibold mt-4">A Must Read</h2>
-            <p className="text-[15px] leading-[28px] text-[#1d2b44] font-normal">
+            <h2 className="font-bold text-[15px] mt-4">A Must Read</h2>
+            <p className="text-[15px] font-roboto leading-[28px] text-[#1d2b44] font-normal">
               The readers of Lex Witness are high-profile, influential HNI’s.
               They are the ones who frame the laws and the ones who practice it.
               Lex Witness covers an interesting bandwidth of readers right from
@@ -50,9 +50,9 @@ const AboutUs = () => {
               well.
             </p>
 
-            <p className="text-[15px] leading-[28px] text-[#1d2b44] font-normal mt-4">
+            <p className="font-roboto text-[15px] leading-[28px] text-[#1d2b44] font-normal mt-4">
               For a better understanding of Lex Witness please go through{" "}
-              <span className="font-bold text-[#d12229] cursor-pointer hover:underline">
+              <span className="font-roboto font-bold text-[#d12229] cursor-pointer hover:underline">
                 The Lex Witness Brand Deck
               </span>
             </p>

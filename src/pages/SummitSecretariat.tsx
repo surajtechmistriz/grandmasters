@@ -136,7 +136,7 @@ const SummitSecretariat = () => {
                                   className="max-h-32 object-contain"
                                 />
                               </div>
-                              <div className="w-full md:w-2/3 text-[14px] leading-relaxed text-gray-700">
+                              <div className="font-roboto w-full md:w-2/3 text-[15px] leading-relaxed text-gray-700">
                                 {summit.title && (
                                   <h3 className="font-bold text-gray-800 mb-2">
                                     {summit.title}

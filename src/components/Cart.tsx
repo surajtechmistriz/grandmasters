@@ -22,13 +22,13 @@ const Cart = () => {
   return (
     <div className="max-w-6xl mx-auto p-4 font-roboto text-gray-700 my-[120px]">
       {/* Success Alert */}
-      <div className="flex items-center gap-3 border border-black p-4 mb-8 bg-white">
+      <div className="flex items-center gap-3 border border-black p-4 mb-8 bg-white rounded-sm">
         <FaCheckCircle className="text-[#d2232a] text-lg" />
         <p className="text-[15px]">"For Corporates" has been added to your cart.</p>
       </div>
 
       {/* Cart Table */}
-      <div className="overflow-x-auto border border-gray-200">
+      <div className="overflow-x-auto border border-gray-200 rounded-sm">
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="bg-[#d2232a] text-white uppercase text-[13px] font-bold tracking-wider">
@@ -70,14 +70,14 @@ const Cart = () => {
         </table>
 
         {/* Coupon Section */}
-        <div className="p-4 flex flex-wrap justify-between items-center bg-white border-t border-gray-200 gap-4">
+        <div className="p-4 flex flex-wrap justify-between items-center bg-white border-t border-gray-200 gap-4 rounded-sm">
           <div className="flex gap-2">
             <input
               type="text"
               placeholder="Coupon code"
-              className="border border-gray-300 px-4 py-2 w-32 md:w-48 text-sm focus:outline-none focus:border-red-500"
+              className="border border-gray-300 rounded-sm px-4 py-2 w-32 md:w-48 text-sm focus:outline-none focus:border-red-500"
             />
-            <button className="bg-[#D12229] text-white px-6 py-2 text-[13px] font-bold uppercase tracking-tight  transition cursor-pointer">
+            <button className="bg-[#D12229] rounded-sm text-white px-6 py-2 text-[13px] font-bold uppercase tracking-tight  transition cursor-pointer">
               Apply coupon
             </button>
           </div>
@@ -90,7 +90,7 @@ const Cart = () => {
       {/* Cart Totals */}
       <div className="mt-12 flex justify-end">
         <div className="w-full max-w-md">
-          <h2 className="text-[#D12229] text-xl font-bold uppercase mb-4 tracking-tighter">
+          <h2 className="text-[#D12229] text-xl font-bold uppercase mb-4 ">
             Cart totals
           </h2>
           <table className="w-full border border-gray-200 text-[14px]">
@@ -109,7 +109,7 @@ const Cart = () => {
               </tr>
             </tbody>
           </table>
-          <button className="w-full mt-6 bg-[#D12229] text-white py-4 text-[16px] font-bold uppercase tracking-tight  transition cursor-pointer">
+          <button className="w-full mt-6 bg-[#D12229] text-white py-4 text-[16px] font-bold rounded-sm uppercase tracking-tight  transition cursor-pointer">
             Proceed to checkout
           </button>
         </div>
