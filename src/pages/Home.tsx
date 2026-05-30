@@ -9,6 +9,7 @@ import {
   FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const socials = [
   { icon: FaFacebookF, color: "#1877F2" },
@@ -20,12 +21,13 @@ const socials = [
 const Home = () => {
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden bg-cover bg-bottom bg-fixed"
+      className="relative w-full min-h-screen overflow-hidden bg-cover bg-bottom md:bg-fixed"
       style={{ backgroundImage: `url(${heroImg})` }}
     >
-      <div className="relative z-10 flex justify-start pt-28 px-4">
+      <div className="relative z-10 flex justify-start pt-20 md:pt-28 px-4">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
-          <div className="flex gap-8 my-4">
+          {/* Socials */}
+          <div className="flex gap-5 md:gap-8 my-4 text-lg md:text-xl">
             {socials.map((s, i) => {
               const Icon = s.icon;
               return (
@@ -36,63 +38,79 @@ const Home = () => {
             })}
           </div>
 
-          <img src={logo} alt="logo" className="w-[190px] mb-1" />
+          {/* Logo */}
+          <img
+            src={logo}
+            alt="logo"
+            className="w-[130px] sm:w-[160px] md:w-[190px] mb-2"
+          />
 
-          <h1 className="font-roboto text-lg tracking-[0.2em] font-bold text-[#333] my-2">
+          <h2 className="font-roboto text-sm md:text-lg tracking-[0.15em] font-bold text-[#333] my-2">
             presents
-          </h1>
+          </h2>
 
-          <h1 className="font-roboto text-[40px] font-bold leading-[44px] text-[#D0252D] mb-2">
+          {/* Title */}
+          <h1 className="font-roboto text-3xl sm:text-4xl md:text-[40px] font-bold leading-tight text-[#D0252D] mb-3">
             The 12th Annual Grand Masters 2026 Series
           </h1>
 
-          <p className="font-roboto text-[19.968px] font-light leading-[21.9648px] text-[#333333] max-w-3xl mb-3">
+          {/* Subtitle */}
+          <p className="font-roboto text-base sm:text-lg md:text-[20px] font-light leading-relaxed text-[#333333] max-w-3xl mb-2 px-2">
             A 7 City pan India Corporate Counsel Legal Best Practices Summit
             Series
           </p>
 
-          <div className="font-roboto flex flex-col gap-2 text-[18px] leading-[31px] tracking-[4px] font-semibold text-[#333] mb-2">
-            <div className="flex items-center justify-center gap-2 flex-wrap">
+          {/* Events */}
+          <div className="font-roboto flex flex-col gap-1 text-sm sm:text-base md:text-lg font-semibold text-[#333] mb-2">
+            <div className="flex flex-wrap items-center justify-center  tracking-[4px] gap-2">
               <FaRegCalendarAlt className="text-[#D0252D]" />
-              17th July 2026, NOVOTEL HICC Complex,
+              <span>17th July 2026, NOVOTEL HICC Complex,</span>
               <FaMapMarkerAlt className="text-[#D0252D]" />
-              Hyderabad{" "}
-              <span className="text-[#D0252D] animate-pulse text-[14px]">
+              <span>Hyderabad</span>
+
+              <span className="text-[#D0252D] animate-pulse text-xs md:text-sm">
                 LIVE NOW
               </span>
             </div>
 
-            <div className="flex items-center justify-center  gap-2 flex-wrap">
+            <div className="flex flex-wrap items-center justify-center tracking-[4px]  gap-2">
               <FaRegCalendarAlt className="text-[#D0252D]" />
-              24th July 2026, ITC Narmada,
+              <span>24th July 2026, ITC Narmada,</span>
               <FaMapMarkerAlt className="text-[#D0252D]" />
-              Ahmedabad{" "}
-              <span className="text-[#D0252D] animate-pulse text-[14px]">
+              <span>Ahmedabad</span>
+
+              <span className="text-[#D0252D] animate-pulse text-xs md:text-sm">
                 LIVE NOW
               </span>
             </div>
           </div>
 
-          <h2 className="font-roboto text-[18px] leading-[31px] font-semibold tracking-[4px] text-black/50">
+          {/* Upcoming Cities */}
+          <h2 className="font-roboto text-sm sm:text-base md:text-lg font-semibold tracking-wider md:tracking-[4px] text-black/50">
             Pune, Chennai, New Delhi,
           </h2>
 
-          <h2 className="font-roboto text-[18px] leading-[31px] font-semibold  tracking-[4px] text-black/50 mb-4">
+          <h2 className="font-roboto text-sm sm:text-base md:text-lg font-semibold tracking-wider md:tracking-[4px] text-black/50 mb-6">
             Mumbai & Bengaluru Editions - Launching Soon!
           </h2>
 
-          <div className="flex gap-4 mt-8">
-            <button className="text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md cursor-pointer font-semibold tracking-widest bg-white/70">
-              REGISTER NOW
-            </button>
-
-            <button className="text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md cursor-pointer font-semibold tracking-widest bg-white/70">
-              CONTACT US
-            </button>
-
-            <button className="text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md cursor-pointer font-semibold tracking-widest bg-white/70">
-              PAST EDITIONS
-            </button>
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 md:mt-8 pb-12 md:pb-20 w-full sm:w-auto">
+            <Link to="/#register">
+              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md font-semibold tracking-widest bg-white/70 cursor-pointer">
+                REGISTER NOW
+              </button>
+            </Link>
+            <Link to="/#connect">
+              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md font-semibold tracking-widest bg-white/70 cursor-pointer">
+                CONTACT US
+              </button>
+            </Link>
+            <Link to="/past-edition">
+              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md font-semibold tracking-widest bg-white/70 cursor-pointer">
+                PAST EDITIONS
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -27,7 +27,6 @@ const messageYears = [
       },
     ],
   },
-
   {
     year: "2024",
     messages: [
@@ -43,7 +42,6 @@ const messageYears = [
       },
     ],
   },
-
   {
     year: "2023",
     messages: [
@@ -65,11 +63,11 @@ const OfficialMessagesSidebar = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <aside className="font-roboto">
       {messageYears.map((yearData, yearIndex) => (
-        <div key={yearIndex} className="font-roboto">
-          {/* Heading */}
-          <h2 className="text-[20px] font-normal leading-[23px] text-[#1d2b44] mb-5">
+        <div key={yearData.year}>
+          {/* Year Heading */}
+          <h2 className="text-lg sm:text-xl font-normal text-[#1d2b44] mb-5 leading-tight">
             {yearData.year} Official Messages
           </h2>
 
@@ -77,23 +75,23 @@ const OfficialMessagesSidebar = () => {
           <div className="space-y-6">
             {yearData.messages.map((item, index) => (
               <div key={index}>
-                <h3 className="font-bold text-[15px] leading-[28px] text-[#1d2b44]">
+                <h3 className="font-bold text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#1d2b44]">
                   {item.name}
                 </h3>
 
-                <p className="text-[15px] font-normal leading-[28px] text-[#1d2b44] mt-1">
+                <p className="text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#1d2b44]">
                   {item.role}
                 </p>
 
                 {item.org && (
-                  <p className="text-[12px] font-normal leading-[23px] text-[#1d2b44] mt-1">
+                  <p className="text-xs sm:text-[12px] leading-5 sm:leading-6 text-[#1d2b44]">
                     {item.org}
                   </p>
                 )}
 
                 <button
                   onClick={() => navigate("/official-message")}
-                  className="text-[#d61f26] text-[15px] font-normal leading-[28px] mt-1 hover:underline cursor-pointer"
+                  className="mt-1 text-sm sm:text-[15px] text-[#d61f26] hover:underline cursor-pointer"
                 >
                   Read More...
                 </button>
@@ -103,11 +101,11 @@ const OfficialMessagesSidebar = () => {
 
           {/* Divider */}
           {yearIndex !== messageYears.length - 1 && (
-            <div className="border-b border-gray-300 my-8"></div>
+            <div className="border-b border-gray-300 my-6 sm:my-8" />
           )}
         </div>
       ))}
-    </div>
+    </aside>
   );
 };
 

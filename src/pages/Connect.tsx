@@ -1,21 +1,21 @@
 export default function ContactSection() {
   return (
-    <div className="bg-[#ffffff] h-120 flex items-center justify-center px-4">
-      <div className="text-center max-w-3xl">
+    <section className="bg-white py-12 md:py-20 px-4">
+      <div className="max-w-3xl mx-auto text-center">
         {/* Heading */}
-        <h1 className="text-gray-800 mb-6 text-[50px] font-normal leading-[55px] font-roboto">
+        <h1 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] text-gray-800 mb-6">
           Connect
         </h1>
 
-        {/* Intro Text */}
-        <p className=" font-bold text-gray-900 mb-2 text-[15px]   leading-[28px] font-roboto">
+        {/* Intro */}
+        <p className="font-roboto text-[14px] md:text-[15px] font-bold leading-[24px] md:leading-[28px] text-gray-900 mb-6">
           In order to participate at The Grand Masters 2026 Summit Series,
           please get in touch with:
         </p>
 
         {/* Contacts */}
-        <div className="space-y-2 text-gray-800 text-[15px] font-normal leading-[28px] font-roboto">
-          <p>
+        <div className="space-y-4 text-gray-800 text-[14px] md:text-[15px] font-normal leading-[24px] md:leading-[28px] font-roboto">
+          <p className="break-words">
             Bhupinder Kaur | +91-9654155065 |{" "}
             <a
               href="mailto:bhupinder@witnesslive.in"
@@ -25,7 +25,7 @@ export default function ContactSection() {
             </a>
           </p>
 
-          <p>
+          <p className="break-words">
             Neelima Maheshwari | +91-8800841600 |{" "}
             <a
               href="mailto:neelima.maheshwari@witnesslive.in"
@@ -37,19 +37,19 @@ export default function ContactSection() {
         </div>
 
         {/* Company Info */}
-        <div className="mt-10 space-y-4 text-gray-800">
-          <h2 className="text-[15px] font-bold leading-[28px] font-roboto">
-            <span className="text-[#D2520D]">Lex Witness</span> – India’s 1st
+        <div className="mt-10 md:mt-12 space-y-4 text-gray-800">
+          <h2 className="font-roboto text-[14px] md:text-[15px] font-bold leading-[24px] md:leading-[28px]">
+            <span className="text-[#D2520D]">Lex Witness</span> – India's 1st
             Magazine on Legal & Corporate Affairs
           </h2>
 
-          <p className="text-[15px] font-normal leading-[28px] font-roboto">
+          <p className="font-roboto text-[14px] md:text-[15px] font-normal leading-[24px] md:leading-[28px]">
             Suite 1/6, Lower Ground Floor, Block B, Hauz Khas,
-            <br />
+            <br className="hidden sm:block" />
             New Delhi - 110016
           </p>
 
-          <p className="text-[15px]">
+          <p className="font-roboto text-[14px] md:text-[15px] break-words">
             <span className="font-semibold">E:</span>{" "}
             <a
               href="mailto:info@witnesslive.in"
@@ -60,6 +60,6 @@ export default function ContactSection() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

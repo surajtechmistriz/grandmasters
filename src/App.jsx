@@ -14,11 +14,31 @@ import Cart from "./components/Cart";
 import SummitSecretariat from "./pages/SummitSecretariat";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+
+      const scrollToElement = () => {
+        const element = document.getElementById(id);
+
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      };
+
+      setTimeout(scrollToElement, 200);
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [location]);
 
   return null;
 }

@@ -75,32 +75,32 @@ const SpeakersSection = () => {
 
   return (
     <section
-      className="relative w-full min-h-screen bg-center bg-cover bg-fixed"
+      className="relative w-full min-h-screen bg-center bg-cover md:bg-fixed"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
-      <div className="mx-auto bg-white pt-8">
-        {/* Heading */}
+<div className="mx-auto bg-white pt-8 px-4 md:px-0">
+          {/* Heading */}
         <div className="text-center mb-6">
           <div className="flex justify-center my-6">
-            <LuNotepadText className="text-[#d2232a] text-5xl " />
+<LuNotepadText className="text-[#d2232a] text-4xl md:text-5xl" />
           </div>
 
-          <h2 className="text-[50px] md:text-[50px] font-normal leading-[55px] text-gray-900 mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] text-gray-900 mb-3 px-2 ">
             Meet The Grand Masters!
           </h2>
 
-          <p className="text-gray-600 text-lg font-roboto font-normal leading-[34px]">
-            Invited & <span className="text-[#D0252D]">Confirmed Speakers</span>
+<p className="text-gray-600 text-sm sm:text-base md:text-lg font-roboto font-normal leading-relaxed px-4">
+              Invited & <span className="text-[#D0252D]">Confirmed Speakers</span>
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="relative flex flex-wrap justify-center gap-14 mb-1">
-          {tabs.map((tab, i) => (
+<div className="relative flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 sm:gap-10 mb-1">
+            {tabs.map((tab, i) => (
             <span
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`px-16 font-roboto py-2 text-[15px] font-semibold cursor-pointer transition ${
+              className={`w-full sm:w-auto text-center px-4 sm:px-8 py-2 font-roboto text-sm md:text-[15px] font-semibold cursor-pointer transition ${
                 active === tab.id
                   ? "text-[#D0252D]"
                   : "text-gray-700 hover:text-[#D0252D]"
@@ -115,7 +115,7 @@ const SpeakersSection = () => {
             active === tab.id ? (
               <span
                 key={tab.id}
-                className="absolute bottom-[-12px]"
+              className="absolute bottom-[-12px] hidden sm:block"
                 style={{
                   left: tab.id === "hyderabad" ? "39%" : "61%",
                   transform: "translateX(-50%)",
@@ -138,8 +138,7 @@ const SpeakersSection = () => {
         <div className="h-2 w-full max-w-5xl mx-auto border-t border-gray-300 mb-6"></div>
 
         {/* Speakers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto pb-10">
-          {filteredSpeakers.map((speaker, i) => (
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto pb-10">          {filteredSpeakers.map((speaker, i) => (
             <div
               key={i}
               className="text-center p-4  transition"
@@ -147,10 +146,9 @@ const SpeakersSection = () => {
               <img
                 src={speaker.image}
                 alt={speaker.name}
-                className="w-full h-auto mx-auto rounded-full object-cover"
-              />
+className="w-40 h-40 sm:w-48 sm:h-48 md:w-full md:h-auto mx-auto rounded-full object-cover"              />
 
-              <h3 className="mt-4 font-bold font-roboto text-[15px] leading-4.75 text-[#D0252D] tracking-wide">
+              <h3 className="mt-4 font-bold font-roboto text-sm md:text-[15px] text-[#D0252D] tracking-wide">
                 {speaker.name}
               </h3>
 
@@ -173,18 +171,16 @@ const SpeakersSection = () => {
       <div className="font-roboto w-full bg-black/30 py-14 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center text-center">
-            <h1 className="text-white text-[50px] font-bold leading-[55px]">Get Involved</h1>
-            <p className="text-white my-4 text-[15px] font-normal leading-[28px]">
+<h1 className="text-white text-3xl sm:text-4xl md:text-[50px] font-bold leading-tight md:leading-[55px]"/>
+              <p className="text-white my-4 text-sm md:text-[15px] px-4 font-normal leading-[28px]">
               All that You’d Like to Know about The Grand Masters 2026
             </p>
           </div>
 
-          <div className=" font-custom flex gap-20 justify-center items-center mt-8 flex-wrap">
-            {["SPEAK", "SPONSOR", "REGISTER NOW", "CONNECT"].map((btn) => (
+<div className="font-custom flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-8">            {["SPEAK", "SPONSOR", "REGISTER NOW", "CONNECT"].map((btn) => (
               <button
                 key={btn}
-                className="text-sm font-bold leading-[14px] tracking-[0.2rem] text-white px-10 py-4 cursor-pointer border border-white hover:bg-[#D0252D] transition rounded-md"
-              >
+className="w-full max-w-[260px] text-sm font-bold leading-[14px] tracking-[0.2rem] text-white px-6 py-4 cursor-pointer border border-white hover:bg-[#D0252D] transition rounded-md"              >
                 {btn}
               </button>
             ))}

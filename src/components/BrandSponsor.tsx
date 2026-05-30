@@ -3,31 +3,32 @@ import bgImg from "../assets/images/chess.jpg";
 
 const BrandSponsorship = () => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Background */}
       <div
-        className="absolute inset-0 bg-fixed bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center md:bg-fixed"
         style={{ backgroundImage: `url(${bgImg})` }}
       >
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      {/* Card */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 w-full py-10">
-        <div className="bg-[#d2232a] text-white p-8 md:p-10 text-center shadow-2xl">
-          
-          <h2 className="mb-6 text-[50px] font-bold leading-[55px] font-roboto">
+      {/* Content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16">
+        <div className="bg-[#d2232a] text-white text-center shadow-2xl p-6 sm:p-8 md:p-10">
+          <h2 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-bold leading-tight md:leading-[55px] mb-4 md:mb-6">
             Showcase Your Brand
           </h2>
 
-          <p className="  mb-8 max-w-4xl mx-auto   opacity-95 text-[15px] font-normal leading-[28px] font-roboto">
-            Partnering with The Grand Masters 2026 Summit Series will enable you to brand and promote your service expertise
-            to a unique and interested set of senior in house counsel. Summit attendees include senior professionals
-            interested in updating their knowledge and involved in legal and commercial elements of complex business deals.
+          <p className="max-w-4xl mx-auto text-sm sm:text-[15px] font-normal leading-7 md:leading-[28px] opacity-95 mb-6 md:mb-8">
+            Partnering with The Grand Masters 2026 Summit Series will enable
+            you to brand and promote your service expertise to a unique and
+            interested set of senior in-house counsel. Summit attendees include
+            senior professionals interested in updating their knowledge and
+            involved in legal and commercial elements of complex business deals.
           </p>
 
           <div className="flex justify-center">
-            <button className="border border-white px-6 py-5 rounded-sm   tracking-[0.3rem] font-bold text-[11px] leading-[11px] font-roboto uppercase hover:bg-white hover:text-[#d2232a] transition-all duration-300">
+            <button className="w-full sm:w-auto border border-white px-6 sm:px-8 py-4 sm:py-5 rounded-sm text-[10px] sm:text-[11px] font-bold tracking-[0.15rem] sm:tracking-[0.3rem] uppercase font-roboto hover:bg-white hover:text-[#d2232a] transition-all duration-300 cursor-pointer">
               Explore Sponsorship Opportunities
             </button>
           </div>

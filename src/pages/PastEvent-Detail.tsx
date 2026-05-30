@@ -1,7 +1,4 @@
-// EditionOverview.jsx
-
 import React, { useState } from "react";
-
 import img1 from "../assets/images/detail.jpg";
 
 const speakers = [
@@ -21,7 +18,6 @@ const speakers = [
   "Neha Sachdev Munjral, Director – Legal, United Breweries",
 ];
 
-// Demo gallery images
 const galleryImages = Array.from({ length: 20 }, (_, index) => ({
   id: index + 1,
   image: img1,
@@ -31,21 +27,21 @@ const EditionOverview = () => {
   const [activeTab, setActiveTab] = useState("speakers");
 
   return (
-    <div className="min-h-screen bg-[#white] mt-[100px]">
+    <div className="min-h-screen bg-white mt-20 lg:mt-[100px]">
       {/* Header */}
-      <div className="bg-[#d71920] py-5">
-        <h1 className="text-center text-white tracking-tighter text-[28px] md:text-[35px] font-normal">
+      <div className="bg-[#d71920] py-4 sm:py-5">
+        <h1 className="text-center text-white text-2xl sm:text-3xl md:text-[35px] font-normal tracking-tight px-4">
           The Grand Masters 2026, Bengaluru Edition - An Overview
         </h1>
       </div>
 
       {/* Content */}
-      <div className="max-w-5xl mx-auto px-6 py-14">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-14">
         {/* Tabs */}
-        <div className="border-b border-[#d71920] space-x-0.5 flex justify-center cursor-pointer">
+        <div className="flex justify-center border-b border-[#d71920]">
           <button
             onClick={() => setActiveTab("speakers")}
-            className={`px-2 py-4 text-[14px] font-bold border border-b-0 transition cursor-pointer ${
+            className={`px-4 sm:px-6 py-3 text-sm font-bold border border-b-0 transition cursor-pointer ${
               activeTab === "speakers"
                 ? "bg-[#d71920] text-white border-[#d71920]"
                 : "bg-white text-[#444] border-gray-300"
@@ -56,7 +52,7 @@ const EditionOverview = () => {
 
           <button
             onClick={() => setActiveTab("gallery")}
-            className={`px-2 py-4 text-[14px] font-bold border border-b-0 transition cursor-pointer ${
+            className={`px-4 sm:px-6 py-3 text-sm font-bold border border-b-0 transition cursor-pointer ${
               activeTab === "gallery"
                 ? "bg-[#d71920] text-white border-[#d71920]"
                 : "bg-white text-[#444] border-gray-300"
@@ -66,21 +62,20 @@ const EditionOverview = () => {
           </button>
         </div>
 
-        {/* Speakers */}
+        {/* Speakers Tab */}
         {activeTab === "speakers" && (
-          <div className="bg-[#white] pb-10 mt-2 px-4 md:px-8">
+          <div className="mt-4 px-2 sm:px-4 md:px-8 pb-8">
             <div className="space-y-1">
               {speakers.map((speaker, index) => {
-                const parts = speaker.split(",");
+                const [name, ...details] = speaker.split(",");
 
                 return (
                   <p
                     key={index}
-                    className=" font-roboto text-[15px] leading-[28px]  text-[#444]"
+                    className="font-roboto text-sm sm:text-[15px] leading-7 text-[#444]"
                   >
-                    <span className="font-roboto font-bold capitalize">{parts[0]}</span>
-                    {","}
-                    {parts.slice(1).join(",")}
+                    <span className="font-bold">{name}</span>
+                    {details.length > 0 && `,${details.join(",")}`}
                   </p>
                 );
               })}
@@ -88,19 +83,19 @@ const EditionOverview = () => {
           </div>
         )}
 
-        {/* Gallery */}
+        {/* Gallery Tab */}
         {activeTab === "gallery" && (
-          <div className="py-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
+          <div className="py-6 sm:py-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
               {galleryImages.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white shadow-md transition duration-300"
+                  className="overflow-hidden bg-white shadow-sm"
                 >
                   <img
                     src={item.image}
                     alt={`Gallery ${item.id}`}
-                    className="w-full h-[220px] object-cover cursor-pointer"
+                    className="w-full h-[220px] object-cover cursor-pointer transition-transform duration-300 hover:scale-105"
                   />
                 </div>
               ))}

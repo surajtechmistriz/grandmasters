@@ -3,26 +3,26 @@ import OfficialMessages from "../components/OfficialMessageSidebar";
 
 const AboutUs = () => {
   return (
-    <div className="font-roboto min-h-screen bg-[#white] mt-[100px]">
+    <div className="font-roboto min-h-screen mt-20 md:mt-[100px]">
       {/* Header */}
-      <div className="bg-[#d61f26] py-6">
-        <h1 className="text-white text-center text-[50px] font-normal leading-[55px] tracking-tighter">
-          A Bit About Us 
+      <div className="bg-[#d61f26] py-5 md:py-6">
+        <h1 className="text-white text-center text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] tracking-tight px-4">
+          A Bit About Us
         </h1>
       </div>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-10 px-6">
-          {/* Left */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-8 lg:gap-10">
+          {/* Left Content */}
           <div>
-            {/* Paragraph */}
-            <h2 className="font-roboto text-black text-start text-[15px] font-bold leading-[28px] tracking-tight ">
+            <h2 className="text-black text-[15px] font-bold leading-7">
               Why Lex <span className="text-[#d12229]">Witness?</span>
             </h2>
-            <p className="text-[15px] font-roboto leading-[28px] text-[#1d2b44] font-normal">
-              The Indian legal universe has close to 5 million individuals. This
-              represents highest number in the world who, directly or
+
+            <p className="mt-2 text-[15px] leading-7 text-[#1d2b44]">
+              The Indian legal universe has close to 5 million individuals.
+              This represents highest number in the world who, directly or
               indirectly, are a part of it. Lex Witness is a high quality
               monthly magazine with the power of fresh and original content that
               deals exclusively with subjects on legality. Some of India’s
@@ -37,8 +37,11 @@ const AboutUs = () => {
               makers, bureaucracy and the industry captains in India.
             </p>
 
-            <h2 className="font-bold text-[15px] mt-4">A Must Read</h2>
-            <p className="text-[15px] font-roboto leading-[28px] text-[#1d2b44] font-normal">
+            <h2 className="font-bold text-[15px] mt-6">
+              A Must Read
+            </h2>
+
+            <p className="mt-2 text-[15px] leading-7 text-[#1d2b44]">
               The readers of Lex Witness are high-profile, influential HNI’s.
               They are the ones who frame the laws and the ones who practice it.
               Lex Witness covers an interesting bandwidth of readers right from
@@ -50,20 +53,24 @@ const AboutUs = () => {
               well.
             </p>
 
-            <p className="font-roboto text-[15px] leading-[28px] text-[#1d2b44] font-normal mt-4">
+            <p className="mt-4 text-[15px] leading-7 text-[#1d2b44]">
               For a better understanding of Lex Witness please go through{" "}
-              <span className="font-roboto font-bold text-[#d12229] cursor-pointer hover:underline">
+              <span className="font-bold text-[#d12229] cursor-pointer hover:underline">
                 The Lex Witness Brand Deck
               </span>
             </p>
           </div>
 
-          {/* Right */}
-        <div>
-  <OfficialMessages />
-</div>
+          {/* Sidebar */}
+          <div className="w-full">
+            <OfficialMessages />
+          </div>
         </div>
-        <h1 className="text-4xl text-center my-16">Sponsors & Partners</h1>
+
+        {/* Sponsors */}
+        <h1 className="text-2xl sm:text-3xl md:text-4xl text-center my-10 md:my-16">
+          Sponsors & Partners
+        </h1>
       </div>
     </div>
   );
