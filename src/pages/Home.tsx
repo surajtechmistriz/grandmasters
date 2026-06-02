@@ -25,9 +25,9 @@ const Home = () => {
       style={{ backgroundImage: `url(${heroImg})` }}
     >
       <div className="relative z-10 flex justify-start pt-20 md:pt-28 px-4">
-        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center ">
           {/* Socials */}
-          <div className="flex gap-5 md:gap-8 my-4 text-lg md:text-xl">
+          <div className="flex gap-5 md:gap-9  my-4 text-lg md:font-normal md:text-[14.3px] md:leading-[16.3px] ">
             {socials.map((s, i) => {
               const Icon = s.icon;
               return (
@@ -45,7 +45,7 @@ const Home = () => {
             className="w-[130px] sm:w-[160px] md:w-[190px] mb-2"
           />
 
-          <h2 className="font-roboto text-sm md:text-lg tracking-[0.15em] font-bold text-[#333] my-2">
+          <h2 className="font-roboto text-sm md:text-lg tracking-[0.15em] leading-8.5 font-bold text-[#333] my-2">
             presents
           </h2>
 
@@ -97,17 +97,17 @@ const Home = () => {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 md:mt-8 pb-12 md:pb-20 w-full sm:w-auto">
             <Link to="/#register">
-              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md font-semibold tracking-widest bg-white/70 cursor-pointer">
+              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-widest bg-white/70 cursor-pointer">
                 REGISTER NOW
               </button>
             </Link>
             <Link to="/#connect">
-              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md font-semibold tracking-widest bg-white/70 cursor-pointer">
+              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-widest bg-white/70 cursor-pointer">
                 CONTACT US
               </button>
             </Link>
             <Link to="/past-edition">
-              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-md font-semibold tracking-widest bg-white/70 cursor-pointer">
+              <button className="w-full sm:w-auto text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-s font-semibold tracking-widest bg-white/70 cursor-pointer">
                 PAST EDITIONS
               </button>
             </Link>

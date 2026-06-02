@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronDown, Clock } from "lucide-react";
+import icon from "../assets/icons/icon1.png";
 
 const SummitAgenda = () => {
   const [expandedId, setExpandedId] = useState(5);
@@ -102,19 +103,26 @@ const SummitAgenda = () => {
     activeTab === "hyderabad" ? hyderabadAgenda : ahmedabadAgenda;
 
   return (
-<div className="max-w-5xl mx-auto py-8 md:py-12 px-4 bg-white font-roboto">
-        {/* HEADER */}
+    <div className="max-w-5xl mx-auto py-8 md:pb-12 md:pt-4 px-4 bg-white font-roboto">
+      {/* HEADER */}
       <div className="text-center mb-12">
         <div className="flex justify-center mb-4">
-          <div className="p-2 border-2 border-[#d2232a]">
-            <span className="text-[#d2232a] text-xl md:text-2xl font-bold">📋</span>
+          <div className="flex justify-center">
+            <img
+              src={icon}
+              className="h-24 text-[#d2232a] text-4xl md:text-5xl"
+            />
           </div>
         </div>
-<h1 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] text-gray-800 mb-8 px-2">          The Summit Agenda
+        <h1 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] text-gray-800 mb-8 px-2">
+          {" "}
+          The Summit Agenda
         </h1>
 
         {/*  TABS (UI SAME STYLE, ONLY LOGIC ADDED) */}
-<div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-16 border-b border-gray-200 pb-0 relative font-roboto">          {/* HYDERABAD */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-16 border-b border-gray-200 pb-0 relative font-roboto">
+          {" "}
+          {/* HYDERABAD */}
           <div
             onClick={() => {
               setActiveTab("hyderabad");
@@ -143,7 +151,6 @@ const SummitAgenda = () => {
               <div className="hidden sm:block absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-[#d2232a]" />
             )}
           </div>
-
           {/* AHMEDABAD */}
           <div
             onClick={() => {
@@ -177,12 +184,12 @@ const SummitAgenda = () => {
       </div>
 
       {/* TIMELINE (UNCHANGED UI) */}
-<div className="relative ml-0 md:ml-20">
-<div className="absolute left-4 md:left-8 top-0 bottom-0 w-[1px] bg-gray-200"></div>
+      <div className="relative ml-0 md:ml-20">
+        <div className="absolute left-4 md:left-8 top-0 bottom-0 w-[1px] bg-gray-200"></div>
         <div className="space-y-0">
           {agendaItems.map((item) => (
-<div key={item.id} className="relative pl-12 md:pl-20 group">
-                {/* marker */}
+            <div key={item.id} className="relative pl-12 md:pl-20 group">
+              {/* marker */}
               <div className="absolute left-0 md:left-4 top-4 z-10 w-8 h-8 rounded-full bg-[#d2232a] flex items-center justify-center text-white italic font-black text-sm shadow-md">
                 W
               </div>
@@ -204,8 +211,8 @@ const SummitAgenda = () => {
                 </div>
 
                 {/* title */}
-<div className="font-roboto flex justify-between items-start gap-4">
-                    <h3 className="text-base sm:text-lg md:text-[22px] font-bold leading-tight md:leading-[24px] text-gray-800 tracking-tight">
+                <div className="font-roboto flex justify-between items-start gap-4">
+                  <h3 className="text-base sm:text-lg md:text-[22px] font-bold leading-tight md:leading-[24px] text-gray-800 tracking-tight">
                     {item.title}
                     <span className="text-[#d2232a]">{item.highlight}</span>
                     {item.suffix}
@@ -222,8 +229,8 @@ const SummitAgenda = () => {
 
                 {/* EXPAND UI (UNCHANGED) */}
                 {item.hasSpeakers && expandedId === item.id && (
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-10">
-                      {item.speakers.map((speaker, idx) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-10">
+                    {item.speakers.map((speaker, idx) => (
                       <div key={idx} className="text-center">
                         <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
                           <img

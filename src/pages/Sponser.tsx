@@ -1,5 +1,6 @@
 import { Bookmark } from "lucide-react";
 import sponserImg from "../assets/images/logo_saikrishna.jpg";
+import icon7 from "../assets/icons/icon7.png";
 
 const sponsors = [
   { title: "Platinum Partner", image: sponserImg },
@@ -17,15 +18,18 @@ const sponsors = [
 
 export default function SponsorsPartners() {
   return (
-    <section className="bg-white py-10 md:py-20 px-4">
+    <section className="bg-white py-10 md:pb-20 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Icon */}
-        <div className="flex justify-center mb-4">
-          <Bookmark className="w-8 h-8 md:w-10 md:h-10 text-[#d2232a] stroke-[1.5]" />
+        <div className="flex justify-center ">
+          <img
+            src={icon7}
+            className="w-8 h-8 md:w-30 md:h-20 text-[#d2232a] stroke-[1.5]"
+          />
         </div>
 
         {/* Heading */}
-        <h2 className="text-center text-gray-800 mb-8 md:mb-16 text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] font-roboto">
+        <h2 className="text-center text-gray-800 mb-8 md:mb-8 text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] font-roboto">
           Sponsors & Partners
         </h2>
 

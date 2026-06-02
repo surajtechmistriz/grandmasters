@@ -1,6 +1,7 @@
 import React from "react";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 import img from "../assets/images/lwLogo.jpg"
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const cartItems = [
     {
@@ -10,14 +11,16 @@ const Cart = () => {
       quantity: 3,
       subtotal: 27000,
     },
-    {
-      id: 2,
-      name: "For Corporates",
-      price: 7500,
-      quantity: 2,
-      subtotal: 15000,
-    },
+    // {
+    //   id: 2,
+    //   name: "For Corporates",
+    //   price: 7500,
+    //   quantity: 2,
+    //   subtotal: 15000,
+    // },
   ];
+
+  const navigate = useNavigate()
 
   return (
     <div className="max-w-6xl mx-auto p-4 font-roboto text-gray-700 my-[120px]">
@@ -88,15 +91,15 @@ const Cart = () => {
       </div>
 
       {/* Cart Totals */}
-      <div className="mt-12 flex justify-end">
+      <div className="mt-10 flex justify-end">
         <div className="w-full max-w-md">
-          <h2 className="text-[#D12229] text-xl font-bold uppercase mb-4 ">
+          <h2 className="text-[#D12229] text-xl font-bold uppercase mb-2 ">
             Cart totals
           </h2>
           <table className="w-full border border-gray-200 text-[14px]">
             <tbody>
               <tr className="border-b border-gray-200">
-                <th className="p-3 text-left font-bold w-1/3">Subtotal</th>
+                <th className="p-2 text-left font-bold w-1/3">Subtotal</th>
                 <td className="p-3 text-gray-600">₹42,000.00</td>
               </tr>
               <tr className="border-b border-gray-200">
@@ -109,7 +112,7 @@ const Cart = () => {
               </tr>
             </tbody>
           </table>
-          <button className="w-full mt-6 bg-[#D12229] text-white py-4 text-[16px] font-bold rounded-sm uppercase tracking-tight  transition cursor-pointer">
+          <button onClick={()=> navigate("/checkout")} className="w-full mt-6 bg-[#D12229] text-white py-4 text-[16px] font-bold rounded-sm uppercase tracking-tight  transition cursor-pointer">
             Proceed to checkout
           </button>
         </div>

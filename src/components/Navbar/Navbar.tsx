@@ -63,7 +63,7 @@ useEffect(() => {
   return () => observer.disconnect();
 }, [location.pathname]);
   return (
-   <nav className="fixed top-0 left-0 z-50 w-full bg-[#E9E9E9] shadow-md">
+   <nav className="fixed top-0 h-[100px] left-0 z-50 w-full bg-[#E9E9E9]  ">
   <div className="mx-auto flex h-20 md:h-24 max-w-6xl items-center justify-between px-4">
 
     {/* Logo */}
@@ -73,13 +73,13 @@ useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
         setMobileMenu(false);
       }}
-      className="text-xl md:text-3xl font-bold tracking-wide text-[#D0252D]"
+      className="text-xl md:text-3xl font-bold tracking-wide leading-7.5 text-[#D0252D]"
     >
       #TGM2026
     </Link>
 
     {/* Desktop Menu */}
-    <ul className="font-custom hidden items-center space-x-6 text-sm font-bold tracking-wide md:flex">
+    <ul className="font-custom hidden items-center space-x-4 text-sm font-bold leading-[15.4px] tracking-widest md:flex">
       {navItems.map((item) => {
         if (item.type === "route") {
           return (
@@ -128,7 +128,7 @@ useEffect(() => {
   to="/#register"
   className="hidden md:block"
 >
-  <button className="font-custom rounded-sm border border-[#D0252D] px-3 py-3 text-sm font-bold uppercase tracking-[3px] text-[#D0252D] transition hover:bg-[#D0252D] hover:text-white cursor-pointer">
+  <button className="font-custom rounded-sm border border-[#D0252D] px-2.5 py-3.75 text-sm font-bold uppercase tracking-[4px] leading-[14px] text-[#D0252D] transition hover:bg-[#D0252D] hover:text-white cursor-pointer">
     Register Now
   </button>
 </Link>

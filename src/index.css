@@ -1,25 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap");
 @import "tailwindcss";
 
-/* 2. Configure your theme using CSS variables */
 @theme {
-  /* This creates the 'font-roboto' utility class automatically */
-  --font-roboto: "Roboto", sans-serif;
+  --font-roboto: "Roboto";
 
-  /* This creates 'font-custom' */
   --font-custom: "PT Sans Caption", "Roboto";
 
-  /* Custom brand color */
   --color-brand-red: rgb(208, 37, 45);
 }
 
-/* 3. Apply base styles */
 @layer base {
   body {
     font-family: var(--font-custom);
   }
 }
-
 
 html {
   scroll-behavior: smooth;
