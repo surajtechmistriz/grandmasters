@@ -13,7 +13,7 @@ export interface EventItem {
 export const events: EventItem[] = [
   {
     id: 1,
-    tag: "Pharma",
+    tag: "PLCS",
     title: "Pharma Legal & Compliance Summit 2025",
     description:
       "The Lex Witness 11th Annual Pharma Legal & Compliance Summit 2025.",
@@ -23,7 +23,7 @@ export const events: EventItem[] = [
   },
   {
     id: 2,
-    tag: "Real Estate",
+    tag: "RCLS",
     title: "Real Estate & Construction Legal Summit 2026",
     description:
       "A strategic gathering of legal leaders, developers and compliance experts shaping India's real estate sector.",
@@ -33,7 +33,7 @@ export const events: EventItem[] = [
   },
   {
     id: 3,
-    tag: "Banking & Finance",
+    tag: "BFLS",
     title: "The Lex Witness 8th Annual Banking & Finance Legal Summit 2025",
     description:
       "Exploring regulatory transformation, governance, compliance and financial sector legal developments.",
@@ -43,7 +43,7 @@ export const events: EventItem[] = [
   },
   {
     id: 4,
-    tag: "Technology",
+    tag: "ITLS",
     title: "The Lex Witness 11th Annual Information Technology Legal Summit",
     description:
       "Focused on AI, data privacy, cybersecurity, digital regulations and technology law leadership.",
@@ -53,7 +53,7 @@ export const events: EventItem[] = [
   },
   {
     id: 5,
-    tag: "Manufacturing",
+    tag: "Maels",
     title: "The Lex Witness 10th Annual Media, Advertising & Entertainment Legal Summit 2025",
     description:
       "Addressing governance, compliance, contracts and legal innovation across manufacturing industries.",
@@ -63,7 +63,7 @@ export const events: EventItem[] = [
   },
   {
     id: 6,
-    tag: "Leadership",
+    tag: "Grand Masters",
     title: "The 12th Annual Grand Masters 2026 Series",
     description:
       "An exclusive forum bringing together India's most influential legal leaders and general counsel.",
