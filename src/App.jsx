@@ -13,6 +13,7 @@ import OfficialMessage from "./pages/Official-Message";
 import Cart from "./components/Cart";
 import SummitSecretariat from "./pages/SummitSecretariat";
 import CheckoutPage from "./pages/CheckoutPage";
+import EventPage from "./pages/EventPage";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -62,6 +63,7 @@ function App() {
         <Route path="/cart"  element={<Cart/>} />
         <Route path="/summit-secretariat"  element={<SummitSecretariat/>} />
         <Route path="/checkout" element={<CheckoutPage/>}/>
+        <Route  path="/events" element={<EventPage/>}/>
       </Routes>
 
       <Footer />
