@@ -65,7 +65,7 @@ export default function EventPage() {
       <section className="max-w-6xl mx-auto px-6 py-10">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-[#333]">Upcoming Summits</h2>
+            <h2 className="text-2xl font-bold text-[#333]">Live & Upcoming Events</h2>
 
             <p className="mt-1 text-sm text-gray-500">
               Industry conferences and networking opportunities.
