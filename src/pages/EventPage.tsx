@@ -15,7 +15,7 @@ export default function EventPage() {
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-roboto">
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#D0252D08,transparent_60%)]" />
