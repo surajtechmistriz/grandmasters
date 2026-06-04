@@ -8,59 +8,67 @@ export interface EventItem {
   tag: string;
 }
 
+
+
 export const events: EventItem[] = [
   {
     id: 1,
-    title: "Tech Summit 2026",
-    description: "Global tech conference with AI, Web3 & startups.",
-    date: "2026-07-12",
-    location: "Delhi",
-    website: "https://event1.com",
-    tag: "Technology",
+    tag: "Pharma",
+    title: "Pharma Legal & Compliance Summit 2025",
+    description:
+      "The Lex Witness 11th Annual Pharma Legal & Compliance Summit 2025.",
+    location: "Taj Santacruz, Mumbai",
+    date: "26th September 2025",
+    website: "https://www.plcs.co.in",
   },
   {
     id: 2,
-    title: "Startup Pitch Night",
-    description: "Pitch your startup to top investors.",
-    date: "2026-07-18",
-    location: "Bangalore",
-    website: "https://event2.com",
-    tag: "Startup",
+    tag: "Real Estate",
+    title: "Real Estate & Construction Legal Summit 2026",
+    description:
+      "A strategic gathering of legal leaders, developers and compliance experts shaping India's real estate sector.",
+    location: "LE MERIDIEN, NEW DELHI",
+    date: "22nd MAY 2026",
+    website: "https://rcls.in",
   },
   {
     id: 3,
-    title: "Design Week",
-    description: "UI/UX & product design workshops.",
-    date: "2026-08-01",
-    location: "Mumbai",
-    website: "https://event3.com",
-    tag: "Design",
+    tag: "Banking & Finance",
+    title: "The Lex Witness 8th Annual Banking & Finance Legal Summit 2025",
+    description:
+      "Exploring regulatory transformation, governance, compliance and financial sector legal developments.",
+    location: "TAJ SANTACRUZ, MUMBAI",
+    date: "21ST NOVEMBER 2025",
+    website: "https://bfls.in",
   },
   {
     id: 4,
-    title: "AI Conference",
-    description: "Machine learning and AI future trends.",
-    date: "2026-08-10",
-    location: "Hyderabad",
-    website: "https://event4.com",
-    tag: "AI",
+    tag: "Technology",
+    title: "The Lex Witness 11th Annual Information Technology Legal Summit",
+    description:
+      "Focused on AI, data privacy, cybersecurity, digital regulations and technology law leadership.",
+    location: "Hotel Shangri-La, Bengaluru",
+    date: "12th June 2026",
+    website: "https://www.itlegalsummit.com",
   },
   {
     id: 5,
-    title: "Developer Meetup",
-    description: "Networking for full-stack developers.",
-    date: "2026-08-15",
-    location: "Pune",
-    website: "https://event5.com",
-    tag: "Dev",
+    tag: "Manufacturing",
+    title: "The Lex Witness 10th Annual Media, Advertising & Entertainment Legal Summit 2025",
+    description:
+      "Addressing governance, compliance, contracts and legal innovation across manufacturing industries.",
+    location: "Taj Santacruz, Mumbai",
+    date: "25th September 2025",
+    website: "https://maels.in",
   },
   {
     id: 6,
-    title: "Blockchain Expo",
-    description: "Crypto, Web3 and blockchain ecosystem.",
-    date: "2026-09-01",
-    location: "Delhi",
-    website: "https://event6.com",
-    tag: "Web3",
+    tag: "Leadership",
+    title: "The 12th Annual Grand Masters 2026 Series",
+    description:
+      "An exclusive forum bringing together India's most influential legal leaders and general counsel.",
+    location: "NOVOTEL HICC Complex,  Hyderabad",
+    date: "17th July 2026",
+    website: "https://www.grandmasters.in",
   },
 ];
