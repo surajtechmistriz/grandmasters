@@ -1,6 +1,6 @@
 import React from "react";
 import { AlarmClock } from "lucide-react";
-import icon5 from "../assets/icons/icon5.png"
+import icon5 from "../assets/icons/icon5.png";
 
 const SpecialDiscounts = () => {
   const discounts = [
@@ -17,7 +17,10 @@ const SpecialDiscounts = () => {
         {/* Alarm Clock Icon */}
         <div className="flex justify-center">
           <div className="relative">
-            <img src={icon5} className="text-[#D0252D] w-10 h-10 md:w-28 md:h-22" />{" "}
+            <img
+              src={icon5}
+              className="text-[#D0252D] w-10 h-10 md:w-28 md:h-22"
+            />{" "}
           </div>
         </div>
 

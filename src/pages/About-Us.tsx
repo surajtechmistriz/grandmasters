@@ -21,8 +21,8 @@ const AboutUs = () => {
             </h2>
 
             <p className="mt-2 text-[15px] leading-7 text-[#333]">
-              The Indian legal universe has close to 5 million individuals.
-              This represents highest number in the world who, directly or
+              The Indian legal universe has close to 5 million individuals. This
+              represents highest number in the world who, directly or
               indirectly, are a part of it. Lex Witness is a high quality
               monthly magazine with the power of fresh and original content that
               deals exclusively with subjects on legality. Some of India’s

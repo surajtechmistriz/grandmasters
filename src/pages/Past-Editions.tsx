@@ -24,13 +24,11 @@ const sections = [
 ];
 
 const PastEdition = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen mt-[100px] bg-[#white]">
-      
       {sections.map((section, sectionIndex) => (
         <div key={sectionIndex} className="mb-10">
-          
           {/* Header */}
           <div className="bg-[#d12229] py-8">
             <h1 className="font-roboto text-center text-[35px] font-normal -tracking-wider text-white">
@@ -41,13 +39,11 @@ const PastEdition = () => {
           {/* Cards */}
           <div className="mx-auto max-w-6xl px-6 py-10">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-              
               {section.editions.map((city, index) => (
                 <div
                   key={index}
                   className="border border-gray-300 bg-white shadow-xl transition duration-300 "
                 >
-                  
                   {/* Image */}
                   <div className="p-8">
                     <img
@@ -59,7 +55,10 @@ const PastEdition = () => {
 
                   {/* Footer */}
                   <div className="pb-4 text-center">
-                    <h2 onClick={()=> navigate("/past-event-detail")} className="font-roboto text-[20px] font-normal text-[#d71920] hover:underline cursor-pointer">
+                    <h2
+                      onClick={() => navigate("/past-event-detail")}
+                      className="font-roboto text-[20px] font-normal text-[#d71920] hover:underline cursor-pointer"
+                    >
                       The Grand Masters
                     </h2>
 
@@ -69,12 +68,10 @@ const PastEdition = () => {
                   </div>
                 </div>
               ))}
-
             </div>
           </div>
         </div>
       ))}
-      
     </div>
   );
 };

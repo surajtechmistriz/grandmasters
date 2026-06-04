@@ -45,11 +45,10 @@ function ScrollToTop() {
   return null;
 }
 
-
 function App() {
   return (
     <BrowserRouter>
-    <ScrollToTop/>
+      <ScrollToTop />
 
       <Navbar />
 
@@ -57,13 +56,13 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/past-edition" element={<PastEdition />} />
         <Route path="/past-event-detail" element={<EditionOverview />} />
-        <Route path="/audience-profile"  element={<AudienceProfile/>} />
-        <Route path="/about-us"  element={<AboutUs/>} />
-        <Route path="/official-message"  element={<OfficialMessage/>} />
-        <Route path="/cart"  element={<Cart/>} />
-        <Route path="/summit-secretariat"  element={<SummitSecretariat/>} />
-        <Route path="/checkout" element={<CheckoutPage/>}/>
-        <Route  path="/events" element={<EventPage/>}/>
+        <Route path="/audience-profile" element={<AudienceProfile />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/official-message" element={<OfficialMessage />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/summit-secretariat" element={<SummitSecretariat />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/events" element={<EventPage />} />
       </Routes>
 
       <Footer />

@@ -6,10 +6,8 @@ export interface EventItem {
   location: string;
   website: string;
   tag: string;
-   status: "Live" | "Upcoming";
+  status: "Live" | "Upcoming";
 }
-
-
 
 export const events: EventItem[] = [
   {
@@ -59,7 +57,8 @@ export const events: EventItem[] = [
   {
     id: 5,
     tag: "Maels",
-    title: "The Lex Witness 10th Annual Media, Advertising & Entertainment Legal Summit 2025",
+    title:
+      "The Lex Witness 10th Annual Media, Advertising & Entertainment Legal Summit 2025",
     description:
       "Addressing governance, compliance, contracts and legal innovation across manufacturing industries.",
     location: "Taj Santacruz, Mumbai",

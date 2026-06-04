@@ -20,8 +20,8 @@ const BrandSponsorship = () => {
           </h2>
 
           <p className="font-roboto max-w-4xl mx-auto text-sm sm:text-[15px] font-normal leading-7 md:leading-[28px] opacity-95 mb-6 md:mb-6">
-            Partnering with The Grand Masters 2026 Summit Series will enable
-            you to brand and promote your service expertise to a unique and
+            Partnering with The Grand Masters 2026 Summit Series will enable you
+            to brand and promote your service expertise to a unique and
             interested set of senior in-house counsel. Summit attendees include
             senior professionals interested in updating their knowledge and
             involved in legal and commercial elements of complex business deals.

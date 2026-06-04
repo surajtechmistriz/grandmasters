@@ -22,8 +22,6 @@ const organizations = [
   ["Air Infotech", "Airtel", "AkzoNobel India"],
 ];
 
-
-
 const AudienceProfile = () => {
   return (
     <div className="min-h-screen bg-[#white] mt-[100px]">
@@ -108,10 +106,9 @@ const AudienceProfile = () => {
           </div>
 
           {/* Right */}
-        <div>
-  <OfficialMessages />
-</div>
-          
+          <div>
+            <OfficialMessages />
+          </div>
         </div>
         <h1 className="text-4xl text-center my-16">Sponsors & Partners</h1>
       </div>

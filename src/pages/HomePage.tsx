@@ -24,7 +24,7 @@ export default function HomePage() {
       <section id="speakers" className="scroll-mt-24">
         <SpeakersSection />
       </section>
-       <section id="agenda" className="scroll-mt-24">
+      <section id="agenda" className="scroll-mt-24">
         <SummitAgenda />
       </section>
       <section id="register" className="scroll-mt-24">
@@ -33,13 +33,13 @@ export default function HomePage() {
       <section id="discount" className="scroll-mt-24">
         <SpecialDiscounts />
       </section>
-       <section id="get-involved" className="scroll-mt-24">
+      <section id="get-involved" className="scroll-mt-24">
         <GetInvolved />
-      </section> 
-       <section id="summit-gallery" className="scroll-mt-24">
+      </section>
+      <section id="summit-gallery" className="scroll-mt-24">
         <SummitGallery />
       </section>
-        <section id="brand-sponsor" className="scroll-mt-24">
+      <section id="brand-sponsor" className="scroll-mt-24">
         <BrandSponsorship />
       </section>
 

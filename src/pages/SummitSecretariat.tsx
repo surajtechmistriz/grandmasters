@@ -17,8 +17,7 @@ const summitData = [
       },
       {
         logo: img,
-        title:
-          "The Grand Masters 2023 – New Delhi, Mumbai & Bengaluru Edition",
+        title: "The Grand Masters 2023 – New Delhi, Mumbai & Bengaluru Edition",
         description:
           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
       },
@@ -58,9 +57,9 @@ const SummitSecretariat = () => {
               their respective chambers and corporate offices.
               <br />
               <br />
-              A major development here at the action packed Summit Secretariat is
-              the extension of these services to various organizations who have
-              started entrusting Witness with the responsibility to create,
+              A major development here at the action packed Summit Secretariat
+              is the extension of these services to various organizations who
+              have started entrusting Witness with the responsibility to create,
               execute and conclude Summit Concepts to meet their respective
               purposes.
               <br />

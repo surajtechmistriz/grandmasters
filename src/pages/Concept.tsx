@@ -99,8 +99,8 @@ const Concept = () => {
 
           <p className="font-roboto text-[15px] font-normal text-[#8d93a0]">
             Join India’s Elite{" "}
-            <span className="text-[#D0252D] font-normal">In House</span>{" "}
-            Counsel Gathering
+            <span className="text-[#D0252D] font-normal">In House</span> Counsel
+            Gathering
           </p>
 
           {/* TABS */}

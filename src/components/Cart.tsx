@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
-import img from "../assets/images/lwLogo.jpg"
+import img from "../assets/images/lwLogo.jpg";
 import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const cartItems = [
@@ -20,14 +20,16 @@ const Cart = () => {
     // },
   ];
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="max-w-6xl mx-auto p-4 font-roboto text-[#333] my-[120px]">
       {/* Success Alert */}
       <div className="flex items-center gap-3 border border-black p-4 mb-8 bg-white rounded-sm">
         <FaCheckCircle className="text-[#D0252D] text-lg" />
-        <p className="text-[15px]">"For Corporates" has been added to your cart.</p>
+        <p className="text-[15px]">
+          "For Corporates" has been added to your cart.
+        </p>
       </div>
 
       {/* Cart Table */}
@@ -53,12 +55,14 @@ const Cart = () => {
                   {/* <div className="w-10 h-10 bg-[#D12229] flex items-center justify-center text-white font-bold text-xl rounded-sm italic">
                     W
                   </div> */}
-                  <img src={img} alt=""  className="cursor-pointer"/>
+                  <img src={img} alt="" className="cursor-pointer" />
                 </td>
                 <td className="p-4 text-[#D0252D] hover:underline cursor-pointer">
                   {item.name}
                 </td>
-                <td className="p-4">₹{item.price.toLocaleString("en-IN")}.00</td>
+                <td className="p-4">
+                  ₹{item.price.toLocaleString("en-IN")}.00
+                </td>
                 <td className="p-4">
                   <input
                     type="number"
@@ -66,7 +70,9 @@ const Cart = () => {
                     className="w-12 border border-gray-200 p-2 text-center focus:outline-none cursor-pointer"
                   />
                 </td>
-                <td className="p-4">₹{item.subtotal.toLocaleString("en-IN")}.00</td>
+                <td className="p-4">
+                  ₹{item.subtotal.toLocaleString("en-IN")}.00
+                </td>
               </tr>
             ))}
           </tbody>
@@ -112,7 +118,10 @@ const Cart = () => {
               </tr>
             </tbody>
           </table>
-          <button onClick={()=> navigate("/checkout")} className="w-full mt-6 bg-[#D12229] text-white py-4 text-[16px] font-bold rounded-sm uppercase tracking-tight  transition cursor-pointer">
+          <button
+            onClick={() => navigate("/checkout")}
+            className="w-full mt-6 bg-[#D12229] text-white py-4 text-[16px] font-bold rounded-sm uppercase tracking-tight  transition cursor-pointer"
+          >
             Proceed to checkout
           </button>
         </div>

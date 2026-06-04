@@ -9,16 +9,16 @@ export default function EventPage() {
   const [search, setSearch] = useState("");
 
   const filteredEvents = events
-  .filter(
-    (event) =>
-      event.title.toLowerCase().includes(search.toLowerCase()) ||
-      event.tag.toLowerCase().includes(search.toLowerCase())
-  )
-  .sort((a, b) => {
-    if (a.status === "Live" && b.status !== "Live") return -1;
-    if (a.status !== "Live" && b.status === "Live") return 1;
-    return 0;
-  });
+    .filter(
+      (event) =>
+        event.title.toLowerCase().includes(search.toLowerCase()) ||
+        event.tag.toLowerCase().includes(search.toLowerCase()),
+    )
+    .sort((a, b) => {
+      if (a.status === "Live" && b.status !== "Live") return -1;
+      if (a.status !== "Live" && b.status === "Live") return 1;
+      return 0;
+    });
 
   return (
     <div className="min-h-screen bg-white font-roboto">
@@ -65,7 +65,9 @@ export default function EventPage() {
       <section className="max-w-6xl mx-auto px-6 py-10">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-[#333]">Live & Upcoming Events</h2>
+            <h2 className="text-2xl font-bold text-[#333]">
+              Live & Upcoming Events
+            </h2>
 
             <p className="mt-1 text-sm text-[#8D93A0]">
               Industry conferences and networking opportunities.

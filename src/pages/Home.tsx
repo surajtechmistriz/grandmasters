@@ -21,7 +21,7 @@ const socials = [
 const Home = () => {
   return (
     <section
-      className="relative w-full min-h-screen overflow-hidden bg-cover bg-bottom md:bg-fixed"
+      className="relative w-full h-206 overflow-hidden bg-cover bg-bottom md:bg-fixed"
       style={{ backgroundImage: `url(${heroImg})` }}
     >
       <div className="relative z-10 flex justify-start pt-20 md:pt-28 px-4">
@@ -45,12 +45,12 @@ const Home = () => {
             className="w-[130px] sm:w-[160px] md:w-[190px] mb-2"
           />
 
-       <h2 className="font-roboto text-sm md:text-[18px] tracking-[3px] font-bold text-[#333] leading-8 my-2">
-  presents
-</h2>
+          <h2 className="font-roboto text-sm md:text-[18px] tracking-[3px] font-bold text-[#333] leading-8 my-2">
+            presents
+          </h2>
 
           {/* Title */}
-          <h1 className="font-custom text-3xl sm:text-4xl md:text-[40px] font-bold leading-tight text-[#D0252D] mb-3">
+          <h1 className="font-roboto text-3xl sm:text-4xl md:text-[40px] font-bold leading-tight text-[#D0252D] mb-3">
             The 12th Annual Grand Masters 2026 Series
           </h1>
 
