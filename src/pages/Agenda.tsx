@@ -106,7 +106,7 @@ const SummitAgenda = () => {
     <div className="max-w-5xl mx-auto py-8 md:pb-12 md:pt-4 px-4 bg-white font-roboto">
       {/* HEADER */}
       <div className="text-center mb-12">
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-">
           <div className="flex justify-center">
             <img
               src={icon}
@@ -114,13 +114,13 @@ const SummitAgenda = () => {
             />
           </div>
         </div>
-        <h1 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] text-gray-800 mb-8 px-2">
+        <h1 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] md:tracking-tighter text-gray-800 mb-8 px-2">
           {" "}
           The Summit Agenda
         </h1>
 
         {/*  TABS (UI SAME STYLE, ONLY LOGIC ADDED) */}
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-16 border-b border-gray-200 pb-0 relative font-roboto">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-16 border-b border-gray-200 pb-0 relative font-roboto ">
           {" "}
           {/* HYDERABAD */}
           <div
@@ -131,7 +131,7 @@ const SummitAgenda = () => {
             className="pb-4 cursor-pointer relative text-center "
           >
             <p
-              className={`text-xs sm:text-sm md:text-[15px] font-bold leading-[28px] tracking-widest ${
+              className={`text-xs sm:text-sm md:text-[15px]  font-bold leading-[28px] tracking-widest ${
                 activeTab === "hyderabad" ? "text-[#d2232a]" : "text-gray-700"
               }`}
             >
@@ -157,7 +157,7 @@ const SummitAgenda = () => {
               setActiveTab("ahmedabad");
               setExpandedId(null);
             }}
-            className="pb-4 cursor-pointer relative text-center"
+            className="pb-4 cursor-pointer relative text-center "
           >
             <p
               className={`text-xs sm:text-sm md:text-[15px] font-bold leading-[28px] tracking-widest ${

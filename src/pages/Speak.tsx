@@ -86,7 +86,7 @@ const SpeakersSection = () => {
             <img src={icon} className="h-24 text-[#d2232a] text-4xl md:text-5xl" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-[50px] font-normal tracking-tighter leading-tight md:leading-[55px] text-gray-900 mb-3 px-2 ">
+          <h2 className="text-3xl sm:text-4xl md:text-[50px] font-normal tracking-tighter leading-tighter md:leading-[55px] text-gray-900 mb-3 px-2 ">
             Meet The Grand Masters!
           </h2>
 
@@ -96,12 +96,12 @@ const SpeakersSection = () => {
         </div>
 
         {/* Tabs */}
-        <div  className="relative flex flex-col max-w-4xl mx-auto sm:flex-row flex-wrap justify-center items-center gap-10 sm:gap-20 mb-1">
+        <div  className="relative flex flex-col max-w-4xl mx-auto sm:flex-row flex-wrap justify-center items-center gap-10 sm:gap-20 md:gap-60 mb-1">
           {tabs.map((tab, i) => (
             <span
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`w-full sm:w-auto text-center px-4 sm:px-8 py-2 font-roboto text-sm md:text-[15px] font-semibold uppercase  cursor-pointer transition ${
+              className={`w-full sm:w-auto text-center px-4 sm:px-8 py-2 font-roboto text-sm md:text-[15px] font-semibold uppercase md:mb-2 cursor-pointer transition ${
                 active === tab.id
                   ? "text-[#D0252D]"
                   : "text-gray-700 hover:text-[#D0252D]"
@@ -118,7 +118,7 @@ const SpeakersSection = () => {
                 key={tab.id}
                 className="absolute bottom-[-12px] hidden sm:block"
                 style={{
-                  left: tab.id === "hyderabad" ? "39%" : "61%",
+                  left: tab.id === "hyderabad" ? "24%" : "75%",
                   transform: "translateX(-50%)",
                 }}
               >
@@ -171,7 +171,7 @@ const SpeakersSection = () => {
       </div>
 
       {/* Bottom CTA */}
-      <div className="w-full bg-black/30 py-18 px-4 text-white">
+      <div className="w-full bg-black/30 py-12 px-4 text-white">
           <h1 className="flex font-roboto text-3xl sm:text-4xl md:text-[50px] font-bold leading-tight  justify-center">
             {" "}
             Get Involved

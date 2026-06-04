@@ -13,13 +13,13 @@ const BrandSponsorship = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16">
-        <div className="bg-[#d2232a] text-white text-center shadow-2xl p-6 sm:p-8 md:p-10">
-          <h2 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-bold leading-tight md:leading-[55px] mb-4 md:mb-6">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-5 md:px-16">
+        <div className="bg-[#d2232a] text-white text-center shadow-2xl p-6 sm:p-8 md:p-6 md:m-6">
+          <h2 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-bold leading-tight md:leading-[55px] mb-4 md:mb-4">
             Showcase Your Brand
           </h2>
 
-          <p className="max-w-4xl mx-auto text-sm sm:text-[15px] font-normal leading-7 md:leading-[28px] opacity-95 mb-6 md:mb-8">
+          <p className="max-w-4xl mx-auto text-sm sm:text-[15px] font-normal leading-7 md:leading-[28px] opacity-95 mb-6 md:mb-6">
             Partnering with The Grand Masters 2026 Summit Series will enable
             you to brand and promote your service expertise to a unique and
             interested set of senior in-house counsel. Summit attendees include
@@ -28,7 +28,7 @@ const BrandSponsorship = () => {
           </p>
 
           <div className="flex justify-center">
-            <button className="w-full sm:w-auto border border-white px-6 sm:px-8 py-4 sm:py-5 rounded-sm text-[10px] sm:text-[11px] font-bold tracking-[0.15rem] sm:tracking-[0.3rem] uppercase font-roboto hover:bg-white hover:text-[#d2232a] transition-all duration-300 cursor-pointer">
+            <button className="w-full sm:w-auto border border-white px-6 sm:px-8 md:px-6 py-4 md:py-5 sm:py-5 rounded-sm text-[10px] sm:text-[11px] font-bold tracking-[0.15rem] md:tracking-[0.6em] md:leading-[11px] sm:tracking-[0.3rem] uppercase font-roboto hover:bg-white hover:text-[#d2232a] transition-all duration-300 cursor-pointer">
               Explore Sponsorship Opportunities
             </button>
           </div>

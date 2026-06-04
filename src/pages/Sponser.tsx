@@ -19,7 +19,7 @@ const sponsors = [
 export default function SponsorsPartners() {
   return (
     <section className="bg-white py-10 md:pb-20 px-4">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl px-6 mx-auto">
         {/* Icon */}
         <div className="flex justify-center ">
           <img
@@ -29,7 +29,7 @@ export default function SponsorsPartners() {
         </div>
 
         {/* Heading */}
-        <h2 className="text-center text-gray-800 mb-8 md:mb-8 text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] font-roboto">
+        <h2 className="text-center text-gray-800 mb-8 md:mb-8 text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:tracking-tighter md:leading-[55px] font-roboto">
           Sponsors & Partners
         </h2>
 

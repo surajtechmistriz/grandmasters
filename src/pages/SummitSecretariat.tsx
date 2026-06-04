@@ -37,14 +37,14 @@ const SummitSecretariat = () => {
   return (
     <div className="min-h-screen bg-white mt-20 lg:mt-[100px]">
       {/* Header */}
-      <div className="bg-[#d61f26] py-5 sm:py-6">
-        <h1 className="text-white text-center text-3xl sm:text-4xl md:text-5xl font-normal leading-tight px-4">
+      <div className="bg-[#d61f26] py-5 sm:py-8">
+        <h1 className="text-white text-center text-3xl tracking-[-0.2rem] sm:text-4xl md:text-5xl font-normal leading-tight px-4">
           The Lex Witness Summit Secretariat
         </h1>
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-12">
+      <div className="max-w-6xl mx-auto px-4 md:px-15 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-8 lg:gap-10">
           {/* Left Section */}
           <div>
@@ -160,7 +160,7 @@ const SummitSecretariat = () => {
         </div>
 
         {/* Sponsors */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl text-center my-10 sm:my-16">
+        <h1 className="text-2xl tracking-tighter sm:text-3xl md:text-4xl text-center my-10 sm:my-16">
           Sponsors & Partners
         </h1>
       </div>

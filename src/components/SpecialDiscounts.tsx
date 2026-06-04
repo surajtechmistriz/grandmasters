@@ -12,7 +12,7 @@ const SpecialDiscounts = () => {
   ];
 
   return (
-    <section className="py-10 md:pb-16 px-4 bg-white font-sans">
+    <section className="py-8 md:pb-12 px-4 bg-white font-sans">
       <div className="max-w-4xl mx-auto text-center px-2">
         {/* Alarm Clock Icon */}
         <div className="flex justify-center">
@@ -22,7 +22,7 @@ const SpecialDiscounts = () => {
         </div>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-[50px] font-normal font-roboto leading-tight md:leading-[55px] text-gray-800 mb-2">
+        <h2 className="text-3xl sm:text-4xl md:text-[50px] font-normal font-roboto leading-tight md:leading-[55px] md:tracking-tighter text-gray-800 mb-2">
           Avail Special Discounts
         </h2>
 
@@ -32,7 +32,7 @@ const SpecialDiscounts = () => {
         </p>
 
         {/* Discount List */}
-        <div className="space-y-3 md:space-y-1 mb-8 md:mb-10">
+        <div className="space-y-3 md:space-y-1 mb-8 md:mb-8">
           {discounts.map((text, index) => (
             <p
               key={index}

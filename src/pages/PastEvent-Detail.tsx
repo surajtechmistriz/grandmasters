@@ -29,8 +29,8 @@ const EditionOverview = () => {
   return (
     <div className="min-h-screen bg-white mt-20 lg:mt-[100px]">
       {/* Header */}
-      <div className="bg-[#d71920] py-4 sm:py-5">
-        <h1 className="text-center text-white text-2xl sm:text-3xl md:text-[35px] font-normal tracking-tight px-4">
+      <div className="bg-[#d71920] py-4 sm:py-7">
+        <h1 className="text-center text-white text-2xl tracking-[-0.2rem] sm:text-3xl md:text-[35px] font-normal px-4">
           The Grand Masters 2026, Bengaluru Edition - An Overview
         </h1>
       </div>
@@ -38,10 +38,10 @@ const EditionOverview = () => {
       {/* Content */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-14">
         {/* Tabs */}
-        <div className="flex justify-center border-b border-[#d71920]">
+        <div className="flex justify-center border-b gap-0.5 border-[#d71920]">
           <button
             onClick={() => setActiveTab("speakers")}
-            className={`px-4 sm:px-6 py-3 text-sm font-bold border border-b-0 transition cursor-pointer ${
+            className={`px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
               activeTab === "speakers"
                 ? "bg-[#d71920] text-white border-[#d71920]"
                 : "bg-white text-[#444] border-gray-300"
@@ -52,7 +52,7 @@ const EditionOverview = () => {
 
           <button
             onClick={() => setActiveTab("gallery")}
-            className={`px-4 sm:px-6 py-3 text-sm font-bold border border-b-0 transition cursor-pointer ${
+            className={`px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
               activeTab === "gallery"
                 ? "bg-[#d71920] text-white border-[#d71920]"
                 : "bg-white text-[#444] border-gray-300"
@@ -86,7 +86,7 @@ const EditionOverview = () => {
         {/* Gallery Tab */}
         {activeTab === "gallery" && (
           <div className="py-6 sm:py-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
               {galleryImages.map((item) => (
                 <div
                   key={item.id}

@@ -276,7 +276,7 @@ const Concept = () => {
         </div>
 
         {/* STATS */}
-        <div ref={statsRef} className="w-full bg-black/30 py-18 px-4">
+        <div ref={statsRef} className="w-full bg-black/30 py-22 px-4">
           <div className="font-roboto max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
               <div key={i}>
@@ -304,16 +304,16 @@ const Concept = () => {
           <div className="max-w-6xl mx-auto text-center">
            <img src={icon2} className="flex justify-center h-24 mx-auto bg-white text-[#d2232a]" />
 
-            <h2 className="text-3xl sm:text-4xl md:text-[50px] font-roboto font-normal mt-2">
+            <h2 className="text-3xl sm:text-4xl md:text-[50px] tracking-tighter font-roboto font-normal mt-">
               {" "}
               Past Official Messages
             </h2>
-            <p className="text-[15px] font-normal leading-[28px] text-[#8d93a0]">
+            <p className="text-[15px] font-normal leading-[28px] text-[#8d93a0] mt-2 mb-12  ">
               Messages from{" "}
               <span className="text-[#D0252D]">Various Legal Luminaries</span>
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-15 px-8">
               {luminaries.map((p, i) => (
                 <div key={i}>
                   <img
@@ -333,7 +333,7 @@ const Concept = () => {
         </div>
 
         {/* CTA */}
-        <div className="w-full bg-black/30 py-18 px-4 text-white">
+        <div className="w-full bg-black/30 py-12 px-4 text-white">
           <h1 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-bold leading-tight">
             {" "}
             Get Involved
