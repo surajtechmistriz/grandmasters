@@ -8,11 +8,17 @@ import EventCard from "../components/EventCard";
 export default function EventPage() {
   const [search, setSearch] = useState("");
 
-  const filteredEvents = events.filter(
+  const filteredEvents = events
+  .filter(
     (event) =>
       event.title.toLowerCase().includes(search.toLowerCase()) ||
-      event.tag.toLowerCase().includes(search.toLowerCase()),
-  );
+      event.tag.toLowerCase().includes(search.toLowerCase())
+  )
+  .sort((a, b) => {
+    if (a.status === "Live" && b.status !== "Live") return -1;
+    if (a.status !== "Live" && b.status === "Live") return 1;
+    return 0;
+  });
 
   return (
     <div className="min-h-screen bg-white font-roboto">
