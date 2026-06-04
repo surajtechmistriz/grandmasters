@@ -9,7 +9,7 @@ export default function EventCard({ event }: Props) {
    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#ECECEC] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#D0252D]/20 hover:shadow-[0_20px_40px_rgba(208,37,45,0.08)]">
 
   {/* Status Badge */}
-  <div className="absolute top-4 right-4 z-10">
+  <div className="absolute top-6 right-4 z-10">
     {event.status === "Live" ? (
       <span className="rounded-full bg-green-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-green-700">
         ● Live
