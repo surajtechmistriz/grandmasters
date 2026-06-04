@@ -40,7 +40,7 @@ const AudienceProfile = () => {
           {/* Left */}
           <div>
             {/* Paragraph */}
-            <p className=" font-roboto text-[15px] leading-[28px] text-[#1d2b44] font-normal">
+            <p className=" font-roboto text-[15px] leading-[28px] text-[#333] font-normal">
               <span className="text-[#d61f26] font-bold cursor-pointer hover:underline">
                 The Grand Masters Summit Series
               </span>{" "}
@@ -70,7 +70,7 @@ const AudienceProfile = () => {
                   {row.map((item, i) => (
                     <div
                       key={i}
-                      className="font-roboto px-4 py-3 border font-normal leading-[28px] border-[#dbdbdb] text-[14px] text-[#1d2b44]"
+                      className="font-roboto px-4 py-3 border font-normal leading-[28px] border-[#dbdbdb] text-[14px] text-[#333]"
                     >
                       {item}
                     </div>
@@ -97,7 +97,7 @@ const AudienceProfile = () => {
                   {row.map((item, i) => (
                     <div
                       key={i}
-                      className="px-4 py-3 border font-normal leading-[28px] border-[#dbdbdb] text-[14px] text-[#1d2b44]"
+                      className="px-4 py-3 border font-normal leading-[28px] border-[#dbdbdb] text-[14px] text-[#333]"
                     >
                       {item}
                     </div>

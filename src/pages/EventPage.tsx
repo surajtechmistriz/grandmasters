@@ -36,7 +36,7 @@ export default function EventPage() {
               Premier Legal Events
             </h1>
 
-            <p className="mt-3 max-w-2xl mx-auto text-sm md:text-base text-gray-500 leading-relaxed">
+            <p className="mt-3 max-w-2xl mx-auto text-sm md:text-base text-[#8D93A0] leading-relaxed">
               Explore flagship summits bringing together General Counsel,
               Compliance Officers, Risk Leaders and Industry Experts.
             </p>
@@ -67,7 +67,7 @@ export default function EventPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#333]">Live & Upcoming Events</h2>
 
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-sm text-[#8D93A0]">
               Industry conferences and networking opportunities.
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function EventPage() {
           </div>
         ) : (
           <div className="rounded-2xl border border-dashed border-[#E5E5E5] py-14 text-center">
-            <p className="text-gray-500">
+            <p className="text-[#8D93A0]">
               No events found matching your search.
             </p>
 

@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <div className="font-roboto min-h-screen mt-20 md:mt-[100px]">
       {/* Header */}
-      <div className="bg-[#d61f26] py-5 md:py-6">
+      <div className="bg-[#D12229] py-5 md:py-6">
         <h1 className="text-white text-center text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] tracking-tight px-4">
           A Bit About Us
         </h1>
@@ -16,11 +16,11 @@ const AboutUs = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-8 lg:gap-10">
           {/* Left Content */}
           <div>
-            <h2 className="text-black text-[15px] font-bold leading-7">
+            <h2 className="text-[#333] text-[15px] font-bold leading-7">
               Why Lex <span className="text-[#d12229]">Witness?</span>
             </h2>
 
-            <p className="mt-2 text-[15px] leading-7 text-[#1d2b44]">
+            <p className="mt-2 text-[15px] leading-7 text-[#333]">
               The Indian legal universe has close to 5 million individuals.
               This represents highest number in the world who, directly or
               indirectly, are a part of it. Lex Witness is a high quality
@@ -37,11 +37,11 @@ const AboutUs = () => {
               makers, bureaucracy and the industry captains in India.
             </p>
 
-            <h2 className="font-bold text-[15px] mt-6">
+            <h2 className="font-bold text-[#333] text-[15px] mt-6">
               A Must Read
             </h2>
 
-            <p className="mt-2 text-[15px] leading-7 text-[#1d2b44]">
+            <p className="mt-2 text-[15px] leading-7 text-[#333]">
               The readers of Lex Witness are high-profile, influential HNI’s.
               They are the ones who frame the laws and the ones who practice it.
               Lex Witness covers an interesting bandwidth of readers right from
@@ -53,7 +53,7 @@ const AboutUs = () => {
               well.
             </p>
 
-            <p className="mt-4 text-[15px] leading-7 text-[#1d2b44]">
+            <p className="mt-4 text-[15px] leading-7 text-[#333]">
               For a better understanding of Lex Witness please go through{" "}
               <span className="font-bold text-[#d12229] cursor-pointer hover:underline">
                 The Lex Witness Brand Deck

@@ -13,7 +13,7 @@ export default function Footer() {
           {/* About */}
           <div>
             <h2 className="text-lg md:text-xl font-bold mb-5 font-roboto">
-              About Lex <span className="text-[#d2232a]">Witness</span>
+              About Lex <span className="text-[#D0252D]">Witness</span>
             </h2>
 
             <p className="text-[13px] leading-6 text-black font-roboto">
@@ -39,7 +39,7 @@ export default function Footer() {
           {/* Showcase */}
           <div className="font-roboto">
             <h2 className="text-lg md:text-xl font-bold mb-5">
-              Lex <span className="text-[#d2232a]">Witness</span> Summits
+              Lex <span className="text-[#D0252D]">Witness</span> Summits
               Showcase
             </h2>
 
@@ -55,7 +55,7 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#d2232a]">www.itlegalsummit.com</span>
+                  <span className="text-[#D0252D]">www.itlegalsummit.com</span>
                 </p>
               </div>
 
@@ -80,7 +80,7 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-5">
                   To access past editions, visit{" "}
-                  <span className="text-[#d2232a]">www.grandmasters.in</span>
+                  <span className="text-[#D0252D]">www.grandmasters.in</span>
                 </p>
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#d2232a]">www.maels.in</span>
+                  <span className="text-[#D0252D]">www.maels.in</span>
                 </p>
               </div>
 
@@ -116,7 +116,7 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#d2232a]">www.plcs.co.in</span>
+                  <span className="text-[#D0252D]">www.plcs.co.in</span>
                 </p>
               </div>
 
@@ -131,7 +131,7 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#d2232a]">www.bfls.in</span>
+                  <span className="text-[#D0252D]">www.bfls.in</span>
                 </p>
               </div>
 
@@ -147,7 +147,7 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#d2232a]">www.rcls.in</span>
+                  <span className="text-[#D0252D]">www.rcls.in</span>
                 </p>
               </div>
             </div>
@@ -177,14 +177,14 @@ export default function Footer() {
           <div className="flex flex-wrap justify-center gap-6 text-[13px]">
             <button
               onClick={() => navigate("/about-us")}
-              className="hover:text-[#d2232a] transition cursor-pointer"
+              className="hover:text-[#D0252D] transition cursor-pointer"
             >
               About Lex Witness
             </button>
 
             <button
               onClick={() => navigate("/summit-secretariat")}
-              className="hover:text-[#d2232a] transition cursor-pointer"
+              className="hover:text-[#D0252D] transition cursor-pointer"
             >
               Summit Secretariat
             </button>

@@ -40,7 +40,7 @@ export default function EventCard({ event }: Props) {
     <div className="mt-4 h-px bg-[#F0F0F0]" />
 
     {/* Description */}
-    <p className="mt-4 flex-1 text-sm leading-6 text-gray-500 line-clamp-4">
+    <p className="mt-4 flex-1 text-sm leading-6 text-[#8D93A0] line-clamp-4">
       {event.description}
     </p>
 

@@ -24,12 +24,12 @@ export default function SponsorsPartners() {
         <div className="flex justify-center ">
           <img
             src={icon7}
-            className="w-8 h-8 md:w-30 md:h-20 text-[#d2232a] stroke-[1.5]"
+            className="w-8 h-8 md:w-30 md:h-20 text-[#D0252D] stroke-[1.5]"
           />
         </div>
 
         {/* Heading */}
-        <h2 className="text-center text-gray-800 mb-8 md:mb-8 text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:tracking-tighter md:leading-[55px] font-roboto">
+        <h2 className="text-center text-[#333] mb-8 md:mb-8 text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:tracking-tighter md:leading-[55px] font-roboto">
           Sponsors & Partners
         </h2>
 
@@ -41,7 +41,7 @@ export default function SponsorsPartners() {
               className="border border-gray-300 bg-white flex flex-col items-center justify-center px-4 py-8 md:py-10"
             >
               {/* Partner Type */}
-              <h3 className="text-gray-900 text-center mb-6 md:mb-12 text-[14px] md:text-[15px] font-bold leading-[24px] md:leading-[28px] font-roboto">
+              <h3 className="text-gray-900 text-center  mb-6 md:mb-12 md:-mt-6 text-[14px] md:text-[15px] font-bold leading-[24px] md:leading-[28px] font-roboto">
                 {item.title}
               </h3>
 

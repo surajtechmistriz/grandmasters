@@ -83,14 +83,14 @@ const SpeakersSection = () => {
         {/* Heading */}
         <div className="text-center mb-6 max-w-4xl mx-auto">
           <div className="flex justify-center my-">
-            <img src={icon} className="h-24 text-[#d2232a] text-4xl md:text-5xl" />
+            <img src={icon} className="h-24 text-[#D0252D] text-4xl md:text-5xl" />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-[50px] font-normal tracking-tighter leading-tighter md:leading-[55px] text-gray-900 mb-3 px-2 ">
+          <h2 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal tracking-tighter leading-tighter md:leading-[55px] text-[#333] mb-3 px-2 ">
             Meet The Grand Masters!
           </h2>
 
-          <p className="text-gray-600 text-sm sm:text-base md:text-lg font-roboto font-normal leading-relaxed px-4">
+          <p className="text-[#333] text-sm sm:text-base md:text-lg font-roboto font-normal leading-7 px-4">
             Invited & <span className="text-[#D0252D]">Confirmed Speakers</span>
           </p>
         </div>
@@ -101,10 +101,10 @@ const SpeakersSection = () => {
             <span
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`w-full sm:w-auto text-center px-4 sm:px-8 py-2 font-roboto text-sm md:text-[15px] font-semibold uppercase md:mb-2 cursor-pointer transition ${
+              className={`font-roboto w-full sm:w-auto text-center px-4 sm:px-8 py-2 tracking-widest text-sm md:text-[15px] font-semibold uppercase md:mb-2 cursor-pointer transition ${
                 active === tab.id
                   ? "text-[#D0252D]"
-                  : "text-gray-700 hover:text-[#D0252D]"
+                  : "text-[#333] hover:text-[#D0252D]"
               }`}
             >
               {tab.label}
@@ -149,11 +149,11 @@ const SpeakersSection = () => {
                 className="w-40 h-40 sm:w-48 sm:h-48 md:w-full md:h-auto mx-auto rounded-full object-cover"
               />
 
-              <h3 className="mt-4 font-bold font-roboto text-sm md:text-[15px] text-[#D0252D] tracking-wide">
+              <h3 className="font-roboto mt-4 font-bold  leading-4.5 text-sm md:text-[15px] text-[#D0252D] tracking-wide">
                 {speaker.name}
               </h3>
 
-              <p className="text-sm font-normal leading-[22px] font-roboto text-[#8d93a0]">
+              <p className="text-sm font-normal leading-[22px] font-roboto text-[#8D93A0]">
                 {speaker.title}
               </p>
 
@@ -161,7 +161,7 @@ const SpeakersSection = () => {
                 href={speaker.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center items-center mt-3 text-[#D2520D] hover:scale-110 transition"
+                className="inline-flex justify-center  items-center mt-3 text-[#D2520D] hover:scale-110 transition"
               >
                 <TbBrandLinkedinFilled className="text-2xl" />
               </a>
@@ -172,7 +172,7 @@ const SpeakersSection = () => {
 
       {/* Bottom CTA */}
       <div className="w-full bg-black/30 py-12 px-4 text-white">
-          <h1 className="flex font-roboto text-3xl sm:text-4xl md:text-[50px] font-bold leading-tight  justify-center">
+          <h1 className="flex font-roboto text-3xl sm:text-4xl leading-[55px] md:text-[50px] font-bold tracking-tighter justify-center">
             {" "}
             Get Involved
           </h1>

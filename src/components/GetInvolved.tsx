@@ -31,17 +31,17 @@ const GetInvolved = () => {
             <input
               type="text"
               placeholder="Nelle Wilkinson"
-              className="w-full text-[13px] tracking-tighter px-3 py-2.5 bg-white text-gray-800 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
+              className="w-full text-[13px] tracking-tighter px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
             <input
               type="email"
               placeholder="helipi@mailinator.com"
-              className="w-full text-[13px] px-3 py-2.5 bg-white text-gray-800 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
+              className="w-full text-[13px] px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
             <input
               type="tel"
               placeholder="+1 (961) 837-8638"
-              className="w-full text-[13px] px-3 py-2.5 bg-white text-gray-800 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
+              className="w-full text-[13px] px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
 
             {/* Checkbox */}
@@ -49,7 +49,7 @@ const GetInvolved = () => {
               <input
                 type="checkbox"
                 id="updates"
-                className=" h-8 w-8 accent-gray-500 cursor-pointer"
+                className=" h-8 w-8 accent-[#8D93A0] cursor-pointer"
               />
               <label
                 htmlFor="updates"
@@ -64,7 +64,7 @@ const GetInvolved = () => {
             <div className="bg-white p-3 rounded-sm flex items-center justify-between w-full max-w-[300px]">
               <div className="flex items-center gap-3">
                 <input type="checkbox" className="h-6 w-6" />
-                <span className="text-gray-700 text-sm md:text-[15px] font-normal leading-relaxed font-roboto">
+                <span className="text-[#333] text-sm md:text-[15px] font-normal leading-relaxed font-roboto">
                   I'm not a robot
                 </span>
               </div>
@@ -74,7 +74,7 @@ const GetInvolved = () => {
                   alt="recaptcha"
                   className="w-8 h-8"
                 />
-                <span className="text-[10px] text-gray-500">reCAPTCHA</span>
+                <span className="text-[10px] text-[#8D93A0]">reCAPTCHA</span>
               </div>
             </div>
 

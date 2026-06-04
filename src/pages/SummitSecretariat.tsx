@@ -48,7 +48,7 @@ const SummitSecretariat = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-8 lg:gap-10">
           {/* Left Section */}
           <div>
-            <p className="font-roboto text-sm sm:text-[15px] leading-7 text-[#1d2b44] font-normal">
+            <p className="font-roboto text-sm sm:text-[15px] leading-7 text-[#333] font-normal">
               Typically known as an A to A magazine – an adult to adult magazine
               as they say, Lex Witness has been a platform for knowledge sharing
               and thought leadership on various industry sectors. It is through
@@ -75,9 +75,9 @@ const SummitSecretariat = () => {
               us.
             </p>
 
-            <p className="mt-8 mb-6 text-sm sm:text-base font-bold text-gray-800">
+            <p className="mt-8 mb-6 text-sm sm:text-base font-bold text-[#333]">
               Meanwhile here's a gist of The Lex{" "}
-              <span className="text-[#d2232a]">Witness</span> Summits so far;
+              <span className="text-[#D0252D]">Witness</span> Summits so far;
             </p>
 
             {/* Accordion */}
@@ -96,13 +96,13 @@ const SummitSecretariat = () => {
                       className={`w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 text-left transition-colors cursor-pointer ${
                         isOpen
                           ? "bg-[#D12229] text-white"
-                          : "bg-white text-gray-700 hover:bg-gray-50"
+                          : "bg-white text-[#333] hover:bg-gray-50"
                       }`}
                     >
                       {isOpen ? (
                         <FaCaretUp className="shrink-0" />
                       ) : (
-                        <FaCaretDown className="text-[#d2232a] shrink-0" />
+                        <FaCaretDown className="text-[#D0252D] shrink-0" />
                       )}
 
                       <span className="text-sm sm:text-[15px] font-medium">
@@ -129,9 +129,9 @@ const SummitSecretariat = () => {
                               </div>
 
                               {/* Text */}
-                              <div className="font-roboto w-full md:w-2/3 text-sm sm:text-[15px] leading-relaxed text-gray-700">
+                              <div className="font-roboto w-full md:w-2/3 text-sm sm:text-[15px] leading-relaxed text-[#333]">
                                 {summit.title && (
-                                  <h3 className="font-bold text-gray-800 mb-2">
+                                  <h3 className="font-bold text-[#333] mb-2">
                                     {summit.title}
                                   </h3>
                                 )}
@@ -141,7 +141,7 @@ const SummitSecretariat = () => {
                             </div>
                           ))
                         ) : (
-                          <p className="text-gray-500 italic">
+                          <p className="text-[#8D93A0] italic">
                             Details for {item.year} coming soon...
                           </p>
                         )}

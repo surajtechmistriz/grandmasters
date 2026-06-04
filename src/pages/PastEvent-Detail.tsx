@@ -29,7 +29,7 @@ const EditionOverview = () => {
   return (
     <div className="min-h-screen bg-white mt-20 lg:mt-[100px]">
       {/* Header */}
-      <div className="bg-[#d71920] py-4 sm:py-7">
+      <div className="bg-[#D0252D] py-4 sm:py-7">
         <h1 className="text-center text-white text-2xl tracking-[-0.2rem] sm:text-3xl md:text-[35px] font-normal px-4">
           The Grand Masters 2026, Bengaluru Edition - An Overview
         </h1>
@@ -38,13 +38,13 @@ const EditionOverview = () => {
       {/* Content */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-14">
         {/* Tabs */}
-        <div className="flex justify-center border-b gap-0.5 border-[#d71920]">
+        <div className="flex justify-center border-b gap-0.5 border-[#D0252D]">
           <button
             onClick={() => setActiveTab("speakers")}
-            className={`px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
+            className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
               activeTab === "speakers"
-                ? "bg-[#d71920] text-white border-[#d71920]"
-                : "bg-white text-[#444] border-gray-300"
+                ? "bg-[#D0252D] text-white border-[#D0252D]"
+                : "bg-white text-[#333] border-gray-300"
             }`}
           >
             Speakers
@@ -52,10 +52,10 @@ const EditionOverview = () => {
 
           <button
             onClick={() => setActiveTab("gallery")}
-            className={`px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
+            className={` font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
               activeTab === "gallery"
-                ? "bg-[#d71920] text-white border-[#d71920]"
-                : "bg-white text-[#444] border-gray-300"
+                ? "bg-[#D0252D] text-white border-[#D0252D]"
+                : "bg-white text-[#333] border-gray-300"
             }`}
           >
             Gallery
@@ -72,7 +72,7 @@ const EditionOverview = () => {
                 return (
                   <p
                     key={index}
-                    className="font-roboto text-sm sm:text-[15px] leading-7 text-[#444]"
+                    className="font-roboto text-sm sm:text-[15px] leading-7 text-[#333]"
                   >
                     <span className="font-bold">{name}</span>
                     {details.length > 0 && `,${details.join(",")}`}

@@ -46,19 +46,19 @@ const SummitGallery = () => {
   }, []);
 
   return (
-    <section className="pt-6 md:pb-16 bg-white font-sans">
+    <section className=" font-roboto pt-6 md:pb-16 bg-white ">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* Header */}
         <div className="flex justify-center">
           <img src={icon6} className="w-8 h-8 md:w-28 md:h-23" />
         </div>
 
-        <h2 className="text-gray-800 mb-2 text-3xl sm:text-4xl md:text-[50px] font-normal">
+        <h2 className="text-[#333] mb-2 text-3xl sm:text-4xl md:text-[50px] font-normal">
           Summit Gallery
         </h2>
 
-        <p className="text-gray-500 text-sm md:text-[15px] mb-8 md:mb-12">
-          A Visual <span className="text-[#d2232a]">Overview of Past</span>{" "}
+        <p className="text-[#8D93A0] text-sm md:text-[15px] mb-8 md:mb-12">
+          A Visual <span className="text-[#D0252D]">Overview of Past</span>{" "}
           Summit Proceedings
         </p>
 
@@ -73,8 +73,8 @@ const SummitGallery = () => {
                 onClick={() => handleTabClick(tab, index)}
                 className={`pb-3 sm:pb-4 text-xs sm:text-sm md:text-[15px] font-bold tracking-wide font-roboto transition cursor-pointer ${
                   activeTab === tab
-                    ? "text-[#d2232a]"
-                    : "text-gray-600 hover:text-black"
+                    ? "text-[#D0252D]"
+                    : "text-[#333] hover:text-black"
                 }`}
               >
                 {tab}
@@ -85,7 +85,7 @@ const SummitGallery = () => {
           {/* Triangle Indicator */}
           <div className="absolute bottom-[-1px] left-0 w-full pointer-events-none">
             <div
-              className="hidden sm:block absolute w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[10px] border-t-[#d2232a] transition-all duration-300"
+              className="hidden sm:block absolute w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[10px] border-t-[#D0252D] transition-all duration-300"
               style={{
                 left: `${indicatorStyle.left}px`,
                 transform: "translateX(-50%)",

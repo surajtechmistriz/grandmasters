@@ -67,7 +67,7 @@ const OfficialMessagesSidebar = () => {
       {messageYears.map((yearData, yearIndex) => (
         <div key={yearData.year}>
           {/* Year Heading */}
-          <h2 className="text-lg sm:text-xl font-normal text-[#1d2b44] mb-5 leading-tight">
+          <h2 className="text-lg sm:text-xl font-normal text-[#333] mb-5 leading-tight">
             {yearData.year} Official Messages
           </h2>
 
@@ -75,16 +75,16 @@ const OfficialMessagesSidebar = () => {
           <div className="space-y-6">
             {yearData.messages.map((item, index) => (
               <div key={index}>
-                <h3 className="font-bold text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#1d2b44]">
+                <h3 className="font-bold text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#333]">
                   {item.name}
                 </h3>
 
-                <p className="text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#1d2b44]">
+                <p className="text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#333]">
                   {item.role}
                 </p>
 
                 {item.org && (
-                  <p className="text-xs sm:text-[12px] leading-5 sm:leading-6 text-[#1d2b44]">
+                  <p className="text-xs sm:text-[12px] leading-5 sm:leading-6 text-[#333]">
                     {item.org}
                   </p>
                 )}

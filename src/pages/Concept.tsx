@@ -89,18 +89,17 @@ const Concept = () => {
     >
       <div className="absolute inset-0 bg-black/20" />
 
-      <div className="relative z-10 mx-auto mt-4 text-center">
+      <div className="relative z-10 mx-auto mt- text-center">
         {/* HEADER */}
         <div className="backdrop-blur-md bg-white shadow-xl px-4 py-8 md:p-10 flex flex-col items-center">
-          <img src={icon} className="h-24 bg-white text-[#d2232a]" />
-
-          <h2 className="text-3xl sm:text-4xl md:text-[50px] leading-[55px] tracking-tighter font-normal text-gray-800 my-2 text-center">
+          <img src={icon} className="h-24 bg-white text-[#D0252D]" />
+          <h2 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal leading-[1.1] tracking-[-0.05em] text-[#333333] break-words my-2 text-center">
             Are You A Grand Master?
           </h2>
 
-          <p className="font-roboto text-[15px] font-normal text-gray-600">
+          <p className="font-roboto text-[15px] font-normal text-[#8d93a0]">
             Join India’s Elite{" "}
-            <span className="text-[#d2232a] font-semibold">In House</span>{" "}
+            <span className="text-[#D0252D] font-normal">In House</span>{" "}
             Counsel Gathering
           </p>
 
@@ -113,7 +112,7 @@ const Concept = () => {
                 className={`font-roboto flex items-center justify-center gap-12 font-bold text-xs sm:text-sm md:text-[15px] leading-[28px] transition cursor-pointer ${
                   active === tab.id
                     ? "text-[#D0252D]"
-                    : "text-gray-600 hover:text-[#D0252D]"
+                    : "text-[#333] hover:text-[#D0252D]"
                 }`}
               >
                 {tab.icon}
@@ -128,7 +127,7 @@ const Concept = () => {
                   key={i}
                   className="absolute bottom-0 "
                   style={{
-                    left: `${(55 / tabs.length) * i + 180 / tabs.length / 2}%`,
+                    left: `${(60 / tabs.length) * i + 180 / tabs.length / 2}%`,
                     transform: "translateX(-50%) translateY(100%)",
                   }}
                 >
@@ -149,7 +148,7 @@ const Concept = () => {
 
           {/* AGENDA TAB */}
           {active === "agenda" && (
-            <div className="font-roboto text-[15px] grid md:grid-cols-2 gap-8 mt-12 items-center text-left px-4">
+            <div className="font-roboto text-[15px] md:font-normal md:leading-1.9 grid md:grid-cols-2 gap-8 mt-12 items-center text-left px-4">
               {" "}
               <div className="flex justify-center">
                 <img
@@ -157,7 +156,7 @@ const Concept = () => {
                   className="w-full max-w-75 rounded-lg object-contain"
                 />
               </div>
-              <div className="space-y-3 text-gray-700">
+              <div className="space-y-3 text-[#333]">
                 <p>
                   There Are In-House Counsel and There Are Grand Masters.{" "}
                   <span className="text-[#cd151d] font-semibold">Choose.</span>
@@ -191,10 +190,10 @@ const Concept = () => {
 
           {/* AUDIENCE TAB */}
           {active === "audience" && (
-            <div className="mt-12 flex flex-col-reverse md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
+            <div className="mt-12 flex flex-col-reverse font-roboto text-[15px] md:font-normal md:leading-1.9 md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
               {" "}
               {/* TEXT SECTION */}
-              <div className="space-y-4 text-gray-700 flex-1">
+              <div className="space-y-4 text-[#333] flex-1">
                 <h3 className="text-[15px] font-bold leading-[28px]">
                   Organizational Participation
                 </h3>
@@ -226,7 +225,7 @@ const Concept = () => {
 
                 <button
                   onClick={() => navigation("/audience-profile")}
-                  className="mt-4 text-[#D0252D] px-5 py-2 border rounded-sm border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
+                  className="font-custom mt-4 py-3.5  text-[#D0252D] text-[11px] font-bold leading-2.75 px-7 tracking-[0.3rem]  border rounded-sm border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
                 >
                   VIEW MORE
                 </button>
@@ -244,7 +243,7 @@ const Concept = () => {
 
           {/* SPONSOR TAB */}
           {active === "sponsor" && (
-            <div className="grid md:grid-cols-2 px-4 md:px-8 gap-8 mt-12 items-center max-w-4xl text-left">
+            <div className="grid md:grid-cols-2 font-roboto text-[15px] md:font-normal md:leading-1.9 px-4 md:px-8 gap-8 mt-12 items-center max-w-4xl text-left">
               {" "}
               <div className="flex justify-center">
                 <img
@@ -252,7 +251,7 @@ const Concept = () => {
                   className="w-[300px] rounded-lg object-contain"
                 />
               </div>
-              <div className="space-y-3 text-gray-700">
+              <div className="space-y-3 text-[#333]">
                 <p>
                   Partnering with The Grand Masters 2026 Summit Series will
                   enable you to brand and promote your service expertise to a
@@ -302,13 +301,16 @@ const Concept = () => {
         {/* LUMINARIES */}
         <div className="w-full bg-white pb-16 pt-4 px-4">
           <div className="max-w-6xl mx-auto text-center">
-           <img src={icon2} className="flex justify-center h-24 mx-auto bg-white text-[#d2232a]" />
+            <img
+              src={icon2}
+              className="flex justify-center h-24 mx-auto bg-white text-[#D0252D]"
+            />
 
             <h2 className="text-3xl sm:text-4xl md:text-[50px] tracking-tighter font-roboto font-normal mt-">
               {" "}
               Past Official Messages
             </h2>
-            <p className="text-[15px] font-normal leading-[28px] text-[#8d93a0] mt-2 mb-12  ">
+            <p className="font-roboto text-[15px] font-normal leading-[28px] text-[#8d93a0] mt-2 mb-12  ">
               Messages from{" "}
               <span className="text-[#D0252D]">Various Legal Luminaries</span>
             </p>
@@ -323,7 +325,7 @@ const Concept = () => {
                   <h3 className="font-roboto text-[20px] leading-[23px] text-[#D0252D] hover:underline cursor-pointer font-normal mt-4">
                     {p.name}
                   </h3>
-                  <p className="font-roboto font-normal text-[15px]  text-gray-600 mt-2">
+                  <p className="font-roboto font-normal text-[15px] leading-7  text-[#333] mt-2">
                     {p.title}
                   </p>
                 </div>
@@ -338,7 +340,7 @@ const Concept = () => {
             {" "}
             Get Involved
           </h1>
-          <p className="my-4 font-roboto text-[15px] font-normal leading-[28px]">
+          <p className="mb-4 font-roboto text-[15px] font-normal leading-[28px]">
             All that You’d Like to Know about The Grand Masters 2026
           </p>
 

@@ -10,7 +10,7 @@ const RegisterPricing = () => {
       title: "Corporate Registrations",
       price: "₹7,000 Onwards",
       tag: "TRENDING",
-      tagColor: "bg-[#d2232a]",
+      tagColor: "bg-[#D0252D]",
       bgColor: "bg-[#C2E5DF]",
       buttonBorder: "border-gray-400",
       details: [
@@ -47,7 +47,7 @@ const RegisterPricing = () => {
       title: "The Lex Witness Annual Pass",
       price: "₹40,000 Onwards",
       tag: "MOST PREFERRED",
-      tagColor: "bg-[#d2232a]",
+      tagColor: "bg-[#D0252D]",
       bgColor: "bg-[#FFE9AE]",
       buttonBorder: "border-red-400",
       isPremium: true,
@@ -67,14 +67,14 @@ const RegisterPricing = () => {
         <div className="flex justify-center ">
           <img
             src={icon4}
-            className="text-3xl md:text-4xl h-24 text-[#d2232a]"
+            className="text-3xl md:text-4xl h-24 text-[#D0252D]"
           />
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-[50px] md:tracking-tighter font-normal leading-tight md:leading-[55px] text-gray-800 mb-2">
+        <h2 className="text-3xl sm:text-4xl md:text-[50px] md:tracking-tighter font-normal leading-tight md:leading-[55px] text-[#333] mb-2">
           {" "}
           Delegate Registrations
         </h2>
-        <p className="text-gray-600 text-sm md:text-[15px] font-normal leading-relaxed md:leading-[28px]">
+        <p className="text-[#333] text-sm md:text-[15px] font-normal leading-relaxed md:leading-[28px]">
           It's a Race Against Time. Avail Best Possible Discounts Now.
         </p>
       </div>
@@ -93,11 +93,11 @@ const RegisterPricing = () => {
               </div>
             )}
 
-            <h3 className="font-roboto text-[#d2232a] font-bold text-base md:text-[17px] tracking-tighter leading-tight mb-1 min-h-[48px] flex items-center justify-center text-center whitespace-nowrap">
+            <h3 className="font-roboto text-[#D0252D] font-bold text-base md:text-[17px] tracking-tighter leading-tight mb-1 min-h-[48px] flex items-center justify-center text-center whitespace-nowrap">
               {tier.title}
             </h3>
 
-            <div className="text-2xl md:text-[26px] font-bold font-roboto leading-tight md:leading-7.5 text-gray-800 mb-4">
+            <div className="text-2xl md:text-[26px] font-bold font-roboto leading-tight md:leading-7.5 text-[#333] mb-4">
               {tier.price}
             </div>
 
@@ -108,7 +108,7 @@ const RegisterPricing = () => {
                   className={`text-sm leading-relaxed self-center ${
                     tier.isPremium && i < 2
                       ? "font-semibold self-center"
-                      : "text-gray-700 self-center"
+                      : "text-[#333] self-center"
                   }`}
                 >
                   {line}

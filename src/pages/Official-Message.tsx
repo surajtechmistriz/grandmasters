@@ -7,7 +7,7 @@ const OfficialMessage = () => {
     <div className="min-h-screen bg-white mt-20 lg:mt-[100px]">
       {/* Header */}
       <div className="bg-[#d61f26] py-5 sm:py-6">
-        <h1 className="text-white text-center text-3xl sm:text-4xl md:text-[33px]   tracking-tighter font-normal leading-tight px-4">
+        <h1 className=" font-roboto text-white text-center text-3xl sm:text-4xl md:text-[33px]   tracking-tight font-normal leading-tight px-4">
           Official Messages
         </h1>
       </div>
@@ -16,7 +16,7 @@ const OfficialMessage = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-5 py-8 sm:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-8 lg:gap-10">
           {/* Left Content */}
-          <section className="font-roboto text-sm sm:text-[15px] leading-7 text-gray-800">
+          <section className="font-roboto text-sm sm:text-[15px] leading-7 text-[#333]">
             {/* Top Section */}
             <div className="overflow-hidden mb-6">
               <img
