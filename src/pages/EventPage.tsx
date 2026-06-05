@@ -74,7 +74,7 @@ export default function EventPage() {
             </p>
           </div>
 
-          <div className="inline-flex items-center rounded-lg bg-[#D0252D] px-4 py-2 text-sm font-semibold text-white">
+          <div className="inline-flex items-center rounded-lg bg-[#d8d8d8] px-4 py-2 text-sm font-semibold text-[#333]">
             {filteredEvents.length} Events
           </div>
         </div>

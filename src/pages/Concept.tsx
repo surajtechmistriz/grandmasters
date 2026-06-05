@@ -9,17 +9,21 @@ import img3 from "../assets/images/BS-Profile-1000-1.jpg";
 import img4 from "../assets/images/veta-217x300-1.jpg";
 import agendaImg from "../assets/images/agenda-highlights1.jpg";
 import audienceImg from "../assets/images/audience-profile1.jpg";
-import sponsorImg from "../assets/images/agenda-highlights1.jpg";
-import icon from "../assets/icons/icon3.png";
+import sponsorImg from "../assets/images/sponsor.png";
+import icon from "../assets/icons/icon3d.png";
 import icon2 from "../assets/icons/icon2.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import Counter from "../components/Counter";
 
 /* ---------------- TABS ---------------- */
 const tabs = [
-  { id: "agenda", label: "AGENDA HIGHLIGHTS", icon: <FaVolumeUp /> },
-  { id: "audience", label: "AUDIENCE PROFILE", icon: <FaUsers /> },
-  { id: "sponsor", label: "SPONSORSHIP OPPORTUNITIES", icon: <FaStar /> },
+  { id: "agenda", label: "AGENDA HIGHLIGHTS", icon: <FaVolumeUp size={16} /> },
+  { id: "audience", label: "AUDIENCE PROFILE", icon: <FaUsers size={18} /> },
+  {
+    id: "sponsor",
+    label: "SPONSORSHIP OPPORTUNITIES",
+    icon: <FaStar size={16} />,
+  },
 ];
 
 /* ---------------- STATIC DATA ---------------- */
@@ -89,10 +93,10 @@ const Concept = () => {
     >
       <div className="absolute inset-0 bg-black/20" />
 
-      <div className="relative z-10 mx-auto mt- text-center">
+      <div className="relative z-10 mx-auto  text-center">
         {/* HEADER */}
-        <div className="backdrop-blur-md bg-white shadow-xl px-4 py-8 md:p-10 flex flex-col items-center">
-          <img src={icon} className="h-24 bg-white text-[#D0252D]" />
+        <div className="backdrop-blur-md bg-white shadow-xl px-4 py-8  md:p-10 flex flex-col items-center">
+          <img src={icon} className="h-14 bg-white text-[#D0252D]" />
           <h2 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal leading-[1.1] tracking-[-0.05em] text-[#333333] break-words my-2 text-center">
             Are You A Grand Master?
           </h2>
@@ -104,7 +108,8 @@ const Concept = () => {
           </p>
 
           {/* TABS */}
-          <div className="relative flex flex-col md:flex-row justify-center gap-4 md:gap-20 mt-10 border-b border-gray-300 pb-4 w-full">
+          <div className="relative flex flex-col md:flex-row justify-center gap-4 md:gap-20 mt-10 border-b border-gray-300 pb-4 w-fit mx-auto">
+            {" "}
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -119,7 +124,6 @@ const Concept = () => {
                 {tab.label}
               </button>
             ))}
-
             {/* 🔺 TRIANGLE UNDER ACTIVE TAB */}
             {tabs.map((tab, i) =>
               active === tab.id ? (
@@ -127,7 +131,7 @@ const Concept = () => {
                   key={i}
                   className="absolute bottom-0 "
                   style={{
-                    left: `${(60 / tabs.length) * i + 180 / tabs.length / 2}%`,
+                    left: `${(100 / tabs.length) * i + 100 / tabs.length / 2}%`,
                     transform: "translateX(-50%) translateY(100%)",
                   }}
                 >
@@ -148,41 +152,69 @@ const Concept = () => {
 
           {/* AGENDA TAB */}
           {active === "agenda" && (
-            <div className="font-roboto text-[15px] md:font-normal md:leading-1.9 grid md:grid-cols-2 gap-8 mt-12 items-center text-left px-4">
-              {" "}
-              <div className="flex justify-center">
+            <div className="font-roboto -ml-20 text-[15px] max-w-5xl md:font-normal md:leading-[1.9] flex flex-col md:flex-row items-center gap-4 mt-8 text-left px-4">
+              <div className="flex justify-center shrink-0">
                 <img
                   src={agendaImg}
-                  className="w-full max-w-75 rounded-lg object-contain"
+                  className="w-full max-w-64 rounded-lg object-contain"
+                  alt="Agenda"
                 />
               </div>
-              <div className="space-y-3 text-[#333]">
+
+              <div className="flex-1   text-[#333]">
                 <p>
-                  There Are In-House Counsel and There Are Grand Masters.{" "}
-                  <span className="text-[#cd151d] font-semibold">Choose.</span>
+                  There Are In-House Counsel and There Are Grand Masters.
+                  <span className="text-[#cd151d] font-semibold"> Choose.</span>
                 </p>
 
                 <p>
-                  Do You Choose Client Delight Over Billing Delight?{" "}
+                  Do You Choose Client Delight Over the Billing Delight?
                   <span className="text-[#cd151d] font-semibold">
+                    {" "}
                     Stand Out.
                   </span>
                 </p>
 
                 <p>
-                  Have You Moved from Court Room to Board Room?{" "}
+                  Have You Moved on from Court Room to Board Room?
                   <span className="text-[#cd151d] font-semibold">
+                    {" "}
                     Differentiate.
                   </span>
                 </p>
 
-                <p className="mt-4">Power-packed sessions include:</p>
+                <p className="my-2">
+                  Here’s a Wire-frame of the Power-Packed Sessions for the
+                  Summit:
+                </p>
 
                 <ul className="space-y-2">
-                  <li># Strategic GC – Boardroom Risk</li>
-                  <li># India Inc. 3.0 – Regulatory Reset</li>
-                  <li># IP & Innovation</li>
-                  <li># Dispute Resolution</li>
+                  <li>
+                    #The Strategic GC –{" "}
+                    <span className="text-[#cd151d] font-semibold">
+                      Boardroom Risk & Leadership.
+                    </span>
+                  </li>
+                  <li>
+                    #India Inc. 3.0 –{" "}
+                    <span className="text-[#cd151d] font-semibold">
+                      Regulatory Reset
+                    </span>
+                  </li>
+                  <li>
+                    #The Intellectual You –{" "}
+                    <span className="text-[#cd151d] font-semibold">
+                      IP & Innovation
+                    </span>{" "}
+                    Frontiers
+                  </li>
+                  <li>
+                    #The New India –{" "}
+                    <span className="text-[#cd151d] font-semibold">
+                      Dispute Resolution
+                    </span>{" "}
+                    Wave
+                  </li>
                 </ul>
               </div>
             </div>
@@ -190,7 +222,7 @@ const Concept = () => {
 
           {/* AUDIENCE TAB */}
           {active === "audience" && (
-            <div className="mt-12 flex flex-col-reverse font-roboto text-[15px] md:font-normal md:leading-1.9 md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
+            <div className="mt-8 flex flex-col-reverse font-roboto text-[15px] md:font-normal md:leading-1.9 md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
               {" "}
               {/* TEXT SECTION */}
               <div className="space-y-4 text-[#333] flex-1">
@@ -217,7 +249,7 @@ const Concept = () => {
 
                 <p className="leading-relaxed">
                   Add. Chief Manager – Legal, Additional Manager – Legal, IP
-                  Attorney, AGM – Legal, AGM Legal & Asst. Co. Sec., APAC Legal
+                  Attorney, AGM – Legal AGM Legal & Asst. Co. Sec., APAC Legal
                   Counsel, Assistant Director, Assistant General Counsel
                   Associate, Associate Director – Legal & Compliance, Associate
                   Director Human Resources
@@ -231,7 +263,7 @@ const Concept = () => {
                 </button>
               </div>
               {/* IMAGE SECTION */}
-              <div className="w-full md:w-75 shrink-0">
+              <div className="w-full md:w-85 shrink-0">
                 {" "}
                 <img
                   src={audienceImg}
@@ -243,31 +275,72 @@ const Concept = () => {
 
           {/* SPONSOR TAB */}
           {active === "sponsor" && (
-            <div className="grid md:grid-cols-2 font-roboto text-[15px] md:font-normal md:leading-1.9 px-4 md:px-8 gap-8 mt-12 items-center max-w-4xl text-left">
+            <div className="grid md:grid-cols-[300px_1fr] font-roboto text-[15px] md:font-normal md:leading-[1.9] px-4 md:px-8 gap-4 mt-12 items-center max-w-4xl text-left">
               {" "}
-              <div className="flex justify-center">
+              <div className="flex justify-start">
                 <img
                   src={sponsorImg}
-                  className="w-[300px] rounded-lg object-contain"
+                  className="w-[380px] rounded-lg object-contain"
+                  alt="Sponsor"
                 />
               </div>
-              <div className="space-y-3 text-[#333]">
-                <p>
-                  Partnering with The Grand Masters 2026 Summit Series will
-                  enable you to brand and promote your service expertise to a
-                  unique and interesting set of senior in house counsel. Summit
-                  attendees include senior professionals interested in updating
-                  their knowledge and involved in legal and commercial elements
-                  of complex business deals. We have a set of standard branding
-                  solutions that we can customize based on your specific needs.
-                  <span className="font-bold">For more details, contact:</span>
+              <div className=" text-[#333]">
+                <p className="leading-7">
+                  Partnering with{" "}
+                  <span className="text-[#D0252D] font-bold">
+                    The Grand Masters 2026 Summit Series
+                  </span>{" "}
+                  Series will enable you to brand and promote your service
+                  expertise to a unique and interesting set of senior in-house
+                  counsel. Summit attendees include senior professionals
+                  interested in updating their knowledge and involved in legal
+                  and commercial elements of complex business deals. We have a
+                  set of standard branding solutions that we can customize based
+                  on your specific needs.
                 </p>
 
-                <p>
-                  Bhupinder Kaur | +91-9654155065 | bhupinder@witnesslive.in
+                <p className="font-semibold text-[#333]">
+                  For more details, contact:
                 </p>
-                <p>
-                  Bhupinder Kaur | +91-9654155065 | bhupinder@witnesslive.in
+
+                <p className="whitespace-nowrap mt-2">
+                  <span className="text-[#333] font-normal">
+                    Bhupinder Kaur
+                  </span>{" "}
+                  |{" "}
+                  <a
+                    href="tel:+919654155065"
+                    className="text-[#cd151d] hover:underline"
+                  >
+                    +91-9654155065
+                  </a>{" "}
+                  |{" "}
+                  <a
+                    href="mailto:bhupinder@witnesslive.in"
+                    className="text-[#cd151d] hover:underline"
+                  >
+                    bhupinder@witnesslive.in
+                  </a>
+                </p>
+
+                <p className="whitespace-nowrap">
+                  <span className="text-[#333] font-normal">
+                    Neelima Maheshwari
+                  </span>{" "}
+                  |{" "}
+                  <a
+                    href="tel:+918800841600"
+                    className="text-[#cd151d] hover:underline"
+                  >
+                    +91-8800841600
+                  </a>{" "}
+                  |{" "}
+                  <a
+                    href="mailto:neelima.maheshwari@witnesslive.in"
+                    className="text-[#cd151d] hover:underline"
+                  >
+                    neelima.maheshwari@witnesslive.in
+                  </a>
                 </p>
               </div>
             </div>

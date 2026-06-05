@@ -19,23 +19,28 @@ const AboutUs = () => {
             <h2 className="text-[#333] text-[15px] font-bold leading-7">
               Why Lex <span className="text-[#d12229]">Witness?</span>
             </h2>
-
-            <p className="mt-2 text-[15px] leading-7 text-[#333]">
-              The Indian legal universe has close to 5 million individuals. This
-              represents highest number in the world who, directly or
-              indirectly, are a part of it. Lex Witness is a high quality
-              monthly magazine with the power of fresh and original content that
-              deals exclusively with subjects on legality. Some of India’s
-              top-notch practitioners and experts contribute in Lex Witness on
-              subjects relevant to all stakeholders in this profession. Lex
-              Witness, ever since its inception in 2009, has become India’s most
-              credible platform for the legal luminaries here to opine, comment
-              and share their views. With an interesting blend of opinion
-              pieces, commentary, reportage, analysis, interviews and movements,
-              Lex Witness is for the entire fraternity of In House and External
-              Counsel besides key decision makers, luminaries, experts, policy
-              makers, bureaucracy and the industry captains in India.
-            </p>
+            <div className="mt-2 text-[15px] leading-7 text-[#333]">
+              <p className="mb-3">
+                The Indian legal universe has close to 5 million individuals.
+                This represents highest number in the world who, directly or
+                indirectly, are a part of it. Lex Witness is a high quality
+                monthly magazine with the power of fresh and original content
+                that deals exclusively with subjects on legality. Some of
+                India’s top-notch practitioners and experts contribute in Lex
+                Witness on subjects relevant to all stakeholders in this
+                profession.
+              </p>
+              <p>
+                Lex Witness, ever since its inception in 2009, has become
+                India’s most credible platform for the legal luminaries here to
+                opine, comment and share their views. With an interesting blend
+                of opinion pieces, commentary, reportage, analysis, interviews
+                and movements, Lex Witness is for the entire fraternity of In
+                House and External Counsel besides key decision makers,
+                luminaries, experts, policy makers, bureaucracy and the industry
+                captains in India.
+              </p>
+            </div>
 
             <h2 className="font-bold text-[#333] text-[15px] mt-6">
               A Must Read
