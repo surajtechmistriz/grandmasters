@@ -19,12 +19,19 @@ export default function EventCard({ event }: Props) {
           </span>
 
           <span
-            className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${
+            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${
               event.status === "Live"
                 ? "bg-green-100 text-green-700"
                 : "bg-blue-100 text-blue-700"
             }`}
           >
+            {event.status === "Live" && (
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+              </span>
+            )}
+
             {event.status}
           </span>
         </div>
