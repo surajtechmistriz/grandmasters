@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import img from "../assets/images/veta-217x300-1.jpg";
+import img from "../assets/images/veta.jpg";
 import { TbBrandLinkedinFilled } from "react-icons/tb";
 import { LuNotepadText } from "react-icons/lu";
 import bgImg from "../assets/images/chess.jpg";
@@ -146,11 +146,13 @@ const SpeakersSection = () => {
           {" "}
           {filteredSpeakers.map((speaker, i) => (
             <div key={i} className="text-center p-4  transition">
-              <img
-                src={speaker.image}
-                alt={speaker.name}
-                className="w-40 h-40 sm:w-48 sm:h-48 md:w-full md:h-auto mx-auto rounded-full object-cover"
-              />
+              <div className="w-50 h-50 mx-auto rounded-full overflow-hidden border border-gray-200">
+                <img
+                  src={speaker.image}
+                  alt={speaker.name}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
 
               <h3 className="font-roboto mt-4 font-bold  leading-4.5 text-sm md:text-[15px] text-[#D0252D] tracking-wide">
                 {speaker.name}

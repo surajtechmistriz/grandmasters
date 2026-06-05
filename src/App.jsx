@@ -14,6 +14,7 @@ import Cart from "./components/Cart";
 import SummitSecretariat from "./pages/SummitSecretariat";
 import CheckoutPage from "./pages/CheckoutPage";
 import EventPage from "./pages/EventPage";
+import NotFound from "./components/NotFound";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -58,11 +59,12 @@ function App() {
         <Route path="/past-event-detail" element={<EditionOverview />} />
         <Route path="/audience-profile" element={<AudienceProfile />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/official-message" element={<OfficialMessage />} />
+        <Route path="/official-message/:id" element={<OfficialMessage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/summit-secretariat" element={<SummitSecretariat />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/events" element={<EventPage />} />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
 
       <Footer />

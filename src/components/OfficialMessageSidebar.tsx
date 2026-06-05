@@ -6,54 +6,130 @@ const messageYears = [
     year: "2025",
     messages: [
       {
+        id: "honble-justice-manmohan",
         name: "Hon'ble Justice Manmohan",
         role: "Judge",
         org: "Supreme Court of India",
       },
       {
+        id: "lalit-bhasin",
         name: "Dr. Lalit Bhasin",
         role: "President",
         org: "Society of Indian Law Firms",
       },
       {
+        id: "bansuri-swaraj",
         name: "Bansuri Swaraj",
         role: "Senior Advocate",
         org: "Supreme Court of India",
       },
       {
+        id: "veta-richardson",
         name: "Ms. Veta T. Richardson",
         role: "President & CEO, ACC",
         org: "",
       },
     ],
   },
+
   {
     year: "2024",
     messages: [
       {
-        name: "Justice Rajiv Shakdher",
+        id: "honble-justice-manmohan",
+        name: "Hon'ble Justice Manmohan",
         role: "Judge",
-        org: "Delhi High Court",
+        org: "Supreme Court of India",
       },
       {
-        name: "Dr. Abhishek Manu Singhvi",
+        id: "lalit-bhasin",
+        name: "Dr. Lalit Bhasin",
+        role: "President",
+        org: "Society of Indian Law Firms",
+      },
+      {
+        id: "bansuri-swaraj",
+        name: "Bansuri Swaraj",
         role: "Senior Advocate",
         org: "Supreme Court of India",
       },
+      {
+        id: "veta-richardson",
+        name: "Ms. Veta T. Richardson",
+        role: "President & CEO, ACC",
+        org: "",
+      },
     ],
   },
+
   {
     year: "2023",
     messages: [
       {
-        name: "Justice Indu Malhotra",
-        role: "Former Judge",
+        id: "honble-justice-manmohan",
+        name: "Hon'ble Justice Manmohan",
+        role: "Judge",
         org: "Supreme Court of India",
       },
       {
-        name: "Harish Salve",
-        role: "Senior Advocate",
-        org: "Supreme Court of India",
+        id: "no-data",
+        name: "Dr. P.S.N Prasad",
+        role: "Member (J)",
+        org: "NCLT Bench – New Delhi",
+      },
+      {
+        id: "lalit-bhasin",
+        name: "Dr. Lalit Bhasin",
+        role: "President",
+        org: "Society of Indian Law Firms",
+      },
+    ],
+  },
+
+  {
+    year: "2020",
+    messages: [
+      {
+        id: "no-data",
+        name: "Sameer Chugh",
+        role: "Group GC,Bharti Group",
+        org: "Summit Chair, New Delhi Edition",
+      },
+      {
+        id: "no-data",
+        name: "Ms. Debolina Partap",
+        role: "Group GC, Wockhardt Group",
+        org: "Summit Chair, Mumbai Edition",
+      },
+    ],
+  },
+
+  {
+    year: "2019",
+    messages: [
+      {
+        id: "veta-richardson",
+        name: "Ms. Veta T. Richardson",
+        role: "President & CEO, ACC",
+        org: "",
+      },
+      {
+        id: "no-data",
+        name: "Ms. Manjaree Chowdhary",
+        role: "General Counsel, Maruti Suzuki",
+        org: "Summit Chair, New Delhi Edition",
+      },
+      {
+        id: "no-data",
+        name: "Ms. Debolina Partap",
+        role: "Group GC, Wockhardt Group",
+        org: "Summit Chair, Mumbai Edition",
+      },
+      {
+        id: "no-data",
+        name: "Mr. Thirumalesh Gangappa",
+        role: "Country Counsel, Google India",
+        org: "Summit Chair, Bengaluru Edition",
       },
     ],
   },
@@ -90,8 +166,8 @@ const OfficialMessagesSidebar = () => {
                 )}
 
                 <button
-                  onClick={() => navigate("/official-message")}
-                  className="mt-1 text-sm sm:text-[15px] text-[#d61f26] hover:underline cursor-pointer"
+                  onClick={() => navigate(`/official-message/${item.id}`)}
+                  className="mt-1 text-sm text-[#d61f26] hover:underline cursor-pointer"
                 >
                   Read More...
                 </button>

@@ -3,10 +3,10 @@ import { FaVolumeUp, FaUsers, FaStar, FaMicrophone } from "react-icons/fa";
 import { HiUserGroup } from "react-icons/hi";
 
 import bgImg from "../assets/images/chess.jpg";
-import img1 from "../assets/images/Mr-Justice-Manmohan-1.jpg";
+import img1 from "../assets/images/Mr-Justice-Manmohan.jpg";
 import img2 from "../assets/images/lalit-bhasin-1.jpg";
-import img3 from "../assets/images/BS-Profile-1000-1.jpg";
-import img4 from "../assets/images/veta-217x300-1.jpg";
+import img3 from "../assets/images/BS-Profile.jpg";
+import img4 from "../assets/images/veta.jpg";
 import agendaImg from "../assets/images/agenda-highlights1.jpg";
 import audienceImg from "../assets/images/audience-profile1.jpg";
 import sponsorImg from "../assets/images/sponsor.png";
