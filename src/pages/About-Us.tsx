@@ -1,5 +1,6 @@
 import React from "react";
 import OfficialMessages from "../components/OfficialMessageSidebar";
+import SponsorsCarousel from "../components/SponsorsCarousel";
 
 const AboutUs = () => {
   return (
@@ -13,7 +14,7 @@ const AboutUs = () => {
 
       {/* Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 md:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-8 lg:gap-10">
           {/* Left Content */}
           <div>
             <h2 className="text-[#333] text-[15px] font-bold leading-7">
@@ -76,6 +77,7 @@ const AboutUs = () => {
         <h1 className="text-2xl sm:text-3xl md:text-4xl text-center my-10 md:my-16">
           Sponsors & Partners
         </h1>
+                <SponsorsCarousel />
       </div>
     </div>
   );

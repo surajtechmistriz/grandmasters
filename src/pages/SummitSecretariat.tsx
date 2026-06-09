@@ -3,6 +3,7 @@ import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 
 import OfficialMessages from "../components/OfficialMessageSidebar";
 import img from "../assets/images/logo_saikrishna.jpg";
+import SponsorsCarousel from "../components/SponsorsCarousel";
 
 const summitData = [
   { year: "2024", title: "Lex Witness Summits 2024" },
@@ -36,7 +37,7 @@ const SummitSecretariat = () => {
   return (
     <div className="min-h-screen bg-white mt-20 lg:mt-[100px]">
       {/* Header */}
-      <div className="bg-[#d61f26] py-5 sm:py-8">
+      <div className="bg-[#d61f26] py-5 sm:py-">
         <h1 className="text-white text-center text-3xl tracking-[-0.2rem] sm:text-4xl md:text-5xl font-normal leading-tight px-4">
           The Lex Witness Summit Secretariat
         </h1>
@@ -44,7 +45,7 @@ const SummitSecretariat = () => {
 
       {/* Content */}
       <div className="max-w-6xl mx-auto px-4 md:px-15 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[4fr_1fr] gap-8 lg:gap-10">
           {/* Left Section */}
           <div>
             <p className="font-roboto text-sm sm:text-[15px] leading-7 text-[#333] font-normal">
@@ -54,27 +55,22 @@ const SummitSecretariat = () => {
               the space of the magazine as well as the pedigree of summits which
               it has been organising ever since its inception that industry
               veterans bring into limelight various undercurrents of law in
-              their respective chambers and corporate offices.
+              their respective chambers and corporate offices!
               <br />
               <br />
               A major development here at the action packed Summit Secretariat
               is the extension of these services to various organizations who
               have started entrusting Witness with the responsibility to create,
               execute and conclude Summit Concepts to meet their respective
-              purposes.
-              <br />
-              <br />
-              Witness through its already existing ecosystem of summit
+              purposes. Witness through its already existing ecosystem of summit
               management team is all set to provide these services with an added
               expertise of quality content through the magazine presence. You
-              have an idea and we have a summit to showcase it.
-              <br />
-              <br />
-              For more details on our Summit Secretariat services please contact
-              us.
+              have an idea and we have a summit to showcase it! For more details
+              on our Summit Secretariat services please contact us. purposes.
+          
             </p>
 
-            <p className="mt-8 mb-6 text-sm sm:text-base font-bold text-[#333]">
+            <p className="mt-4 mb-6 text-sm sm:text-base font-bold text-[#333]">
               Meanwhile here's a gist of The Lex{" "}
               <span className="text-[#D0252D]">Witness</span> Summits so far;
             </p>
@@ -162,6 +158,7 @@ const SummitSecretariat = () => {
         <h1 className="text-2xl tracking-tighter sm:text-3xl md:text-4xl text-center my-10 sm:my-16">
           Sponsors & Partners
         </h1>
+        <SponsorsCarousel />
       </div>
     </div>
   );

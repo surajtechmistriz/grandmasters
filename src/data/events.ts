@@ -68,7 +68,7 @@ export const events: EventItem[] = [
   },
   {
     id: 6,
-    tag: "Grand Masters",
+    tag: "TGM",
     title: "The 12th Annual Grand Masters 2026 Series",
     description:
       "An exclusive forum bringing together India's most influential legal leaders and general counsel.",

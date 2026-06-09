@@ -4,6 +4,7 @@ import img from "../assets/images/lalit-bhasin-1.jpg";
 import { useParams } from "react-router-dom";
 import { officialMessages } from "../data/officialMessages";
 import NotFound from "../components/NotFound";
+import SponsorsCarousel from "../components/SponsorsCarousel";
 
 const OfficialMessage = () => {
   const { id } = useParams();
@@ -70,6 +71,7 @@ const OfficialMessage = () => {
         <h1 className="text-2xl sm:text-3xl md:text-4xl text-center my-10 sm:my-16">
           Sponsors & Partners
         </h1>
+                <SponsorsCarousel />
       </div>
     </div>
   );

@@ -14,9 +14,14 @@ export default function EventCard({ event }: Props) {
       <div className="flex flex-1 flex-col p-5">
         {/* Header */}
         <div className="flex items-start justify-between gap-3">
-          <span className="rounded-full bg-[#D0252D]/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#D0252D]">
+          <a
+            href={event.website}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-[#D0252D]/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#D0252D]"
+          >
             {event.tag}
-          </span>
+          </a>
 
           <span
             className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${
@@ -37,9 +42,11 @@ export default function EventCard({ event }: Props) {
         </div>
 
         {/* Title */}
-        <h2 className="mt-4 text-lg font-bold leading-snug text-[#333] transition-colors duration-200 group-hover:text-[#D0252D]">
-          {event.title}
-        </h2>
+        <a href={event.website} target="_blank" rel="noreferrer">
+          <h2 className="mt-4 text-lg font-bold leading-snug text-[#333] transition-colors duration-200 group-hover:text-[#D0252D]">
+            {event.title}
+          </h2>
+        </a>
 
         {/* Divider */}
         <div className="mt-4 h-px bg-[#F0F0F0]" />
