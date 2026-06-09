@@ -1,64 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import icon4 from "../assets/icons/icon4.png";
+import { getPlans } from "../services/APIs/plans";
 
 const RegisterPricing = () => {
   const navigate = useNavigate();
 
-  const tiers = [
-    {
-      title: "Corporate Registrations",
-      price: "₹7,000 Onwards",
-      tag: "TRENDING",
-      tagColor: "bg-[#D0252D]",
-      bgColor: "bg-[#C2E5DF]",
-      buttonBorder: "border-gray-400",
-      details: [
-        "1 Seat – INR 10000 per Seat",
-        "2 Seats – INR 7500 per Seat",
-        "3 Seats – INR 7000 per Seat",
-      ],
-    },
-    {
-      title: "Law Firms & Solutions Providers",
-      price: "₹9,000 Onwards",
-      tag: null,
-      bgColor: "bg-[#F3D4F3]",
-      buttonBorder: "border-pink-400",
-      details: [
-        "1 Seat – INR 12000 per Seat",
-        "2 Seats – INR 10000 per Seat",
-        "3 Seats – INR 9000 per Seat",
-      ],
-    },
-    {
-      title: "International Delegates",
-      price: "₹20,000 Onwards",
-      tag: null,
-      bgColor: "bg-[#FFCAA4]",
-      buttonBorder: "border-orange-400",
-      details: [
-        "1 Seat – INR 30000 per Seat",
-        "2 Seats – INR 25000 per Seat",
-        "3 Seats – INR 20000 per Seat",
-      ],
-    },
-    {
-      title: "The Lex Witness Annual Pass",
-      price: "₹40,000 Onwards",
-      tag: "MOST PREFERRED",
-      tagColor: "bg-[#D0252D]",
-      bgColor: "bg-[#FFE9AE]",
-      buttonBorder: "border-red-400",
-      isPremium: true,
-      details: [
-        "Access to all Summits",
-        "Transferable at any Time",
-        "1 Pass: INR 60000 per pass",
-        "2 Passes: INR 50000 per pass",
-        "3 Passes: INR 40000 per pass",
-      ],
-    },
+  const [plan, setPlan] = useState<any[]>([]);
+
+  useEffect(() => {
+    const getPlan = async () => {
+      try {
+        const res = await getPlans();
+        console.log("Plans", res);
+        setPlan(res.data);
+      } catch (error: any) {
+        console.error("API Error:", error.response);
+      }
+    };
+
+    getPlan();
+  }, []);
+
+  const cardColors = [
+    "bg-[#C2E5DF]", // Corporate Registrations
+    "bg-[#F3D4F3]", // Law Firms
+    "bg-[#FFCAA4]", // International
+    "bg-[#FFE9AE]", // Annual Pass
   ];
 
   return (
@@ -79,42 +47,34 @@ const RegisterPricing = () => {
         </p>
       </div>
 
-      <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-        {tiers.map((tier, index) => (
+      <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+        {plan.map((tier: any, index: number) => (
           <div
-            key={index}
-            className={`relative flex flex-col pt-8 pb-5 px-4 md:px-6 rounded-xl transition-transform  shadow-[6px_6px_10px_rgba(0,0,0,0.26)] ${tier.bgColor}`}
+            key={tier.id}
+            className={`relative flex flex-col pt-8 pb-5 px-4 md:px-6 rounded-xl transition-transform shadow-[6px_6px_10px_rgba(0,0,0,0.26)] ${
+              cardColors[index % cardColors.length]
+            }`}
           >
             {tier.tag && (
               <div
-                className={`absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 rounded text-white text-xs md:text-sm font-medium tracking-wide ${tier.tagColor}`}
+                className={`absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 rounded text-white text-xs md:text-sm font-medium tracking-wide bg-[#D0252D] `}
               >
                 {tier.tag}
               </div>
             )}
 
-            <h3 className="font-roboto text-[#D0252D] font-bold text-base md:text-[17px] tracking-tighter leading-tight mb-1 min-h-[48px] flex items-center justify-center text-center whitespace-nowrap">
+            <h3 className="font-roboto text-[#D0252D] font-bold -mt-3 text-base md:text-[17px] tracking-tighter leading-tight min-h-[48px] flex items-center justify-center text-center whitespace-nowrap">
               {tier.title}
             </h3>
 
             <div className="text-2xl md:text-[26px] font-bold font-roboto leading-tight md:leading-7.5 text-[#333] mb-4">
-              {tier.price}
+              ₹{Number(tier.starting_price).toLocaleString()} Onwards
             </div>
 
-            <div className="font-roboto flex-grow space-y-2 mb-8 items-center self-center">
-              {tier.details.map((line, i) => (
-                <p
-                  key={i}
-                  className={`text-sm leading-relaxed self-center ${
-                    tier.isPremium && i < 2
-                      ? "font-semibold self-center"
-                      : "text-[#333] self-center"
-                  }`}
-                >
-                  {line}
-                </p>
-              ))}
-            </div>
+            <div
+              className="font-roboto flex-grow mb-8 text-center text-sm leading-relaxed space-y-2"
+              dangerouslySetInnerHTML={{ __html: tier.description }}
+            />
 
             <button
               onClick={() => navigate("/cart")}
