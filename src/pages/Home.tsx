@@ -12,6 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { getEvents } from "../services/APIs/hero";
 
+
 const socials = [
   { icon: FaFacebookF, color: "#1877F2" },
   { icon: FaLinkedinIn, color: "#0A66C2" },
@@ -20,23 +21,25 @@ const socials = [
 ];
 
 const Home = () => {
-  const [events, setEvents] = useState<any[]>([]);
 
-  useEffect(() => {
-    const getRes = async () => {
-      try {
-        const res = await getEvents();
+const [events, setEvents] = useState<any[]>([]);
 
-        console.log("Events:", res);
+useEffect(() => {
+  const getRes = async () => {
+    try {
+      const res = await getEvents();
 
-        setEvents(res?.data || []);
-      } catch (error) {
-        console.error("Error fetching events:", error);
-      }
-    };
+      console.log("Events:", res);
 
-    getRes();
-  }, []);
+      setEvents(res?.data || []);
+    } catch (error) {
+      console.error("Error fetching events:", error);
+    }
+  };
+
+  getRes();
+}, []);
+
 
   return (
     <section
@@ -80,7 +83,9 @@ const Home = () => {
           </p>
 
           {/* Events */}
-          <div className="font-roboto flex flex-col gap-2 text-sm sm:text-base md:text-lg font-semibold text-[#333] mb-2">
+
+              {/* dynamic data  */}
+           {/* <div className="font-roboto flex flex-col gap-2 text-sm sm:text-base md:text-lg font-semibold text-[#333] mb-2">
             {events.map((event) => (
               <div
                 key={event.id}
@@ -105,6 +110,30 @@ const Home = () => {
                 </span>
               </div>
             ))}
+          </div> */}
+
+          <div className="font-roboto flex flex-col gap-1 text-sm sm:text-base md:text-lg font-semibold text-[#333] mb-2">
+            <div className="flex flex-wrap items-center justify-center  tracking-[4px] gap-2">
+              <FaRegCalendarAlt className="text-[#D0252D]" />
+              <span>17th July 2026, NOVOTEL HICC Complex,</span>
+              <FaMapMarkerAlt className="text-[#D0252D]" />
+              <span>Hyderabad</span>
+
+              <span className="text-[#D0252D] animate-pulse text-xs md:text-sm">
+                LIVE NOW
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center tracking-[4px]  gap-2">
+              <FaRegCalendarAlt className="text-[#D0252D]" />
+              <span>24th July 2026, ITC Narmada,</span>
+              <FaMapMarkerAlt className="text-[#D0252D]" />
+              <span>Ahmedabad</span>
+
+              <span className="text-[#D0252D] animate-pulse text-xs md:text-sm">
+                LIVE NOW
+              </span>
+            </div>
           </div>
 
           {/* Upcoming Cities */}
