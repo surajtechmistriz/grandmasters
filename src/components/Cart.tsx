@@ -1,77 +1,276 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheckCircle, FaTimes } from "react-icons/fa";
 import img from "../assets/images/lwLogo.jpg";
 import { useNavigate } from "react-router-dom";
-const Cart = () => {
-  const cartItems = [
-    {
-      id: 1,
-      name: "Law Firms & Solutions Providers",
-      price: 9000,
-      quantity: 3,
-      subtotal: 27000,
-    },
-    // {
-    //   id: 2,
-    //   name: "For Corporates",
-    //   price: 7500,
-    //   quantity: 2,
-    //   subtotal: 15000,
-    // },
-  ];
+import {
+  getCart,
+  removeItem,
+  updateCart,
+  applyCoupon,
+  removeCoupon,
+  undoRemoveItem,
+} from "../services/APIs/cart";
+import { useCart } from "../hooks/useCart";
+import { useQueryClient } from "@tanstack/react-query";
 
+const Cart = () => {
   const navigate = useNavigate();
+
+  const queryClient = useQueryClient();
+
+  const { data: cartData, refetch } = useCart();
+
+  const cartItems = cartData?.data?.items || [];
+  const cartTotal = cartData?.data || null;
+
+  // const [cartItems, setCartItems] = useState<any[]>([]);
+  // const [cartTotal, setCartTotal] = useState<any>(null);
+  const [couponCode, setCouponCode] = useState("");
+  const [updatedQuantities, setUpdatedQuantities] = useState<{
+    [key: number]: number;
+  }>({});
+  const [couponError, setCouponError] = useState("");
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [cartMessage, setCartMessage] = useState("");
+  const [showUndo, setShowUndo] = useState(false);
+  const [loadingAction, setLoadingAction] = useState<string | null>(null);
+
+  const showMessage = (msg: string) => {
+    setCartMessage(msg);
+
+    setTimeout(() => {
+      setCartMessage("");
+    }, 3000);
+  };
+
+  const showCouponError = (msg: string) => {
+    setCouponError(msg);
+
+    setTimeout(() => {
+      setCouponError("");
+    }, 5000);
+  };
+
+  // const fetchCart = async () => {
+  //   try {
+  //     const res = await getCart();
+
+  //     console.log("SUMMARY RESPONSE", res);
+  //     console.log("SUMMARY DATA", res?.data);
+  //     console.log("SUMMARY ITEMS", res?.data?.data?.items);
+  //     console.log("SUMMARY TOTAL", res?.data?.data?.total);
+
+  //     const cartData = res?.data?.data;
+
+  //     setCartItems(cartData?.items || []);
+  //     setCartTotal(cartData || null);
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchCart();
+  // }, []);
+
+  const handleApplyCoupon = async () => {
+    if (!couponCode.trim()) return;
+
+    try {
+      setCouponLoading(true);
+      setCouponError("");
+
+      await applyCoupon(couponCode);
+
+      await refetch();
+      showMessage("Coupon applied successfully.");
+      setShowUndo(false);
+    } catch (err: any) {
+      showCouponError(
+        err?.response?.data?.message ||
+          err?.response?.data?.error ||
+          "Invalid coupon code",
+      );
+    } finally {
+      setCouponLoading(false);
+    }
+  };
+
+ const handleRemoveCoupon = async () => {
+  try {
+    setCouponLoading(true);
+
+    const code = cartTotal?.coupon?.code || couponCode;
+
+    await removeCoupon(code);
+
+    setCouponCode("");
+
+    await refetch();
+
+    showMessage("Coupon removed successfully.");
+    setShowUndo(false);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setCouponLoading(false);
+  }
+};
+
+  const handleRemove = async (item: any) => {
+    try {
+      setLoadingAction("remove-" + item.plan_id);
+      // store removed item FIRST
+      setShowUndo(true);
+
+      await removeItem(item.plan_id);
+      await refetch();
+      showMessage(`"${item.plan_name}" removed from cart.`);
+
+      // auto clear undo after 5–7 sec
+      // setTimeout(() => {
+      //   setShowUndo(false);
+      // }, 15000);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingAction(null);
+    }
+  };
+
+  const handleUndoRemove = async () => {
+    try {
+      console.log("  [UNDO CLICKED] Starting undo process");
+
+      const res = await undoRemoveItem();
+
+      console.log("  [UNDO COMPLETED] Response:");
+      console.log(res);
+
+      await refetch();
+      showMessage("Cart restored successfully.");
+      setShowUndo(false);
+    } catch (error) {
+      console.error(" [UNDO FAILED]:", error);
+    }
+  };
+
+  const handleUpdateCart = async () => {
+    try {
+      setLoadingAction("update");
+
+      for (const item of cartItems) {
+        const qty = updatedQuantities[item.plan_id] ?? item.quantity;
+
+        if (qty !== item.quantity) {
+          await updateCart(item.plan_id, qty);
+        }
+      }
+
+      await refetch();
+      setUpdatedQuantities({});
+      showMessage("Cart updated successfully.");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingAction(null);
+    }
+  };
+  const hasQuantityChanges = cartItems.some(
+    (item) =>
+      (updatedQuantities[item.plan_id] ?? item.quantity) !== item.quantity,
+  );
+
+  const MiniLoader = () => (
+    <div className="w-4 h-4 border-2 border-[#D12229] border-t-transparent rounded-full animate-spin" />
+  );
 
   return (
     <div className="max-w-6xl mx-auto p-4 font-roboto text-[#333] my-[120px]">
       {/* Success Alert */}
-      <div className="flex items-center gap-3 border border-black p-4 mb-8 bg-white rounded-sm">
+      <div className="flex items-center gap-3 p-4 mb-8 bg-[#f6f5f8] rounded-sm">
         <FaCheckCircle className="text-[#D0252D] text-lg" />
+
         <p className="text-[15px]">
-          "For Corporates" has been added to your cart.
+          {cartMessage ||
+            (cartItems.length > 0
+              ? `"${cartItems[0]?.plan_name}" has been added to your cart.`
+              : "Your cart is empty.")}
+
+          {showUndo && (
+            <button
+              onClick={handleUndoRemove}
+              className="ml-2 text-[#D0252D] underline font-medium cursor-pointer"
+            >
+              Undo?
+            </button>
+          )}
         </p>
       </div>
 
       {/* Cart Table */}
+
       <div className="overflow-x-auto border border-gray-200 rounded-sm">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="bg-[#D0252D] text-white uppercase text-[13px] font-bold tracking-wider">
-              <th className="p-3 w-16"></th>
-              <th className="p-3 w-20"></th>
-              <th className="p-3">Product</th>
-              <th className="p-3">Price</th>
-              <th className="p-3">Quantity</th>
-              <th className="p-3">Subtotal</th>
+            <tr className="bg-[#D0252D] border text-white">
+              <th className="p-3 "></th>
+              <th className="p-3  "></th>
+              <th className="p-3   ">Product</th>
+              {/* <th className="p-3 border border-[#d3ced2] ">Price</th> */}
+              <th className="p-3 border border-[#d3ced2]  ">Price</th>
+              <th className="p-3 border border-[#d3ced2] ">Quantity</th>
+              <th className="p-3 border border-[#d3ced2]  ">Subtotal</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
             {cartItems.map((item) => (
-              <tr key={item.id} className="text-[15px]">
-                <td className="p-4 text-center">
-                  <FaTimes className="text-[#D0252D] cursor-pointer mx-auto " />
+              <tr key={item.id}>
+                <td className="p-4 border border-[#d3ced2]">
+                  <button
+                    onClick={() => handleRemove(item)}
+                    disabled={loadingAction === "remove-" + item.plan_id}
+                    className="flex items-center justify-center mx-auto"
+                  >
+                    {loadingAction === "remove-" + item.plan_id ? (
+                      <MiniLoader />
+                    ) : (
+                      <FaTimes
+                        size={20}
+                        className="text-[#D0252D] cursor-pointer hover:bg-[#D0252D] hover:text-white rounded-full p-1"
+                      />
+                    )}
+                  </button>
                 </td>
-                <td className="p-4 ">
-                  {/* <div className="w-10 h-10 bg-[#D12229] flex items-center justify-center text-white font-bold text-xl rounded-sm italic">
-                    W
-                  </div> */}
-                  <img src={img} alt="" className="cursor-pointer" />
+
+                <td className="p-4 border border-[#d3ced2]">
+                  <img src={img} alt={item.plan_name} className="w-12" />
                 </td>
-                <td className="p-4 text-[#D0252D] hover:underline cursor-pointer">
-                  {item.name}
+
+                <td className="p-4 text-[#D0252D]">{item.plan_name}</td>
+
+                <td className="p-4 border border-[#d3ced2]">
+                  ₹{Number(item.price).toLocaleString("en-IN")}
                 </td>
-                <td className="p-4">
-                  ₹{item.price.toLocaleString("en-IN")}.00
-                </td>
-                <td className="p-4">
+
+                <td className="p-4 border border-[#d3ced2]">
                   <input
                     type="number"
-                    defaultValue={item.quantity}
-                    className="w-12 border border-gray-200 p-2 text-center focus:outline-none cursor-pointer"
+                    min="1"
+                    value={updatedQuantities[item.plan_id] ?? item.quantity}
+                    onChange={(e) =>
+                      setUpdatedQuantities((prev) => ({
+                        ...prev,
+                        [item.plan_id]: Number(e.target.value),
+                      }))
+                    }
+                    className="w-12 h-10 border border-[#d3ced2] text-center"
                   />
                 </td>
-                <td className="p-4">
-                  ₹{item.subtotal.toLocaleString("en-IN")}.00
+
+                <td className="p-4 border border-[#d3ced2]">
+                  ₹{Number(item.price * item.quantity).toLocaleString("en-IN")}
                 </td>
               </tr>
             ))}
@@ -80,18 +279,45 @@ const Cart = () => {
 
         {/* Coupon Section */}
         <div className="p-4 flex flex-wrap justify-between items-center bg-white border-t border-gray-200 gap-4 rounded-sm">
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Coupon code"
-              className="border border-gray-300 rounded-sm px-4 py-2 w-32 md:w-48 text-sm focus:outline-none focus:border-red-500"
-            />
-            <button className="bg-[#D12229] rounded-sm text-white px-6 py-2 text-[13px] font-bold uppercase tracking-tight  transition cursor-pointer">
-              Apply coupon
-            </button>
+          <div className="flex flex-col">
+            <div className="flex gap-2">
+              <input
+                value={couponCode}
+                onChange={(e) => setCouponCode(e.target.value)}
+                type="text"
+                placeholder="Coupon code"
+                className="border border-gray-300 rounded-sm px-4 py-2 w-32 md:w-48 text-sm"
+              />
+
+              <button
+                onClick={handleApplyCoupon}
+                className="bg-[#D12229] rounded-sm text-white px-6 py-2 text-[13px] font-bold uppercase cursor-pointer"
+              >
+                {couponLoading ? "Applying..." : "Apply coupon"}
+              </button>
+            </div>
+
+            {couponError && (
+              <p className="text-[#D0252D] text-xs mt-1">{couponError}</p>
+            )}
           </div>
-          <button className="bg-gray-100 text-gray-400 px-6 py-2 text-[13px] font-bold uppercase tracking-tight rounded-sm cursor-not-allowed">
-            Update cart
+          <button
+            onClick={handleUpdateCart}
+            disabled={loadingAction === "update" || !hasQuantityChanges}
+            className={`px-3 py-2 text-[13px] font-bold  rounded-sm transition
+            ${
+              hasQuantityChanges
+                ? "bg-[#dad7de] text-[#515151] cursor-pointer"
+                : "bg-[#E9E6ED] text-[#9e9e9e] cursor-not-allowed"
+            }`}
+          >
+            {loadingAction === "update" ? (
+              <span className="flex items-center gap-2">
+                <MiniLoader /> Updating...
+              </span>
+            ) : (
+              "Update cart"
+            )}
           </button>
         </div>
       </div>
@@ -102,19 +328,55 @@ const Cart = () => {
           <h2 className="text-[#D12229] text-xl font-bold uppercase mb-2 ">
             Cart totals
           </h2>
-          <table className="w-full border border-gray-200 text-[14px]">
+          <table className="w-full border border-gray-200 rounded-sm text-[14px]">
             <tbody>
               <tr className="border-b border-gray-200">
-                <th className="p-2 text-left font-bold w-1/3">Subtotal</th>
-                <td className="p-3 text-[#333]">₹42,000.00</td>
+                <th className="px-3 py-2 text-left font-bold w-1/3">
+                  Subtotal
+                </th>
+                <td className="px-3 py-2 text-[14px]">
+                  ₹{Number(cartTotal?.subtotal || 0).toLocaleString("en-IN")}
+                </td>
               </tr>
+
+             {cartTotal?.coupon && (
+  <tr className="border-b border-gray-200">
+    <th className="px-3 py-2 text-left font-bold">
+      Coupon: {cartTotal.coupon.code}
+    </th>
+
+    <td className="px-3 py-2">
+      <div className="flex items-center gap-2">
+        <span>
+          -₹{Number(cartTotal.discount || 0).toLocaleString("en-IN")}
+        </span>
+
+        <button
+          onClick={handleRemoveCoupon}
+          disabled={couponLoading}
+          className="text-[#D12229]  hover:underline min-w-[70px] inline-flex items-center justify-center cursor-pointer"
+        >
+          {couponLoading ? <MiniLoader /> : "[Remove]"}
+        </button>
+      </div>
+    </td>
+  </tr>
+)}
+
               <tr className="border-b border-gray-200">
-                <th className="p-3 text-left font-bold">GST ( 18% )</th>
-                <td className="p-3 text-[#333]">₹7,560.00</td>
+                <th className="px-3 py-2 text-left font-bold">
+                  GST ({cartTotal?.gst_percent || 18}%)
+                </th>
+                <td className="px-3 py-2">
+                  ₹{Number(cartTotal?.gst_amount || 0).toLocaleString("en-IN")}
+                </td>
               </tr>
+
               <tr>
-                <th className="p-3 text-left font-bold">Total</th>
-                <td className="p-3 font-bold text-[16px]">₹49,560.00</td>
+                <th className="px-3 py-2 text-left font-bold">Total</th>
+                <td className="px-3 py-2 font-bold text-[16px]">
+                  ₹{Number(cartTotal?.total || 0).toLocaleString("en-IN")}
+                </td>
               </tr>
             </tbody>
           </table>

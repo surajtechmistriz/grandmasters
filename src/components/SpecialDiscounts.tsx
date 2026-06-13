@@ -1,5 +1,3 @@
-import React from "react";
-import { AlarmClock } from "lucide-react";
 import icon5 from "../assets/icons/icon5.png";
 
 const SpecialDiscounts = () => {

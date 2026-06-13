@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { events } from "../data/events";
 import EventCard from "../components/EventCard";
-// import { events } from "./data/events";
-// import EventCard from "./components/EventCard";
+ 
 
 export default function EventPage() {
   const [search, setSearch] = useState("");

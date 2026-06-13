@@ -188,32 +188,48 @@ const Concept = () => {
                   Summit:
                 </p>
 
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   <li>
-                    #The Strategic GC –{" "}
+                    #The {" "}
                     <span className="text-[#cd151d] font-semibold">
-                      Boardroom Risk & Leadership.
+                     Strategic Counsel
                     </span>
+                     {" "} –{" "} Are You Future Ready?
                   </li>
                   <li>
                     #India Inc. 3.0 –{" "}
                     <span className="text-[#cd151d] font-semibold">
-                      Regulatory Reset
+                     Pharma & Lifesciences Track
                     </span>
+                     {" "} –{" "} Hyderabad Special
                   </li>
                   <li>
-                    #The Intellectual You –{" "}
+                    #India Inc. 3.0 –{" "}
                     <span className="text-[#cd151d] font-semibold">
-                      IP & Innovation
-                    </span>{" "}
-                    Frontiers
+                     Pharma & Lifesciences Track
+                    </span>
+                     {" "} –{" "} Ahmedabad Special
+                  </li>
+                     <li>
+                    #India Inc. 3.0 –{" "}
+                    <span className="text-[#cd151d] font-semibold">
+                     Real Estate & Infra Track 
+                    </span>
+                     {" "} –{" "} Hyderabad Special
                   </li>
                   <li>
-                    #The New India –{" "}
+                    #The {" "}
                     <span className="text-[#cd151d] font-semibold">
-                      Dispute Resolution
+                      Intellectual
                     </span>{" "}
-                    Wave
+                     You – IP in the Age of AI
+                  </li>
+                  <li>
+                    #The New India{" "}
+                    <span className="text-[#cd151d] font-semibold">
+                     Dispute Resolution
+                    </span>{" "}
+                    Wave – Smart Enough?
                   </li>
                 </ul>
               </div>

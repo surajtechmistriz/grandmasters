@@ -5,89 +5,15 @@ import image from "../assets/images/sponsorImg.jpg";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { useSponsors } from "../hooks/useSponsors";
 
-const sponsors = [
-  {
-    id: 1,
-    category: "Platinum Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 2,
-    category: "Gold Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 3,
-    category: "Silver Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 4,
-    category: "Associate Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 5,
-    category: "Knowledge Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 2,
-    category: "Gold Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 3,
-    category: "Silver Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 4,
-    category: "Associate Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 5,
-    category: "Knowledge Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 2,
-    category: "Gold Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 3,
-    category: "Silver Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 4,
-    category: "Associate Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-  {
-    id: 5,
-    category: "Knowledge Partner",
-    name: "Saikrishna & Associates",
-    logo: image,
-  },
-];
+const imgUrl = import.meta.env.VITE_SPONSORS_BASE_URL;
 
 export default function SponsorsCarousel() {
+  const { data } = useSponsors();
+  const sponsors = data?.data?.margedSponsors || [];
+
+  console.log("Carousel data", sponsors);
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 relative">
@@ -130,27 +56,25 @@ export default function SponsorsCarousel() {
           }}
         >
           {sponsors.map((item) => (
-           <SwiperSlide key={item.id}>
-  <div className="h-[220px] border border-neutral-300 bg-[#f8f8f8] flex flex-col">
-    
-    {/* Partner Type */}
-    <div className="">
-      <h3 className="font-roboto text-center pt-6 text-[15px] leading-6 font-bold text-[#333]">
-        {item.category}
-      </h3>
-    </div>
+            <SwiperSlide key={item.id}>
+              <div className="h-[220px] border border-[#f1f1f1] bg-white flex flex-col rounded-sm">
+                {/* Partner Type */}
+                <div className="">
+                  <h3 className="font-roboto text-center pt-6 text-[15px] leading-6 font-bold text-[#333]">
+                    {item.sponsor_type}
+                  </h3>
+                </div>
 
-    {/* Logo */}
-    <div className="flex-1 mb-5 flex items-start justify-center">
-      <img
-        src={item.logo}
-        alt={item.category}
-        className="w-full h-full object-contain"
-      />
-    </div>
-
-  </div>
-</SwiperSlide>
+                {/* image */}
+                <div className="flex-1 mb-5 flex items-start justify-center">
+                  <img
+                    src={`${imgUrl}/${item.image}`}
+                    alt={item.sponsor_type}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>

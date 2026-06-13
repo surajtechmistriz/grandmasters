@@ -1,4 +1,3 @@
-import React from "react";
 import OfficialMessages from "../components/OfficialMessageSidebar";
 import SponsorsCarousel from "../components/SponsorsCarousel";
 
@@ -74,10 +73,10 @@ const AboutUs = () => {
         </div>
 
         {/* Sponsors */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl text-center my-10 md:my-16">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl text-center my-10 md:mt-16">
           Sponsors & Partners
         </h1>
-                <SponsorsCarousel />
+        <SponsorsCarousel />
       </div>
     </div>
   );

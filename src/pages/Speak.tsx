@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img from "../assets/images/veta.jpg";
 import { TbBrandLinkedinFilled } from "react-icons/tb";
-import { LuNotepadText } from "react-icons/lu";
 import bgImg from "../assets/images/chess.jpg";
 import icon from "../assets/icons/icon1.png";
+import { getEvents } from "../services/APIs/homePage";
+import { handleImageError } from "../utils/imageUtils";
 
+const imgUrl = import.meta.env.VITE_SPEAKERS_BASE_URL;
 const SpeakersSection = () => {
   const tabs = [
     { id: "hyderabad", label: "Hyderabad Edition" },
@@ -12,67 +14,28 @@ const SpeakersSection = () => {
   ];
 
   const [active, setActive] = useState("hyderabad");
+  const [events, setEvents] = useState<any[]>([]);
 
-  const speakers = [
-    {
-      name: "AAKANKSHA MUNJHAL",
-      title: "Partner, Saikrishna &",
-      image: img,
-      linkedin: "#",
-      location: "hyderabad",
-    },
-    {
-      name: "ALPA SOOD",
-      title: "Director - Legal, India, Marvell",
-      image: img,
-      linkedin: "#",
-      location: "ahmedabad",
-    },
-    {
-      name: "AMIT ANAND",
-      title: "Director - Legal, India, Marvell",
-      image: img,
-      linkedin: "#",
-      location: "hyderabad",
-    },
-    {
-      name: "DHARA DOSHI",
-      title: "Head - Legal, Decathlon",
-      image: img,
-      linkedin: "#",
-      location: "ahmedabad",
-    },
-    {
-      name: "AAKANKSHA MUNJHAL",
-      title: "Partner, Saikrishna &",
-      image: img,
-      linkedin: "#",
-      location: "hyderabad",
-    },
-    {
-      name: "ALPA SOOD",
-      title: "Director - Legal, India, Marvell",
-      image: img,
-      linkedin: "#",
-      location: "ahmedabad",
-    },
-    {
-      name: "AMIT ANAND",
-      title: "Director - Legal, India, Marvell",
-      image: img,
-      linkedin: "#",
-      location: "hyderabad",
-    },
-    {
-      name: "DHARA DOSHI",
-      title: "Head - Legal, Decathlon",
-      image: img,
-      linkedin: "#",
-      location: "ahmedabad",
-    },
-  ];
+  //  API CALL
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await getEvents();
+        setEvents(res?.data?.events || []);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  const filteredSpeakers = speakers.filter((s) => s.location === active);
+    fetchEvents();
+  }, []);
+
+  //  same logic (just replacing static speakers)
+  const selectedEvent = events.find(
+    (e) => e.city?.name?.toLowerCase() === active,
+  );
+
+  const speakers = selectedEvent?.speakers || [];
 
   return (
     <section
@@ -80,9 +43,9 @@ const SpeakersSection = () => {
       style={{ backgroundImage: `url(${bgImg})` }}
     >
       <div className="mx-auto bg-white pt-8 px-4 md:px-0">
-        {/* Heading */}
+        {/* Heading (UNCHANGED) */}
         <div className="text-center mb-6 max-w-4xl mx-auto">
-          <div className="flex justify-center my-">
+          <div className="flex justify-center">
             <img
               src={icon}
               className="h-24 text-[#D0252D] text-4xl md:text-5xl"
@@ -98,9 +61,9 @@ const SpeakersSection = () => {
           </p>
         </div>
 
-        {/* Tabs */}
+        {/* Tabs (UNCHANGED) */}
         <div className="relative flex flex-col max-w-4xl mx-auto sm:flex-row flex-wrap justify-center items-center gap-10 sm:gap-20 md:gap-60 mb-1">
-          {tabs.map((tab, i) => (
+          {tabs.map((tab) => (
             <span
               key={tab.id}
               onClick={() => setActive(tab.id)}
@@ -141,41 +104,47 @@ const SpeakersSection = () => {
         {/* Border line (UNCHANGED) */}
         <div className="h-2 w-full max-w-5xl mx-auto border-t border-gray-300 mb-6"></div>
 
-        {/* Speakers Grid */}
+        {/* Speakers Grid (UNCHANGED UI) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto pb-10">
-          {" "}
-          {filteredSpeakers.map((speaker, i) => (
-            <div key={i} className="text-center p-4  transition">
-              <div className="w-50 h-50 mx-auto rounded-full overflow-hidden border border-gray-200">
-                <img
-                  src={speaker.image}
-                  alt={speaker.name}
-                  className="w-full h-full object-cover object-top"
-                />
+          {speakers.map((item: any, i: number) => {
+            const speaker = item.speaker;
+
+            return (
+              <div key={i} className="text-center p-4 transition">
+                <div className="w-50 h-50 mx-auto rounded-full overflow-hidden border border-gray-200">
+                  <img
+                    src={speaker?.image ? `${imgUrl}/${speaker.image}` : img}
+                    alt={speaker?.name}
+                    onError={handleImageError}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+
+                <h3 className="font-roboto mt-4 font-bold leading-4.5 text-sm md:text-[15px] text-[#D0252D] tracking-wide">
+                  {speaker?.name}
+                </h3>
+
+                <p className="text-sm font-normal leading-[22px] font-roboto text-[#8D93A0]">
+                  {speaker?.designation}
+                </p>
+
+                {speaker?.linkedin_url && (
+                  <a
+                    href={speaker.linkedin_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex justify-center items-center mt-3 text-[#D2520D] hover:scale-110 transition"
+                  >
+                    <TbBrandLinkedinFilled className="text-2xl" />
+                  </a>
+                )}
               </div>
-
-              <h3 className="font-roboto mt-4 font-bold  leading-4.5 text-sm md:text-[15px] text-[#D0252D] tracking-wide">
-                {speaker.name}
-              </h3>
-
-              <p className="text-sm font-normal leading-[22px] font-roboto text-[#8D93A0]">
-                {speaker.title}
-              </p>
-
-              <a
-                href={speaker.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex justify-center  items-center mt-3 text-[#D2520D] hover:scale-110 transition"
-              >
-                <TbBrandLinkedinFilled className="text-2xl" />
-              </a>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Bottom CTA */}
+      {/* Bottom CTA (UNCHANGED) */}
       <div className="w-full bg-black/30 py-12 px-4 text-white">
         <h1 className="flex font-roboto text-3xl sm:text-4xl leading-[55px] md:text-[50px] font-bold tracking-tighter justify-center">
           {" "}

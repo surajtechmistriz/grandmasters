@@ -98,11 +98,9 @@ const Navbar = () => {
             const isActive = active === item.id;
 
             return (
-              <a
+              <Link
                 key={item.id}
-                href={
-                  location.pathname === "/" ? `#${item.id}` : `/#${item.id}`
-                }
+                to={`/#${item.id}`}
                 className={`relative transition ${
                   isActive
                     ? "text-[#D0252D]"
@@ -110,13 +108,12 @@ const Navbar = () => {
                 }`}
               >
                 {item.label}
-
                 <span
                   className={`absolute left-0 -bottom-1 h-[2px] bg-[#D0252D] transition-all duration-300 ${
                     isActive ? "w-full" : "w-0"
                   }`}
                 />
-              </a>
+              </Link>
             );
           })}
         </ul>
@@ -153,22 +150,25 @@ const Navbar = () => {
                   onClick={() => setMobileMenu(false)}
                   className="border-b py-3 font-semibold"
                 >
+                  <span
+                    className={`absolute left-0 -bottom-1 h-[2px] bg-[#D0252D] transition-all duration-300 ${
+                      active ? "w-full" : "w-0"
+                    }`}
+                  />
                   {item.label}
                 </Link>
               );
             }
 
             return (
-              <a
+              <Link
                 key={item.id}
-                href={
-                  location.pathname === "/" ? `#${item.id}` : `/#${item.id}`
-                }
+                to={`/#${item.id}`}
                 onClick={() => setMobileMenu(false)}
                 className="border-b py-3 font-semibold"
               >
                 {item.label}
-              </a>
+              </Link>
             );
           })}
 

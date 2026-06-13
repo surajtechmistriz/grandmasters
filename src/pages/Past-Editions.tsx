@@ -1,77 +1,170 @@
-// PastEdition.jsx
-
-import React from "react";
-import img from "../assets/images/pastEdition.jpg";
+import React, { useEffect, useState } from "react";
+import image from "../assets/images/pastEdition.jpg";
 import { useNavigate } from "react-router-dom";
+import { getPastEdition } from "../services/APIs/pastEdition";
 
-const sections = [
-  {
-    title: "The Grand Masters 2026 Editions",
-    editions: ["Bengaluru", "New Delhi", "Mumbai"],
-  },
-  {
-    title: "The Grand Masters 2025 Editions",
-    editions: ["Hyderabad", "Pune", "Ahmedabad"],
-  },
-  {
-    title: "The Grand Masters 2024 Editions",
-    editions: ["Chennai", "Mumbai", "Delhi"],
-  },
-  {
-    title: "The Grand Masters 2023 Editions",
-    editions: ["Goa", "Kolkata", "Bengaluru"],
-  },
-];
+type EventItem = {
+  id: number;
+  title: string;
+  city?: {
+    name: string;
+  };
+  image?: string | null;
+};
+
+type EventSection = {
+  year: number;
+  events: EventItem[];
+};
 
 const PastEdition = () => {
   const navigate = useNavigate();
+
+  const [sections, setSections] = useState<EventSection[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const dataFetch = async () => {
+      try {
+        console.log("========== API CALL START ==========");
+
+        const res = await getPastEdition();
+
+        console.log("FULL RESPONSE:", res);
+        console.log("TYPE OF RESPONSE:", typeof res);
+        console.log("RESPONSE DATA:", res?.data);
+        console.log("RESPONSE EVENTS:", res?.data?.events);
+
+        const eventsData = res?.data?.events || [];
+
+        console.log("SETTING SECTIONS:", eventsData);
+
+        // setSections(eventsData);
+
+        const sortedData = [...eventsData].sort((a, b) => b.year - a.year);
+
+        setSections(sortedData);
+      } catch (error) {
+        console.error("PAST EDITION API ERROR:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    dataFetch();
+  }, []);
+
+  console.log("CURRENT SECTIONS STATE:", sections);
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#D0252D]/20 border-t-[#D0252D]" />
+      </div>
+    );
+  }
+
+  // if (loading) {
+  //   return (
+  //     <div className="flex min-h-screen items-center justify-center bg-white">
+  //       <div className="flex items-center gap-3">
+  //         <span className="relative flex h-5 w-5">
+  //           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D0252D] opacity-75"></span>
+  //           <span className="relative inline-flex h-5 w-5 rounded-full bg-[#D0252D]"></span>
+  //         </span>
+
+  //         {/* <span className="font-semibold tracking-widest text-[#D0252D]">
+  //         LOADING..
+  //       </span> */}
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
+  if (!sections.length) {
+    return (
+      <div className="mt-[120px] text-center">
+        <h2 className="text-xl font-semibold">No Past Editions Found</h2>
+
+        {/* <pre className="mt-4 text-left bg-gray-100 p-4 rounded">
+          {JSON.stringify(sections, null, 2)}
+        </pre> */}
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen mt-[100px] bg-[#white]">
-      {sections.map((section, sectionIndex) => (
-        <div key={sectionIndex} className="mb-10">
-          {/* Header */}
-          <div className="bg-[#d12229] py-8">
-            <h1 className="font-roboto text-center text-[35px] font-normal -tracking-wider text-white">
-              {section.title}
-            </h1>
-          </div>
+    <div className="min-h-screen mt-[100px] bg-white">
+      {sections.map((section, index) => {
+        console.log("SECTION:", section);
 
-          {/* Cards */}
-          <div className="mx-auto max-w-6xl px-6 py-10">
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-              {section.editions.map((city, index) => (
-                <div
-                  key={index}
-                  className="border border-gray-300 bg-white shadow-xl transition duration-300 "
-                >
-                  {/* Image */}
-                  <div className="p-8">
-                    <img
-                      src={img}
-                      alt={city}
-                      className="w-full object-contain"
-                    />
-                  </div>
+        return (
+          <div key={section?.year || index} className="mb-10">
+            <div className="bg-[#d12229] py-8">
+              <h1 className="font-roboto text-center text-[35px] font-normal -tracking-wider text-white">
+                The Grand Masters {section?.year} Editions
+              </h1>
+            </div>
 
-                  {/* Footer */}
-                  <div className="pb-4 text-center">
-                    <h2
-                      onClick={() => navigate("/past-event-detail")}
-                      className="font-roboto text-[20px] font-normal text-[#d71920] hover:underline cursor-pointer"
+            <div className="mx-auto max-w-6xl px-6 py-10">
+              <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+                {section?.events?.map((event) => {
+                  console.log("EVENT:", event);
+
+                  return (
+                    <div
+                      key={event?.id}
+                      className="border border-gray-300 bg-white shadow-xl"
                     >
-                      The Grand Masters
-                    </h2>
+                      <div className="p-8">
+                        <img
+                          src={event?.image || image}
+                          alt={event?.title}
+                          className="w-full object-contain"
+                          onError={(e) => {
+                            console.log("IMAGE FAILED:", event?.image);
 
-                    <p className="font-roboto mt-2 text-[16px] font-normal text-[#b3b2b2]">
-                      {city}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                            e.target.src = image;
+                          }}
+                        />
+                      </div>
+
+                      <div className="pb-4 text-center">
+                        <h2
+                          onClick={() => {
+                            const slug = `the-grand-masters-${section.year}-${event.city?.name
+                              ?.toLowerCase()
+                              .replace(/\s+/g, "-")}-edition-an-overview`;
+
+                            navigate(`/${slug}`, {
+                              state: {
+                                id: event.id,
+                                year: section.year,
+                                event,
+                              },
+                            });
+                          }}
+                          className="font-roboto text-[20px] font-normal text-[#d71920] hover:underline cursor-pointer"
+                        >
+                          {event?.title}
+                        </h2>
+
+                        <p className="mt-2 text-[16px] text-[#b3b2b2]">
+                          {event?.city?.name}
+                        </p>
+
+                        {/* <p className="text-sm text-gray-500">
+                          {event?.date}
+                        </p> */}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

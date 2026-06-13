@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
+import { Toaster } from "sonner";
 
 import HomePage from "./pages/HomePage";
 import PastEdition from "./pages/Past-Editions";
@@ -23,25 +24,16 @@ function ScrollToTop() {
     if (location.hash) {
       const id = location.hash.replace("#", "");
 
-      const scrollToElement = () => {
-        const element = document.getElementById(id);
-
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      };
-
-      setTimeout(scrollToElement, 200);
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 200);
     } else {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, [location]);
+  }, [location.pathname, location.hash]);
 
   return null;
 }
@@ -56,17 +48,18 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/past-edition" element={<PastEdition />} />
-        <Route path="/past-event-detail" element={<EditionOverview />} />
+        <Route path="/:slug" element={<EditionOverview />} />
         <Route path="/audience-profile" element={<AudienceProfile />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/official-message/:id" element={<OfficialMessage />} />
+        <Route path="/official-message/:slug" element={<OfficialMessage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/summit-secretariat" element={<SummitSecretariat />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/events" element={<EventPage />} />
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
+      <Toaster position="bottom-right" theme="light" />
       <Footer />
     </BrowserRouter>
   );

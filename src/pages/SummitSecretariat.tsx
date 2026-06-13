@@ -57,17 +57,16 @@ const SummitSecretariat = () => {
               veterans bring into limelight various undercurrents of law in
               their respective chambers and corporate offices!
               <br />
-              <br />
-              A major development here at the action packed Summit Secretariat
-              is the extension of these services to various organizations who
-              have started entrusting Witness with the responsibility to create,
-              execute and conclude Summit Concepts to meet their respective
-              purposes. Witness through its already existing ecosystem of summit
-              management team is all set to provide these services with an added
-              expertise of quality content through the magazine presence. You
-              have an idea and we have a summit to showcase it! For more details
-              on our Summit Secretariat services please contact us. purposes.
-          
+              <br />A major development here at the action packed Summit
+              Secretariat is the extension of these services to various
+              organizations who have started entrusting Witness with the
+              responsibility to create, execute and conclude Summit Concepts to
+              meet their respective purposes. Witness through its already
+              existing ecosystem of summit management team is all set to provide
+              these services with an added expertise of quality content through
+              the magazine presence. You have an idea and we have a summit to
+              showcase it! For more details on our Summit Secretariat services
+              please contact us. purposes.
             </p>
 
             <p className="mt-4 mb-6 text-sm sm:text-base font-bold text-[#333]">

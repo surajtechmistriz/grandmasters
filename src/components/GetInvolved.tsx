@@ -1,7 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import bgImg from "../assets/images/chess.jpg";
+import { submitShowcase } from "../services/APIs/getInvolved";
+import { toast } from "sonner";
 
 const GetInvolved = () => {
+  const [formdata, setFormdata] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    confirmation: false,
+  });
+
+  const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormdata({
+      ...formdata,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const payload = {
+        event_type_id: "6",
+        name: formdata.name,
+        email: formdata.email,
+        phone: formdata.phone,
+        confirmation: formdata.confirmation,
+      };
+
+      const res = await submitShowcase(payload);
+
+      console.log("Success", res);
+
+      toast.success("Submitted successfully!");
+    } catch (error: any) {
+      console.log("Submit error:", error);
+
+      const message = error?.response?.data?.message || "Something went wrong";
+
+      console.error("Backend message:", message);
+      toast.error(message);
+    }
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormdata({
+      ...formdata,
+      confirmation: e.target.checked,
+    });
+  };
+
   return (
     <section className="relative min-h-[300px] md:min-h-[480px] flex items-center justify-center overflow-hidden">
       {/* Fixed Background Image */}
@@ -27,19 +77,28 @@ const GetInvolved = () => {
 
         {/* Right Side: Form */}
         <div className="w-full lg:w-1/2 max-w-md mx-auto">
-          <form className="space-y-6 font-roboto">
+          <form onSubmit={handleSubmit} className="space-y-6 font-roboto">
             <input
               type="text"
+              name="name"
+              value={formdata.name}
+              onChange={handlechange}
               placeholder="Nelle Wilkinson"
               className="w-full text-[13px] tracking-tighter px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
             <input
               type="email"
+              name="email"
+              value={formdata.email}
+              onChange={handlechange}
               placeholder="helipi@mailinator.com"
               className="w-full text-[13px] px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
             <input
               type="tel"
+              name="phone"
+              value={formdata.phone}
+              onChange={handlechange}
               placeholder="+1 (961) 837-8638"
               className="w-full text-[13px] px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
@@ -49,6 +108,8 @@ const GetInvolved = () => {
               <input
                 type="checkbox"
                 id="updates"
+                checked={formdata.confirmation}
+                onChange={handleCheckboxChange}
                 className=" h-8 w-8 accent-[#8D93A0] cursor-pointer"
               />
               <label

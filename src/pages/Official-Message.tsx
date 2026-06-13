@@ -1,78 +1,64 @@
 import React from "react";
-import OfficialMessages from "../components/OfficialMessageSidebar";
-import img from "../assets/images/lalit-bhasin-1.jpg";
 import { useParams } from "react-router-dom";
-import { officialMessages } from "../data/officialMessages";
 import NotFound from "../components/NotFound";
 import SponsorsCarousel from "../components/SponsorsCarousel";
+import OfficialMessages from "../components/OfficialMessageSidebar";
+import { useOfficialMessages } from "../hooks/useOfficialMessages";
 
 const OfficialMessage = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  console.log("URL ID:", id);
-  const speaker = officialMessages.find((item) => item.id === id);
-  if (!speaker) {
-    return <NotFound />;
+  const { data, isLoading } = useOfficialMessages(6);
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-[#D0252D]/20 border-t-[#D0252D]" />
+      </div>
+    );
   }
+
+  const apiData = data?.data || {};
+  const allMessages = Object.values(apiData).flat();
+
+  const speaker = allMessages.find((item: any) => item?.speaker?.slug === slug);
+
+  console.log("Messsage", speaker)
+
+  if (!speaker) return <NotFound />;
+
   return (
-    <div className="min-h-screen bg-white mt-20 lg:mt-[100px]">
-      {/* Header */}
+    <div className=" font-roboto min-h-screen bg-white mt-20 lg:mt-[100px]">
       <div className="bg-[#d61f26] py-5 sm:py-6">
-        <h1 className=" font-roboto text-white text-center text-3xl sm:text-4xl md:text-[33px]   tracking-tight font-normal leading-tight px-4">
+       <h1 className=" font-roboto text-white text-center text-3xl sm:text-4xl md:text-[33px]   tracking-tight font-normal leading-tight px-4">
           Official Messages
         </h1>
       </div>
 
-      {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-5 py-8 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[2.4fr_1fr] gap-8 lg:gap-15">
-          {/* Left Content */}
-          <section className="font-roboto text-sm sm:text-[15px] leading-7 text-[#333]">
-            <div>
-              <img
-                src={speaker.image}
-                alt={speaker.name}
-                className="
-                  w-full
-                  max-w-[240px]
-                  h-auto
-                  lg:float-right
-                  lg:ml-6
-                  mb-4
-                "
-              />
+      <div className="max-w-6xl mx-auto px-5 py-10 grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-10">
+        {/* LEFT */}
+        <section className="text-sm leading-7 text-[#333]">
+          <div
+            className="text-justify text-[15px] official-message-content"
+            dangerouslySetInnerHTML={{ __html: speaker.message }}
+          />
 
-              <div className="text-justify">
-                {speaker.paragraphs.map((paragraph, index) => (
-                  <p key={index} className="mb-5">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
+          {/* <div className="mt-10">
+            <h2 className="font-bold text-lg">{speaker.speaker.name}</h2>
+            <p>{speaker.speaker.designation}</p>
+            <p>{speaker.speaker.company}</p>
+          </div> */}
+        </section>
 
-            {/* Speaker Details */}
-            <div className="mt-10">
-              <h2 className="font-bold text-lg">{speaker.name}</h2>
-
-              <p>{speaker.role}</p>
-
-              {speaker.organization && <p>{speaker.organization}</p>}
-            </div>
-          </section>
-
-          {/* Right Sidebar */}
-          <div>
-            <OfficialMessages />
-          </div>
+        {/* RIGHT */}
+        <div>
+          <OfficialMessages />
         </div>
-
-        {/* Sponsors */}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl text-center my-10 sm:my-16">
-          Sponsors & Partners
-        </h1>
-                <SponsorsCarousel />
       </div>
+
+      <h1 className="text-3xl text-center my-12">Sponsors & Partners</h1>
+
+      <SponsorsCarousel />
     </div>
   );
 };
