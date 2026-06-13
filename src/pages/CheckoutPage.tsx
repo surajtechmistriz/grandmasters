@@ -3,6 +3,10 @@ import { useCart } from "../hooks/useCart";
 import { useApplyCoupon, useRemoveCoupon } from "../services/APIs/useCoupon";
 import { ChevronDown, Ticket } from "lucide-react";
 import { FaCheckCircle } from "react-icons/fa";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { registerOrder, verifyPayment } from "../services/APIs/payment";
+import { loadRazorpay } from "../utils/loadRazorpay";
 
 const CheckoutPage = () => {
   const { data: cartData, isLoading } = useCart();
@@ -12,9 +16,26 @@ const CheckoutPage = () => {
   const cartItems = cartData?.data?.items || [];
   const cartTotal = cartData?.data || {};
 
+  const navigate = useNavigate();
+
   const [showCouponBox, setShowCouponBox] = useState(false);
   const [couponCode, setCouponCode] = useState("");
   const [couponError, setCouponError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    designation: "",
+    email: "",
+    phone: "",
+    country: "India",
+    address: "",
+    city: "",
+    state: "",
+    pincode: "",
+    company_name: "",
+  });
 
   const handleApplyCoupon = async () => {
     if (!couponCode.trim()) {
@@ -46,6 +67,154 @@ const CheckoutPage = () => {
       setShowCouponBox(false);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const handleOrder = async () => {
+    try {
+      console.log("========== ORDER FLOW START ==========");
+      console.log("Form Data:", formData);
+
+      setLoading(true);
+
+      if (
+        !formData.first_name ||
+        !formData.last_name ||
+        !formData.email ||
+        !formData.phone ||
+        !formData.designation ||
+        !formData.company_name ||
+        !formData.address ||
+        !formData.city ||
+        !formData.state ||
+        !formData.pincode
+      ) {
+        console.error("Validation Failed", formData);
+        toast.error("Please fill all required fields");
+        return;
+      }
+
+      console.log("Creating Order...");
+
+      const registerResponse = await registerOrder({
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        email: formData.email,
+        phone: formData.phone,
+        designation: formData.designation,
+        company_name: formData.company_name,
+        address: formData.address,
+        city: formData.city,
+        state: formData.state,
+        country: formData.country,
+        pincode: formData.pincode,
+      });
+
+      console.log("========== REGISTER RESPONSE ==========");
+      console.log(registerResponse);
+
+      const order = registerResponse.data;
+
+      console.log("Order Data:", order);
+
+      console.log("Loading Razorpay SDK...");
+
+      const loaded = await loadRazorpay();
+
+      console.log("Razorpay Loaded:", loaded);
+
+      if (!loaded) {
+        toast.error("Unable to load payment gateway");
+        return;
+      }
+
+      console.log("Opening Razorpay Checkout...");
+
+      const razorpay = new window.Razorpay({
+        key: order.razorpay_key,
+        amount: order.amount,
+        currency: order.currency,
+        order_id: order.razorpay_order_id,
+
+        name: "Grand Masters",
+        description: order.order_number,
+
+        prefill: {
+          name: order.user.name,
+          email: order.user.email,
+          contact: order.user.phone,
+        },
+
+        handler: async (response: any) => {
+          try {
+            console.log("========== PAYMENT SUCCESS ==========");
+            console.log("Razorpay Response:", response);
+
+            const verifyPayload = {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            };
+
+            console.log("Verify Payload:", verifyPayload);
+
+            const verifyRes = await verifyPayment(verifyPayload);
+
+            console.log("========== VERIFY RESPONSE ==========");
+            console.log(verifyRes);
+
+            if (
+              verifyRes.status &&
+              verifyRes.data.payment_status === "SUCCESS"
+            ) {
+              console.log("Payment Verified Successfully");
+
+              toast.success("Payment Successful");
+
+              console.log("VERIFY RESPONSE", verifyRes);
+              console.log("PAYMENT DATA SENT", verifyRes.data);
+
+              navigate("/payment-success", {
+                state: verifyRes.data,
+              });
+            } else {
+              console.error("Verification Failed:", verifyRes);
+              toast.error("Payment verification failed");
+            }
+          } catch (error: any) {
+            console.error("VERIFY PAYMENT ERROR");
+            console.error(error);
+            console.error(error?.response?.data);
+
+            toast.error("Payment verification failed");
+          }
+        },
+
+        modal: {
+          ondismiss: () => {
+            console.warn("User Closed Razorpay Popup");
+            toast.error("Payment cancelled");
+          },
+        },
+
+        theme: {
+          color: "#D0252D",
+        },
+      });
+
+      console.log("Razorpay Instance:", razorpay);
+
+      razorpay.open();
+    } catch (error: any) {
+      console.error("========== ORDER CREATION ERROR ==========");
+      console.error(error);
+      console.error(error?.response);
+      console.error(error?.response?.data);
+
+      toast.error(error?.response?.data?.message || "Order creation failed");
+    } finally {
+      console.log("========== ORDER FLOW END ==========");
+      setLoading(false);
     }
   };
 
@@ -147,6 +316,13 @@ const CheckoutPage = () => {
                   </label>
                   <input
                     type="text"
+                    value={formData.first_name}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        first_name: e.target.value,
+                      }))
+                    }
                     placeholder="enter first name"
                     className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
                   />
@@ -157,6 +333,13 @@ const CheckoutPage = () => {
                   </label>
                   <input
                     type="text"
+                    value={formData.last_name}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        last_name: e.target.value,
+                      }))
+                    }
                     placeholder="enter last name"
                     className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
                   />
@@ -169,6 +352,13 @@ const CheckoutPage = () => {
                 </label>
                 <input
                   type="text"
+                  value={formData.designation}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      designation: e.target.value,
+                    }))
+                  }
                   placeholder="enter designation"
                   className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
                 />
@@ -180,6 +370,13 @@ const CheckoutPage = () => {
                 </label>
                 <input
                   type="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      email: e.target.value,
+                    }))
+                  }
                   placeholder="enter email"
                   className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
                 />
@@ -191,9 +388,110 @@ const CheckoutPage = () => {
                 </label>
                 <input
                   type="tel"
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      phone: e.target.value,
+                    }))
+                  }
                   placeholder="enter phone"
                   className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm mb-1">
+                  Company Name <span className="text-[#D0252D]">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  value={formData.company_name}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      company_name: e.target.value,
+                    }))
+                  }
+                  placeholder="Enter company name"
+                  className="w-full border border-[#333333] p-1 rounded"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm mb-1">
+                  Address <span className="text-[#D0252D]">*</span>
+                </label>
+
+                <textarea
+                  value={formData.address}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      address: e.target.value,
+                    }))
+                  }
+                  placeholder="Enter address"
+                  rows={3}
+                  className="w-full border border-[#333333] p-2 rounded"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm mb-1">
+                    City <span className="text-[#D0252D]">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    value={formData.city}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        city: e.target.value,
+                      }))
+                    }
+                    className="w-full border border-[#333333] p-1 rounded"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm mb-1">
+                    State <span className="text-[#D0252D]">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    value={formData.state}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        state: e.target.value,
+                      }))
+                    }
+                    className="w-full border border-[#333333] p-1 rounded"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm mb-1">
+                    Pincode <span className="text-[#D0252D]">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    value={formData.pincode}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        pincode: e.target.value,
+                      }))
+                    }
+                    className="w-full border border-[#333333] p-1 rounded"
+                  />
+                </div>
               </div>
 
               <div>
@@ -378,8 +676,13 @@ const CheckoutPage = () => {
               .
             </p>
             <div className="flex justify-end">
-              <button className="bg-[#D0252D] self-end cursor-pointer text-white text-sm font-medium m-4 py-2 px-4 rounded transition-colors ">
-                Place Order
+              <button
+                type="button"
+                onClick={handleOrder}
+                disabled={loading}
+                className="bg-[#D0252D] text-white px-6 py-3 rounded disabled:opacity-50"
+              >
+                {loading ? "Processing..." : "ORDER NOW"}
               </button>
             </div>
           </div>
