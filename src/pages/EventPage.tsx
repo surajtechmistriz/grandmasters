@@ -65,7 +65,7 @@ export default function EventPage() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-2xl font-bold text-[#333]">
-              Live & Upcoming Events
+              Live & Past Events
             </h2>
 
             <p className="mt-1 text-sm text-[#8D93A0]">

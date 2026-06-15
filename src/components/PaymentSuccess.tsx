@@ -9,6 +9,29 @@ const PaymentSuccess = () => {
   const payment = location.state;
   console.log("Payment Data:", payment);
 
+  if (!payment) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-[#D0252D] mb-3">
+            No Payment Data Found
+          </h2>
+
+          <p className="text-[#333] mb-4">
+            This page can only be accessed after a successful payment.
+          </p>
+
+          <button
+            onClick={() => navigate("/checkout")}
+            className="bg-[#D0252D] text-white px-5 py-2 rounded cursor-pointer"
+          >
+            Go To Checkout
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen mt-20 bg-[#f5f5f5] flex items-center justify-center px-4 py-6">
       <div className="w-full max-w-xl bg-white rounded-xl shadow-lg overflow-hidden">

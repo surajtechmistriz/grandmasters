@@ -1,5 +1,3 @@
-// utils/loadRazorpay.ts
-
 export const loadRazorpay = () => {
   return new Promise<boolean>((resolve) => {
     if ((window as any).Razorpay) {

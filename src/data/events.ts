@@ -6,7 +6,7 @@ export interface EventItem {
   location: string;
   website: string;
   tag: string;
-  status: "Live" | "Upcoming";
+  status: "Live" | "Past Event";
 }
 
 export const events: EventItem[] = [
@@ -18,7 +18,7 @@ export const events: EventItem[] = [
       "The Lex Witness 11th Annual Pharma Legal & Compliance Summit 2025.",
     location: "Taj Santacruz, Mumbai",
     date: "26th September 2025",
-    status: "Upcoming",
+    status: "Past Event",
     website: "https://www.plcs.co.in",
   },
   {
@@ -29,7 +29,7 @@ export const events: EventItem[] = [
       "A strategic gathering of legal leaders, developers and compliance experts shaping India's real estate sector.",
     location: "LE MERIDIEN, NEW DELHI",
     date: "22nd MAY 2026",
-    status: "Upcoming",
+    status: "Past Event",
     website: "https://rcls.in",
   },
   {
@@ -40,7 +40,7 @@ export const events: EventItem[] = [
       "Exploring regulatory transformation, governance, compliance and financial sector legal developments.",
     location: "TAJ SANTACRUZ, MUMBAI",
     date: "21ST NOVEMBER 2025",
-    status: "Upcoming",
+    status: "Past Event",
     website: "https://bfls.in",
   },
   {
@@ -51,7 +51,7 @@ export const events: EventItem[] = [
       "Focused on AI, data privacy, cybersecurity, digital regulations and technology law leadership.",
     location: "Hotel Shangri-La, Bengaluru",
     date: "12th June 2026",
-    status: "Upcoming",
+    status: "Past Event",
     website: "https://www.itlegalsummit.com",
   },
   {
@@ -63,7 +63,7 @@ export const events: EventItem[] = [
       "Addressing governance, compliance, contracts and legal innovation across manufacturing industries.",
     location: "Taj Santacruz, Mumbai",
     date: "25th September 2025",
-    status: "Upcoming",
+    status: "Past Event",
     website: "https://maels.in",
   },
   {
