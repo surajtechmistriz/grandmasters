@@ -17,7 +17,6 @@ type EventSection = {
   events: EventItem[];
 };
 
-
 const imgUrl = import.meta.env.VITE_PASTEDITIONS_BASE_URL;
 
 const PastEdition = () => {
@@ -96,7 +95,7 @@ const PastEdition = () => {
     );
   }
 
-  console.log("Pasteditions", sections)
+  console.log("Pasteditions", sections);
 
   return (
     <div className="min-h-screen mt-[100px] bg-white">
@@ -123,14 +122,30 @@ const PastEdition = () => {
                     >
                       <div className="p-8">
                         <img
-  src={event?.image ? `${imgUrl}/${event.image}` : image}
-  alt={event?.title}
-  className="w-full object-contain"
-  onError={(e) => {
-    console.log("IMAGE FAILED:", event?.image);
-    e.currentTarget.src = image;
-  }}
-/>
+                          onClick={() => {
+                            const slug = `the-grand-masters-${section.year}-${event.city?.name
+                              ?.toLowerCase()
+                              .replace(/\s+/g, "-")}-edition-an-overview`;
+
+                            navigate(`/${slug}`, {
+                              state: {
+                                id: event.id,
+                                year: section.year,
+                                event,
+                              },
+                            });
+                          }}
+                          
+                          src={
+                            event?.image ? `${imgUrl}/${event.image}` : image
+                          }
+                          alt={event?.title}
+                          className="w-full object-contain cursor-pointer"
+                          onError={(e) => {
+                            console.log("IMAGE FAILED:", event?.image);
+                            e.currentTarget.src = image;
+                          }}
+                        />
                       </div>
 
                       <div className="pb-4 text-center">
