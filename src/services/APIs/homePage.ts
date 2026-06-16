@@ -1,13 +1,13 @@
 import api from "../axios";
 
 export const getEvents = async () => {
-  const { data } = await api.get("/events/6");
+  const { data } = await api.get("/events/1");
   return data;
 };
 
 
 export const getSponsors = async () => {
-  const res = await api.get("/events/6?is_merge=1");
+  const res = await api.get("/events/1?is_merge=1");
   return res.data;
 };
 

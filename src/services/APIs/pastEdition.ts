@@ -1,7 +1,7 @@
 import api from "../axios";
 
 export const getPastEdition = async () => {
-  const response = await api.get("/events/6", {
+  const response = await api.get("/events/1", {
     params: {
       is_past_edition: 1,
     },
