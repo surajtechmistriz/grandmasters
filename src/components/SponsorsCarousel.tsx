@@ -11,8 +11,10 @@ const imgUrl = import.meta.env.VITE_SPONSORS_BASE_URL;
 
 export default function SponsorsCarousel() {
   const { data } = useSponsors();
+
   const sponsors = data?.data?.margedSponsors || [];
 
+  console.log("Carousel data", data);
   console.log("Carousel data", sponsors);
   return (
     <section className="py-16 bg-white">

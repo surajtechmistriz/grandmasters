@@ -5,6 +5,7 @@ import bgImg from "../assets/images/chess.jpg";
 import icon from "../assets/icons/icon1.png";
 import { getEvents } from "../services/APIs/homePage";
 import { handleImageError } from "../utils/imageUtils";
+import { FaLinkedinIn } from "react-icons/fa";
 
 const imgUrl = import.meta.env.VITE_SPEAKERS_BASE_URL;
 const SpeakersSection = () => {
@@ -124,19 +125,38 @@ const SpeakersSection = () => {
                   {speaker?.name}
                 </h3>
 
-                <p className="text-sm font-normal leading-[22px] font-roboto text-[#8D93A0]">
+                <p className="text-sm font-normal leading-5.5 font-roboto text-[#8D93A0]">
                   {speaker?.designation}
                 </p>
 
                 {speaker?.linkedin_url && (
-                  <a
-                    href={speaker.linkedin_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex justify-center items-center mt-3 text-[#D2520D] hover:scale-110 transition"
-                  >
-                    <TbBrandLinkedinFilled className="text-2xl" />
-                  </a>
+    <a
+  href={speaker.linkedin_url}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    inline-flex
+    items-center
+    justify-center
+    mt-3
+    w-8
+    h-8
+    rounded-full
+    bg-white
+    text-[#D2520D]
+    border
+    border-[#e9e9e9]
+    border-2
+    transition-all
+    duration-300
+    ease-in-out
+    hover:bg-[#D2520D]
+    hover:text-white
+    hover:border-transparent
+  "
+>
+  <FaLinkedinIn className="text-md" />
+</a>
                 )}
               </div>
             );
