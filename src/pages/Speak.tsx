@@ -111,8 +111,11 @@ const SpeakersSection = () => {
             const speaker = item.speaker;
 
             return (
-              <div key={i} className="text-center p-4 transition">
-                <div className="w-50 h-50 mx-auto rounded-full overflow-hidden border border-gray-200">
+              <div
+                key={i}
+                className="flex flex-col items-center text-center p-4 transition"
+              >
+                <div className="w-50 h-50 rounded-full overflow-hidden border border-gray-200">
                   <img
                     src={speaker?.image ? `${imgUrl}/${speaker.image}` : img}
                     alt={speaker?.name}
@@ -130,33 +133,32 @@ const SpeakersSection = () => {
                 </p>
 
                 {speaker?.linkedin_url && (
-    <a
-  href={speaker.linkedin_url}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-    inline-flex
-    items-center
-    justify-center
-    mt-3
-    w-8
-    h-8
-    rounded-full
-    bg-white
-    text-[#D2520D]
-    border
-    border-[#e9e9e9]
-    border-2
-    transition-all
-    duration-300
-    ease-in-out
-    hover:bg-[#D2520D]
-    hover:text-white
-    hover:border-transparent
-  "
->
-  <FaLinkedinIn className="text-md" />
-</a>
+                  <a
+                    href={speaker.linkedin_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                              inline-flex
+                              items-center
+                              justify-center
+                              mt-3
+                              w-8
+                              h-8
+                              rounded-full
+                              bg-white
+                              text-[#D2520D]
+                              border-2
+                              border-[#e9e9e9]
+                              transition-all
+                              duration-300
+                              ease-in-out
+                              hover:bg-[#D2520D]
+                              hover:text-white
+                              hover:border-transparent
+                            "
+                  >
+                    <FaLinkedinIn className="text-sm" />
+                  </a>
                 )}
               </div>
             );
