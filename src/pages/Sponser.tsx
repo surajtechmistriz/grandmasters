@@ -39,7 +39,7 @@ export default function SponsorsPartners() {
               className="border border-[#f1f1f1] bg-white flex flex-col items-center justify-center px-4 py-8 md:py-10"
             >
               {/* Partner Type */}
-              <h3 className="text-gray-900 text-center mb-6 md:mb-12 md:-mt-6 text-[14px] md:text-[15px] font-bold leading-[24px] md:leading-[28px] font-roboto">
+              <h3 className="text-[#333] text-center mb-6 md:mb-12 md:-mt-6 text-[14px] md:text-[15px] font-bold leading-[24px] md:leading-[28px] font-roboto">
                 {item.sponsor_type}
               </h3>
 

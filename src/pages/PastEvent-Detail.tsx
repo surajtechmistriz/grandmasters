@@ -132,14 +132,14 @@ const EditionOverview = () => {
               {eventData?.speakers?.map((item: any) => (
                 <div key={item.id} className="flex items-baseline gap-1">
                   <p className="-mb-1">
-  <span className="font-bold text-gray-900">{item.speaker?.name}</span>
-  <span className="text-gray-600">, </span> 
-  <span className="text-gray-600">{item.speaker?.designation}</span>
-</p>
-
-                  
-
-                 
+                    <span className="font-bold text-[#333]">
+                      {item.speaker?.name}
+                    </span>
+                    <span className="text-gray-600">, </span>
+                    <span className="text-gray-600">
+                      {item.speaker?.designation}
+                    </span>
+                  </p>
                 </div>
               ))}
             </div>

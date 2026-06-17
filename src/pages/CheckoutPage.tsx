@@ -70,11 +70,9 @@ const CheckoutPage = () => {
     }
   };
 
+  
   const handleOrder = async () => {
     try {
-      console.log("========== ORDER FLOW START ==========");
-      console.log("Form Data:", formData);
-
       setLoading(true);
 
       if (
@@ -94,8 +92,6 @@ const CheckoutPage = () => {
         return;
       }
 
-      console.log("Creating Order...");
-
       const registerResponse = await registerOrder({
         first_name: formData.first_name,
         last_name: formData.last_name,
@@ -110,25 +106,14 @@ const CheckoutPage = () => {
         pincode: formData.pincode,
       });
 
-      console.log("========== REGISTER RESPONSE ==========");
-      console.log(registerResponse);
-
       const order = registerResponse.data;
 
-      console.log("Order Data:", order);
-
-      console.log("Loading Razorpay SDK...");
-
       const loaded = await loadRazorpay();
-
-      console.log("Razorpay Loaded:", loaded);
 
       if (!loaded) {
         toast.error("Unable to load payment gateway");
         return;
       }
-
-      console.log("Opening Razorpay Checkout...");
 
       const razorpay = new window.Razorpay({
         key: order.razorpay_key,
@@ -147,32 +132,19 @@ const CheckoutPage = () => {
 
         handler: async (response: any) => {
           try {
-            console.log("========== PAYMENT SUCCESS ==========");
-            console.log("Razorpay Response:", response);
-
             const verifyPayload = {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
             };
 
-            console.log("Verify Payload:", verifyPayload);
-
             const verifyRes = await verifyPayment(verifyPayload);
-
-            console.log("========== VERIFY RESPONSE ==========");
-            console.log(verifyRes);
 
             if (
               verifyRes.status &&
               verifyRes.data.payment_status === "SUCCESS"
             ) {
-              console.log("Payment Verified Successfully");
-
               toast.success("Payment Successful");
-
-              console.log("VERIFY RESPONSE", verifyRes);
-              console.log("PAYMENT DATA SENT", verifyRes.data);
 
               navigate("/payment-success", {
                 state: verifyRes.data,
@@ -202,8 +174,6 @@ const CheckoutPage = () => {
         },
       });
 
-      console.log("Razorpay Instance:", razorpay);
-
       razorpay.open();
     } catch (error: any) {
       console.error("========== ORDER CREATION ERROR ==========");
@@ -213,7 +183,6 @@ const CheckoutPage = () => {
 
       toast.error(error?.response?.data?.message || "Order creation failed");
     } finally {
-      console.log("========== ORDER FLOW END ==========");
       setLoading(false);
     }
   };
@@ -230,7 +199,7 @@ const CheckoutPage = () => {
     <div className="w-3.5 h-3.5 border-2 border-[#D12229] border-t-transparent rounded-full animate-spin" />
   );
   return (
-    <div className="bg-white min-h-screen   font-sans text-[#333] mt-[100px]">
+    <div className="font-roboto bg-white min-h-scree text-[#333] mt-[100px]">
       <div className="max-w-6xl mx-auto bg-whit md:py-10 md:px-4">
         {/* Coupon Section */}
         {/* Coupon Section */}
@@ -324,7 +293,7 @@ const CheckoutPage = () => {
                       }))
                     }
                     placeholder="enter first name"
-                    className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
+                    className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
                   />
                 </div>
                 <div className="flex-1">
@@ -341,7 +310,7 @@ const CheckoutPage = () => {
                       }))
                     }
                     placeholder="enter last name"
-                    className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
+                    className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
                   />
                 </div>
               </div>
@@ -360,7 +329,7 @@ const CheckoutPage = () => {
                     }))
                   }
                   placeholder="enter designation"
-                  className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
+                  className="w-full border border-[#333333] p-1 pl-2  rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
                 />
               </div>
 
@@ -374,11 +343,11 @@ const CheckoutPage = () => {
                   onChange={(e) =>
                     setFormData((prev) => ({
                       ...prev,
-                      email: e.target.value,
+                      email: e.target.value.trim(),
                     }))
                   }
-                  placeholder="enter email"
-                  className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
+                  placeholder="Enter email"
+                  className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
                 />
               </div>
 
@@ -389,14 +358,17 @@ const CheckoutPage = () => {
                 <input
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) =>
+                  maxLength={10}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, ""); // numbers only
+
                     setFormData((prev) => ({
                       ...prev,
-                      phone: e.target.value,
-                    }))
-                  }
+                      phone: value,
+                    }));
+                  }}
                   placeholder="enter phone"
-                  className="w-full border border-[#333333] p-1 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
+                  className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
                 />
               </div>
 
@@ -414,8 +386,8 @@ const CheckoutPage = () => {
                       company_name: e.target.value,
                     }))
                   }
-                  placeholder="Enter company name"
-                  className="w-full border border-[#333333] p-1 rounded"
+                  placeholder="enter company name"
+                  className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
                 />
               </div>
 
@@ -432,9 +404,9 @@ const CheckoutPage = () => {
                       address: e.target.value,
                     }))
                   }
-                  placeholder="Enter address"
+                  placeholder="enter address"
                   rows={3}
-                  className="w-full border border-[#333333] p-2 rounded"
+                  className="w-full border border-[#333333] p-2 rounded text-[13px]"
                 />
               </div>
 
@@ -453,7 +425,7 @@ const CheckoutPage = () => {
                         city: e.target.value,
                       }))
                     }
-                    className="w-full border border-[#333333] p-1 rounded"
+                    className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
                   />
                 </div>
 
@@ -471,7 +443,7 @@ const CheckoutPage = () => {
                         state: e.target.value,
                       }))
                     }
-                    className="w-full border border-[#333333] p-1 rounded"
+                    className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]" 
                   />
                 </div>
 
@@ -483,13 +455,16 @@ const CheckoutPage = () => {
                   <input
                     type="text"
                     value={formData.pincode}
-                    onChange={(e) =>
+                    maxLength={6}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, ""); // numbers only
+
                       setFormData((prev) => ({
                         ...prev,
-                        pincode: e.target.value,
-                      }))
-                    }
-                    className="w-full border border-[#333333] p-1 rounded"
+                        pincode: value,
+                      }));
+                    }}
+                    className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
                   />
                 </div>
               </div>
@@ -499,7 +474,7 @@ const CheckoutPage = () => {
                   Country / Region <span className="text-[#D0252D]">*</span>
                 </label>
                 <div className="relative">
-                  <select className="w-full border border-[#333333] p-1 rounded appearance-none bg-white focus:ring-1 focus:ring-red-500 outline-none text-sm">
+                  <select className="w-full border border-[#333333] p-1 pl-2 rounded appearance-none bg-white focus:ring-1 focus:ring-red-500 outline-none text-sm">
                     <option>India</option>
                   </select>
                   <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#8D93A0] pointer-events-none" />
@@ -520,7 +495,7 @@ const CheckoutPage = () => {
               <textarea
                 rows="6"
                 placeholder="Notes about your order, e.g. special notes for delivery."
-                className="w-full border border-[#333333] p-3 rounded focus:ring-1 focus:ring-red-500 outline-none text-sm"
+                className="w-full border border-[#333333] p-3 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
               ></textarea>
             </div>
 
@@ -530,11 +505,11 @@ const CheckoutPage = () => {
               </h3>
               <div className="text-sm space-y-3 text-[#333]">
                 <p>
-                  <span className="font-semibold">Bhupinder Kaur</span> |
+                  <span className=" ">Bhupinder Kaur</span> |
                   +91-9654155065 | bhupinder@witnesslive.in
                 </p>
                 <p>
-                  <span className="font-semibold">Neelima Maheshwari</span> |
+                  <span className=" ">Neelima Maheshwari</span> |
                   +91-8800841600 | neelima.maheshwari@witnesslive.in
                 </p>
               </div>
@@ -548,8 +523,8 @@ const CheckoutPage = () => {
             Your Order
           </h2>
 
-          <div className="overflow-x-auto">
-            <table className="w-full table-fixed text-left border border-gray-300 border-collapse">
+          <div className="overflow-x-auto rounded-sm">
+            <table className="w-full table-fixed text-left border border-gray-300 border-collapse ">
               <thead>
                 <tr className="bg-[#D0252D] text-white">
                   <th className="px-4 py-3 font-semibold uppercase text-sm border border-gray-300">
@@ -644,7 +619,7 @@ const CheckoutPage = () => {
         </div>
 
         {/* Payment Section */}
-        <div className="bg-[#816e9924]">
+        <div className="bg-[#816e9924] rounded-sm">
           <div className="mt-8   rounded-md overflow-hidden">
             <div className="p-6   flex items-center  gap-2">
               <span className="text-[#333] flex font-medium">
@@ -680,9 +655,9 @@ const CheckoutPage = () => {
                 type="button"
                 onClick={handleOrder}
                 disabled={loading}
-                className="bg-[#D0252D] text-white px-6 py-3 rounded disabled:opacity-50"
+                className="font-roboto leading-4 bg-[#D0252D] text-white px-4 py-2.5 m-3 font-bold text-[15px]  rounded disabled:opacity-50"
               >
-                {loading ? "Processing..." : "ORDER NOW"}
+                {loading ? "Processing..." : "Place Order"}
               </button>
             </div>
           </div>

@@ -94,26 +94,25 @@ const RegisterPricing = () => {
                   </div>
                 )}
 
-            <h3 className="font-roboto text-[#D0252D] font-bold -mt-3 text-base md:text-[17px] tracking-tighter leading-tight min-h-[48px] flex items-center justify-center text-center whitespace-nowrap">
+                <h3 className="font-roboto text-[#D0252D] font-bold -mt-3 text-base md:text-[17px] tracking-tighter leading-tight min-h-[48px] flex items-center justify-center text-center whitespace-nowrap">
                   {tier?.title}
                 </h3>
 
-            <div className="text-2xl md:text-[26px] font-bold font-roboto leading-tight md:leading-7.5 text-[#333] mb-4">
+                <div className="text-2xl md:text-[26px] font-bold font-roboto leading-tight md:leading-7.5 text-[#333] mb-4">
                   ₹{Number(tier?.starting_price || 0).toLocaleString()} Onwards
                 </div>
 
-              <div
-              className="font-roboto flex-grow mb-8 text-center text-sm leading-relaxed space-y-2"
-              dangerouslySetInnerHTML={{ __html: tier.description }}
-            />
-
+                <div
+                  className="font-roboto flex-grow mb-8 text-center text-sm leading-relaxed space-y-2"
+                  dangerouslySetInnerHTML={{ __html: tier.description }}
+                />
 
                 <button
                   onClick={() => {
                     setSelectedPlanId(tier?.id);
                     setIsModalOpen(true);
                   }}
-              className={`font-custom mt-auto w-35 mx-auto py-3 px-4  border border-[#D0252D] rounded-md font-bold text-[#D0252D]  hover:bg-[#D0252D] hover:text-white cursor-pointer transition-colors `}
+                  className={`font-custom mt-auto w-35 mx-auto py-3 px-4  border border-[#D0252D] rounded-md font-bold text-[#D0252D]  hover:bg-[#D0252D] hover:text-white cursor-pointer transition-colors `}
                 >
                   Book Now
                 </button>

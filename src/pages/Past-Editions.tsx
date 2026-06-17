@@ -28,18 +28,9 @@ const PastEdition = () => {
   useEffect(() => {
     const dataFetch = async () => {
       try {
-        console.log("========== API CALL START ==========");
-
         const res = await getPastEdition();
 
-        console.log("FULL RESPONSE:", res);
-        console.log("TYPE OF RESPONSE:", typeof res);
-        console.log("RESPONSE DATA:", res?.data);
-        console.log("RESPONSE EVENTS:", res?.data?.events);
-
         const eventsData = res?.data?.events || [];
-
-        console.log("SETTING SECTIONS:", eventsData);
 
         // setSections(eventsData);
 
@@ -55,8 +46,6 @@ const PastEdition = () => {
 
     dataFetch();
   }, []);
-
-  console.log("CURRENT SECTIONS STATE:", sections);
 
   if (loading) {
     return (
@@ -95,13 +84,9 @@ const PastEdition = () => {
     );
   }
 
-  console.log("Pasteditions", sections);
-
   return (
     <div className="min-h-screen mt-[100px] bg-white">
       {sections.map((section, index) => {
-        console.log("SECTION:", section);
-
         return (
           <div key={section?.year || index} className="mb-10">
             <div className="bg-[#d12229] py-8">
@@ -135,7 +120,6 @@ const PastEdition = () => {
                               },
                             });
                           }}
-                          
                           src={
                             event?.image ? `${imgUrl}/${event.image}` : image
                           }

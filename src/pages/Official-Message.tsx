@@ -23,14 +23,12 @@ const OfficialMessage = () => {
 
   const speaker = allMessages.find((item: any) => item?.speaker?.slug === slug);
 
-  console.log("Messsage", speaker)
-
   if (!speaker) return <NotFound />;
 
   return (
     <div className=" font-roboto min-h-screen bg-white mt-20 lg:mt-[100px]">
       <div className="bg-[#d61f26] py-5 sm:py-6">
-       <h1 className=" font-roboto text-white text-center text-3xl sm:text-4xl md:text-[33px]   tracking-tight font-normal leading-tight px-4">
+        <h1 className=" font-roboto text-white text-center text-3xl sm:text-4xl md:text-[33px]   tracking-tight font-normal leading-tight px-4">
           Official Messages
         </h1>
       </div>

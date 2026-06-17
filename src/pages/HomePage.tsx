@@ -6,7 +6,7 @@ import ContactSection from "./Connect";
 import RegisterPricing from "../components/RegisterPricing";
 import SummitAgenda from "./Agenda";
 import SpecialDiscounts from "../components/SpecialDiscounts";
-import GetInvolved from "../components/GetInvolved";
+import GetInvolved from "../components/GetInvolvedForm";
 import SummitGallery from "../components/SummitGallery";
 import BrandSponsorship from "../components/BrandSponsor";
 

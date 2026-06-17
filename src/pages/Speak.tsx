@@ -6,6 +6,7 @@ import icon from "../assets/icons/icon1.png";
 import { getEvents } from "../services/APIs/homePage";
 import { handleImageError } from "../utils/imageUtils";
 import { FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const imgUrl = import.meta.env.VITE_SPEAKERS_BASE_URL;
 const SpeakersSection = () => {
@@ -177,14 +178,20 @@ const SpeakersSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mt-8">
-          {["SPEAK", "SPONSOR", "REGISTER NOW", "CONNECT"].map((btn) => (
-            <button
-              key={btn}
-              className="w-full sm:w-auto min-w-[180px] space-y-12 border border-white rounded-md py-3 px-6 mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D] cursor-pointer"
-            >
-              {btn}
-            </button>
-          ))}
+          {[
+  { label: "SPEAK", to: "/#speakers" },
+  { label: "SPONSOR", to: "/#sponsors" },
+  { label: "REGISTER NOW", to: "/#register" },
+  { label: "CONNECT", to: "/#connect" },
+].map(({ label, to }) => (
+  <Link
+    key={label}
+    to={to}
+    className="w-full sm:w-auto min-w-[180px] border border-white rounded-md py-3 px-6 mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D]"
+  >
+    {label}
+  </Link>
+))}
         </div>
       </div>
     </section>

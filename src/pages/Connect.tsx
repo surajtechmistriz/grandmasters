@@ -8,7 +8,7 @@ export default function ContactSection() {
         </h1>
 
         {/* Intro */}
-        <p className="font-roboto text-[14px] md:text-[15px] font-bold leading-[24px] md:leading-[28px] text-gray-900 mb-1">
+        <p className="font-roboto text-[14px] md:text-[15px] font-bold leading-[24px] md:leading-[28px] text-[#333] mb-1">
           In order to participate at The Grand Masters 2026 Summit Series,
           please get in touch with:
         </p>

@@ -12,7 +12,7 @@ import audienceImg from "../assets/images/audience-profile1.jpg";
 import sponsorImg from "../assets/images/sponsor.png";
 import icon from "../assets/icons/icon3d.png";
 import icon2 from "../assets/icons/icon2.png";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Counter from "../components/Counter";
 
 /* ---------------- TABS ---------------- */
@@ -434,14 +434,20 @@ const Concept = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mt-8">
-            {["SPEAK", "SPONSOR", "REGISTER NOW", "CONNECT"].map((btn) => (
-              <button
-                key={btn}
-                className="w-full sm:w-auto min-w-[180px] space-y-12 border border-white rounded-md py-3 px-6 mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D] cursor-pointer"
-              >
-                {btn}
-              </button>
-            ))}
+            {[
+  { label: "SPEAK", to: "/#speakers" },
+  { label: "SPONSOR", to: "/#sponsors" },
+  { label: "REGISTER NOW", to: "/#register" },
+  { label: "CONNECT", to: "/#connect" },
+].map(({ label, to }) => (
+  <Link
+    key={label}
+    to={to}
+    className="w-full sm:w-auto min-w-[180px] border border-white rounded-md py-3 px-6 mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D]"
+  >
+    {label}
+  </Link>
+))}
           </div>
         </div>
       </div>

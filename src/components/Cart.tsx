@@ -51,29 +51,6 @@ const Cart = () => {
     }, 5000);
   };
 
-  // const fetchCart = async () => {
-  //   try {
-  //     const res = await getCart();
-
-  //     console.log("SUMMARY RESPONSE", res);
-  //     console.log("SUMMARY DATA", res?.data);
-  //     console.log("SUMMARY ITEMS", res?.data?.data?.items);
-  //     console.log("SUMMARY TOTAL", res?.data?.data?.total);
-
-  //     const cartData = res?.data?.data;
-
-  //     setCartItems(cartData?.items || []);
-  //     setCartTotal(cartData || null);
-  //   } catch (error) {
-  //     console.error(error);
-  //   } finally {
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchCart();
-  // }, []);
-
   const handleApplyCoupon = async () => {
     if (!couponCode.trim()) return;
 
@@ -141,12 +118,9 @@ const Cart = () => {
 
   const handleUndoRemove = async () => {
     try {
-      console.log("  [UNDO CLICKED] Starting undo process");
 
       const res = await undoRemoveItem();
 
-      console.log("  [UNDO COMPLETED] Response:");
-      console.log(res);
 
       await refetch();
       showMessage("Cart restored successfully.");
@@ -248,7 +222,7 @@ const Cart = () => {
                   <img src={img} alt={item.plan_name} className="w-12" />
                 </td>
 
-                <td className="p-4 text-[#D0252D]">{item.plan_name}</td>
+                <td className="p-4 border-b border-gray-300 text-[#D0252D]">{item.plan_name}</td>
 
                 <td className="p-4 border border-[#d3ced2]">
                   ₹{Number(item.price).toLocaleString("en-IN")}

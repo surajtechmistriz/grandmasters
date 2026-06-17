@@ -26,10 +26,19 @@ function ScrollToTop() {
       const id = location.hash.replace("#", "");
 
       setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+       const element = document.getElementById(id);
+
+if (element) {
+  const y =
+    element.getBoundingClientRect().top +
+    window.pageYOffset -
+    120; // navbar height + spacing
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+}
       }, 200);
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });

@@ -3,9 +3,9 @@ import { ChevronDown, Clock } from "lucide-react";
 import icon from "../assets/icons/icon1.png";
 import { getEvents } from "../services/APIs/homePage";
 import { handleImageError } from "../utils/imageUtils";
+import iconLogo from "../assets/icons/LW-Brand-Icon-48X48-1.png";
 
 const imgUrl = import.meta.env.VITE_SPEAKERS_BASE_URL;
-console.log(imgUrl);
 
 const SummitAgenda = () => {
   const [expandedId, setExpandedId] = useState<number | null>(5);
@@ -28,11 +28,17 @@ const SummitAgenda = () => {
 
   //  get event by city
   const selectedEvent = events.find(
-    (e) => e.city?.name?.toLowerCase() === activeTab,
+    (e) =>
+      e.city?.name?.trim().toLowerCase() === activeTab.trim().toLowerCase(),
   );
+
+  console.log("activeTab:", activeTab);
+  console.log("selectedEvent:", selectedEvent);
 
   //  agenda from API
   const agendaFromAPI = selectedEvent?.agendas || [];
+
+  console.log("agendaFromAPI", agendaFromAPI);
 
   //  map API → UI format (KEEP UI SAME)
   const agendaItems = agendaFromAPI.map((item: any) => ({
@@ -69,7 +75,7 @@ const SummitAgenda = () => {
           <div
             onClick={() => {
               setActiveTab("hyderabad");
-              setExpandedId(5);
+              setExpandedId(null);
             }}
             className="pb-4 cursor-pointer relative text-center"
           >
@@ -97,6 +103,7 @@ const SummitAgenda = () => {
           {/* AHMEDABAD */}
           <div
             onClick={() => {
+              console.log("Ahmedabad clicked");
               setActiveTab("ahmedabad");
               setExpandedId(null);
             }}
@@ -131,18 +138,23 @@ const SummitAgenda = () => {
 
         <div className="space-y-0">
           {agendaItems.map((item: any) => (
-            <div key={item.id} className="relative pl-12 md:pl-20">
+            <div
+              key={`${selectedEvent?.id}-${item.id}`}
+              className="relative pl-12 md:pl-20"
+            >
               {/* marker (UNCHANGED) */}
-              <div className="absolute left-0 md:left-4 top-4 w-8 h-8 rounded-full bg-[#D0252D] flex items-center justify-center text-white font-black text-sm">
-                W
-              </div>
-
+              <img
+                src={iconLogo}
+                alt="Agenda Icon"
+                className="absolute left-0 md:left-4 bg-[#DA2127] top-4 w-10 h-10 rounded-full object-cover"
+              />
               <div
                 className="py-6 border-b border-gray-100"
-                onClick={() =>
-                  item.hasSpeakers &&
-                  setExpandedId(expandedId === item.id ? null : item.id)
-                }
+                onClick={() => {
+                  if (item.description || item.hasSpeakers) {
+                    setExpandedId(expandedId === item.id ? null : item.id);
+                  }
+                }}
               >
                 {/* time */}
                 <div className="flex items-center gap-2 text-gray-400 text-xs mb-1">
@@ -156,9 +168,9 @@ const SummitAgenda = () => {
                     {item.title}
                   </h3>
 
-                  {item.hasSpeakers && (
+                  {(item.description || item.hasSpeakers) && (
                     <ChevronDown
-                      className={`transition-transform ${
+                      className={`transition-transform text-[#c9060a] cursor-pointer ${
                         expandedId === item.id ? "rotate-180" : ""
                       }`}
                     />
@@ -166,31 +178,32 @@ const SummitAgenda = () => {
                 </div>
 
                 {/* speakers (UNCHANGED UI) */}
-                {item.hasSpeakers && expandedId === item.id && (
+                {expandedId === item.id && (
                   <>
                     {/* SPEAKERS (UNCHANGED UI) */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-10">
-                      {item.speakers.map((speaker: any, idx: number) => (
-                        <div key={idx} className="text-center">
-                          <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
-                            <img
-                              src={speaker.img}
-                              onError={handleImageError}
-                              className="w-full h-full object-cover  transition"
-                            />
+                    {item.hasSpeakers && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-10">
+                        {item.speakers.map((speaker: any, idx: number) => (
+                          <div key={idx} className="text-center">
+                            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
+                              <img
+                                src={speaker.img}
+                                onError={handleImageError}
+                                className="w-full h-full object-cover  transition"
+                              />
+                            </div>
+
+                            <h4 className="text-[#D0252D] font-black text-[10px] sm:text-[17px] leading-7 mt-2 uppercase">
+                              {speaker.name}
+                            </h4>
+
+                            <p className="text-[15px] font-normal leading-6 text-[#333] px-2">
+                              {speaker.role}
+                            </p>
                           </div>
-
-                          <h4 className="text-[#D0252D] font-black text-[10px] sm:text-[17px] leading-7 mt-2 uppercase">
-                            {speaker.name}
-                          </h4>
-
-                          <p className="text-[15px] font-normal leading-6 text-[#333] px-2">
-                            {speaker.role}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-
+                        ))}
+                      </div>
+                    )}
                     {/* 333 DESCRIPTION (HTML RENDERED) */}
                     <div
                       className="mt-6 text-sm text-[#333] leading-6 agenda-html"

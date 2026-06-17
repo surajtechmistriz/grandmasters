@@ -34,14 +34,24 @@ const OfficialMessagesSidebar = () => {
     <aside className="font-roboto">
       {messageYears.map((yearData, i) => (
         <div key={yearData.year}>
-          <h2 className="text-lg sm:text-xl font-normal text-[#333] mb-3   leading-tight">{yearData.year} Official Messages</h2>
+          <h2 className="text-lg sm:text-xl font-normal text-[#333] mb-3   leading-tight">
+            {yearData.year} Official Messages
+          </h2>
 
           <div className="space-y-6">
             {yearData.messages.map((item: any) => (
               <div key={item.id}>
-                <h3 className="font-bold text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#333]">{item.name}</h3>
-                <p className="text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#333]">{item.role}</p>
-                {item.org && <p className="text-xs sm:text-[12px] leading-5 sm:leading-6 text-[#333]">{item.org}</p>}
+                <h3 className="font-bold text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#333]">
+                  {item.name}
+                </h3>
+                <p className="text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#333]">
+                  {item.role}
+                </p>
+                {item.org && (
+                  <p className="text-xs sm:text-[12px] leading-5 sm:leading-6 text-[#333]">
+                    {item.org}
+                  </p>
+                )}
 
                 <button
                   onClick={() => navigate(`/official-message/${item.slug}`)}
@@ -53,7 +63,9 @@ const OfficialMessagesSidebar = () => {
             ))}
           </div>
 
-          {i !== messageYears.length - 1 && <div className="border-b border-gray-300 my-6 sm:my-8" />}
+          {i !== messageYears.length - 1 && (
+            <div className="border-b border-gray-300 my-6 sm:my-8" />
+          )}
         </div>
       ))}
     </aside>
