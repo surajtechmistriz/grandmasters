@@ -10,13 +10,6 @@ const EditionOverview = () => {
   const id = location.state?.id;
   const year = location.state?.year;
 
-  console.log(location.state?.id);
-  console.log(location.state?.year);
-
-  console.log("Slug:", slug);
-  console.log("Event ID:", id);
-  console.log("Event:", location.state);
-
   const [eventData, setEventData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -138,11 +131,15 @@ const EditionOverview = () => {
             <div className="space-y-1">
               {eventData?.speakers?.map((item: any) => (
                 <div key={item.id} className="flex items-baseline gap-1">
-                  <p className="font-bold -mb-1">{item.speaker?.name}</p>
+                  <p className="-mb-1">
+  <span className="font-bold text-gray-900">{item.speaker?.name}</span>
+  <span className="text-gray-600">, </span> 
+  <span className="text-gray-600">{item.speaker?.designation}</span>
+</p>
 
-                  <span className="text-gray-600">,</span>
+                  
 
-                  <p className="text-gray-600">{item.speaker?.designation}</p>
+                 
                 </div>
               ))}
             </div>
