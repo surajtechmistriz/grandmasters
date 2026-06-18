@@ -1,27 +1,14 @@
-import { lazy, Suspense } from "react";
-
 import Home from "./Home";
 import Concept from "./Concept";
+import SpeakersSection from "./Speak";
+import SponsorsPartners from "./Sponser";
 import ContactSection from "./Connect";
 import RegisterPricing from "../components/RegisterPricing";
 import SummitAgenda from "./Agenda";
 import SpecialDiscounts from "../components/SpecialDiscounts";
-import LazySection from "./LazySection";
-// import LazySection from "../components/LazySection";
-// import LazySection from "../components/LazySection";
-
-// Lazy loaded components
-const SpeakersSection = lazy(() => import("./Speak"));
-const SponsorsPartners = lazy(() => import("./Sponser"));
-const GetInvolved = lazy(() => import("../components/GetInvolvedForm"));
-const SummitGallery = lazy(() => import("../components/SummitGallery"));
-const BrandSponsorship = lazy(() => import("../components/BrandSponsor"));
-
-const SectionLoader = () => (
-  <div className="flex items-center justify-center py-12">
-    <span className="text-gray-500">Loading...</span>
-  </div>
-);
+import GetInvolved from "../components/GetInvolvedForm";
+import SummitGallery from "../components/SummitGallery";
+import BrandSponsorship from "../components/BrandSponsor";
 
 export default function HomePage() {
   return (
@@ -31,75 +18,37 @@ export default function HomePage() {
       </section>
 
       <section id="concept" className="scroll-mt-24">
-         <LazySection height="1200px">
-          <Suspense fallback={<SectionLoader />}>
         <Concept />
-           </Suspense>
-        </LazySection>
       </section>
 
       <section id="speakers" className="scroll-mt-24">
-        <LazySection height="1200px">
-          <Suspense fallback={<SectionLoader />}>
-            <SpeakersSection />
-          </Suspense>
-        </LazySection>
+        <SpeakersSection />
       </section>
-
       <section id="agenda" className="scroll-mt-24">
-        <LazySection height="1200px">
-          <SummitAgenda />
-        </LazySection>
+        <SummitAgenda />
       </section>
-
       <section id="register" className="scroll-mt-24">
-        <LazySection>
-          <RegisterPricing />
-        </LazySection>
+        <RegisterPricing />
       </section>
-
       <section id="discount" className="scroll-mt-24">
-        <LazySection>
-          <SpecialDiscounts />
-        </LazySection>
+        <SpecialDiscounts />
       </section>
-
       <section id="get-involved" className="scroll-mt-24">
-        <LazySection>
-          <Suspense fallback={<SectionLoader />}>
-            <GetInvolved />
-          </Suspense>
-        </LazySection>
+        <GetInvolved />
       </section>
-
       <section id="summit-gallery" className="scroll-mt-24">
-        <LazySection>
-          <Suspense fallback={<SectionLoader />}>
-            <SummitGallery />
-          </Suspense>
-        </LazySection>
+        <SummitGallery />
       </section>
-
       <section id="brand-sponsor" className="scroll-mt-24">
-        <LazySection>
-          <Suspense fallback={<SectionLoader />}>
-            <BrandSponsorship />
-          </Suspense>
-        </LazySection>
+        <BrandSponsorship />
       </section>
 
       <section id="sponsors" className="scroll-mt-24">
-        <LazySection>
-          <Suspense fallback={<SectionLoader />}>
-            <SponsorsPartners />
-          </Suspense>
-        </LazySection>
+        <SponsorsPartners />
       </section>
 
       <section id="connect" className="scroll-mt-24">
-        <LazySection>
-          <ContactSection />
-        </LazySection>
+        <ContactSection />
       </section>
     </>
   );

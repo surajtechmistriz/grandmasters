@@ -19,82 +19,24 @@ type EventSection = {
 
 const imgUrl = import.meta.env.VITE_PASTEDITIONS_BASE_URL;
 
-// Image with loading state using skeleton
-const ImageWithLoader = ({ 
-  src, 
-  alt, 
-  fallbackSrc, 
-  className, 
-  onClick 
-}: { 
-  src: string; 
-  alt: string; 
-  fallbackSrc: string; 
-  className?: string; 
-  onClick?: () => void;
-}) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  return (
-    <div className="relative w-full">
-      {/* Skeleton Loader */}
-      {isLoading && (
-        <div className="w-full aspect-[4/3] bg-gray-200 animate-pulse rounded-md flex items-center justify-center">
-          <svg 
-            className="w-12 h-12 text-gray-300" 
-            xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
-            viewBox="0 0 24 24"
-          >
-            <circle 
-              className="opacity-25" 
-              cx="12" 
-              cy="12" 
-              r="10" 
-              stroke="currentColor" 
-              strokeWidth="4"
-            />
-            <path 
-              className="opacity-75" 
-              fill="currentColor" 
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            />
-          </svg>
-        </div>
-      )}
-
-      {/* Image */}
-      <img
-        src={hasError ? fallbackSrc : src}
-        alt={alt}
-        className={`w-full h-auto object-contain cursor-pointer transition-opacity duration-300 ${
-          isLoading ? 'opacity-0 absolute inset-0' : 'opacity-100 relative'
-        } ${className || ''}`}
-        onClick={onClick}
-        onLoad={() => setIsLoading(false)}
-        onError={() => {
-          setIsLoading(false);
-          setHasError(true);
-        }}
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-  );
-};
-
 const PastEdition = () => {
   const navigate = useNavigate();
+
   const [sections, setSections] = useState<EventSection[]>([]);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const dataFetch = async () => {
       try {
         const res = await getPastEdition();
+
         const eventsData = res?.data?.events || [];
+
+        // setSections(eventsData);
+
         const sortedData = [...eventsData].sort((a, b) => b.year - a.year);
+
         setSections(sortedData);
       } catch (error) {
         console.error("PAST EDITION API ERROR:", error);
@@ -114,10 +56,31 @@ const PastEdition = () => {
     );
   }
 
+  // if (loading) {
+  //   return (
+  //     <div className="flex min-h-screen items-center justify-center bg-white">
+  //       <div className="flex items-center gap-3">
+  //         <span className="relative flex h-5 w-5">
+  //           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D0252D] opacity-75"></span>
+  //           <span className="relative inline-flex h-5 w-5 rounded-full bg-[#D0252D]"></span>
+  //         </span>
+
+  //         {/* <span className="font-semibold tracking-widest text-[#D0252D]">
+  //         LOADING..
+  //       </span> */}
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
   if (!sections.length) {
     return (
       <div className="mt-[120px] text-center">
         <h2 className="text-xl font-semibold">No Past Editions Found</h2>
+
+        {/* <pre className="mt-4 text-left bg-gray-100 p-4 rounded">
+          {JSON.stringify(sections, null, 2)}
+        </pre> */}
       </div>
     );
   }
@@ -136,21 +99,7 @@ const PastEdition = () => {
             <div className="mx-auto max-w-6xl px-6 py-10">
               <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                 {section?.events?.map((event) => {
-                  const imageSrc = event?.image ? `${imgUrl}/${event.image}` : image;
-                  
-                  const handleNavigate = () => {
-                    const slug = `the-grand-masters-${section.year}-${event.city?.name
-                      ?.toLowerCase()
-                      .replace(/\s+/g, "-")}-edition-an-overview`;
-
-                    navigate(`/${slug}`, {
-                      state: {
-                        id: event.id,
-                        year: section.year,
-                        event,
-                      },
-                    });
-                  };
+                  console.log("EVENT:", event);
 
                   return (
                     <div
@@ -158,18 +107,47 @@ const PastEdition = () => {
                       className="border border-gray-300 bg-white shadow-xl"
                     >
                       <div className="p-8">
-                        <ImageWithLoader
-                          src={imageSrc}
-                          alt={event?.title || "Event image"}
-                          fallbackSrc={image}
-                          className="w-full"
-                          onClick={handleNavigate}
+                        <img
+                          onClick={() => {
+                            const slug = `the-grand-masters-${section.year}-${event.city?.name
+                              ?.toLowerCase()
+                              .replace(/\s+/g, "-")}-edition-an-overview`;
+
+                            navigate(`/${slug}`, {
+                              state: {
+                                id: event.id,
+                                year: section.year,
+                                event,
+                              },
+                            });
+                          }}
+                          src={
+                            event?.image ? `${imgUrl}/${event.image}` : image
+                          }
+                          alt={event?.title}
+                          className="w-full object-contain cursor-pointer"
+                          onError={(e) => {
+                            console.log("IMAGE FAILED:", event?.image);
+                            e.currentTarget.src = image;
+                          }}
                         />
                       </div>
 
                       <div className="pb-4 text-center">
                         <h2
-                          onClick={handleNavigate}
+                          onClick={() => {
+                            const slug = `the-grand-masters-${section.year}-${event.city?.name
+                              ?.toLowerCase()
+                              .replace(/\s+/g, "-")}-edition-an-overview`;
+
+                            navigate(`/${slug}`, {
+                              state: {
+                                id: event.id,
+                                year: section.year,
+                                event,
+                              },
+                            });
+                          }}
                           className="font-roboto text-[20px] font-normal text-[#d71920] hover:underline cursor-pointer"
                         >
                           {event?.title}
@@ -178,6 +156,10 @@ const PastEdition = () => {
                         <p className="mt-2 text-[16px] text-[#b3b2b2]">
                           {event?.city?.name}
                         </p>
+
+                        {/* <p className="text-sm text-gray-500">
+                          {event?.date}
+                        </p> */}
                       </div>
                     </div>
                   );
