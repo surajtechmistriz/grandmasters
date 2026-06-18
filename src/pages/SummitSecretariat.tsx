@@ -2,30 +2,30 @@ import React, { useState } from "react";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 
 import OfficialMessages from "../components/OfficialMessageSidebar";
-import img from "../assets/images/logo_saikrishna.jpg";
 import SponsorsCarousel from "../components/SponsorsCarousel";
+import { summitData } from "../data/summitData";
 
-const summitData = [
-  { year: "2024", title: "Lex Witness Summits 2024" },
-  {
-    year: "2023",
-    title: "Lex Witness Summits 2023",
-    content: [
-      {
-        logo: img,
-        description:
-          "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-      },
-      {
-        logo: img,
-        title: "The Grand Masters 2023 – New Delhi, Mumbai & Bengaluru Edition",
-        description:
-          "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-      },
-    ],
-  },
-  { year: "2021", title: "Lex Witness Summits 2021" },
-];
+// const summitData = [
+//   { year: "2024", title: "Lex Witness Summits 2024" },
+//   {
+//     year: "2023",
+//     title: "Lex Witness Summits 2023",
+//     content: [
+//       {
+//         logo: img,
+//         description:
+//           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
+//       },
+//       {
+//         logo: img,
+//         title: "The Grand Masters 2023 – New Delhi, Mumbai & Bengaluru Edition",
+//         description:
+//           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
+//       },
+//     ],
+//   },
+//   { year: "2021", title: "Lex Witness Summits 2021" },
+// ];
 
 const SummitSecretariat = () => {
   const [openSection, setOpenSection] = useState("2023");
@@ -124,11 +124,11 @@ const SummitSecretariat = () => {
 
                               {/* Text */}
                               <div className="font-roboto w-full md:w-2/3 text-sm sm:text-[15px] leading-relaxed text-[#333]">
-                                {summit.title && (
+                                {/* {summit.title && (
                                   <h3 className="font-bold text-[#333] mb-2">
                                     {summit.title}
                                   </h3>
-                                )}
+                                )} */}
 
                                 <p>{summit.description}</p>
                               </div>

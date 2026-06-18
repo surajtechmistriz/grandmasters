@@ -5,7 +5,11 @@ import { ChevronDown, Ticket } from "lucide-react";
 import { FaCheckCircle } from "react-icons/fa";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
-import { registerOrder, verifyPayment } from "../services/APIs/payment";
+import {
+  paymentFail,
+  registerOrder,
+  verifyPayment,
+} from "../services/APIs/payment";
 import { loadRazorpay } from "../utils/loadRazorpay";
 
 const CheckoutPage = () => {
@@ -22,6 +26,7 @@ const CheckoutPage = () => {
   const [couponCode, setCouponCode] = useState("");
   const [couponError, setCouponError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [paymentProcessing, setPaymentProcessing] = useState(false);
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -70,7 +75,6 @@ const CheckoutPage = () => {
     }
   };
 
-  
   const handleOrder = async () => {
     try {
       setLoading(true);
@@ -132,6 +136,10 @@ const CheckoutPage = () => {
 
         handler: async (response: any) => {
           try {
+            setPaymentProcessing(true);
+
+            console.log("PAYMENT SUCCESS RESPONSE", response);
+
             const verifyPayload = {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
@@ -140,31 +148,37 @@ const CheckoutPage = () => {
 
             const verifyRes = await verifyPayment(verifyPayload);
 
-            if (
-              verifyRes.status &&
-              verifyRes.data.payment_status === "SUCCESS"
-            ) {
-              toast.success("Payment Successful");
+            console.log("VERIFY RESPONSE", verifyRes);
 
-              navigate("/payment-success", {
-                state: verifyRes.data,
-              });
-            } else {
-              console.error("Verification Failed:", verifyRes);
-              toast.error("Payment verification failed");
-            }
+            toast.success("Payment Successful");
+
+            navigate("/payment-success", {
+              state: verifyRes.data || verifyRes,
+            });
           } catch (error: any) {
-            console.error("VERIFY PAYMENT ERROR");
-            console.error(error);
-            console.error(error?.response?.data);
+            console.error("VERIFY PAYMENT ERROR", error);
 
             toast.error("Payment verification failed");
+            setPaymentProcessing(false);
           }
         },
 
         modal: {
-          ondismiss: () => {
-            console.warn("User Closed Razorpay Popup");
+          ondismiss: async () => {
+            setPaymentProcessing(false);
+            console.log("========== RAZORPAY POPUP CLOSED ==========");
+            console.log("Order ID:", order.razorpay_order_id);
+
+            try {
+              const failRes = await paymentFail({
+                razorpay_order_id: order.razorpay_order_id,
+              });
+
+              console.log("PAYMENT FAIL API RESPONSE:", failRes);
+            } catch (error) {
+              console.error("PAYMENT FAIL API ERROR:", error);
+            }
+
             toast.error("Payment cancelled");
           },
         },
@@ -173,6 +187,31 @@ const CheckoutPage = () => {
           color: "#D0252D",
         },
       });
+
+      razorpay.on("payment.failed", async (response: any) => {
+        setPaymentProcessing(false);
+        try {
+          console.log("========== PAYMENT FAILED ==========");
+          console.log("Razorpay Failure Response:", response);
+          console.log("Order ID:", order.razorpay_order_id);
+          const failRes = await paymentFail({
+            razorpay_order_id: order.razorpay_order_id,
+          });
+
+          console.log("========== PAYMENT FAIL API SUCCESS ==========");
+          console.log(failRes);
+
+          toast.error("Payment failed");
+        } catch (error: any) {
+          console.log("========== PAYMENT FAIL API ERROR ==========");
+          console.log(error);
+          console.log(error?.response);
+          console.log(error?.response?.data);
+
+          toast.error("Payment failed");
+        }
+      });
+
 
       razorpay.open();
     } catch (error: any) {
@@ -198,7 +237,29 @@ const CheckoutPage = () => {
   const MiniLoader = () => (
     <div className="w-3.5 h-3.5 border-2 border-[#D12229] border-t-transparent rounded-full animate-spin" />
   );
+
+
+
+
   return (
+    <>
+
+      {paymentProcessing && (
+  <div className="font-roboto fixed inset-0 z-[9999] bg-black/50 flex flex-col items-center justify-center">
+    <div className="bg-white rounded-lg p-8 flex flex-col items-center gap-4">
+      <div className="w-12 h-12 border-4 border-[#D0252D] border-t-transparent rounded-full animate-spin" />
+
+      <p className="text-lg font-semibold">
+        Payment Processing...
+      </p>
+
+      <p className="text-sm text-gray-500">
+        Please do not refresh or close this page.
+      </p>
+    </div>
+  </div>
+)}
+
     <div className="font-roboto bg-white min-h-scree text-[#333] mt-[100px]">
       <div className="max-w-6xl mx-auto bg-whit md:py-10 md:px-4">
         {/* Coupon Section */}
@@ -443,7 +504,7 @@ const CheckoutPage = () => {
                         state: e.target.value,
                       }))
                     }
-                    className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]" 
+                    className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
                   />
                 </div>
 
@@ -505,12 +566,12 @@ const CheckoutPage = () => {
               </h3>
               <div className="text-sm space-y-3 text-[#333]">
                 <p>
-                  <span className=" ">Bhupinder Kaur</span> |
-                  +91-9654155065 | bhupinder@witnesslive.in
+                  <span className=" ">Bhupinder Kaur</span> | +91-9654155065 |
+                  bhupinder@witnesslive.in
                 </p>
                 <p>
-                  <span className=" ">Neelima Maheshwari</span> |
-                  +91-8800841600 | neelima.maheshwari@witnesslive.in
+                  <span className=" ">Neelima Maheshwari</span> | +91-8800841600
+                  | neelima.maheshwari@witnesslive.in
                 </p>
               </div>
             </div>
@@ -664,6 +725,7 @@ const CheckoutPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
