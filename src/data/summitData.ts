@@ -178,157 +178,259 @@ export const summitData: SummitItem[] = [
     ],
   },
 
-  //   {
-  //     year: "2018",
-  //     title: "Lex Witness Summits 2018",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2018 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     year: "2018",
-  //     title: "Lex Witness Summits 2018",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2018 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     year: "2018",
-  //     title: "Lex Witness Summits 2018",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2018 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     year: "2018",
-  //     title: "Lex Witness Summits 2018",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2018 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     year: "2018",
-  //     title: "Lex Witness Summits 2018",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2018 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     year: "2018",
-  //     title: "Lex Witness Summits 2018",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2018 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     year: "2011",
-  //     title: "Lex Witness Summits 2011",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2011 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     year: "2010",
-  //     title: "Lex Witness Summits 2010",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2010 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     year: "2009",
-  //     title: "Lex Witness Summits 2009",
-  //     content: [
-  //       {
-  //         logo: "/image.png",
-  //         description:
-  //           "With focused tracks on the critical legal and regulatory issues in pharma, healthcare, and compliance, this is where the industry's foremost legal experts and corporate leaders come together to set the agenda for the future.",
-  //       },
-  //       {
-  //         logo: "/image.png",
-  //         title: "The Grand Masters 2009 – New Delhi, Mumbai & Bengaluru Edition",
-  //         description:
-  //           "Focused on certain pre-identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. Apart from a common set of topics, we had also brought in an element of fireside chats between an in-house counsel & external counsel which was well received by the audience.",
-  //       },
-  //     ],
-  //   },
+  {
+    year: "2017",
+    title: "Lex Witness Summits 2017",
+    content: [
+      {
+        logo: "/",
+        description:
+          "The Indian media & entertainment sector is expected to grow at a Compound Annual Growth Rate (CAGR) of 14.3 per cent to touch Rs 2.26 trillion (US$ 33.9 billion) by 2020, while revenues from advertising is expected to grow at 15.9 per cent to Rs 99,400 crore (US$ 14.91 billion). Over FY 2015-20, radio will likely grow at a CAGR of 16.9 per cent, while digital advertising will grow at 33.5 per cent.",
+      },
+      {
+        logo: "/summit/PLCS-2017-Logo-1-600x317.jpg",
+        description:
+          "The Indian pharmaceuticals market is the third largest in terms of volume and thirteenth largest in terms of value, as per a report by Equity Master. India is the largest provider of generic drugs globally with the Indian generics accounting for 20 per cent of global exports in terms of volume. Of late, consolidation has become an important characteristic of the Indian pharmaceutical market as the industry is",
+      },
+      {
+        logo: "/summit/BFLS-2017-Logo-1-600x317.jpg",
+        description:
+          "Lex Witness 4th Annual Banking and Finance Legal Summit 2017 was organised with more focus on practical knowledge sharing. With a combination power packed panel discussions focused on topical subject, the summit proves out to be a good investment of your time to analyse, interpret and strategize your current and future response to legal, regulatory and compliance challenges of Banking, Finnace & Insurance Industries.",
+      },
+      {
+        logo: "/summit/ITLS-2017-Logo-1-600x191.jpg",
+        description:
+          "Lex Witness has been focusing on bringing forth the legal vanguards of the Indian IT ITES sector to bring to limelight the major legal issues and challenges that they face and the probable solutions to the same. The Lex Witness 5th Annual Edition of The Information Technology Legal Summit hosted several brainstorming rounds of power packed sessions over quite sensitive subjects as far the legal and regulatory environ is concerned.",
+      },
+      {
+        logo: "/summit/RCLS-2017-Logo-600x322.png",
+        description:
+          "The Indian Real Estate Sector is at amidst a mix of positives and negatives. The Lex Witness 6th Annual Edition of The Real Estate & Construction Legal Summit 2017 brought together various stakeholders of the governance and legal machinery of the country to see how best the existing challenges can be tackled with and foster the growth within the sector.",
+      },
+      {
+        logo: "/summit/TGMB-2017-Logo.jpg",
+        description:
+          "The Grand Masters 2017 Bengaluru Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+      {
+        logo: "/summit/TGMM-2017-Logo.jpg",
+        description:
+          "The Grand Masters 2017 Mumbai Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+      {
+        logo: "/summit/TGMD-2017-Logo.jpg",
+        description:
+          "The Grand Masters 2017 New Delhi Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+    ],
+  },
+
+  {
+    year: "2016",
+    title: "Lex Witness Summits 2016",
+    content: [
+      {
+        logo: "/summit/MAELS_2016_Logo_High_Res-1.jpg",
+        description:
+          "Are you ready to be a part of the country’s much awaited legal and regulatory summits for The Indian Media & Advertising Sector? Debates, discussions, heated conversations, arguments and somewhere down the lane are scores of deliberations over the various cross junctions that the industry is at.",
+      },
+      {
+        logo: "/summit/PLCS-2016-Logo-1.png",
+        description:
+          "The Indian Pharmaceutical space is inevitably one of those sectors of the India Inc. that has made its mark and attention at a global level. Not only has it spearheaded the poised approach towards creating global benchmarks in terms of revenues, it has also reached a yet another pedestal for the alikes to follow.",
+      },
+      {
+        logo: "/summit/bfls_logo-1-300x130.png",
+        description:
+          "Lex Witness 3rd Annual Banking and Finance Legal Summit 2016 was being organised with more focus on practical knowledge sharing. With a combination power packed panel discussions focused on topical subject, the summit proves out to be a good investment of your time to analyse, interpret and strategize your current and future response to legal, regulatory and compliance challenges of Banking, Finnace & Insurance Industries.",
+      },
+      {
+        logo: "/summit/ITLS-2016-Logo-1.jpg",
+        description:
+          "Lex Witness has been focusing on bringing forth the legal vanguards of the Indian IT ITES sector to bring to limelight the major legal issues and challenges that they face and the probable solutions to the same. The Lex Witness 4th Annual Edition of The Information Technology Legal Summit hosted several brainstorming rounds of power packed sessions over quite sensitive subjects as far the legal and regulatory environ is concerned.",
+      },
+      {
+        logo: "/summit/RCLS-2016-Logo-1.jpg",
+        description:
+          "The Indian Real Estate Sector is at amidst a mix of positives and negatives. The Lex Witness 5th Annual Edition of The Real Estate & Construction Legal Summit 2016 scheduled for 27th May 2016, Le Meridien, New Delhi brought together various stakeholders of the governance and legal machinery of the country to see how best the existing challenges can be tackled with and foster the growth within the sector",
+      },
+      {
+        logo: "/summit/TGM16-Logo-for-all-Inside-Pages-All-Editionsm.jpg",
+        description:
+          "The Grand Masters 2016 Mumbai Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+      {
+        logo: "/summit/TGM16-Logo-for-all-Inside-Pages-All-Editions.jpg",
+        description:
+          "The Grand Masters 2016 Bangalore Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+      {
+        logo: "/summit/TGM16-Logo-for-all-Inside-Pages-All-Editionsd.jpg",
+        description:
+          "The Grand Masters 2016 New Delhi Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+    ],
+  },
+
+  {
+    year: "2015",
+    title: "Lex Witness Summits 2015",
+    content: [
+      {
+        logo: "/summit/MAELS-2015-Logo.png",
+        description:
+          "Lex Witness after successfully completing 3 editions, now presents The 4th Annual Edition of The Media, Advertising & Entertainment Legal Summit 2015 scheduled to be on 20th November 2015 at Le Meridien, New Delhi.",
+      },
+      {
+        logo: "/summit/plcs_logo-1.png",
+        description:
+          "The Indian pharmaceuticals market is third largest in terms of volume and thirteen largest in terms of value, as per a pharmaceuticals sector analysis report by equity master. The market is dominated majorly by branded generics which constitute nearly 70 to 80 per cent of the market. Considered to be a highly fragmented industry, consolidation has increasingly become an important feature of the Indian pharmaceutical market. India has achieved an eminent global position in pharma sector.",
+      },
+      {
+        logo: "/summit/ITLS-2015-Logo-1.jpg",
+        description:
+          "Lex Witness takes pride in announcing The 3rd Annual Information Technology Legal Summit 2015 scheduled for 19th June 2015 in Bengaluru. Yes, a summit that aims to focus on the nation’s industry sector, which is the world’s largest sourcing destination, accounting for approximately 52 per cent of the US$ 124-130 billion market",
+      },
+      {
+        logo: "/summit/RCLS-2015-logo.jpg",
+        description:
+          "The Indian real estate market size is expected to touch US$ 180 billion by 2020. The housing sector alone contributes 5-6 per cent to the country’s gross domestic product (GDP). Also, in the period FY08-20, the market size of this sector is expected to increase at a compound annual growth rate (CAGR) of 11.2 per cent. Retail, hospitality and commercial real estate are also growing significantly, providing the much-needed infrastructure for India’s growing needs.",
+      },
+      {
+        logo: "/summit/GMB-2015-Logo-acc1.jpg",
+        description:
+          "The Grand Masters 2015 Bangalore Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+      {
+        logo: "/summit/GMM-2015-Logo-acc1.jpg",
+        description:
+          "The Grand Masters 2015 Mumbai Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+      {
+        logo: "/summit/GMD-2015-Logo-acc1.jpg",
+        description:
+          "The Grand Masters 2015 New Delhi Edition focused on certain pre identified set of topical issues and challenges that the In-House Counsel has been facing in order to ensure his role being implemented successfully. This came post an in depth research by Lex Witness over a period of 2 months. Apart from a common set of topics we have also brought in an element of customized discussion as per the respective cities where the Grand Masters is being held.",
+      },
+    ],
+  },
+
+  {
+    year: "2014",
+    title: "Lex Witness Summits 2014",
+    content: [
+      {
+        logo: "/summit/maels_logo.jpg",
+        description:
+          "The Media Advertising & Entertainment Legal Summit was launched in 2012 and ever since has successfully come up with 2 editions. We now present The 3rd Annual Edition which is to be scheduled for 16th October 2014, Le Meridien, New Delhi.",
+      },
+      {
+        logo: "/summit/plcs_logo-1.jpg",
+        description:
+          "The Indian Pharma industry is struck hard by the regulators’ stringency. The commotion in industry is mostly because of lack of understanding of various pharmaceutical players in the country towards increasing regulations and strictness towards such regulations. Both domestic and international regulators are keeping a stringent watch on pharma regime. Lex Witness keeping in mind the relevant scenarios organized The 3rd Annual Pharma Legal & Compliance Summit 2014.",
+      },
+      {
+        logo: "/summit/gm2014_bang (1).jpg",
+        description:
+          "The Grand Masters 2014 presents a new and innovative format to arm Corporate Counsels with a winning edge. Experience – real knowledge sharing platform for learning and not just networking and high level one sided information! With a rapidly changing and challenging business environment, expectations from corporate counsels are ever increasing from key stakeholders across",
+      },
+      {
+        logo: "/summit/itls2014.jpg",
+        description:
+          "The 2nd Annual of IT Legal Summit by Lex Witness provided a fast paced knowledge sharing framework and format that gave you value and is the best investment of your time to analyse, interpret and strategize your then and future response to legal, regulatory and compliance challenge as well as the grey areas facing both service providers and users of Information technology products and services.",
+      },
+      {
+        logo: "/summit/The-Grandmasters-2014-Mumbai-Logo.jpg",
+        description:
+          "The Grand Masters 2014 presents a new and innovative format to arm Corporate Counsels with a winning edge. Experience – real knowledge sharing platform for learning and not just networking and high level one sided information! With a rapidly changing and challenging business environment, expectations from corporate counsels are ever increasing from key stakeholders across organizations.",
+      },
+      {
+        logo: "/summit/BFLS2014-Logo.jpg",
+        description:
+          "The Banking & Finance Legal Summit 2014 – It is a tough operating environment for banking and financial service providers with a slowing domestic economy and modest recovery at global and an increased focus on tightening regulatory and governance structures. There have been a number of regulatory initiatives over the past year which seek to enhance the quality of risk-based supervision and better oversight over financial conglomerates. And with new banking licences to be issued by RBI, completion is going to increase, requiring an urgent need to improve efficiency. It was against such backgrounds that the 2nd Annual Banking and Finance Legal Summit was organised with more focus on practical knowledge sharing.",
+      },
+      {
+        logo: "/summit/RCLS2014-Logo.jpg",
+        description:
+          "Real Estate & Construction Legal Summit 2014 – According to current reports, the Indian real estate and construction sector is in a process of a paradigm shift in the way it operates. It is no longer business as usual. Driven by a wide range of regulatory developments, escalating project cost due to increasing cost of both material and skilled manpower, constrained and high funding cost, which all add to operational challenges. And ongoing projects still struggle to be completed in time.",
+      },
+    ],
+  },
+
+  {
+    year: "2013",
+    title: "Lex Witness Summits 2013",
+    content: [
+      {
+        logo: "/summit/gm2013_delhi.jpg",
+        description:
+          "The Grand Masters 2013 presents a new and innovative format to arm Corporate Counsels with a winning edge. With a rapidly changing and challenging business environment, expectations from corporate counsels are ever increasing from key stakeholders across organizations. Playing a pivotal role within the organization a few key questions that go through every corporate counsel’s minds.",
+      },
+      {
+        logo: "/summit/plcs2013.jpg",
+        description:
+          "The then changes in regulation and agencies involved in regulatory oversight means a catch up game to analyze business impact – short and long term strategy for legal, regulatory, compliance and commercial professionals operating in the Pharma space. With increasing management expectations on business strategy formulation, especially in a complex regulatory environment, the 2nd Edition of Pharma Legal and Compliance Summit organized on 27th September 2013, a platform to analyse, interpret and strategize the current and future response to legal, regulatory and compliance challenges.",
+      },
+      {
+        logo: "/summit/maels2013.jpg",
+        description:
+          "Witnessing a tremendous growth in the Indian Media, Advertising and Entertainment Industry to emerge as one of the most competent industry sectors in the Global Market it has been through various regulations which brings about a new set of challenges. With increasing business complexities brought in by changes of technology and regulations, linked significantly to bottom-line, the 2nd Annual Edition of Media, Advertising & Entertainment Legal Summit 2013 is taking place on 20th September 2013 at Hotel Le Méridien, New Delhi, for an in-depth interaction and networking with thought leaders of the industry.",
+      },
+      {
+        logo: "/summit/itls2013.jpg",
+        description:
+          "Prevailing global trends present new opportunities and risks that will reshape technology industry landscape. With changing state of Technology a new set of legal challenges emerge from new data privacy and protection law, changing business models, social networking, instant messaging and cloud computing. With changing state of play there in an increasing drive towards operational efficiencies and embracing new business models to offer customers a transformed business proposition such as transaction-based pricing.",
+      },
+      {
+        logo: "/summit/rcls2013.jpg",
+        description:
+          "Discussion of second edition focuses towards solving real time issues and providing practical solutions to challenges faced by corporate counsels and all stakeholders involved in legal and approval processes of construction projects. Global investors are now more selective in their investment portfolios. Recent trends signal greater emphasis on due diligence and inclination of investing in properties as returns are easy to find out. The industry demand for a single window clearance to speed up the approval still has to see light of day.",
+      },
+    ],
+  },
+
+  {
+    year: "2012",
+    title: "Lex Witness Summits 2012",
+    content: [
+      {
+        logo: "/summit/plcs_logo-2.jpg",
+        description:
+          "The pharmaceutical and bio pharma sector in India is witnessing changing business dynamics. The recent proposal by government to codify ethics for pharma companies with uniform code of pharmaceutical marketing practices and recent changes in MCI guidelines on gifting to doctors and medical professionals and a strong DGCI follow up in certain cases means that it is no longer business as usual.",
+      },
+      {
+        logo: "/summit/maels2012.jpg",
+        description:
+          "India’s first comprehensive discussion and knowledge sharing forum on the ever changing legal, regulatory and compliance issues facing Media, Advertising and Entertainment Industry. The topics of discussions at Media, Advertising and Entertainment Legal Summit have been formulated after extensive discussion with senior industry professionals. This makes the summit an ideal meeting, networking and knowledge sharing forum for media lawyers to share and learn about a wide range of issues in today’s ever-changing media environment.",
+      },
+      {
+        logo: "/summit/rcls2012.jpg",
+        description:
+          "Disputes in construction industry are believed to have locked up a significant amount of investment capital. Disputes along with legal complications, inconsistent, ambiguous and insufficiently tailored contracts have the ability to stall project effecting cash flows, organization reputation, haze assets and drive inefficient resource utilization.",
+      },
+    ],
+  },
+
+  {
+    year: "2011",
+    title: "Lex Witness Summits 2011",
+    content: [
+      {
+        logo: "/summit/lkm_2.jpg",
+        description:
+          "Having received much appreciation and feedback from the 1st Edition of Conference in November 2010, we carried out a study amongst legal professional on their expectations from 2nd Edition of the Forum on LKM. While the 1st Edition focused on What is Legal Knowledge Management, the 2nd Edition shall focus on How should be legal knowledge be managed.",
+      },
+    ],
+  },
+
+  {
+    year: "2010",
+    title: "Lex Witness Summits 2010",
+    content: [
+      {
+        logo: "/summit/lkm_1.jpg",
+        description:
+          "A must attend, interactive, inclusive, insightful, comprehensive and thoughts generating forum for leveraging on existing intellectual and information capital for legal professionals and teams There is an increasing realization in the legal community in law firms and corporate legal departments, large and small, that it is one of their most important assets, which must be managed accordingly. Knowledge management is core to the efficient functioning of the legal department.",
+      },
+    ],
+  },
 ];
