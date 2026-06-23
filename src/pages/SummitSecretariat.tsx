@@ -106,32 +106,24 @@ const SummitSecretariat = () => {
 
                     {/* Content */}
                     {isOpen && (
-                      <div className="p-4 sm:p-6 lg:p-8 bg-white space-y-8 sm:space-y-12">
+                      <div className="p-4 sm:p-6 lg:p-8 bg-white space-y-8 sm:space-y-8">
                         {item.content ? (
                           item.content.map((summit, index) => (
                             <div
                               key={index}
-                              className="flex flex-col md:flex-row gap-4 sm:gap-6 lg:gap-8 items-center border-b border-gray-100 last:border-0 pb-6 sm:pb-8 last:pb-0"
+                              className="border-b border-gray-200 last:border-0 pb-6 sm:pb-4 last:pb-0"
                             >
-                              {/* Logo */}
-                              <div className="w-full md:w-1/3 flex justify-center">
-                                <img
-                                  src={summit.logo}
-                                  alt="Summit Logo"
-                                  className="w-full max-w-[180px] sm:max-w-[220px] max-h-32 object-contain"
-                                />
-                              </div>
+                              <img
+                                src={summit.logo}
+                                alt="Summit Logo"
+                                className="float-left w-[300px] h-[158px] object-contain mr-6 mb-4"
+                              />
 
-                              {/* Text */}
-                              <div className="font-roboto w-full md:w-2/3 text-sm sm:text-[15px] leading-relaxed text-[#333]">
-                                {/* {summit.title && (
-                                  <h3 className="font-bold text-[#333] mb-2">
-                                    {summit.title}
-                                  </h3>
-                                )} */}
+                              <p className="font-roboto text-sm sm:text-[15px] leading-relaxed text-[#333]">
+                                {summit.description}
+                              </p>
 
-                                <p>{summit.description}</p>
-                              </div>
+                              <div className="clear-both" />
                             </div>
                           ))
                         ) : (

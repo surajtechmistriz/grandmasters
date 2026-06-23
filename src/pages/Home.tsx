@@ -176,18 +176,18 @@ if (loading) {
           </p>
 
           {/* Events */}
-          <div className="font-roboto flex flex-col gap-1 text-sm sm:text-base md:text-lg font-semibold text-[#333] mb-1">
+          <div className="font-roboto flex flex-col gap-1 text-sm sm:text-base md:text-[18px] md:leading-[31.5px] font-semibold text-[#333] mb-1">
             {events.map((event: any) => (
               <div
                 key={event.id}
-                className="flex flex-wrap items-center justify-center leading-7.75 tracking-[2px] md:tracking-[4px] gap-2"
+                className="flex flex-wrap items-center justify-center leading-7.75 tracking-[2px] md:tracking-[4px]"
               >
-                <FaRegCalendarAlt className="text-[#D0252D]" />
+                <FaRegCalendarAlt className="text-[#D0252D] mr-2" />
                 <span>{formatDateWithSuffix(event.date)}</span>
-                {event.venue && <span>, {event.venue}</span>}
-                <FaMapMarkerAlt className="text-[#D0252D]" />
+                {event.venue && <span>, {event.venue}</span>},
+                <FaMapMarkerAlt size={15} className="text-[#D0252D] mr-2 ml-1 mb-1" />
                 <span>{event.city?.name}</span>
-                <span className="text-[#D0252D] animate-pulse text-xs md:text-sm">
+                <span className="text-[#D0252D] animate-pulse text-xs md:text-sm ml-4">
                   LIVE NOW
                 </span>
               </div>
@@ -199,12 +199,12 @@ if (loading) {
             {lineOne}
           </h2>
 
-          <h2 className="font-roboto text-sm sm:text-base md:text-lg font-semibold tracking-wider md:tracking-[4px] text-black/50 mb-6">
+          <h2 className="font-roboto text-sm sm:text-base md:text-lg font-semibold tracking-wider md:tracking-[4px] text-black/50 mb-6 mt-1">
             {lineTwo}
           </h2>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 md:mt-8 pb-12 md:pb-20 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 md:mt-4 pb-12 md:pb-20 w-full sm:w-auto">
             <Link to="/#register" className="w-full sm:w-auto">
               <button className="w-full text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-widest bg-white/70 cursor-pointer">
                 REGISTER NOW
