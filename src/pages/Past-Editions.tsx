@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import image from "../assets/images/pastEdition.jpg";
+import defaultImg from "../assets/images.png";
 import { useNavigate } from "react-router-dom";
 import { getPastEdition } from "../services/APIs/pastEdition";
 
@@ -122,7 +122,7 @@ const PastEdition = () => {
                             });
                           }}
                           src={
-                            event?.image ? `${imgUrl}/${event.image}` : image
+                            event?.image ? `${imgUrl}/${event.image}` : defaultImg
                           }
                           alt={event?.title}
                           className="w-full object-contain cursor-pointer"

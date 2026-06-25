@@ -57,7 +57,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/past-edition" element={<PastEdition />} />
+        <Route path="/past-editions" element={<PastEdition />} />
         <Route path="/:slug" element={<EditionOverview />} />
         <Route path="/audience-profile" element={<AudienceProfile />} />
         <Route path="/about-us" element={<AboutUs />} />

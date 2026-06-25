@@ -5,22 +5,20 @@ import { useOfficialMessages } from "../hooks/useOfficialMessages";
 const OfficialMessagesSidebar = () => {
   const navigate = useNavigate();
 
-  const { data, isLoading } = useOfficialMessages(6);
+  const { data, isLoading } = useOfficialMessages(1);
 
-  const apiData = data?.data || {};
+  const apiData = data?.data ?? {};
 
-  const messageYears = Object.keys(apiData)
-    .sort((a, b) => Number(b) - Number(a))
-    .map((year) => ({
-      year,
-      messages: apiData[year].map((item: any) => ({
-        id: item.id,
-        slug: item.speaker?.slug,
-        name: item.speaker?.name,
-        role: item.speaker?.designation,
-        org: item.speaker?.company,
-      })),
-    }));
+  const messageYears = Object.entries(apiData).map(([year, messages]) => ({
+    year,
+    messages: messages as any[],
+  }));
+
+  messageYears.sort((a, b) => Number(b.year) - Number(a.year));
+
+  console.log("React Query data:", data);
+  console.log("apiData:", apiData);
+  console.log("messageYears:", messageYears);
 
   if (isLoading) {
     return (
@@ -42,19 +40,23 @@ const OfficialMessagesSidebar = () => {
             {yearData.messages.map((item: any) => (
               <div key={item.id}>
                 <h3 className="font-bold text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#333]">
-                  {item.name}
+                  {item.speaker?.name}
                 </h3>
+
                 <p className="text-sm sm:text-[15px] leading-6 sm:leading-7 text-[#333]">
-                  {item.role}
+                  {item.speaker?.designation}
                 </p>
-                {item.org && (
+
+                {item.speaker?.company && (
                   <p className="text-xs sm:text-[12px] leading-5 sm:leading-6 text-[#333]">
-                    {item.org}
+                    {item.speaker.company}
                   </p>
                 )}
 
                 <button
-                  onClick={() => navigate(`/official-message/${item.slug}`)}
+                  onClick={() =>
+                    navigate(`/official-message/${item.speaker?.slug}`)
+                  }
                   className="mt-1 text-sm text-[#d61f26] hover:underline cursor-pointer"
                 >
                   Read More...

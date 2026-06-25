@@ -14,6 +14,7 @@ import icon from "../assets/icons/icon3d.png";
 import icon2 from "../assets/icons/icon2.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Counter from "../components/Counter";
+import { useOfficialMessages } from "../hooks/useOfficialMessages";
 
 /* ---------------- TABS ---------------- */
 const tabs = [
@@ -34,32 +35,26 @@ const stats = [
   { value: 500, suffix: "+", label: "ATTENDEES" },
 ];
 
-const luminaries = [
-  {
-    name: "Hon'ble Justice Manmohan",
-    title: "Judge, Supreme Court of India",
-    image: img1,
-  },
-  { name: "Dr. Lalit Bhasin", title: "President, SILF & BAI", image: img2 },
-  {
-    name: "Bansuri Swaraj",
-    title: "Senior Advocate, Supreme Court of India",
-    image: img3,
-  },
-  {
-    name: "Ms. Veta T. Richardson",
-    title: "President & CEO, ACC",
-    image: img4,
-  },
-];
+
+const IMAGE_URL = import.meta.env.VITE_OFFICIAL_MESSAGE_BASE_URL;
 
 const Concept = () => {
   const [active, setActive] = useState("agenda");
+
+  const navigate = useNavigate()
 
   const location = useLocation();
 
   const [startCount, setStartCount] = useState(false);
   const statsRef = useRef(null);
+
+  const { data, isLoading } = useOfficialMessages(1);
+
+  const apiData = data?.data ?? {};
+
+  const luminaries = data?.data?.["2025"] || [];
+
+  console.log("luminaries", luminaries)
 
   useEffect(() => {
     setStartCount(false);
@@ -190,44 +185,44 @@ const Concept = () => {
 
                 <ul className="space-y-1">
                   <li>
-                    #The {" "}
+                    #The{" "}
                     <span className="text-[#cd151d] font-semibold">
-                     Strategic Counsel
-                    </span>
-                     {" "} –{" "} Are You Future Ready?
+                      Strategic Counsel
+                    </span>{" "}
+                    – Are You Future Ready?
                   </li>
                   <li>
                     #India Inc. 3.0 –{" "}
                     <span className="text-[#cd151d] font-semibold">
-                     Pharma & Lifesciences Track
-                    </span>
-                     {" "} –{" "} Hyderabad Special
+                      Pharma & Lifesciences Track
+                    </span>{" "}
+                    – Hyderabad Special
                   </li>
                   <li>
                     #India Inc. 3.0 –{" "}
                     <span className="text-[#cd151d] font-semibold">
-                     Pharma & Lifesciences Track
-                    </span>
-                     {" "} –{" "} Ahmedabad Special
-                  </li>
-                     <li>
-                    #India Inc. 3.0 –{" "}
-                    <span className="text-[#cd151d] font-semibold">
-                     Real Estate & Infra Track 
-                    </span>
-                     {" "} –{" "} Hyderabad Special
+                      Pharma & Lifesciences Track
+                    </span>{" "}
+                    – Ahmedabad Special
                   </li>
                   <li>
-                    #The {" "}
+                    #India Inc. 3.0 –{" "}
+                    <span className="text-[#cd151d] font-semibold">
+                      Real Estate & Infra Track
+                    </span>{" "}
+                    – Hyderabad Special
+                  </li>
+                  <li>
+                    #The{" "}
                     <span className="text-[#cd151d] font-semibold">
                       Intellectual
                     </span>{" "}
-                     You – IP in the Age of AI
+                    You – IP in the Age of AI
                   </li>
                   <li>
                     #The New India{" "}
                     <span className="text-[#cd151d] font-semibold">
-                     Dispute Resolution
+                      Dispute Resolution
                     </span>{" "}
                     Wave – Smart Enough?
                   </li>
@@ -404,21 +399,38 @@ const Concept = () => {
               <span className="text-[#D0252D]">Various Legal Luminaries</span>
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-15 px-8">
-              {luminaries.map((p, i) => (
-                <div key={i}>
-                  <img
-                    src={p.image}
-                    className="w-52 h-52 md:w-64 md:h-64 rounded-full mx-auto object-cover"
-                  />
-                  <h3 className="font-roboto text-[20px] leading-[23px] text-[#D0252D] hover:underline cursor-pointer font-normal mt-4">
-                    {p.name}
-                  </h3>
-                  <p className="font-roboto font-normal text-[15px] leading-7  text-[#333] mt-2">
-                    {p.title}
-                  </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-20 px-8">
+              {isLoading ? (
+                <div className="col-span-full text-center py-10">
+                  Loading...
                 </div>
-              ))}
+              ) : (
+                luminaries.map((item: any) => (
+                  <div key={item.id}>
+                    <img
+                      src={`${IMAGE_URL}/${item.speaker?.image}`}
+                      alt={item.speaker?.name}
+                      className="w-52 h-52 md:w-64 md:h-64 rounded-full mx-auto object-cover"
+                    />
+
+                    <h3
+                     onClick={() =>
+                    navigate(`/official-message/${item.speaker?.slug}`)
+                  }
+                     className="font-roboto text-[20px] leading-[23px] text-[#D0252D] mt-4 hover:underline cursor-pointer">
+                      {item.speaker?.name}
+                    </h3>
+
+                    <p className="font-roboto text-[15px] leading-7 text-[#8d93a0] mt-2">
+                      {item.speaker?.designation},    {item.speaker?.company}
+                    </p>
+
+                    {/* <p className="font-roboto text-[14px] text-[#666]">
+                      {item.speaker?.company}
+                    </p>  */}
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
@@ -435,19 +447,19 @@ const Concept = () => {
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mt-8">
             {[
-  { label: "SPEAK", to: "/#speakers" },
-  { label: "SPONSOR", to: "/#sponsors" },
-  { label: "REGISTER NOW", to: "/#register" },
-  { label: "CONNECT", to: "/#connect" },
-].map(({ label, to }) => (
-  <Link
-    key={label}
-    to={to}
-    className="w-full sm:w-auto min-w-[180px] border border-white rounded-md py-3 px-6 mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D]"
-  >
-    {label}
-  </Link>
-))}
+              { label: "SPEAK", to: "/#speakers" },
+              { label: "SPONSOR", to: "/#sponsors" },
+              { label: "REGISTER NOW", to: "/#register" },
+              { label: "CONNECT", to: "/#connect" },
+            ].map(({ label, to }) => (
+              <Link
+                key={label}
+                to={to}
+                className="w-full sm:w-auto min-w-[180px] border border-white rounded-md py-3 px-6 mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D]"
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

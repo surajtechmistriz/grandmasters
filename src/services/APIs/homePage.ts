@@ -8,7 +8,7 @@ export const getEvents = async () => {
 
 export const getSponsors = async () => {
   const res = await api.get("/events/1?is_merge=1");
-  console.log("Raw data",res)
+  // console.log("Raw data",res)
   return res.data;
 };
 

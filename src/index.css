@@ -19,6 +19,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 .agenda-html ul {
   list-style-type: disc;
   padding-left: 20px;
@@ -37,9 +38,74 @@ html {
   font-style: italic;
 }
 
-.official-message-content img {
+
+
+/* Official Message Content */
+.official-message-content {
+  font-family: "Roboto";
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 29px;
+  color: #333;
+}
+
+.official-message-content p {
+  margin-bottom: 0.7rem;
+}
+
+.official-message-content strong {
+  font-weight: 700;
+}
+
+.official-message-content img,
+.official-message-content .image-style-align-right {
   float: right;
-  margin: 0 0 16px 16px;
-  max-width: 240px;
+  max-width: 40%;
+  min-width: 250px;
   height: auto;
+  margin: 0 0 1.5rem 2rem;
+}
+
+.official-message-content ul,
+.official-message-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.official-message-content ul {
+  list-style: disc;
+}
+
+.official-message-content ol {
+  list-style: decimal;
+}
+
+.official-message-content a {
+  color: #d61f26;
+  text-decoration: none;
+}
+
+.official-message-content a:hover {
+  text-decoration: underline;
+}
+
+.official-message-content::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@media (max-width: 768px) {
+  .official-message-content {
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  .official-message-content img,
+  .official-message-content .image-style-align-right {
+    float: none;
+    display: block;
+    width: 220px;
+    margin: 0 auto 1.5rem;
+  }
 }

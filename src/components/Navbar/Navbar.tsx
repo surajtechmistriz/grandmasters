@@ -15,7 +15,7 @@ const Navbar = () => {
     { id: "sponsors", label: "SPONSOR", type: "section" },
 
     {
-      id: "/past-edition",
+      id: "/past-editions",
       label: "PAST EDITIONS",
       type: "route",
     },
@@ -23,44 +23,38 @@ const Navbar = () => {
     { id: "connect", label: "CONNECT", type: "section" },
   ];
 
-  useEffect(() => {
-    // Reset active state on other pages
-    if (location.pathname !== "/") {
-      setActive("");
-      return;
-    }
+ useEffect(() => {
+  if (location.pathname !== "/") {
+    setActive("");
+    return;
+  }
 
+  const handleScroll = () => {
     const sections = document.querySelectorAll("section[id]");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let bestEntry = null;
+    let currentSection = "";
 
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
+    sections.forEach((section) => {
+      const top = (section as HTMLElement).offsetTop - 140;
 
-          if (
-            !bestEntry ||
-            Math.abs(entry.boundingClientRect.top) <
-              Math.abs(bestEntry.boundingClientRect.top)
-          ) {
-            bestEntry = entry;
-          }
-        }
+      if (window.scrollY >= top) {
+        currentSection = section.id;
+      }
+    });
 
-        if (bestEntry) {
-          setActive(bestEntry.target.id);
-        }
-      },
-      {
-        threshold: 0.3,
-      },
-    );
+    setActive(currentSection);
+  };
 
-    sections.forEach((sec) => observer.observe(sec));
+  window.addEventListener("scroll", handleScroll);
 
-    return () => observer.disconnect();
-  }, [location.pathname]);
+  handleScroll(); // initial load
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [location.pathname]);
+
+
   return (
     <nav className="fixed top-0 h-[100px] left-0 z-50 w-full bg-[#E9E9E9]  ">
       <div className="mx-auto flex h-20 md:h-24 max-w-6xl items-center justify-between px-4">

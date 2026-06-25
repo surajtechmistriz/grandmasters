@@ -1,14 +1,22 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import NotFound from "../components/NotFound";
 import SponsorsCarousel from "../components/SponsorsCarousel";
 import OfficialMessages from "../components/OfficialMessageSidebar";
 import { useOfficialMessages } from "../hooks/useOfficialMessages";
+import { useOfficialMessageDetails } from "../hooks/useOfficialMessageDetail";
 
 const OfficialMessage = () => {
   const { slug } = useParams();
+  const location = useLocation();
 
-  const { data, isLoading } = useOfficialMessages(6);
+  // const id = location.state?.id;
+  console.log(slug);
+  const id = Number(slug?.split("-").pop());
+  console.log(id);
+  const { data, isLoading } = useOfficialMessageDetails(id);
+
+  console.log(data);
 
   if (isLoading) {
     return (
@@ -18,12 +26,11 @@ const OfficialMessage = () => {
     );
   }
 
-  const apiData = data?.data || {};
-  const allMessages = Object.values(apiData).flat();
+  const message = data?.data;
 
-  const speaker = allMessages.find((item: any) => item?.speaker?.slug === slug);
-
-  if (!speaker) return <NotFound />;
+  if (!isLoading && !message) {
+    return <NotFound />;
+  }
 
   return (
     <div className=" font-roboto min-h-screen bg-white mt-20 lg:mt-[100px]">
@@ -35,18 +42,18 @@ const OfficialMessage = () => {
 
       <div className="max-w-6xl mx-auto px-5 py-10 grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-10">
         {/* LEFT */}
-        <section className="text-sm leading-7 text-[#333]">
+        <section className="official-message-content">
           <div
-            className="text-justify text-[15px] official-message-content"
-            dangerouslySetInnerHTML={{ __html: speaker.message }}
+            dangerouslySetInnerHTML={{
+              __html: message?.speaker?.message || "",
+            }}
           />
-
-          {/* <div className="mt-10">
+        </section>
+        {/* <div className="mt-10">
             <h2 className="font-bold text-lg">{speaker.speaker.name}</h2>
             <p>{speaker.speaker.designation}</p>
             <p>{speaker.speaker.company}</p>
           </div> */}
-        </section>
 
         {/* RIGHT */}
         <div>

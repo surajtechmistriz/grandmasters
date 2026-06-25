@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import icon7 from "../assets/icons/icon7.png";
-import sponserImg from "../assets/images/logo_saikrishna.jpg";
+import sponserImg from "../assets/images.png";
 import { getSponsors } from "../services/APIs/homePage";
 import { useSponsors } from "../hooks/useSponsors";
 
 const imgUrl = import.meta.env.VITE_SPONSORS_BASE_URL;
 
 export default function SponsorsPartners() {
+  const { data } = useSponsors();
 
-    const { data } = useSponsors();
-
- const sponsors = data?.data?.margedSponsors || [];  
-
- 
+  const sponsors = data?.data?.margedSponsors || [];
 
   return (
     <section className="bg-white py-10 md:pb-20 px-4">
@@ -44,14 +41,25 @@ export default function SponsorsPartners() {
               </h3>
 
               {/* Logo */}
-              <img
-                src={item.image ? `${imgUrl}/${item.image}` : sponserImg}
-                alt={item.title || item.sponsor_type}
-                className="max-h-20 md:max-h-32 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.src = sponserImg;
-                }}
-              />
+              <a
+                href={item.website_url || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => !item.website_url && e.preventDefault()}
+              >
+                <img
+                  src={item.image ? `${imgUrl}/${item.image}` : sponserImg}
+                  alt={item.title || item.sponsor_type}
+                  className={`max-h-20 md:max-h-32 w-auto object-contain  ${
+                    item.website_url
+                      ? " cursor-pointer"
+                      : "cursor-default"
+                  }`}
+                  onError={(e) => {
+                    e.currentTarget.src = sponserImg;
+                  }}
+                />
+              </a>
             </div>
           ))}
         </div>

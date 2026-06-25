@@ -215,7 +215,7 @@ if (loading) {
                 CONTACT US
               </button>
             </Link>
-            <Link to="/past-edition" className="w-full sm:w-auto">
+            <Link to="/past-editions" className="w-full sm:w-auto">
               <button className="w-full text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-widest bg-white/70 cursor-pointer">
                 PAST EDITIONS
               </button>
