@@ -35,13 +35,12 @@ const stats = [
   { value: 500, suffix: "+", label: "ATTENDEES" },
 ];
 
-
 const IMAGE_URL = import.meta.env.VITE_OFFICIAL_MESSAGE_BASE_URL;
 
 const Concept = () => {
   const [active, setActive] = useState("agenda");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const location = useLocation();
 
@@ -54,7 +53,7 @@ const Concept = () => {
 
   const luminaries = data?.data?.["2025"] || [];
 
-  console.log("luminaries", luminaries)
+  console.log("luminaries", luminaries);
 
   useEffect(() => {
     setStartCount(false);
@@ -90,10 +89,10 @@ const Concept = () => {
 
       <div className="relative z-10 mx-auto  text-center">
         {/* HEADER */}
-      <div className="backdrop-blur-md bg-white shadow-xl px-5 py-8 md:p-10 flex flex-col items-center">
+        <div className="backdrop-blur-md bg-white shadow-xl px-5 py-8 md:p-10 flex flex-col items-center">
           <img src={icon} className="h-14 bg-white text-[#D0252D]" />
-<h2 className="font-roboto text-[34px] sm:text-4xl md:text-[50px] leading-tight md:leading-[1.1] tracking-tight md:tracking-[-0.05em] text-[#333333] text-center my-3 px-2">
-              Are You A Grand Master?
+          <h2 className="font-roboto text-[34px] sm:text-4xl md:text-[50px] leading-tight md:leading-[1.1] tracking-tight md:tracking-[-0.05em] text-[#333333] text-center my-3 px-2">
+            Are You A Grand Master?
           </h2>
 
           <p className="font-roboto text-[15px] font-normal text-[#8d93a0]">
@@ -103,13 +102,13 @@ const Concept = () => {
           </p>
 
           {/* TABS */}
-         <div className="relative flex flex-col md:flex-row justify-center gap-3 md:gap-20 mt-8 border-b border-gray-300 pb-4 w-full md:w-fit mx-auto">
+          <div className="relative flex flex-col md:flex-row justify-center gap-3 md:gap-20 mt-8 border-b border-gray-300 pb-4 w-full md:w-fit mx-auto">
             {" "}
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActive(tab.id)}
-                className={`w-full md:w-auto flex items-center justify-center gap-3 md:gap-12 py-2 font-bold text-xs sm:text-sm md:text-[15px]  ${
+                className={`w-full md:w-auto flex items-center justify-center gap-3 md:gap-12 py-2 font-bold text-xs sm:text-sm md:text-[15px] cursor-pointer ${
                   active === tab.id
                     ? "text-[#D0252D]"
                     : "text-[#333] hover:text-[#D0252D]"
@@ -120,41 +119,42 @@ const Concept = () => {
               </button>
             ))}
             {/* 🔺 TRIANGLE UNDER ACTIVE TAB */}
-         {tabs.map((tab, i) =>
-  active === tab.id ? (
-    <span
-      key={i}
-      className="hidden md:block absolute bottom-0"
-      style={{
-        left: `${(100 / tabs.length) * i + 100 / tabs.length / 2}%`,
-        transform: "translateX(-50%) translateY(100%)",
-      }}
-    >
-      <span
-        className="block w-0 h-0"
-        style={{
-          borderLeft: "15px solid transparent",
-          borderRight: "15px solid transparent",
-          borderTop: "8px solid #D0252D",
-        }}
-      />
-    </span>
-  ) : null
-)}
+            {tabs.map((tab, i) =>
+              active === tab.id ? (
+                <span
+                  key={i}
+                  className="hidden md:block absolute bottom-0"
+                  style={{
+                    left: `${(100 / tabs.length) * i + 100 / tabs.length / 2}%`,
+                    transform: "translateX(-50%) translateY(100%)",
+                  }}
+                >
+                  <span
+                    className="block w-0 h-0"
+                    style={{
+                      borderLeft: "15px solid transparent",
+                      borderRight: "15px solid transparent",
+                      borderTop: "8px solid #D0252D",
+                    }}
+                  />
+                </span>
+              ) : null,
+            )}
           </div>
 
           {/* ---------------- TAB CONTENT ---------------- */}
 
           {/* AGENDA TAB */}
           {active === "agenda" && (
-<div className="font-roboto text-[15px] md:text-[15px] flex flex-col md:flex-row items-center gap-6 mt-8 px-5 max-w-5xl mx-auto text-left">              <div className="flex justify-center shrink-0">
+            <div className="font-roboto text-[15px] md:text-[15px] flex flex-col md:flex-row items-center gap-6 mt-8 px-5 max-w-5xl mx-auto text-left">
+              {" "}
+              <div className="flex justify-center shrink-0">
                 <img
                   src={agendaImg}
                   className="w-full max-w-[260px] md:max-w-64 rounded-lg object-contain"
                   alt="Agenda"
                 />
               </div>
-
               <div className="flex-1   text-[#333]">
                 <p>
                   There Are In-House Counsel and There Are Grand Masters.
@@ -232,8 +232,8 @@ const Concept = () => {
 
           {/* AUDIENCE TAB */}
           {active === "audience" && (
-<div className="mt-8 flex flex-col md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
-                {" "}
+            <div className="mt-8 flex flex-col md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
+              {" "}
               {/* TEXT SECTION */}
               <div className="space-y-4 text-[#333] flex-1">
                 <h3 className="text-[15px] font-bold leading-[28px]">
@@ -273,7 +273,7 @@ const Concept = () => {
                 </button>
               </div>
               {/* IMAGE SECTION */}
-           <div className="w-full max-w-[320px] md:w-85 mx-auto">
+              <div className="w-full max-w-[320px] md:w-85 mx-auto">
                 {" "}
                 <img
                   src={audienceImg}
@@ -290,7 +290,7 @@ const Concept = () => {
               <div className="flex justify-start">
                 <img
                   src={sponsorImg}
-                 className="w-full max-w-[320px] mx-auto rounded-lg"
+                  className="w-full max-w-[320px] mx-auto rounded-lg"
                   alt="Sponsor"
                 />
               </div>
@@ -413,15 +413,16 @@ const Concept = () => {
                     />
 
                     <h3
-                     onClick={() =>
-                    navigate(`/official-message/${item.speaker?.slug}`)
-                  }
-                     className="font-roboto text-[20px] leading-[23px] text-[#D0252D] mt-4 hover:underline cursor-pointer">
+                      onClick={() =>
+                        navigate(`/official-message/${item.speaker?.slug}`)
+                      }
+                      className="font-roboto text-[20px] leading-[23px] text-[#D0252D] mt-4 hover:underline cursor-pointer"
+                    >
                       {item.speaker?.name}
                     </h3>
 
                     <p className="font-roboto text-[15px] leading-7 text-[#8d93a0] mt-2">
-                      {item.speaker?.designation},    {item.speaker?.company}
+                      {item.speaker?.designation}, {item.speaker?.company}
                     </p>
 
                     {/* <p className="font-roboto text-[14px] text-[#666]">
