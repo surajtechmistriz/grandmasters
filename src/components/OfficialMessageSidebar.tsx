@@ -28,6 +28,8 @@ const OfficialMessagesSidebar = () => {
     );
   }
 
+  
+
   return (
     <aside className="font-roboto">
       {messageYears.map((yearData, i) => (
@@ -52,15 +54,21 @@ const OfficialMessagesSidebar = () => {
                     {item.speaker.company}
                   </p>
                 )}
+<button
+  onClick={() => {
+    // Remove the trailing "-number" from the slug
+    const cleanSlug = item.speaker.slug.replace(/-\d+$/, "");
 
-                <button
-                  onClick={() =>
-                    navigate(`/official-message/${item.speaker?.slug}`)
-                  }
-                  className="mt-1 text-sm text-[#d61f26] hover:underline cursor-pointer"
-                >
-                  Read More...
-                </button>
+    navigate(`/official-message/${cleanSlug}`, {
+      state: {
+        id: item.id,
+      },
+    });
+  }}
+  className="mt-1 text-sm text-[#d61f26] hover:underline cursor-pointer"
+>
+  Read More...
+</button>
               </div>
             ))}
           </div>

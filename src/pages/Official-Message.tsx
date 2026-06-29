@@ -7,16 +7,19 @@ import { useOfficialMessages } from "../hooks/useOfficialMessages";
 import { useOfficialMessageDetails } from "../hooks/useOfficialMessageDetail";
 
 const OfficialMessage = () => {
-  const { slug } = useParams();
-  const location = useLocation();
+
+const { slug } = useParams();
+const location = useLocation();
+
+const id = location.state?.id;
+
+const { data, isLoading } = useOfficialMessageDetails(id);
 
   // const id = location.state?.id;
-  console.log(slug);
-  const id = Number(slug?.split("-").pop());
-  console.log(id);
-  const { data, isLoading } = useOfficialMessageDetails(id);
+  console.log("Slug",slug);
+  console.log("ID clicked", id);
 
-  console.log(data);
+  console.log("Data",data);
 
   if (isLoading) {
     return (
