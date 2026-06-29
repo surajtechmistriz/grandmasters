@@ -155,7 +155,7 @@ const Home = () => {
           <img
             src={logo}
             alt="logo"
-            className="w-[110px] sm:w-[150px] md:w-[190px] mb-2 mt-2"
+            className="w-[110px] sm:w-[150px] md:w-[190px] mb-2 mt-1"
           />
 
           <h2 className="font-roboto text-xs sm:text-sm md:text-[18px] tracking-[2px] md:tracking-[3px] font-bold text-[#333] leading-7 md:leading-8 mb-2">
@@ -163,12 +163,12 @@ const Home = () => {
           </h2>
 
           {/* Title */}
-          <h1 className="font-roboto text-[28px] sm:text-4xl md:text-[40px] font-bold leading-[1.15] md:leading-tight text-[#D0252D] mb-3 px-2">
+          <h1 className="font-roboto text-[28px] sm:text-4xl md:text-[40px] font-bold leading-[1.15] md:leading-tight text-[#D0252D] mb-1.5 px-2">
             The 12th Annual Grand Masters 2026 Series
           </h1>
 
           {/* Subtitle */}
-          <p className="font-roboto text-[15px] sm:text-lg md:text-[20px] font-light leading-6 md:leading-relaxed text-[#333333] max-w-3xl mb-4 px-4">
+          <p className="font-roboto text-[15px] sm:text-lg md:text-[20px] font-light leading-6 md:leading-relaxed text-[#333333] max-w-3xl mb-2 px-">
             A 7 City pan India Corporate Counsel Legal Best Practices Summit
             Series
           </p>
@@ -178,12 +178,12 @@ const Home = () => {
             {events.map((event: any) => (
               <div
                 key={event.id}
-                className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 text-center md:text-left tracking-[1px] md:tracking-[4px] leading-6 md:leading-8 mb-2"
+                className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 text-center md:text-left tracking-[1px] md:tracking-[4px] leading-6 md:leading-8 mb-"
               >
                 <div className="flex items-center">
                   <FaRegCalendarAlt className="text-[#D0252D] mr-2" />
                   <span>{formatDateWithSuffix(event.date)}</span>
-                  {event.venue && <span>, {event.venue}</span>}
+                  {event.venue && <span>, {event.venue},</span>}
                 </div>
 
                 <div className="flex items-center">
@@ -208,19 +208,19 @@ const Home = () => {
           </h2>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 md:mt-4 pb-12 md:pb-20 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-2 md:mt-4 pb-12 md:pb-20 w-full sm:w-auto text-[14px] leading-5 font-custom">
             <Link to="/#register" className="w-full sm:w-auto">
-              <button className="w-full text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-widest bg-white/70 cursor-pointer">
+              <button className="w-full text-[#D0252D] px-2 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-bold tracking-[0.26rem] bg-white/70 cursor-pointer">
                 REGISTER NOW
               </button>
             </Link>
             <Link to="/#connect" className="w-full sm:w-auto">
-              <button className="w-full text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-widest bg-white/70 cursor-pointer">
+              <button className="w-full text-[#D0252D] px-2 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-[0.26rem] bg-white/70 cursor-pointer">
                 CONTACT US
               </button>
             </Link>
             <Link to="/past-editions" className="w-full sm:w-auto">
-              <button className="w-full text-[#D0252D] px-5 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-widest bg-white/70 cursor-pointer">
+              <button className="w-full text-[#D0252D] px-2 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-[0.26rem] bg-white/70 cursor-pointer">
                 PAST EDITIONS
               </button>
             </Link>
