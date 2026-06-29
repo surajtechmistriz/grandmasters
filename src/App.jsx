@@ -14,7 +14,6 @@ import OfficialMessage from "./pages/Official-Message";
 import Cart from "./components/Cart";
 import SummitSecretariat from "./pages/SummitSecretariat";
 import CheckoutPage from "./pages/CheckoutPage";
-import EventPage from "./pages/EventPage";
 import PaymentSuccess from "./components/PaymentSuccess"
 import NotFound from "./components/NotFound";
 
@@ -65,7 +64,6 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/summit-secretariat" element={<SummitSecretariat />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/events" element={<EventPage />} />
         <Route path="/payment-success" element={<PaymentSuccess/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
