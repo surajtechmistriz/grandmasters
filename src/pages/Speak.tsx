@@ -54,7 +54,7 @@ const SpeakersSection = () => {
             />
           </div>
 
-          <h2 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal tracking-tighter leading-tighter md:leading-[55px] text-[#333] mb-3 px-2 ">
+          <h2 className="font-roboto text-[34px] sm:text-4xl md:text-[50px] leading-tight md:leading-[55px] tracking-tight md:tracking-tighter text-[#333] mb-3 px-4">
             Meet The Grand Masters!
           </h2>
 
@@ -64,12 +64,12 @@ const SpeakersSection = () => {
         </div>
 
         {/* Tabs (UNCHANGED) */}
-        <div className="relative flex flex-col max-w-4xl mx-auto sm:flex-row flex-wrap justify-center items-center gap-10 sm:gap-20 md:gap-60 mb-1">
+        <div className="relative flex flex-col md:flex-row max-w-4xl mx-auto justify-center items-center gap-3 md:gap-60 mb-1 px-4">
           {tabs.map((tab) => (
             <span
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`font-roboto w-full sm:w-auto text-center px-4 sm:px-8 py-2 tracking-widest text-sm md:text-[15px] font-semibold uppercase md:mb-2 cursor-pointer transition ${
+              className={`font-roboto w-full md:w-auto text-center px-4 py-3 md:py-2 tracking-[2px] md:tracking-widest text-sm md:text-[15px] font-semibold uppercase transition cursor-pointer rounded md:rounded-none ${
                 active === tab.id
                   ? "text-[#D0252D]"
                   : "text-[#333] hover:text-[#D0252D]"
@@ -84,7 +84,7 @@ const SpeakersSection = () => {
             active === tab.id ? (
               <span
                 key={tab.id}
-                className="absolute bottom-[-12px] hidden sm:block"
+                className="hidden md:block absolute bottom-[-12px]"
                 style={{
                   left: tab.id === "hyderabad" ? "24%" : "75%",
                   transform: "translateX(-50%)",
@@ -107,7 +107,7 @@ const SpeakersSection = () => {
         <div className="h-2 w-full max-w-5xl mx-auto border-t border-gray-300 mb-6"></div>
 
         {/* Speakers Grid (UNCHANGED UI) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto pb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto pb-10 px-4">
           {speakers.map((item: any, i: number) => {
             const speaker = item.speaker;
 
@@ -116,7 +116,7 @@ const SpeakersSection = () => {
                 key={i}
                 className="flex flex-col items-center text-center p-4 transition"
               >
-                <div className="w-50 h-50 rounded-full overflow-hidden border border-gray-200">
+                <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-50 md:h-50 rounded-full overflow-hidden border border-gray-200">
                   <img
                     src={speaker?.image ? `${imgUrl}/${speaker.image}` : img}
                     alt={speaker?.name}
@@ -125,7 +125,7 @@ const SpeakersSection = () => {
                   />
                 </div>
 
-                <h3 className="font-roboto mt-4 font-bold leading-4.5 text-sm md:text-[15px] text-[#D0252D] tracking-wide">
+                <h3 className="font-roboto mt-4 font-bold leading-4.5 text-base md:text-[15px] text-[#D0252D] tracking-wide">
                   {speaker?.name}
                 </h3>
 
@@ -179,19 +179,19 @@ const SpeakersSection = () => {
 
         <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mt-8">
           {[
-  { label: "SPEAK", to: "/#speakers" },
-  { label: "SPONSOR", to: "/#sponsors" },
-  { label: "REGISTER NOW", to: "/#register" },
-  { label: "CONNECT", to: "/#connect" },
-].map(({ label, to }) => (
-  <Link
-    key={label}
-    to={to}
-    className="w-full sm:w-auto min-w-[180px] border border-white rounded-md py-3 px-6 mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D]"
-  >
-    {label}
-  </Link>
-))}
+            { label: "SPEAK", to: "/#speakers" },
+            { label: "SPONSOR", to: "/#sponsors" },
+            { label: "REGISTER NOW", to: "/#register" },
+            { label: "CONNECT", to: "/#connect" },
+          ].map(({ label, to }) => (
+            <Link
+              key={label}
+              to={to}
+              className="w-full sm:w-auto min-w-[180px] border border-white rounded-md py-3 px-6 mx-0 md:mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D]"
+            >
+              {label}
+            </Link>
+          ))}
         </div>
       </div>
     </section>

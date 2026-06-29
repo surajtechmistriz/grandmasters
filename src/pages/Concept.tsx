@@ -90,10 +90,10 @@ const Concept = () => {
 
       <div className="relative z-10 mx-auto  text-center">
         {/* HEADER */}
-        <div className="backdrop-blur-md bg-white shadow-xl px-4 py-8  md:p-10 flex flex-col items-center">
+      <div className="backdrop-blur-md bg-white shadow-xl px-5 py-8 md:p-10 flex flex-col items-center">
           <img src={icon} className="h-14 bg-white text-[#D0252D]" />
-          <h2 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-normal leading-[1.1] tracking-[-0.05em] text-[#333333] break-words my-2 text-center">
-            Are You A Grand Master?
+<h2 className="font-roboto text-[34px] sm:text-4xl md:text-[50px] leading-tight md:leading-[1.1] tracking-tight md:tracking-[-0.05em] text-[#333333] text-center my-3 px-2">
+              Are You A Grand Master?
           </h2>
 
           <p className="font-roboto text-[15px] font-normal text-[#8d93a0]">
@@ -103,13 +103,13 @@ const Concept = () => {
           </p>
 
           {/* TABS */}
-          <div className="relative flex flex-col md:flex-row justify-center gap-4 md:gap-20 mt-10 border-b border-gray-300 pb-4 w-fit mx-auto">
+         <div className="relative flex flex-col md:flex-row justify-center gap-3 md:gap-20 mt-8 border-b border-gray-300 pb-4 w-full md:w-fit mx-auto">
             {" "}
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActive(tab.id)}
-                className={`font-roboto flex items-center justify-center gap-12 font-bold text-xs sm:text-sm md:text-[15px] leading-[28px] transition cursor-pointer ${
+                className={`w-full md:w-auto flex items-center justify-center gap-3 md:gap-12 py-2 font-bold text-xs sm:text-sm md:text-[15px]  ${
                   active === tab.id
                     ? "text-[#D0252D]"
                     : "text-[#333] hover:text-[#D0252D]"
@@ -120,38 +120,37 @@ const Concept = () => {
               </button>
             ))}
             {/* 🔺 TRIANGLE UNDER ACTIVE TAB */}
-            {tabs.map((tab, i) =>
-              active === tab.id ? (
-                <span
-                  key={i}
-                  className="absolute bottom-0 "
-                  style={{
-                    left: `${(100 / tabs.length) * i + 100 / tabs.length / 2}%`,
-                    transform: "translateX(-50%) translateY(100%)",
-                  }}
-                >
-                  <span
-                    className="block w-0 h-0 "
-                    style={{
-                      borderLeft: "15px solid transparent",
-                      borderRight: "15px solid transparent",
-                      borderTop: "8px solid #D0252D",
-                    }}
-                  />
-                </span>
-              ) : null,
-            )}
+         {tabs.map((tab, i) =>
+  active === tab.id ? (
+    <span
+      key={i}
+      className="hidden md:block absolute bottom-0"
+      style={{
+        left: `${(100 / tabs.length) * i + 100 / tabs.length / 2}%`,
+        transform: "translateX(-50%) translateY(100%)",
+      }}
+    >
+      <span
+        className="block w-0 h-0"
+        style={{
+          borderLeft: "15px solid transparent",
+          borderRight: "15px solid transparent",
+          borderTop: "8px solid #D0252D",
+        }}
+      />
+    </span>
+  ) : null
+)}
           </div>
 
           {/* ---------------- TAB CONTENT ---------------- */}
 
           {/* AGENDA TAB */}
           {active === "agenda" && (
-            <div className="font-roboto -ml-20 text-[15px] max-w-5xl md:font-normal md:leading-[1.9] flex flex-col md:flex-row items-center gap-4 mt-8 text-left px-4">
-              <div className="flex justify-center shrink-0">
+<div className="font-roboto text-[15px] md:text-[15px] flex flex-col md:flex-row items-center gap-6 mt-8 px-5 max-w-5xl mx-auto text-left">              <div className="flex justify-center shrink-0">
                 <img
                   src={agendaImg}
-                  className="w-full max-w-64 rounded-lg object-contain"
+                  className="w-full max-w-[260px] md:max-w-64 rounded-lg object-contain"
                   alt="Agenda"
                 />
               </div>
@@ -233,8 +232,8 @@ const Concept = () => {
 
           {/* AUDIENCE TAB */}
           {active === "audience" && (
-            <div className="mt-8 flex flex-col-reverse font-roboto text-[15px] md:font-normal md:leading-1.9 md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
-              {" "}
+<div className="mt-8 flex flex-col md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
+                {" "}
               {/* TEXT SECTION */}
               <div className="space-y-4 text-[#333] flex-1">
                 <h3 className="text-[15px] font-bold leading-[28px]">
@@ -274,7 +273,7 @@ const Concept = () => {
                 </button>
               </div>
               {/* IMAGE SECTION */}
-              <div className="w-full md:w-85 shrink-0">
+           <div className="w-full max-w-[320px] md:w-85 mx-auto">
                 {" "}
                 <img
                   src={audienceImg}
@@ -286,12 +285,12 @@ const Concept = () => {
 
           {/* SPONSOR TAB */}
           {active === "sponsor" && (
-            <div className="grid md:grid-cols-[300px_1fr] font-roboto text-[15px] md:font-normal md:leading-[1.9] px-4 md:px-8 gap-4 mt-12 items-center max-w-4xl text-left">
+            <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] font-roboto text-[15px] md:font-normal md:leading-[1.9] px-4 md:px-8 gap-4 mt-12 items-center max-w-4xl text-left">
               {" "}
               <div className="flex justify-start">
                 <img
                   src={sponsorImg}
-                  className="w-[380px] rounded-lg object-contain"
+                 className="w-full max-w-[320px] mx-auto rounded-lg"
                   alt="Sponsor"
                 />
               </div>
@@ -314,7 +313,7 @@ const Concept = () => {
                   For more details, contact:
                 </p>
 
-                <p className="whitespace-nowrap mt-2">
+                <p className="break-all md:break-normal mt-2">
                   <span className="text-[#333] font-normal">
                     Bhupinder Kaur
                   </span>{" "}
@@ -334,7 +333,7 @@ const Concept = () => {
                   </a>
                 </p>
 
-                <p className="whitespace-nowrap">
+                <p className="break-all md:break-normal">
                   <span className="text-[#333] font-normal">
                     Neelima Maheshwari
                   </span>{" "}
@@ -359,11 +358,11 @@ const Concept = () => {
         </div>
 
         {/* STATS */}
-        <div ref={statsRef} className="w-full bg-black/30 py-22 px-4">
+        <div ref={statsRef} className="w-full bg-black/30 py-12 md:py-22 px-4">
           <div className="font-roboto max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
               <div key={i}>
-                <div className="text-4xl sm:text-5xl md:text-[80px] font-bold text-white">
+                <div className="text-3xl sm:text-5xl md:text-[80px] md:text-[80px] font-bold text-white">
                   {startCount ? (
                     <Counter
                       key={`${location.pathname}-${stat.label}`}
@@ -455,7 +454,7 @@ const Concept = () => {
               <Link
                 key={label}
                 to={to}
-                className="w-full sm:w-auto min-w-[180px] border border-white rounded-md py-3 px-6 mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D]"
+                className="w-full sm:w-auto min-w-[180px] border border-white rounded-md py-3 px-6 mx-0 md:mx-10 md:py-4 text-sm font-bold tracking-[0.2rem] leading-[14px] text-center transition-colors hover:bg-[#D0252D]"
               >
                 {label}
               </Link>

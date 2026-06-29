@@ -60,24 +60,24 @@ const SummitAgenda = () => {
   return (
     <div className="max-w-5xl mx-auto py-8 md:pb-12 md:pt-4 px-4 bg-white font-roboto">
       {/* HEADER (UNCHANGED) */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-8 md:mb-12">
         <div className="flex justify-center">
           <img src={icon} className="h-24" />
         </div>
 
-        <h1 className="text-3xl md:text-[50px] font-normal text-[#333] mb-8">
+        <h1 className="text-[34px] sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-none text-[#333] mb-6 md:mb-8 px-3">
           The Summit Agenda
         </h1>
 
         {/* TABS (UNCHANGED UI) */}
-        <div className="flex justify-center gap-16 border-b border-gray-200 relative">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-16 relative md:border-b md:border-gray-200">
           {/* HYDERABAD */}
           <div
             onClick={() => {
               setActiveTab("hyderabad");
               setExpandedId(null);
             }}
-            className="pb-4 cursor-pointer relative text-center"
+            className="w-full md:w-auto py-3 md:pb-4 cursor-pointer relative text-center border-b-0 md:border-b-0"
           >
             <p
               className={`text-sm font-bold tracking-widest ${
@@ -96,7 +96,7 @@ const SummitAgenda = () => {
             </p>
 
             {activeTab === "hyderabad" && (
-              <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-[#D0252D]" />
+              <div className="hidden md:block absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-[#D0252D]" />
             )}
           </div>
 
@@ -107,7 +107,7 @@ const SummitAgenda = () => {
               setActiveTab("ahmedabad");
               setExpandedId(null);
             }}
-            className="pb-4 cursor-pointer relative text-center"
+            className="w-full md:w-auto py-3 md:pb-4 cursor-pointer relative text-center border-b-0 md:border-b-0"
           >
             <p
               className={`text-sm font-bold tracking-widest ${
@@ -126,27 +126,28 @@ const SummitAgenda = () => {
             </p>
 
             {activeTab === "ahmedabad" && (
-              <div className="absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-[#D0252D]" />
+              <div className="hidden md:block absolute left-1/2 -bottom-2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[8px] border-t-[#D0252D]" />
             )}
           </div>
         </div>
       </div>
+      {/* <div className="hidden md:block border-t border-gray-200"></div> */}
 
       {/* TIMELINE (UNCHANGED UI) */}
-      <div className="relative ml-0 md:ml-20">
-        <div className="absolute left-4 md:left-8 top-0 bottom-0 w-[1px] bg-gray-200"></div>
+      <div className="relative md:ml-20">
+        <div className="hidden md:block absolute left-8 top-0 bottom-0 w-[1px] bg-gray-200"></div>
 
         <div className="space-y-0">
           {agendaItems.map((item: any) => (
             <div
               key={`${selectedEvent?.id}-${item.id}`}
-              className="relative pl-12 md:pl-20"
+              className="relative pl-0 md:pl-20"
             >
               {/* marker (UNCHANGED) */}
               <img
                 src={iconLogo}
                 alt="Agenda Icon"
-                className="absolute left-0 md:left-4 bg-[#DA2127] top-4 w-10 h-10 rounded-full object-cover"
+                className="hidden md:block absolute left-3 top-4 w-10 h-10 rounded-full bg-[#DA2127] object-cover"
               />
               <div
                 className="py-6 border-b border-gray-100"
@@ -164,7 +165,7 @@ const SummitAgenda = () => {
 
                 {/* title */}
                 <div className="flex justify-between items-start gap-4">
-                  <h3 className="text-base md:text-[22px] font-bold text-[#333]">
+                  <h3 className="text-lg md:text-[22px] font-bold text-[#333] leading-7">
                     {item.title}
                   </h3>
 
@@ -182,10 +183,10 @@ const SummitAgenda = () => {
                   <>
                     {/* SPEAKERS (UNCHANGED UI) */}
                     {item.hasSpeakers && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-10">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 mt-8">
                         {item.speakers.map((speaker: any, idx: number) => (
                           <div key={idx} className="text-center">
-                            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
+                            <div className="w-24 h-24 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
                               <img
                                 src={speaker.img}
                                 onError={handleImageError}
@@ -193,7 +194,7 @@ const SummitAgenda = () => {
                               />
                             </div>
 
-                            <h4 className="text-[#D0252D] font-black text-[10px] sm:text-[17px] leading-7 mt-2 uppercase">
+                            <h4 className="text-[#D0252D] font-black text-xs md:text-[17px] leading-5 md:leading-7 mt-2 uppercase">
                               {speaker.name}
                             </h4>
 

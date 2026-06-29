@@ -95,45 +95,43 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [location.hash]);
 
-
   const formatDateWithSuffix = (dateString: string) => {
-  const date = new Date(dateString);
+    const date = new Date(dateString);
 
-  const day = date.getDate();
+    const day = date.getDate();
 
-  const suffix =
-    day === 1 || day === 21 || day === 31
-      ? "st"
-      : day === 2 || day === 22
-      ? "nd"
-      : day === 3 || day === 23
-      ? "rd"
-      : "th";
+    const suffix =
+      day === 1 || day === 21 || day === 31
+        ? "st"
+        : day === 2 || day === 22
+          ? "nd"
+          : day === 3 || day === 23
+            ? "rd"
+            : "th";
 
-  const month = date.toLocaleString("en-US", { month: "long" });
-  const year = date.getFullYear();
+    const month = date.toLocaleString("en-US", { month: "long" });
+    const year = date.getFullYear();
 
-  return `${day}${suffix} ${month} ${year}`;
-};
+    return `${day}${suffix} ${month} ${year}`;
+  };
 
-
-if (loading) {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-white">
-      <span className="relative flex h-5 w-5">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D0252D] opacity-75"></span>
-        <span className="relative inline-flex h-5 w-5 rounded-full bg-[#D0252D]"></span>
-      </span>
-    </div>
-  );
-}
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-white">
+        <span className="relative flex h-5 w-5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D0252D] opacity-75"></span>
+          <span className="relative inline-flex h-5 w-5 rounded-full bg-[#D0252D]"></span>
+        </span>
+      </div>
+    );
+  }
 
   return (
     <section
-      className="relative w-full h-206 overflow-hidden bg-cover bg-bottom md:bg-fixed"
+      className="relative w-full min-h-screen md:h-206 overflow-hidden bg-cover bg-center md:bg-bottom md:bg-fixed"
       style={{ backgroundImage: `url(${heroImg})` }}
     >
-      <div className="relative z-10 flex justify-start pt-20 md:pt-28 px-4">
+      <div className="relative z-10 flex justify-start pt-16 md:pt-28 px-5 sm:px-4">
         <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           {/* Socials */}
           <div className="flex gap-5 md:gap-5 my-4 text-lg md:font-normal md:text-[14.3px] md:leading-[16.3px]">
@@ -157,20 +155,20 @@ if (loading) {
           <img
             src={logo}
             alt="logo"
-            className="w-[130px] sm:w-[160px] md:w-[190px] mb-2 mt-1"
+            className="w-[110px] sm:w-[150px] md:w-[190px] mb-2 mt-2"
           />
 
-          <h2 className="font-roboto text-sm md:text-[18px]  tracking-[3px] font-bold text-[#333] leading-8 mb-2 mt-1">
+          <h2 className="font-roboto text-xs sm:text-sm md:text-[18px] tracking-[2px] md:tracking-[3px] font-bold text-[#333] leading-7 md:leading-8 mb-2">
             presents
           </h2>
 
           {/* Title */}
-          <h1 className="font-roboto text-3xl sm:text-4xl md:text-[40px] font-bold leading-tight text-[#D0252D] mb-1">
+          <h1 className="font-roboto text-[28px] sm:text-4xl md:text-[40px] font-bold leading-[1.15] md:leading-tight text-[#D0252D] mb-3 px-2">
             The 12th Annual Grand Masters 2026 Series
           </h1>
 
           {/* Subtitle */}
-          <p className="font-roboto text-base sm:text-lg md:text-[20px] font-light leading-relaxed text-[#333333] max-w-3xl mb-2 mt-0.5 px-2">
+          <p className="font-roboto text-[15px] sm:text-lg md:text-[20px] font-light leading-6 md:leading-relaxed text-[#333333] max-w-3xl mb-4 px-4">
             A 7 City pan India Corporate Counsel Legal Best Practices Summit
             Series
           </p>
@@ -180,16 +178,22 @@ if (loading) {
             {events.map((event: any) => (
               <div
                 key={event.id}
-                className="flex flex-wrap items-center justify-center leading-7.75 tracking-[2px] md:tracking-[4px]"
+                className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-0 text-center md:text-left tracking-[1px] md:tracking-[4px] leading-6 md:leading-8 mb-2"
               >
-                <FaRegCalendarAlt className="text-[#D0252D] mr-2" />
-                <span>{formatDateWithSuffix(event.date)}</span>
-                {event.venue && <span>, {event.venue}</span>},
-                <FaMapMarkerAlt size={15} className="text-[#D0252D] mr-2 ml-1 mb-1" />
-                <span>{event.city?.name}</span>
-                <span className="text-[#D0252D] animate-pulse text-xs md:text-sm ml-4">
-                  LIVE NOW
-                </span>
+                <div className="flex items-center">
+                  <FaRegCalendarAlt className="text-[#D0252D] mr-2" />
+                  <span>{formatDateWithSuffix(event.date)}</span>
+                  {event.venue && <span>, {event.venue}</span>}
+                </div>
+
+                <div className="flex items-center">
+                  <FaMapMarkerAlt className="text-[#D0252D] mr-2" />
+                  <span>{event.city?.name}</span>
+
+                  <span className="text-[#D0252D] animate-pulse text-xs md:text-sm ml-3">
+                    LIVE NOW
+                  </span>
+                </div>
               </div>
             ))}
           </div>
