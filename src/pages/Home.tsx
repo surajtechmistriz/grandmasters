@@ -187,7 +187,7 @@ const Home = () => {
                 </div>
 
                 <div className="flex items-center">
-                  <FaMapMarkerAlt className="text-[#D0252D] mr-2" />
+                  <FaMapMarkerAlt className="text-[#D0252D] mr-2 ml-[0.5px] w-2.5 mb-[0.5px]" />
                   <span>{event.city?.name}</span>
 
                   <span className="text-[#D0252D] animate-pulse text-xs md:text-sm ml-3">

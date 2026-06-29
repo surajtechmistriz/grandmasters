@@ -3,23 +3,21 @@ import { useLocation, useParams } from "react-router-dom";
 import NotFound from "../components/NotFound";
 import SponsorsCarousel from "../components/SponsorsCarousel";
 import OfficialMessages from "../components/OfficialMessageSidebar";
-import { useOfficialMessages } from "../hooks/useOfficialMessages";
 import { useOfficialMessageDetails } from "../hooks/useOfficialMessageDetail";
 
 const OfficialMessage = () => {
+  const { slug } = useParams();
+  const location = useLocation();
 
-const { slug } = useParams();
-const location = useLocation();
+  const id = location.state?.id;
 
-const id = location.state?.id;
-
-const { data, isLoading } = useOfficialMessageDetails(id);
+  const { data, isLoading } = useOfficialMessageDetails(id);
 
   // const id = location.state?.id;
-  console.log("Slug",slug);
+  console.log("Slug", slug);
   console.log("ID clicked", id);
 
-  console.log("Data",data);
+  console.log("Data", data);
 
   if (isLoading) {
     return (
