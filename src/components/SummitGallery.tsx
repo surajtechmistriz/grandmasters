@@ -134,7 +134,7 @@ const SummitGallery = () => {
         </div>
 
         <h2 className="text-[#333] mb-2 text-3xl sm:text-4xl md:text-[50px] font-normal">
-          Summit Gallery
+         2025 - 26 Summit Gallery
         </h2>
 
         <p className="text-[#8D93A0] text-sm md:text-[15px] mb-8 md:mb-12">
