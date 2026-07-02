@@ -1,12 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import icon6 from "../assets/icons/icon6.png";
-import { getSummitgallery } from "../services/APIs/homePage";
+import { getHomepageGallery, getSummitEvents } from "../services/APIs/homePage";
+
+const IMAGE_URL = import.meta.env.VITE_GALLERY_BASE_URL;
 
 const SummitGallery = () => {
   const navigate = useNavigate();
 
-  const [galleryData, setGalleryData] = useState<any[]>([]);
+  const [events, setEvents] = useState<any[]>([]);
+  const [galleryImages, setGalleryImages] = useState<any[]>([]);
+  const [activeEvent, setActiveEvent] = useState<any>(null);
+
   const [activeTab, setActiveTab] = useState("");
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -16,27 +21,48 @@ const SummitGallery = () => {
 
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
+  const fetchGallery = async (eventId: number) => {
+    try {
+      const res = await getHomepageGallery(eventId);
+
+      setGalleryImages(res.data.data || []);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  console.log(galleryImages);
+
   // Fetch galleries
   useEffect(() => {
-    const fetchGallery = async () => {
+    const fetchEvents = async () => {
       try {
-        const res = await getSummitgallery();
+        setLoading(true);
 
-        const galleries = res?.data?.data || [];
+        const res = await getSummitEvents("2025");
 
-        setGalleryData(galleries);
+        const eventList = res?.data?.data?.events || [];
 
-        if (galleries.length > 0) {
-          setActiveTab(galleries[0].title);
+        setEvents(eventList);
+
+        if (eventList.length > 0) {
+          setActiveEvent(eventList[0]);
+          setActiveTab(eventList[0].city.name);
+
+          await fetchGallery(eventList[0].id);
+
+          requestAnimationFrame(() => {
+            updateIndicator(0);
+          });
         }
-      } catch (error) {
-        console.error("Gallery Error:", error);
+      } catch (err) {
+        console.log(err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchGallery();
+    fetchEvents();
   }, []);
 
   useEffect(() => {
@@ -68,25 +94,26 @@ const SummitGallery = () => {
   };
 
   // Move indicator when active tab changes
-  useEffect(() => {
-    if (!activeTab || !galleryData.length) return;
+  useLayoutEffect(() => {
+    if (!events.length || !activeTab) return;
 
-    const index = galleryData.findIndex((tab) => tab.title === activeTab);
+    const index = events.findIndex((item) => item.city.name === activeTab);
 
     if (index !== -1) {
-      updateIndicator(index);
+      requestAnimationFrame(() => {
+        updateIndicator(index);
+      });
     }
-  }, [activeTab, galleryData]);
+  }, [events, activeTab]);
 
-  const handleTabClick = (title: string, index: number) => {
-    setActiveTab(title);
+  const handleTabClick = async (event: any, index: number) => {
+    setActiveTab(event.city.name);
+    setActiveEvent(event);
+
     updateIndicator(index);
-  };
 
-  const selectedGallery = React.useMemo(
-    () => galleryData.find((item) => item.title === activeTab),
-    [galleryData, activeTab],
-  );
+    await fetchGallery(event.id);
+  };
 
   const createSlug = (year: string, title: string) =>
     `the-grand-masters-${year}-${title
@@ -103,23 +130,21 @@ const SummitGallery = () => {
   }
 
   const nextImage = () => {
-    if (!selectedGallery?.images?.length) return;
+    if (!galleryImages.length) return;
 
-    const next = (selectedIndex + 1) % selectedGallery.images.length;
+    const next = (selectedIndex + 1) % galleryImages.length;
 
     setSelectedIndex(next);
-    setSelectedImage(selectedGallery.images[next]);
+    setSelectedImage(`${IMAGE_URL}${galleryImages[next].image}`);
   };
-
   const prevImage = () => {
-    if (!selectedGallery?.images?.length) return;
+    if (!galleryImages.length) return;
 
     const prev =
-      (selectedIndex - 1 + selectedGallery.images.length) %
-      selectedGallery.images.length;
+      (selectedIndex - 1 + galleryImages.length) % galleryImages.length;
 
     setSelectedIndex(prev);
-    setSelectedImage(selectedGallery.images[prev]);
+    setSelectedImage(`${IMAGE_URL}${galleryImages[prev].image}`);
   };
   return (
     <section className="font-roboto pt-6 md:pb-16 bg-white">
@@ -134,7 +159,7 @@ const SummitGallery = () => {
         </div>
 
         <h2 className="text-[#333] mb-2 text-3xl sm:text-4xl md:text-[50px] font-normal">
-         2025 - 26 Summit Gallery
+          2025 - 26 Summit Gallery
         </h2>
 
         <p className="text-[#8D93A0] text-sm md:text-[15px] mb-8 md:mb-12">
@@ -145,18 +170,18 @@ const SummitGallery = () => {
         {/* Tabs */}
         <div className="relative border-b border-gray-200 mb-8">
           <div className="overflow-x-auto whitespace-nowrap flex justify-center gap-6 sm:gap-x-8 pb-2">
-            {galleryData.map((tab, index) => (
+            {events.map((event, index) => (
               <button
-                key={tab.id}
+                key={event.id}
                 ref={(el) => (tabRefs.current[index] = el)}
-                onClick={() => handleTabClick(tab.title, index)}
+                onClick={() => handleTabClick(event, index)}
                 className={`pb-3 sm:pb-4 text-xs sm:text-sm md:text-[15px] font-bold tracking-wide transition cursor-pointer ${
-                  activeTab === tab.title
+                  activeTab === event.city.name
                     ? "text-[#D0252D]"
                     : "text-[#333] hover:text-black"
                 }`}
               >
-                {tab.title}
+                {event.city.name}
               </button>
             ))}
           </div>
@@ -175,18 +200,18 @@ const SummitGallery = () => {
 
         {/* Images */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 mt-4">
-          {selectedGallery?.images?.map((imageUrl: string, index: number) => (
+          {galleryImages.map((item, index) => (
             <div
-              key={index}
+              key={item.id}
               className="aspect-[4/3] overflow-hidden bg-gray-100"
             >
               <img
-                src={imageUrl}
+                src={`${IMAGE_URL}${item.image}`}
                 alt={`Gallery ${index}`}
                 className="w-full h-full object-cover cursor-pointer"
                 onClick={() => {
                   setSelectedIndex(index);
-                  setSelectedImage(imageUrl);
+                  setSelectedImage(`${IMAGE_URL}${item.image}`);
                 }}
               />
             </div>
@@ -196,17 +221,14 @@ const SummitGallery = () => {
         {/* View More */}
         <button
           onClick={() => {
-            if (!selectedGallery) return;
+            if (!activeEvent) return;
 
-            navigate(
-              `/${createSlug(selectedGallery.year, selectedGallery.title)}`,
-              {
-                state: {
-                  id: selectedGallery.id,
-                  year: selectedGallery.year,
-                },
+            navigate(`/${createSlug(activeEvent.year, activeEvent.title)}`, {
+              state: {
+                id: activeEvent.id,
+                year: activeEvent.year,
               },
-            );
+            });
           }}
           className="mt-8 md:mt-10 px-6 py-3 rounded-sm border border-[#D0252D] text-[#D0252D] text-[11px] font-bold tracking-[0.2rem] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
         >
