@@ -50,21 +50,21 @@ const EditionOverview = () => {
 
   const images = eventData?.gallery?.images || [];
 
- const nextImage = () => {
-  if (selectedIndex >= images.length - 1) return;
+  const nextImage = () => {
+    if (selectedIndex >= images.length - 1) return;
 
-  const next = selectedIndex + 1;
-  setSelectedIndex(next);
-  setSelectedImage(images[next]);
-};
+    const next = selectedIndex + 1;
+    setSelectedIndex(next);
+    setSelectedImage(images[next]);
+  };
 
-const prevImage = () => {
-  if (selectedIndex <= 0) return;
+  const prevImage = () => {
+    if (selectedIndex <= 0) return;
 
-  const prev = selectedIndex - 1;
-  setSelectedIndex(prev);
-  setSelectedImage(images[prev]);
-};
+    const prev = selectedIndex - 1;
+    setSelectedIndex(prev);
+    setSelectedImage(images[prev]);
+  };
 
   if (loading) {
     return (
@@ -187,37 +187,37 @@ const prevImage = () => {
           />
 
           {/* Controls */}
-        <div
-   className={`absolute bottom-0 left-0 w-full h-12 bg-black flex items-center  justify-between px-24 md:px-80 transition-all duration-300 cursor-pointer
+          <div
+            className={`absolute bottom-0 left-0 w-full h-12 bg-black flex items-center  justify-between px-24 md:px-80 transition-all duration-300 cursor-pointer
     ${showControls ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}
   `}
->
-  <button
-    onClick={prevImage}
-    disabled={selectedIndex === 0}
-    className={`text-5xl font-bold transition mb-2
+          >
+            <button
+              onClick={prevImage}
+              disabled={selectedIndex === 0}
+              className={`text-5xl font-bold transition mb-2
       ${
         selectedIndex === 0
           ? "text-gray-500 cursor-not-allowed"
           : "text-white hover:text-gray-300 cursor-pointer"
       }`}
-  >
-    ‹
-  </button>
+            >
+              ‹
+            </button>
 
-  <button
-    onClick={nextImage}
-    disabled={selectedIndex === images.length - 1}
-    className={`text-5xl font-bold transition mb-2
+            <button
+              onClick={nextImage}
+              disabled={selectedIndex === images.length - 1}
+              className={`text-5xl font-bold transition mb-2
       ${
         selectedIndex === images.length - 1
           ? "text-gray-500 cursor-not-allowed"
           : "text-white hover:text-gray-300 cursor-pointer"
       }`}
-  >
-    ›
-  </button>
-</div>
+            >
+              ›
+            </button>
+          </div>
         </div>
       )}
     </div>

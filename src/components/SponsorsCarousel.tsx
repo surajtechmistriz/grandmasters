@@ -17,7 +17,7 @@ export default function SponsorsCarousel() {
   // console.log("Carousel data", data);
   // console.log("Carousel data", sponsors);
   return (
-    <section className="py-16 bg-white">
+    <section className="pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Custom Previous Arrow */}
         <button className="custom-prev absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-neutral-300 bg-white shadow-sm hover:border-[#D0252D] hover:text-[#D0252D] transition-all duration-300 cursor-pointer">
