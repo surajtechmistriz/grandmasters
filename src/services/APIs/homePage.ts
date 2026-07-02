@@ -12,10 +12,10 @@ export const getSponsors = async () => {
   return res.data;
 };
 
-export const getSummitgallery = async ()=>{
-  const res = await api.get("/galleries/1")
-  return res
-}
+// export const getSummitgallery = async ()=>{
+//   const res = await api.get("/galleries/1")
+//   return res
+// }
 
 
 // Get events for tabs
