@@ -16,9 +16,9 @@ const OfficialMessagesSidebar = () => {
 
   messageYears.sort((a, b) => Number(b.year) - Number(a.year));
 
-  console.log("React Query data:", data);
-  console.log("apiData:", apiData);
-  console.log("messageYears:", messageYears);
+  // console.log("React Query data:", data);
+  // console.log("apiData:", apiData);
+  // console.log("messageYears:", messageYears);
 
   if (isLoading) {
     return (

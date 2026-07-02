@@ -32,13 +32,13 @@ const SummitAgenda = () => {
       e.city?.name?.trim().toLowerCase() === activeTab.trim().toLowerCase(),
   );
 
-  console.log("activeTab:", activeTab);
-  console.log("selectedEvent:", selectedEvent);
+  // console.log("activeTab:", activeTab);
+  // console.log("selectedEvent:", selectedEvent);
 
   //  agenda from API
   const agendaFromAPI = selectedEvent?.agendas || [];
 
-  console.log("agendaFromAPI", agendaFromAPI);
+  // console.log("agendaFromAPI", agendaFromAPI);
 
   //  map API → UI format (KEEP UI SAME)
   const agendaItems = agendaFromAPI.map((item: any) => ({
@@ -103,8 +103,8 @@ const SummitAgenda = () => {
           {/* AHMEDABAD */}
           <div
             onClick={() => {
-              console.log("Ahmedabad clicked");
-              setActiveTab("ahmedabad");
+              // console.log("Ahmedabad clicked");
+              // setActiveTab("ahmedabad");
               setExpandedId(null);
             }}
             className="w-full md:w-auto py-3 md:pb-4 cursor-pointer relative text-center border-b-0 md:border-b-0"

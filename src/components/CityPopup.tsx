@@ -28,23 +28,23 @@ const CitySelectorModal = ({
 
   // Modal open/close debug
   useEffect(() => {
-    console.log("  CitySelectorModal isOpen:", isOpen);
+    // console.log("  CitySelectorModal isOpen:", isOpen);
   }, [isOpen]);
 
   // Event selection debug
   const handleSelectEvent = (eventId: number) => {
-    console.log("  Event selected:", eventId);
+    // console.log("  Event selected:", eventId);
     setSelectedEventId(eventId);
     setError(null); // clear old error
   };
 
   if (!isOpen) {
-    console.log("  Modal not rendered (isOpen=false)");
+    // console.log("  Modal not rendered (isOpen=false)");
     return null;
   }
 
   const handleAddToCart = async () => {
-    console.log("  Continue clicked");
+    // console.log("  Continue clicked");
 
     if (!selectedEventId) {
       console.warn("  No event selected");
@@ -52,7 +52,7 @@ const CitySelectorModal = ({
     }
 
     if (!selectedPlanId) {
-      console.warn("  No plan selected");
+      // console.warn("  No plan selected");
       return;
     }
 
@@ -63,7 +63,7 @@ const CitySelectorModal = ({
       quantity: 1,
     };
 
-    console.log("  AddToCart payload:", payload);
+    // console.log("  AddToCart payload:", payload);
 
     try {
       setLoading(true);

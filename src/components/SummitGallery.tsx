@@ -24,14 +24,16 @@ const SummitGallery = () => {
   const fetchGallery = async (eventId: number) => {
     try {
       const res = await getHomepageGallery(eventId);
+       console.log("Gallery API:", res.data);
 
       setGalleryImages(res.data.data || []);
+      console.log("Gallery Images:", res.data.data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  console.log(galleryImages);
+  // console.log(galleryImages);
 
   // Fetch galleries
   useEffect(() => {
@@ -39,15 +41,15 @@ const SummitGallery = () => {
       try {
         setLoading(true);
 
-        const res = await getSummitEvents("2025");
-
+        const res = await getSummitEvents(6);
+        console.log("Res:", res);
         const eventList = res?.data?.data?.events || [];
-
+        console.log("eventList:", eventList);
         setEvents(eventList);
 
         if (eventList.length > 0) {
           setActiveEvent(eventList[0]);
-          setActiveTab(eventList[0].city.name);
+          setActiveTab(eventList[0].city?.name);
 
           await fetchGallery(eventList[0].id);
 
@@ -56,7 +58,7 @@ const SummitGallery = () => {
           });
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       } finally {
         setLoading(false);
       }
@@ -97,7 +99,7 @@ const SummitGallery = () => {
   useLayoutEffect(() => {
     if (!events.length || !activeTab) return;
 
-    const index = events.findIndex((item) => item.city.name === activeTab);
+    const index = events.findIndex((item) => item.city?.name === activeTab);
 
     if (index !== -1) {
       requestAnimationFrame(() => {
@@ -107,7 +109,7 @@ const SummitGallery = () => {
   }, [events, activeTab]);
 
   const handleTabClick = async (event: any, index: number) => {
-    setActiveTab(event.city.name);
+    setActiveTab(event.city?.name);
     setActiveEvent(event);
 
     updateIndicator(index);
@@ -176,12 +178,12 @@ const SummitGallery = () => {
                 ref={(el) => (tabRefs.current[index] = el)}
                 onClick={() => handleTabClick(event, index)}
                 className={`pb-3 sm:pb-4 text-xs sm:text-sm md:text-[15px] font-bold tracking-wide transition cursor-pointer ${
-                  activeTab === event.city.name
+                  activeTab === event.city?.name
                     ? "text-[#D0252D]"
                     : "text-[#333] hover:text-black"
                 }`}
               >
-                {event.city.name}
+                {event.city?.name} Edition
               </button>
             ))}
           </div>
@@ -250,12 +252,12 @@ const SummitGallery = () => {
           </button>
 
           {/* Full Image */}
-          <img
-            src={selectedImage}
-            alt="Gallery"
-            className="max-h-screen max-w-[90vw] object-contain cursor-pointer"
-            onClick={() => setShowControls((prev) => !prev)}
-          />
+         <img
+  src={selectedImage}
+  alt="Gallery"
+  className="w-screen h-screen object-contain cursor-pointer"
+  onClick={() => setShowControls((prev) => !prev)}
+/>
 
           {/* Bottom Controls */}
           <div

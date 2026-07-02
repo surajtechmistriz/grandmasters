@@ -1,12 +1,13 @@
+import { APP_EVENT_TYPE } from "../../constant/config";
 import api from "../axios";
 
 export const getPastEdition = async () => {
-  const response = await api.get("/events/1", {
+  const response = await api.get(`/events/${APP_EVENT_TYPE}`, {
     params: {
       is_past_edition: 1,
     },
   });
-  console.log("PastEdition data", response);
+
   return response.data;
 };
 

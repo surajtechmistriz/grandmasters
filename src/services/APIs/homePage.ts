@@ -1,31 +1,20 @@
+import { APP_EVENT_TYPE } from "../../constant/config";
 import api from "../axios";
 
 export const getEvents = async () => {
-  const { data } = await api.get("/events/1");
+  const { data } = await api.get(`/events/${APP_EVENT_TYPE}`);
   return data;
 };
 
-
 export const getSponsors = async () => {
-  const res = await api.get("/events/1?is_merge=1");
-  // console.log("Raw data",res)
+  const res = await api.get(`/events/${APP_EVENT_TYPE}?is_merge=1`);
   return res.data;
 };
 
-// export const getSummitgallery = async ()=>{
-//   const res = await api.get("/galleries/1")
-//   return res
-// }
-
-
-// Get events for tabs
-export const getSummitEvents = async (year: string) => {
-  return api.get(
-    `/events/1?is_past_edition=1&year=${year}`
-  );
+export const getSummitEvents = async (limit: number) => {
+  return api.get(`/events/${APP_EVENT_TYPE}?is_past_edition=1&limit=${limit}`);
 };
 
-// Get gallery by event id
 export const getHomepageGallery = async (eventId: number) => {
   return api.get(`/homepage-gallery/${eventId}`);
 };

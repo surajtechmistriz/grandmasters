@@ -53,7 +53,7 @@ const Concept = () => {
 
   const luminaries = data?.data?.["2025"] || [];
 
-  console.log("luminaries", luminaries);
+  // console.log("luminaries", luminaries);
 
   useEffect(() => {
     setStartCount(false);

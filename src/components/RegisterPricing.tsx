@@ -46,7 +46,7 @@ const RegisterPricing = () => {
   );
 
   const handleCitySelect = (cityName: string) => {
-    console.log("Selected City:", cityName);
+    // console.log("Selected City:", cityName);
     setIsModalOpen(false);
 
     navigate("/cart", {
