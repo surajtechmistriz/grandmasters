@@ -432,7 +432,7 @@ const AudienceProfile = () => {
     <div className="min-h-screen bg-[#white] mt-16 md:mt-[98px]">
       {/* Header */}
       <div className="bg-[#d61f26] py-6">
-        <h1 className="font-roboto text-white text-center text-[28px] md:text-[35px] font-normal leading-[55px] tracking-tighter">
+        <h1 className="font-roboto text-white text-center text-[28px] md:text-[50px] font-normal leading-[55px] tracking-tighter">
           Meet The Legal Maestros
         </h1>
       </div>
@@ -515,7 +515,7 @@ const AudienceProfile = () => {
             <OfficialMessages />
           </div>
         </div>
-        <h1 className="text-4xl text-center mt-16">Sponsors & Partners</h1>
+        <h1 className="text-4xl text-center my-16">Sponsors & Partners</h1>
         <SponsorsCarousel />
       </div>
     </div>
