@@ -82,7 +82,7 @@ const Concept = () => {
 
   return (
     <section
-      className="relative w-full min-h-screen bg-center bg-cover md:bg-fixed"
+      className="relative font-roboto w-full min-h-screen bg-center bg-cover md:bg-fixed"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
       <div className="absolute inset-0 bg-black/20" />
@@ -155,13 +155,13 @@ const Concept = () => {
                   alt="Agenda"
                 />
               </div>
-              <div className="flex-1   text-[#333]">
-                <p>
+              <div className="flex-1    text-[#333]">
+                <p className="mb-2">
                   There Are In-House Counsel and There Are Grand Masters.
                   <span className="text-[#cd151d] font-semibold"> Choose.</span>
                 </p>
 
-                <p>
+                 <p className="mb-2">
                   Do You Choose Client Delight Over the Billing Delight?
                   <span className="text-[#cd151d] font-semibold">
                     {" "}
@@ -169,7 +169,7 @@ const Concept = () => {
                   </span>
                 </p>
 
-                <p>
+                <p className="mb-2">
                   Have You Moved on from Court Room to Board Room?
                   <span className="text-[#cd151d] font-semibold">
                     {" "}

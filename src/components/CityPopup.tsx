@@ -117,39 +117,50 @@ const CitySelectorModal = ({
     Hyderabad: hyd,
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex -mt-30 items-center justify-center bg-black/20">
-      <div className="relative w-full max-w-5xl bg-white p-8 rounded-lg shadow-xl mx-4">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
-        >
-          <X size={24} />
-        </button>
+return (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-md p-4">
+    <div className="relative w-full max-w-lg rounded-3xl bg-white shadow-2xl">
+      {/* Close */}
+      <button
+        onClick={onClose}
+        className="absolute right-5 top-5 rounded-full p-2 text-gray-400 transition hover:bg-gray-100 hover:text-black"
+      >
+        <X size={20} />
+      </button>
 
-        <h2 className="text-center text-xl font-medium text-gray-700 mb-8">
+      {/* Header */}
+      <div className="px-8 pt-8">
+        <h2 className="text-center text-2xl font-semibold tracking-tight text-gray-900">
           Select City
         </h2>
+{/* 
+        <p className="mt-2 text-center text-sm text-gray-500">
+          Select the summit location.
+        </p> */}
+      </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-10 gap-6 justify-items-center">
-          {events.map((event: any) => {
-            const isSelected = selectedEventId === event.id;
+      {/* Cities */}
+      <div
+        className={`mt-8 grid gap-4 px-8 ${
+          events.length <= 2 ? "grid-cols-2" : "grid-cols-2 md:grid-cols-3"
+        }`}
+      >
+        {events.map((event: any) => {
+          const isSelected = selectedEventId === event.id;
 
-            return (
-              <div
-                key={event.id}
-                onClick={() => handleSelectEvent(event.id)}
-                className="flex flex-col items-center cursor-pointer group"
-              >
-                {/* ICON WRAPPER */}
-                <div
-                  className={`w-16 h-16 flex items-center justify-center rounded-full transition-all duration-200
-                    ${
-                      isSelected
-                        ? "bg-red-100 ring-2 ring-red-500"
-                        : "bg-gray-100 hover:bg-gray-200"
-                    }`}
-                >
+          return (
+            <button
+              key={event.id}
+              onClick={() => handleSelectEvent(event.id)}
+              className={`group rounded-2xl border p-6 transition-all duration-200 cursor-pointer
+              ${
+                isSelected
+                  ? "border-[#D0252D] bg-white shadow-md"
+                  : "border-gray-200 hover:border-gray-300 hover:shadow-sm"
+              }`}
+            >
+              <div className="flex flex-col items-center ">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-50">
                   <img
                     src={
                       cityIconMap[event.city_name] ||
@@ -159,48 +170,45 @@ const CitySelectorModal = ({
                       "/placeholder.png"
                     }
                     alt={event.city_name || event.city?.name}
-                    className="w-10 h-10 object-contain"
+                    className="h-10 w-10 object-contain"
                   />
                 </div>
 
-                {/* LABEL */}
                 <span
-                  className={`mt-2 text-sm font-medium text-center transition-colors
-                  ${
-                    isSelected
-                      ? "text-red-600"
-                      : "text-gray-600 group-hover:text-black"
+                  className={`mt-4 text-sm font-medium transition-colors ${
+                    isSelected ? "text-[#D0252D]" : "text-gray-800"
                   }`}
                 >
                   {event.city_name || event.city?.name}
                 </span>
-              </div>
-            );
-          })}
-        </div>
+            </div>
+            </button>
+          );
+        })}
+      </div>
 
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={handleAddToCart}
-            disabled={!selectedEventId || loading}
-            className={`px-6 py-3 rounded-md font-bold text-white transition cursor-pointer
-              ${
-                !selectedEventId || loading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-[#D0252D] hover:bg-[#D0252d]"
-              }`}
-          >
-            {loading ? "Adding..." : "Continue"}
-          </button>
-        </div>
-        {error && (
-          <div className="mb-4 text-center text-red-600 font-medium">
-            {error}
-          </div>
-        )}
+      {error && (
+        <p className="mt-5 text-center text-sm text-red-600">{error}</p>
+      )}
+
+      {/* Footer */}
+      <div className="px-8 py-8">
+        <button
+          onClick={handleAddToCart}
+          disabled={!selectedEventId || loading}
+          className={`w-full rounded-xl py-3.5 text-sm font-medium transition
+          ${
+            !selectedEventId || loading
+              ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+              : "bg-[#D0252D] text-white hover:bg-[#b51f27]"
+          }`}
+        >
+          {loading ? "Adding..." : "Continue"}
+        </button>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default CitySelectorModal;
