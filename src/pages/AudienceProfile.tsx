@@ -429,10 +429,10 @@ const hierarchical = [
 
 const AudienceProfile = () => {
   return (
-    <div className="min-h-screen bg-[#white] mt-[100px]">
+    <div className="min-h-screen bg-[#white] mt-16 md:mt-[98px]">
       {/* Header */}
       <div className="bg-[#d61f26] py-6">
-        <h1 className="font-roboto text-white text-center text-[50px] font-normal leading-[55px] tracking-tighter">
+        <h1 className="font-roboto text-white text-center text-[28px] md:text-[35px] font-normal leading-[55px] tracking-tighter">
           Meet The Legal Maestros
         </h1>
       </div>

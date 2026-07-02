@@ -3,7 +3,7 @@ import SponsorsCarousel from "../components/SponsorsCarousel";
 
 const AboutUs = () => {
   return (
-    <div className="font-roboto min-h-screen mt-20 md:mt-[100px]">
+    <div className="font-roboto min-h-screen mt-16 md:mt-[98px]">
       {/* Header */}
       <div className="bg-[#D12229] py-5 md:py-6">
         <h1 className="text-white text-center text-3xl sm:text-4xl md:text-[50px] font-normal leading-tight md:leading-[55px] tracking-tight px-4">

@@ -14,7 +14,7 @@ const SummitSecretariat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white mt-20 lg:mt-[100px]">
+    <div className="min-h-screen bg-white mt-16 lg:mt-[98px]">
       {/* Header */}
       <div className="bg-[#d61f26] py-5 sm:py-">
         <h1 className="text-white text-center text-3xl tracking-[-0.2rem] sm:text-4xl md:text-5xl font-normal leading-tight px-4">

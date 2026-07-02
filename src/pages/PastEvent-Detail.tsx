@@ -86,10 +86,10 @@ const EditionOverview = () => {
   console.log("Data", eventData);
 
   return (
-    <div className="min-h-screen font-roboto bg-white mt-20 lg:mt-[100px]">
+    <div className="min-h-screen font-roboto bg-white mt-16 lg:mt-[98px]">
       {/* Header */}
       <div className="bg-[#D0252D] py-4 sm:py-7">
-        <h1 className="text-center text-white text-2xl tracking-[-0.1rem] leading-9.5 sm:text-3xl md:text-[35px] font-normal px-4">
+        <h1 className="text-center text-white text-[22px] tracking-[-0.1rem] leading-9.5 sm:text-3xl md:text-[35px] font-normal px-4">
           The Grand Masters {eventData?.year},
           <span className="ml-2">{eventData?.city?.name}</span> Edition - An
           Overview
@@ -99,7 +99,7 @@ const EditionOverview = () => {
       {/* Content */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-14">
         {/* Tabs */}
-        <div className="flex justify-center border-b gap-0.5 border-[#D0252D]">
+        <div className="flex justify-center md:gap-0.5 border-b border-[#D0252D] overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTab("speakers")}
             className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
@@ -147,7 +147,7 @@ const EditionOverview = () => {
         {/* Gallery Tab */}
         {activeTab === "gallery" && (
           <div className="py-6 sm:py-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
               {eventData?.gallery?.images?.map((img: string, index: number) => (
                 <div key={index} className="overflow-hidden bg-white shadow-sm">
                   <img

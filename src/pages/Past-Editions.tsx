@@ -86,12 +86,12 @@ const PastEdition = () => {
   }
 
   return (
-    <div className="min-h-screen mt-[100px] bg-white">
+    <div className="min-h-screen mt-[66px] md:mt-[98px] bg-white">
       {sections.map((section, index) => {
         return (
           <div key={section?.year || index} className="mb-10">
             <div className="bg-[#d12229] py-8">
-              <h1 className="font-roboto text-center text-[35px] font-normal -tracking-wider text-white">
+              <h1 className="font-roboto text-center text-[22px] md:text-[35px] font-normal -tracking-wider text-white">
                 The Grand Masters {section?.year} Editions
               </h1>
             </div>

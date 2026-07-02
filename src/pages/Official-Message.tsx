@@ -34,7 +34,7 @@ const OfficialMessage = () => {
   }
 
   return (
-    <div className=" font-roboto min-h-screen bg-white mt-20 lg:mt-[100px]">
+    <div className=" font-roboto min-h-screen bg-white mt-16 lg:mt-[98px]">
       <div className="bg-[#d61f26] py-5 sm:py-6">
         <h1 className=" font-roboto text-white text-center text-3xl sm:text-4xl md:text-[33px]   tracking-tight font-normal leading-tight px-4">
           Official Messages
