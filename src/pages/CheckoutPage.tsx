@@ -716,7 +716,7 @@ const CheckoutPage = () => {
                 type="button"
                 onClick={handleOrder}
                 disabled={loading}
-                className="font-roboto leading-4 bg-[#D0252D] text-white px-4 py-2.5 m-3 font-bold text-[15px]  rounded disabled:opacity-50"
+                className="font-roboto cursor-pointer leading-4 bg-[#D0252D] text-white px-4 py-2.5 m-3 font-bold text-[15px]  rounded disabled:opacity-50"
               >
                 {loading ? "Processing..." : "Place Order"}
               </button>
