@@ -413,9 +413,19 @@ const Concept = () => {
                     />
 
                     <h3
-                      onClick={() =>
-                        navigate(`/official-message/${item.speaker?.slug}`)
-                      }
+                      onClick={() => {
+                        // Remove the trailing "-number" from the slug
+                        const cleanSlug = item.speaker.slug.replace(
+                          /-\d+$/,
+                          "",
+                        );
+
+                        navigate(`/official-message/${cleanSlug}`, {
+                          state: {
+                            id: item.id,
+                          },
+                        });
+                      }}
                       className="font-roboto text-[20px] leading-[23px] text-[#D0252D] mt-4 hover:underline cursor-pointer"
                     >
                       {item.speaker?.name}
