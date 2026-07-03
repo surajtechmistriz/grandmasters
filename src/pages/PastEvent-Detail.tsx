@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getPastEditionDetail } from "../services/APIs/pastEdition";
 
+
+
 const EditionOverview = () => {
   const { slug } = useParams();
   const location = useLocation();
@@ -85,6 +87,11 @@ const EditionOverview = () => {
 
   console.log("Data", eventData);
 
+
+  // Temporary static report
+// const reportUrl = "/sample.pdf";
+const reportUrl = eventData?.report;
+
   return (
     <div className="min-h-screen font-roboto bg-white mt-16 lg:mt-[98px]">
       {/* Header */}
@@ -97,7 +104,7 @@ const EditionOverview = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 lg:py-14">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-12 lg:py-10">
         {/* Tabs */}
         <div className="flex justify-center md:gap-0.5 border-b border-[#D0252D] overflow-x-auto no-scrollbar">
           <button
@@ -121,6 +128,19 @@ const EditionOverview = () => {
           >
             Gallery
           </button>
+
+        {reportUrl && (
+  <button
+    onClick={() => setActiveTab("report")}
+    className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
+      activeTab === "report"
+        ? "bg-[#D0252D] text-white border-[#D0252D]"
+        : "bg-white text-[#333] border-gray-300"
+    }`}
+  >
+    Summit Report {eventData?.year}
+  </button>
+)}
         </div>
 
         {/* Speakers Tab */}
@@ -164,6 +184,18 @@ const EditionOverview = () => {
             </div>
           </div>
         )}
+
+       {activeTab === "report" && reportUrl && (
+  <div className="py-8">
+    <div className="border border-gray-300 overflow-hidden shadow-sm">
+      <iframe
+        src={reportUrl}
+        title="Summit Report"
+        className="w-full h-[85vh]"
+      />
+    </div>
+  </div>
+)}
       </div>
       {selectedImage && (
         <div
