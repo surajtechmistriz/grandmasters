@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getPastEditionDetail } from "../services/APIs/pastEdition";
 
-
-
 const EditionOverview = () => {
   const { slug } = useParams();
   const location = useLocation();
@@ -87,10 +85,13 @@ const EditionOverview = () => {
 
   console.log("Data", eventData);
 
-
   // Temporary static report
-// const reportUrl = "/sample.pdf";
-const reportUrl = eventData?.report;
+  // const reportUrl = "/sample.pdf";
+ const REPORT_BASE_URL = import.meta.env.VITE_REPORT_BASE_URL;
+
+const reportUrl = eventData?.summit_report
+  ? `${REPORT_BASE_URL}/${eventData.summit_report}`
+  : "";
 
   return (
     <div className="min-h-screen font-roboto bg-white mt-16 lg:mt-[98px]">
@@ -129,18 +130,18 @@ const reportUrl = eventData?.report;
             Gallery
           </button>
 
-        {reportUrl && (
-  <button
-    onClick={() => setActiveTab("report")}
-    className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
-      activeTab === "report"
-        ? "bg-[#D0252D] text-white border-[#D0252D]"
-        : "bg-white text-[#333] border-gray-300"
-    }`}
-  >
-    Summit Report {eventData?.year}
-  </button>
-)}
+          {reportUrl && (
+            <button
+              onClick={() => setActiveTab("report")}
+              className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
+                activeTab === "report"
+                  ? "bg-[#D0252D] text-white border-[#D0252D]"
+                  : "bg-white text-[#333] border-gray-300"
+              }`}
+            >
+              Summit Report {eventData?.year}
+            </button>
+          )}
         </div>
 
         {/* Speakers Tab */}
@@ -185,17 +186,17 @@ const reportUrl = eventData?.report;
           </div>
         )}
 
-       {activeTab === "report" && reportUrl && (
-  <div className="py-8">
-    <div className="border border-gray-300 overflow-hidden shadow-sm">
-      <iframe
-        src={reportUrl}
-        title="Summit Report"
-        className="w-full h-[85vh]"
-      />
-    </div>
-  </div>
-)}
+        {activeTab === "report" && reportUrl && (
+          <div className="py-8">
+            <div className="border border-gray-300 overflow-hidden shadow-sm">
+              <iframe
+                src={reportUrl}
+                title="Summit Report"
+                className="w-full h-[85vh]"
+              />
+            </div>
+          </div>
+        )}
       </div>
       {selectedImage && (
         <div

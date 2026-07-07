@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import bgImg from "../assets/images/chess.jpg";
 import { submitShowcase } from "../services/APIs/getInvolved";
 import { toast } from "sonner";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const GetInvolvedForm = () => {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+  const [captchaToken, setCaptchaToken] = useState("");
+
   const [formdata, setFormdata] = useState({
     name: "",
     email: "",
     phone: "",
     confirmation: false,
   });
+
+  console.log("Site Key:", import.meta.env.VITE_RECAPTCHA_SITE_KEY_v2);
 
   const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormdata({
@@ -21,6 +28,16 @@ const GetInvolvedForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    console.log("=== Form Submit Started ===");
+    console.log("Form Data:", formdata);
+    console.log("Captcha Token:", captchaToken);
+
+    if (!captchaToken) {
+      console.log("❌ reCAPTCHA not completed");
+      toast.error("Please complete the reCAPTCHA.");
+      return;
+    }
+
     try {
       const payload = {
         event_type_id: "6",
@@ -28,16 +45,40 @@ const GetInvolvedForm = () => {
         email: formdata.email,
         phone: formdata.phone,
         confirmation: formdata.confirmation,
+        captcha: captchaToken,
       };
 
-      const res = await submitShowcase(payload);
+      console.log("Payload:", payload);
+
+      const response = await submitShowcase(payload);
+
+      console.log("API Response:", response);
 
       toast.success("Submitted successfully!");
+
+      setFormdata({
+        name: "",
+        email: "",
+        phone: "",
+        confirmation: false,
+      });
+
+      recaptchaRef.current?.reset();
+      setCaptchaToken("");
+
+      console.log("=== Form Reset Complete ===");
     } catch (error: any) {
+      console.error("❌ API Error:", error);
+      console.error("Response:", error?.response);
+      console.error("Response Data:", error?.response?.data);
+      console.error("Status:", error?.response?.status);
+
       const message = error?.response?.data?.message || "Something went wrong";
 
-      console.error("Backend message:", message);
       toast.error(message);
+
+      recaptchaRef.current?.reset();
+      setCaptchaToken("");
     }
   };
 
@@ -118,21 +159,19 @@ const GetInvolvedForm = () => {
             </div>
 
             {/* Recaptcha Placeholder */}
-            <div className="bg-white p-3 rounded-sm flex items-center justify-between w-full max-w-[300px]">
-              <div className="flex items-center gap-3">
-                <input type="checkbox" className="h-6 w-6" />
-                <span className="text-[#333] text-sm md:text-[15px] font-normal leading-relaxed font-roboto">
-                  I'm not a robot
-                </span>
-              </div>
-              <div className="flex flex-col items-center">
-                <img
-                  src="https://www.gstatic.com/recaptcha/api2/logo_48.png"
-                  alt="recaptcha"
-                  className="w-8 h-8"
-                />
-                <span className="text-[10px] text-[#8D93A0]">reCAPTCHA</span>
-              </div>
+            <div className="flex justify-start">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY_v2}
+                onChange={(token) => {
+                  console.log(" reCAPTCHA Token:", token);
+                  setCaptchaToken(token || "");
+                }}
+                onExpired={() => {
+                  console.log(" reCAPTCHA Expired");
+                  setCaptchaToken("");
+                }}
+              />
             </div>
 
             {/* Submit Button */}
