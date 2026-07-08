@@ -36,6 +36,7 @@ const stats = [
 ];
 
 const IMAGE_URL = import.meta.env.VITE_OFFICIAL_MESSAGE_BASE_URL;
+console.log(IMAGE_URL)
 
 const Concept = () => {
   const [active, setActive] = useState("agenda");
