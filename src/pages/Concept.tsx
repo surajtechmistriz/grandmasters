@@ -274,7 +274,7 @@ const Concept = () => {
                 </button>
               </div>
               {/* IMAGE SECTION */}
-              <div className="w-full max-w-[320px] md:w-85 mx-auto">
+              <div className="w-full max-w-84.75 md:w-85 mx-auto">
                 {" "}
                 <img
                   src={audienceImg}
