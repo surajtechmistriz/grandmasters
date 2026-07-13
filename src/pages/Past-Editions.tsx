@@ -24,7 +24,7 @@ const PastEdition = () => {
 
   const [sections, setSections] = useState<EventSection[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
 
   useEffect(() => {
     const dataFetch = async () => {

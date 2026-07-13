@@ -66,34 +66,34 @@ const Cart = () => {
     } catch (err: any) {
       showCouponError(
         err?.response?.data?.message ||
-          err?.response?.data?.error ||
-          "Invalid coupon code",
+        err?.response?.data?.error ||
+        "Invalid coupon code",
       );
     } finally {
       setCouponLoading(false);
     }
   };
 
- const handleRemoveCoupon = async () => {
-  try {
-    setCouponLoading(true);
+  const handleRemoveCoupon = async () => {
+    try {
+      setCouponLoading(true);
 
-    const code = cartTotal?.coupon?.code || couponCode;
+      const code = cartTotal?.coupon?.code || couponCode;
 
-    await removeCoupon(code);
+      await removeCoupon(code);
 
-    setCouponCode("");
+      setCouponCode("");
 
-    await refetch();
+      await refetch();
 
-    showMessage("Coupon removed successfully.");
-    setShowUndo(false);
-  } catch (error) {
-    console.error(error);
-  } finally {
-    setCouponLoading(false);
-  }
-};
+      showMessage("Coupon removed successfully.");
+      setShowUndo(false);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setCouponLoading(false);
+    }
+  };
 
   const handleRemove = async (item: any) => {
     try {
@@ -279,11 +279,10 @@ const Cart = () => {
             onClick={handleUpdateCart}
             disabled={loadingAction === "update" || !hasQuantityChanges}
             className={`px-3 py-2 text-[13px] font-bold  rounded-sm transition
-            ${
-              hasQuantityChanges
+            ${hasQuantityChanges
                 ? "bg-[#dad7de] text-[#515151] cursor-pointer"
                 : "bg-[#E9E6ED] text-[#9e9e9e] cursor-not-allowed"
-            }`}
+              }`}
           >
             {loadingAction === "update" ? (
               <span className="flex items-center gap-2">
@@ -313,29 +312,29 @@ const Cart = () => {
                 </td>
               </tr>
 
-             {cartTotal?.coupon && (
-  <tr className="border-b border-gray-200">
-    <th className="px-3 py-2 text-left font-bold">
-      Coupon: {cartTotal.coupon.code}
-    </th>
+              {cartTotal?.coupon && (
+                <tr className="border-b border-gray-200">
+                  <th className="px-3 py-2 text-left font-bold">
+                    Coupon: {cartTotal.coupon.code}
+                  </th>
 
-    <td className="px-3 py-2">
-      <div className="flex items-center gap-2">
-        <span>
-          -₹{Number(cartTotal.discount || 0).toLocaleString("en-IN")}
-        </span>
+                  <td className="px-3 py-2">
+                    <div className="flex items-center gap-2">
+                      <span>
+                        -₹{Number(cartTotal.discount || 0).toLocaleString("en-IN")}
+                      </span>
 
-        <button
-          onClick={handleRemoveCoupon}
-          disabled={couponLoading}
-          className="text-[#D12229]  hover:underline min-w-[70px] inline-flex items-center justify-center cursor-pointer"
-        >
-          {couponLoading ? <MiniLoader /> : "[Remove]"}
-        </button>
-      </div>
-    </td>
-  </tr>
-)}
+                      <button
+                        onClick={handleRemoveCoupon}
+                        disabled={couponLoading}
+                        className="text-[#D12229]  hover:underline min-w-[70px] inline-flex items-center justify-center cursor-pointer"
+                      >
+                        {couponLoading ? <MiniLoader /> : "[Remove]"}
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              )}
 
               <tr className="border-b border-gray-200">
                 <th className="px-3 py-2 text-left font-bold">

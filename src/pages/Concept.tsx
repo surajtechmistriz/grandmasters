@@ -107,11 +107,10 @@ const Concept = () => {
               <button
                 key={tab.id}
                 onClick={() => setActive(tab.id)}
-                className={`w-full md:w-auto flex items-center justify-center gap-3 md:gap-12 py-2 font-bold text-xs sm:text-sm md:text-[15px] cursor-pointer ${
-                  active === tab.id
+                className={`w-full md:w-auto flex items-center justify-center gap-3 md:gap-12 py-2 font-bold text-xs sm:text-sm md:text-[15px] cursor-pointer ${active === tab.id
                     ? "text-[#D0252D]"
                     : "text-[#333] hover:text-[#D0252D]"
-                }`}
+                  }`}
               >
                 {tab.icon}
                 {tab.label}
@@ -160,7 +159,7 @@ const Concept = () => {
                   <span className="text-[#cd151d] font-semibold"> Choose.</span>
                 </p>
 
-                 <p className="mb-2">
+                <p className="mb-2">
                   Do You Choose Client Delight Over the Billing Delight?
                   <span className="text-[#cd151d] font-semibold">
                     {" "}

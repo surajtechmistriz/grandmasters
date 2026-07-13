@@ -79,18 +79,16 @@ const SummitAgenda = () => {
                 className="w-full md:w-auto py-3 md:pb-4 cursor-pointer relative text-center"
               >
                 <p
-                  className={`text-[15px] font-bold leading-7 tracking-widest ${
-                    isActive ? "text-[#D0252D]" : "text-[#333]"
-                  }`}
+                  className={`text-[15px] font-bold leading-7 tracking-widest ${isActive ? "text-[#D0252D]" : "text-[#333]"
+                    }`}
                 >
                   {/* {event.date} */}
                   {event.date?.split(" ").slice(0, 2).join(" ")}
                 </p>
 
                 <p
-                  className={`uppercase font-bold ${
-                    isActive ? "text-[#D0252D]" : "text-[#333]"
-                  }`}
+                  className={`uppercase font-bold ${isActive ? "text-[#D0252D]" : "text-[#333]"
+                    }`}
                 >
                   {event.city?.name} Edition
                 </p>
@@ -143,9 +141,8 @@ const SummitAgenda = () => {
 
                   {(item.description || item.hasSpeakers) && (
                     <ChevronDown
-                      className={`transition-transform text-[#c9060a] cursor-pointer ${
-                        expandedId === item.id ? "rotate-180" : ""
-                      }`}
+                      className={`transition-transform text-[#c9060a] cursor-pointer ${expandedId === item.id ? "rotate-180" : ""
+                        }`}
                     />
                   )}
                 </div>

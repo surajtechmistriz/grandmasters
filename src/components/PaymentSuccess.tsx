@@ -78,10 +78,10 @@ const PaymentSuccess = () => {
 
   return (
     <div className="min-h-screen mt-20 bg-[#f5f5f5] flex items-center justify-center px-4 py-6">
-   <div
-  id="receipt-content"
-  className="w-full max-w-lg bg-white rounded-xl shadow-lg overflow-hidden"
->
+      <div
+        id="receipt-content"
+        className="w-full max-w-lg bg-white rounded-xl shadow-lg overflow-hidden"
+      >
         {/* Header */}
         <div className="bg-[#D0252D] text-white text-center py-6 px-4">
           <CheckCircle size={52} className="mx-auto mb-2" />

@@ -151,20 +151,20 @@ const CheckoutPage = () => {
             navigate("/payment-success", {
               state: verifyRes.data || verifyRes,
             });
-          }catch (error: any) {
+          } catch (error: any) {
 
-  toast.error(
-    error.response?.data?.message || "Payment verification failed"
-  );
+            toast.error(
+              error.response?.data?.message || "Payment verification failed"
+            );
 
-  setPaymentProcessing(false);
-}
+            setPaymentProcessing(false);
+          }
         },
 
         modal: {
           ondismiss: async () => {
             setPaymentProcessing(false);
-          
+
 
             try {
               const failRes = await paymentFail({
@@ -187,14 +187,14 @@ const CheckoutPage = () => {
       razorpay.on("payment.failed", async (response: any) => {
         setPaymentProcessing(false);
         try {
-  
+
           const failRes = await paymentFail({
             razorpay_order_id: order.razorpay_order_id,
           });
 
           toast.error("Payment failed");
         } catch (error: any) {
-   
+
 
           toast.error("Payment failed");
         }
@@ -203,7 +203,7 @@ const CheckoutPage = () => {
 
       razorpay.open();
     } catch (error: any) {
-    
+
       toast.error(error?.response?.data?.message || "Order creation failed");
     } finally {
       setLoading(false);

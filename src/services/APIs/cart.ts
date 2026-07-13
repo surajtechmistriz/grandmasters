@@ -8,13 +8,11 @@ export const addToCart = async (data: {
 }) => {
   const res = await api.post("/cart/add", data);
 
-
   return res;
 };
 
 export const getCart = async () => {
   const res = await api.get("/cart/summary");
-
 
   return res;
 };
@@ -25,7 +23,6 @@ export const updateCart = async (plan_id: number, quantity: number) => {
     quantity: String(quantity),
   });
 
-
   return res;
 };
 
@@ -33,7 +30,6 @@ export const removeItem = async (plan_id: number) => {
   const res = await api.post("/cart/remove", {
     plan_id: String(plan_id),
   });
-
 
   return res;
 };
@@ -43,7 +39,6 @@ export const applyCoupon = async (coupon_code: string) => {
     coupon_code,
   });
 
-
   return res;
 };
 
@@ -52,17 +47,13 @@ export const removeCoupon = async (coupon_code: string) => {
     coupon_code,
   });
 
-
   return res;
 };
 
 // Undo removed item
 export const undoRemoveItem = async () => {
-
   try {
     const res = await api.post("/cart/undo");
-
-
 
     return res.data;
   } catch (error: any) {

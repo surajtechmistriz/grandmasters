@@ -86,11 +86,11 @@ const EditionOverview = () => {
 
   // Temporary static report
   // const reportUrl = "/sample.pdf";
- const REPORT_BASE_URL = import.meta.env.VITE_REPORT_BASE_URL;
+  const REPORT_BASE_URL = import.meta.env.VITE_REPORT_BASE_URL;
 
-const reportUrl = eventData?.summit_report
-  ? `${REPORT_BASE_URL}/${eventData.summit_report}`
-  : "";
+  const reportUrl = eventData?.summit_report
+    ? `${REPORT_BASE_URL}/${eventData.summit_report}`
+    : "";
 
   return (
     <div className="min-h-screen font-roboto bg-white mt-16 lg:mt-[98px]">
@@ -109,22 +109,20 @@ const reportUrl = eventData?.summit_report
         <div className="flex justify-center md:gap-0.5 border-b border-[#D0252D] overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTab("speakers")}
-            className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
-              activeTab === "speakers"
+            className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${activeTab === "speakers"
                 ? "bg-[#D0252D] text-white border-[#D0252D]"
                 : "bg-white text-[#333] border-gray-300"
-            }`}
+              }`}
           >
             Speakers
           </button>
 
           <button
             onClick={() => setActiveTab("gallery")}
-            className={` font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
-              activeTab === "gallery"
+            className={` font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${activeTab === "gallery"
                 ? "bg-[#D0252D] text-white border-[#D0252D]"
                 : "bg-white text-[#333] border-gray-300"
-            }`}
+              }`}
           >
             Gallery
           </button>
@@ -132,11 +130,10 @@ const reportUrl = eventData?.summit_report
           {reportUrl && (
             <button
               onClick={() => setActiveTab("report")}
-              className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${
-                activeTab === "report"
+              className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${activeTab === "report"
                   ? "bg-[#D0252D] text-white border-[#D0252D]"
                   : "bg-white text-[#333] border-gray-300"
-              }`}
+                }`}
             >
               Summit Report {eventData?.year}
             </button>
@@ -228,11 +225,10 @@ const reportUrl = eventData?.summit_report
               onClick={prevImage}
               disabled={selectedIndex === 0}
               className={`text-5xl font-bold transition mb-2
-      ${
-        selectedIndex === 0
-          ? "text-gray-500 cursor-not-allowed"
-          : "text-white hover:text-gray-300 cursor-pointer"
-      }`}
+      ${selectedIndex === 0
+                  ? "text-gray-500 cursor-not-allowed"
+                  : "text-white hover:text-gray-300 cursor-pointer"
+                }`}
             >
               ‹
             </button>
@@ -241,11 +237,10 @@ const reportUrl = eventData?.summit_report
               onClick={nextImage}
               disabled={selectedIndex === images.length - 1}
               className={`text-5xl font-bold transition mb-2
-      ${
-        selectedIndex === images.length - 1
-          ? "text-gray-500 cursor-not-allowed"
-          : "text-white hover:text-gray-300 cursor-pointer"
-      }`}
+      ${selectedIndex === images.length - 1
+                  ? "text-gray-500 cursor-not-allowed"
+                  : "text-white hover:text-gray-300 cursor-pointer"
+                }`}
             >
               ›
             </button>

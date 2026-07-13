@@ -69,11 +69,10 @@ const SpeakersSection = () => {
             <span
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              className={`font-roboto w-full md:w-auto text-center px-4 py-3 md:py-2 tracking-[2px] md:tracking-widest text-sm md:text-[15px] font-semibold uppercase transition cursor-pointer rounded md:rounded-none ${
-                active === tab.id
-                  ? "text-[#D0252D]"
-                  : "text-[#333] hover:text-[#D0252D]"
-              }`}
+              className={`font-roboto w-full md:w-auto text-center px-4 py-3 md:py-2 tracking-[2px] md:tracking-widest text-sm md:text-[15px] font-semibold uppercase transition cursor-pointer rounded md:rounded-none ${active === tab.id
+                ? "text-[#D0252D]"
+                : "text-[#333] hover:text-[#D0252D]"
+                }`}
             >
               {tab.label}
             </span>

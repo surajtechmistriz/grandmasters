@@ -21,8 +21,8 @@ const SummitGallery = () => {
 
   const tabsContainerRef = useRef<HTMLDivElement | null>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-const touchStartX = useRef(0);
-const touchEndX = useRef(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const fetchGallery = async (eventId: number) => {
     try {
@@ -145,27 +145,27 @@ const touchEndX = useRef(0);
     setSelectedImage(`${IMAGE_URL}${galleryImages[prev].image}`);
   };
   const handleTouchStart = (e: React.TouchEvent) => {
-  touchStartX.current = e.touches[0].clientX;
-};
+    touchStartX.current = e.touches[0].clientX;
+  };
 
-const handleTouchMove = (e: React.TouchEvent) => {
-  touchEndX.current = e.touches[0].clientX;
-};
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
 
-const handleTouchEnd = () => {
-  const distance = touchStartX.current - touchEndX.current;
+  const handleTouchEnd = () => {
+    const distance = touchStartX.current - touchEndX.current;
 
-  // Ignore small movements
-  if (Math.abs(distance) < 50) return;
+    // Ignore small movements
+    if (Math.abs(distance) < 50) return;
 
-  if (distance > 0) {
-    // Swipe left -> Next image
-    nextImage();
-  } else {
-    // Swipe right -> Previous image
-    prevImage();
-  }
-};
+    if (distance > 0) {
+      // Swipe left -> Next image
+      nextImage();
+    } else {
+      // Swipe right -> Previous image
+      prevImage();
+    }
+  };
 
 
   return (
@@ -201,11 +201,10 @@ const handleTouchEnd = () => {
                   key={event.id}
                   ref={(el) => (tabRefs.current[index] = el)}
                   onClick={() => handleTabClick(event, index)}
-                  className={`flex-shrink-0 pb-3 sm:pb-4 text-xs sm:text-sm md:text-[15px] font-bold tracking-wide transition cursor-pointer ${
-                    activeTab === event.city?.name
+                  className={`flex-shrink-0 pb-3 sm:pb-4 text-xs sm:text-sm md:text-[15px] font-bold tracking-wide transition cursor-pointer ${activeTab === event.city?.name
                       ? "text-[#D0252D]"
                       : "text-[#333] hover:text-black"
-                  }`}
+                    }`}
                 >
                   {event.city?.name} Edition
                 </button>
@@ -283,16 +282,16 @@ const handleTouchEnd = () => {
           </button>
 
           {/* Image */}
-       <img
-  src={selectedImage}
-  alt="Gallery"
-  className="w-screen h-screen object-contain cursor-pointer select-none"
-  draggable={false}
-  onClick={() => setShowControls((prev) => !prev)}
-  onTouchStart={handleTouchStart}
-  onTouchMove={handleTouchMove}
-  onTouchEnd={handleTouchEnd}
-/>
+          <img
+            src={selectedImage}
+            alt="Gallery"
+            className="w-screen h-screen object-contain cursor-pointer select-none"
+            draggable={false}
+            onClick={() => setShowControls((prev) => !prev)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          />
           {/* Bottom Controls */}
           <div
             className={`absolute bottom-0 left-0 w-full
@@ -300,11 +299,10 @@ const handleTouchEnd = () => {
       flex items-center justify-between
       px-6 md:px-84 py-1
       transition-all duration-300
-      ${
-        showControls
-          ? "translate-y-0 opacity-100"
-          : "translate-y-full opacity-0"
-      }`}
+      ${showControls
+                ? "translate-y-0 opacity-100"
+                : "translate-y-full opacity-0"
+              }`}
           >
             <button
               onClick={prevImage}
