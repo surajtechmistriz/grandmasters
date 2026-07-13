@@ -28,23 +28,19 @@ const CitySelectorModal = ({
 
   // Modal open/close debug
   useEffect(() => {
-    // console.log("  CitySelectorModal isOpen:", isOpen);
   }, [isOpen]);
 
   // Event selection debug
   const handleSelectEvent = (eventId: number) => {
-    // console.log("  Event selected:", eventId);
     setSelectedEventId(eventId);
     setError(null); // clear old error
   };
 
   if (!isOpen) {
-    // console.log("  Modal not rendered (isOpen=false)");
     return null;
   }
 
   const handleAddToCart = async () => {
-    // console.log("  Continue clicked");
 
     if (!selectedEventId) {
       console.warn("  No event selected");
@@ -52,7 +48,6 @@ const CitySelectorModal = ({
     }
 
     if (!selectedPlanId) {
-      // console.warn("  No plan selected");
       return;
     }
 
@@ -63,11 +58,9 @@ const CitySelectorModal = ({
       quantity: 1,
     };
 
-    // console.log("  AddToCart payload:", payload);
 
     try {
       setLoading(true);
-      console.log("  API call started...");
 
       const res = await addToCart(payload);
 
@@ -77,23 +70,8 @@ const CitySelectorModal = ({
 
       navigate("/cart");
 
-      console.log("  ADD TO CART FULL RESPONSE:", res);
-      console.log("  RESPONSE DATA:", res?.data);
-
-      console.log("  EVENT TYPE ID:", res?.data?.data?.event_type_id);
-      console.log("  EVENT TYPE NAME:", res?.data?.data?.event_type_name);
-      console.log("  EVENT ID:", res?.data?.data?.event_id);
-      console.log("  EVENT NAME:", res?.data?.data?.event_name);
-
-      console.log("  ITEMS:", res?.data?.data?.items);
-      console.log("  SUBTOTAL:", res?.data?.data?.subtotal);
-      console.log("  GST:", res?.data?.data?.gst_amount);
-      console.log("  TOTAL:", res?.data?.data?.total);
-
-      console.log("  Navigating to /cart");
       navigate("/cart");
 
-      console.log("  Closing modal");
       onClose();
     } catch (err: any) {
       console.error("  ADD TO CART ERROR:", err);
@@ -104,11 +82,9 @@ const CitySelectorModal = ({
 
       setError(msg);
 
-      console.log("  RESPONSE DATA:", err?.response?.data);
-      console.log("  STATUS:", err?.response?.status);
+     
     } finally {
       setLoading(false);
-      console.log("  Loading finished");
     }
   };
 

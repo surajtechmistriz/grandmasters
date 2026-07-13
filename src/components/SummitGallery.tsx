@@ -27,16 +27,12 @@ const touchEndX = useRef(0);
   const fetchGallery = async (eventId: number) => {
     try {
       const res = await getHomepageGallery(eventId);
-      console.log("Gallery API:", res.data);
 
       setGalleryImages(res.data.data || []);
-      console.log("Gallery Images:", res.data.data);
     } catch (err) {
-      console.log(err);
     }
   };
 
-  // console.log(galleryImages);
 
   // Fetch galleries
   useEffect(() => {
@@ -45,9 +41,7 @@ const touchEndX = useRef(0);
         setLoading(true);
 
         const res = await getSummitEvents(6);
-        console.log("Res:", res);
         const eventList = res?.data?.data?.events || [];
-        console.log("eventList:", eventList);
         setEvents(eventList);
 
         if (eventList.length > 0) {
@@ -61,7 +55,6 @@ const touchEndX = useRef(0);
           });
         }
       } catch (err) {
-        // console.log(err);
       } finally {
         setLoading(false);
       }

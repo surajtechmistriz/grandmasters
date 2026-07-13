@@ -99,7 +99,6 @@ const PastEdition = () => {
             <div className="mx-auto max-w-6xl px-6 py-10">
               <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                 {section?.events?.map((event) => {
-                  console.log("EVENT:", event);
 
                   return (
                     <div
@@ -127,7 +126,6 @@ const PastEdition = () => {
                           alt={event?.title}
                           className="w-full object-contain cursor-pointer"
                           onError={(e) => {
-                            console.log("IMAGE FAILED:", event?.image);
                             e.currentTarget.src = image;
                           }}
                         />

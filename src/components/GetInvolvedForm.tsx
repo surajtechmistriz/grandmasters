@@ -16,7 +16,6 @@ const GetInvolvedForm = () => {
     confirmation: false,
   });
 
-  console.log("Site Key:", import.meta.env.VITE_RECAPTCHA_SITE_KEY_v2);
 
   const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormdata({
@@ -28,12 +27,7 @@ const GetInvolvedForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("=== Form Submit Started ===");
-    console.log("Form Data:", formdata);
-    console.log("Captcha Token:", captchaToken);
-
     if (!captchaToken) {
-      console.log("❌ reCAPTCHA not completed");
       toast.error("Please complete the reCAPTCHA.");
       return;
     }
@@ -48,11 +42,8 @@ const GetInvolvedForm = () => {
         captcha: captchaToken,
       };
 
-      console.log("Payload:", payload);
 
       const response = await submitShowcase(payload);
-
-      console.log("API Response:", response);
 
       toast.success("Submitted successfully!");
 
@@ -66,7 +57,6 @@ const GetInvolvedForm = () => {
       recaptchaRef.current?.reset();
       setCaptchaToken("");
 
-      console.log("=== Form Reset Complete ===");
     } catch (error: any) {
       console.error("❌ API Error:", error);
       console.error("Response:", error?.response);
@@ -164,11 +154,9 @@ const GetInvolvedForm = () => {
                 ref={recaptchaRef}
                 sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY_v2}
                 onChange={(token) => {
-                  console.log(" reCAPTCHA Token:", token);
                   setCaptchaToken(token || "");
                 }}
                 onExpired={() => {
-                  console.log(" reCAPTCHA Expired");
                   setCaptchaToken("");
                 }}
               />

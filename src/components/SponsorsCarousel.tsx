@@ -14,8 +14,6 @@ export default function SponsorsCarousel() {
 
   const sponsors = data?.data?.margedSponsors || [];
 
-  // console.log("Carousel data", data);
-  // console.log("Carousel data", sponsors);
   return (
     <section className="pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 relative">

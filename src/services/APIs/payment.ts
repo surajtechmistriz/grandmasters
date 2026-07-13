@@ -17,12 +17,8 @@ export const verifyPayment = async (payload: {
 };
 
 export const paymentFail = async (payload: { razorpay_order_id: string }) => {
-  console.log("PAYMENT FAIL REQUEST =>", payload);
 
   const res = await api.post("/payment-fail", payload);
-
-  console.log("PAYMENT FAIL RESPONSE =>", res);
-  console.log("PAYMENT FAIL RESPONSE DATA =>", res.data);
 
   return res.data;
 };

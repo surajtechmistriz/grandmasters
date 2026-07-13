@@ -25,7 +25,6 @@ const SummitAgenda = () => {
           setActiveTab(eventList[0].city?.name.toLowerCase());
         }
       } catch (err) {
-        console.log(err);
       }
     };
 

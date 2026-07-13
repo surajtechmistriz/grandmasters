@@ -138,8 +138,6 @@ const CheckoutPage = () => {
           try {
             setPaymentProcessing(true);
 
-            console.log("PAYMENT SUCCESS RESPONSE", response);
-
             const verifyPayload = {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
@@ -148,33 +146,31 @@ const CheckoutPage = () => {
 
             const verifyRes = await verifyPayment(verifyPayload);
 
-            console.log("VERIFY RESPONSE", verifyRes);
-
             toast.success("Payment Successful");
 
             navigate("/payment-success", {
               state: verifyRes.data || verifyRes,
             });
-          } catch (error: any) {
-            console.error("VERIFY PAYMENT ERROR", error);
+          }catch (error: any) {
 
-            toast.error("Payment verification failed");
-            setPaymentProcessing(false);
-          }
+  toast.error(
+    error.response?.data?.message || "Payment verification failed"
+  );
+
+  setPaymentProcessing(false);
+}
         },
 
         modal: {
           ondismiss: async () => {
             setPaymentProcessing(false);
-            console.log("========== RAZORPAY POPUP CLOSED ==========");
-            console.log("Order ID:", order.razorpay_order_id);
+          
 
             try {
               const failRes = await paymentFail({
                 razorpay_order_id: order.razorpay_order_id,
               });
 
-              console.log("PAYMENT FAIL API RESPONSE:", failRes);
             } catch (error) {
               console.error("PAYMENT FAIL API ERROR:", error);
             }
@@ -191,22 +187,14 @@ const CheckoutPage = () => {
       razorpay.on("payment.failed", async (response: any) => {
         setPaymentProcessing(false);
         try {
-          console.log("========== PAYMENT FAILED ==========");
-          console.log("Razorpay Failure Response:", response);
-          console.log("Order ID:", order.razorpay_order_id);
+  
           const failRes = await paymentFail({
             razorpay_order_id: order.razorpay_order_id,
           });
 
-          console.log("========== PAYMENT FAIL API SUCCESS ==========");
-          console.log(failRes);
-
           toast.error("Payment failed");
         } catch (error: any) {
-          console.log("========== PAYMENT FAIL API ERROR ==========");
-          console.log(error);
-          console.log(error?.response);
-          console.log(error?.response?.data);
+   
 
           toast.error("Payment failed");
         }
@@ -215,11 +203,7 @@ const CheckoutPage = () => {
 
       razorpay.open();
     } catch (error: any) {
-      console.error("========== ORDER CREATION ERROR ==========");
-      console.error(error);
-      console.error(error?.response);
-      console.error(error?.response?.data);
-
+    
       toast.error(error?.response?.data?.message || "Order creation failed");
     } finally {
       setLoading(false);

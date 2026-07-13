@@ -14,10 +14,6 @@ const OfficialMessage = () => {
   const { data, isLoading } = useOfficialMessageDetails(id);
 
   // const id = location.state?.id;
-  console.log("Slug", slug);
-  console.log("ID clicked", id);
-
-  console.log("Data", data);
 
   if (isLoading) {
     return (

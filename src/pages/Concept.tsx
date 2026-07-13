@@ -36,7 +36,6 @@ const stats = [
 ];
 
 const IMAGE_URL = import.meta.env.VITE_OFFICIAL_MESSAGE_BASE_URL;
-console.log(IMAGE_URL)
 
 const Concept = () => {
   const [active, setActive] = useState("agenda");
@@ -54,7 +53,6 @@ const Concept = () => {
 
   const luminaries = data?.data?.["2025"] || [];
 
-  // console.log("luminaries", luminaries);
 
   useEffect(() => {
     setStartCount(false);

@@ -83,7 +83,6 @@ const EditionOverview = () => {
     );
   }
 
-  console.log("Data", eventData);
 
   // Temporary static report
   // const reportUrl = "/sample.pdf";

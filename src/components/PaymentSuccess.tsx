@@ -11,7 +11,6 @@ const PaymentSuccess = () => {
 
   const payment = location.state;
 
-  console.log("Payment Data:", payment);
 
   const downloadReceipt = () => {
     const pdf = new jsPDF();
