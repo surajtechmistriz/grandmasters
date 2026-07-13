@@ -58,8 +58,8 @@ const CheckoutPage = () => {
     } catch (err: any) {
       setCouponError(
         err?.response?.data?.message ||
-          err?.response?.data?.error ||
-          "Invalid coupon code.",
+        err?.response?.data?.error ||
+        "Invalid coupon code.",
       );
     }
   };
@@ -245,486 +245,486 @@ const CheckoutPage = () => {
     <>
 
       {paymentProcessing && (
-  <div className="font-roboto fixed inset-0 z-[9999] bg-black/50 flex flex-col items-center justify-center">
-    <div className="bg-white rounded-lg p-8 flex flex-col items-center gap-4">
-      <div className="w-12 h-12 border-4 border-[#D0252D] border-t-transparent rounded-full animate-spin" />
+        <div className="font-roboto fixed inset-0 z-[9999] bg-black/50 flex flex-col items-center justify-center">
+          <div className="bg-white rounded-lg p-8 flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-[#D0252D] border-t-transparent rounded-full animate-spin" />
 
-      <p className="text-lg font-semibold">
-        Payment Processing...
-      </p>
+            <p className="text-lg font-semibold">
+              Payment Processing...
+            </p>
 
-      <p className="text-sm text-gray-500">
-        Please do not refresh or close this page.
-      </p>
-    </div>
-  </div>
-)}
-
-    <div className="font-roboto bg-white min-h-scree text-[#333] mt-[100px]">
-      <div className="max-w-6xl mx-auto bg-whit md:py-10 md:px-4">
-        {/* Coupon Section */}
-        {/* Coupon Section */}
-
-        {cartTotal?.coupon ? (
-          <div className="bg-[#f5f5f5] p-4 mb-4 flex items-center gap-3">
-            <FaCheckCircle className="text-[#D0252D] text-lg" />
-
-            <p className="text-sm md:text-base">
-              Coupon code applied successfully.
-              <span className="ml-2 font-semibold text-[#D0252D]">
-                ({cartTotal.coupon.code})
-              </span>
+            <p className="text-sm text-gray-500">
+              Please do not refresh or close this page.
             </p>
           </div>
-        ) : (
-          <>
+        </div>
+      )}
+
+      <div className="font-roboto bg-white min-h-screen text-[#333] mt-[80px]">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-4 py-6 md:py-10">
+          {/* Coupon Section */}
+          {/* Coupon Section */}
+
+          {cartTotal?.coupon ? (
             <div className="bg-[#f5f5f5] p-4 mb-4 flex items-center gap-3">
-              <Ticket className="text-[#D0252D] w-5 h-5" />
+              <FaCheckCircle className="text-[#D0252D] text-lg" />
 
               <p className="text-sm md:text-base">
-                Have a coupon?{" "}
-                <button
-                  onClick={() => setShowCouponBox(!showCouponBox)}
-                  className="text-[#D0252D] underline cursor-pointer"
-                >
-                  Click here to enter your code
-                </button>
+                Coupon code applied successfully.
+                <span className="ml-2 font-semibold text-[#D0252D]">
+                  ({cartTotal.coupon.code})
+                </span>
               </p>
             </div>
+          ) : (
+            <>
+              <div className="bg-[#f5f5f5] p-4 mb-4 flex items-center gap-3">
+                <Ticket className="text-[#D0252D] w-5 h-5" />
 
-            {showCouponBox && (
-              <div className="border rounded-sm border-gray-300 p-6 bg-white">
-                <div className="flex flex-col md:flex-row gap-4 md:gap-85">
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      handleApplyCoupon();
-                    }}
-                    className="flex flex-col md:flex-row gap-4 md:gap-85"
+                <p className="text-sm md:text-base">
+                  Have a coupon?{" "}
+                  <button
+                    onClick={() => setShowCouponBox(!showCouponBox)}
+                    className="text-[#D0252D] underline cursor-pointer"
                   >
+                    Click here to enter your code
+                  </button>
+                </p>
+              </div>
+
+              {showCouponBox && (
+                <div className="border rounded-sm border-gray-300 p-6 bg-white">
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        handleApplyCoupon();
+                      }}
+                      className="flex flex-col sm:flex-row gap-3 w-full"
+                    >
+                      <input
+                        type="text"
+                        value={couponCode}
+                        onChange={(e) => setCouponCode(e.target.value)}
+                        placeholder="Coupon code"
+                        className="border border-gray-300 md:px-1 md:py-1 rounded w-full md:w-35"
+                      />
+
+                      <button
+                        onClick={handleApplyCoupon}
+                        disabled={applyCouponMutation.isPending}
+                        className="bg-[#e9e6ed] text-[#515151] hover:bg-[#d9d6dd] text-[15px] font-bold leading-3.5 px-4 py-1 rounded cursor-pointer disabled:opacity-50"
+                      >
+                        {applyCouponMutation.isPending
+                          ? "Applying..."
+                          : "Apply coupon"}
+                      </button>
+                    </form>
+                  </div>
+                  {couponError && (
+                    <p className="mt-2 text-[11px] font-normal text-[#D0252D]">
+                      {couponError}
+                    </p>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10">
+            {/* Left Column: Billing Details */}
+            <div>
+              <h2 className="text-[#D0252d] font-bold text-xl mb-6 uppercase tracking-wide">
+                Billing Details
+              </h2>
+
+              <div className="space-y-5">
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex-1">
+                    <label className="block text-sm mb-1">
+                      First name <span className="text-[#D0252D]">*</span>
+                    </label>
                     <input
                       type="text"
-                      value={couponCode}
-                      onChange={(e) => setCouponCode(e.target.value)}
-                      placeholder="Coupon code"
-                      className="border border-gray-300 md:px-1 md:py-1 rounded w-full md:w-35"
+                      value={formData.first_name}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          first_name: e.target.value,
+                        }))
+                      }
+                      placeholder="enter first name"
+                      className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
                     />
-
-                    <button
-                      onClick={handleApplyCoupon}
-                      disabled={applyCouponMutation.isPending}
-                      className="bg-[#e9e6ed] text-[#515151] hover:bg-[#d9d6dd] text-[15px] font-bold leading-3.5 px-4 py-1 rounded cursor-pointer disabled:opacity-50"
-                    >
-                      {applyCouponMutation.isPending
-                        ? "Applying..."
-                        : "Apply coupon"}
-                    </button>
-                  </form>
+                  </div>
+                  <div className="flex-1">
+                    <label className="block text-sm mb-1">
+                      Last name <span className="text-[#D0252D]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.last_name}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          last_name: e.target.value,
+                        }))
+                      }
+                      placeholder="enter last name"
+                      className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
+                    />
+                  </div>
                 </div>
-                {couponError && (
-                  <p className="mt-2 text-[11px] font-normal text-[#D0252D]">
-                    {couponError}
-                  </p>
-                )}
-              </div>
-            )}
-          </>
-        )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10">
-          {/* Left Column: Billing Details */}
-          <div>
-            <h2 className="text-[#D0252d] font-bold text-xl mb-6 uppercase tracking-wide">
-              Billing Details
-            </h2>
-
-            <div className="space-y-5">
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
+                <div>
                   <label className="block text-sm mb-1">
-                    First name <span className="text-[#D0252D]">*</span>
+                    Designation <span className="text-[#D0252D]">*</span>
                   </label>
                   <input
                     type="text"
-                    value={formData.first_name}
+                    value={formData.designation}
                     onChange={(e) =>
                       setFormData((prev) => ({
                         ...prev,
-                        first_name: e.target.value,
+                        designation: e.target.value,
                       }))
                     }
-                    placeholder="enter first name"
+                    placeholder="enter designation"
+                    className="w-full border border-[#333333] p-1 pl-2  rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm mb-1">
+                    Email address <span className="text-[#D0252D]">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        email: e.target.value.trim(),
+                      }))
+                    }
+                    placeholder="Enter email"
                     className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
                   />
                 </div>
-                <div className="flex-1">
-                  <label className="block text-sm mb-1">
-                    Last name <span className="text-[#D0252D]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.last_name}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        last_name: e.target.value,
-                      }))
-                    }
-                    placeholder="enter last name"
-                    className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm mb-1">
-                  Designation <span className="text-[#D0252D]">*</span>
-                </label>
-                <input
-                  type="text"
-                  value={formData.designation}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      designation: e.target.value,
-                    }))
-                  }
-                  placeholder="enter designation"
-                  className="w-full border border-[#333333] p-1 pl-2  rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm mb-1">
-                  Email address <span className="text-[#D0252D]">*</span>
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      email: e.target.value.trim(),
-                    }))
-                  }
-                  placeholder="Enter email"
-                  className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm mb-1">
-                  Phone <span className="text-[#D0252D]">*</span>
-                </label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  maxLength={10}
-                  onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, ""); // numbers only
-
-                    setFormData((prev) => ({
-                      ...prev,
-                      phone: value,
-                    }));
-                  }}
-                  placeholder="enter phone"
-                  className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm mb-1">
-                  Company Name <span className="text-[#D0252D]">*</span>
-                </label>
-
-                <input
-                  type="text"
-                  value={formData.company_name}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      company_name: e.target.value,
-                    }))
-                  }
-                  placeholder="enter company name"
-                  className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm mb-1">
-                  Address <span className="text-[#D0252D]">*</span>
-                </label>
-
-                <textarea
-                  value={formData.address}
-                  onChange={(e) =>
-                    setFormData((prev) => ({
-                      ...prev,
-                      address: e.target.value,
-                    }))
-                  }
-                  placeholder="enter address"
-                  rows={3}
-                  className="w-full border border-[#333333] p-2 rounded text-[13px]"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-sm mb-1">
-                    City <span className="text-[#D0252D]">*</span>
-                  </label>
-
-                  <input
-                    type="text"
-                    value={formData.city}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        city: e.target.value,
-                      }))
-                    }
-                    className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
-                  />
-                </div>
 
                 <div>
                   <label className="block text-sm mb-1">
-                    State <span className="text-[#D0252D]">*</span>
+                    Phone <span className="text-[#D0252D]">*</span>
                   </label>
-
                   <input
-                    type="text"
-                    value={formData.state}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        state: e.target.value,
-                      }))
-                    }
-                    className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm mb-1">
-                    Pincode <span className="text-[#D0252D]">*</span>
-                  </label>
-
-                  <input
-                    type="text"
-                    value={formData.pincode}
-                    maxLength={6}
+                    type="tel"
+                    value={formData.phone}
+                    maxLength={10}
                     onChange={(e) => {
                       const value = e.target.value.replace(/\D/g, ""); // numbers only
 
                       setFormData((prev) => ({
                         ...prev,
-                        pincode: value,
+                        phone: value,
                       }));
                     }}
+                    placeholder="enter phone"
+                    className="w-full border border-[#333333] p-1 pl-2 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm mb-1">
+                    Company Name <span className="text-[#D0252D]">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    value={formData.company_name}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        company_name: e.target.value,
+                      }))
+                    }
+                    placeholder="enter company name"
                     className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
                   />
                 </div>
+
+                <div>
+                  <label className="block text-sm mb-1">
+                    Address <span className="text-[#D0252D]">*</span>
+                  </label>
+
+                  <textarea
+                    value={formData.address}
+                    onChange={(e) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        address: e.target.value,
+                      }))
+                    }
+                    placeholder="enter address"
+                    rows={3}
+                    className="w-full border border-[#333333] p-2 rounded text-[13px]"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm mb-1">
+                      City <span className="text-[#D0252D]">*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      value={formData.city}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          city: e.target.value,
+                        }))
+                      }
+                      className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm mb-1">
+                      State <span className="text-[#D0252D]">*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      value={formData.state}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          state: e.target.value,
+                        }))
+                      }
+                      className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm mb-1">
+                      Pincode <span className="text-[#D0252D]">*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      value={formData.pincode}
+                      maxLength={6}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, ""); // numbers only
+
+                        setFormData((prev) => ({
+                          ...prev,
+                          pincode: value,
+                        }));
+                      }}
+                      className="w-full border border-[#333333] p-1 pl-2 rounded text-[13px]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm mb-1">
+                    Country / Region <span className="text-[#D0252D]">*</span>
+                  </label>
+                  <div className="relative">
+                    <select className="w-full border border-[#333333] p-1 pl-2 rounded appearance-none bg-white focus:ring-1 focus:ring-red-500 outline-none text-sm">
+                      <option>India</option>
+                    </select>
+                    <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#8D93A0] pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Additional Info & Contact */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-[#D0252d] font-bold text-xl mb-6 uppercase tracking-wide">
+                  Additional Information
+                </h2>
+                <label className="block text-sm mb-2 text-[#333]">
+                  Your Message to the Organizer (optional)
+                </label>
+                <textarea
+                  rows="6"
+                  placeholder="Notes about your order, e.g. special notes for delivery."
+                  className="w-full border border-[#333333] p-3 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
+                ></textarea>
               </div>
 
-              <div>
-                <label className="block text-sm mb-1">
-                  Country / Region <span className="text-[#D0252D]">*</span>
-                </label>
-                <div className="relative">
-                  <select className="w-full border border-[#333333] p-1 pl-2 rounded appearance-none bg-white focus:ring-1 focus:ring-red-500 outline-none text-sm">
-                    <option>India</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-3 w-4 h-4 text-[#8D93A0] pointer-events-none" />
+              <div className="space-y-4">
+                <h3 className="text-[#D0252d] font-bold text-lg uppercase tracking-tight">
+                  In Case of Any Assistance WRT Your Purchase;
+                </h3>
+                <div className="text-sm space-y-3 text-[#333]">
+                  <p>
+                    <span className=" ">Bhupinder Kaur</span> | +91-9654155065 |
+                    bhupinder@witnesslive.in
+                  </p>
+                  <p>
+                    <span className=" ">Neelima Maheshwari</span> | +91-8800841600
+                    | neelima.maheshwari@witnesslive.in
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Additional Info & Contact */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-[#D0252d] font-bold text-xl mb-6 uppercase tracking-wide">
-                Additional Information
-              </h2>
-              <label className="block text-sm mb-2 text-[#333]">
-                Your Message to the Organizer (optional)
-              </label>
-              <textarea
-                rows="6"
-                placeholder="Notes about your order, e.g. special notes for delivery."
-                className="w-full border border-[#333333] p-3 rounded focus:ring-1 focus:ring-red-500 outline-none text-[13px]"
-              ></textarea>
-            </div>
+          {/* Order Summary Table */}
+          <div className="mt-16">
+            <h2 className="text-[#D0252d] font-bold text-[21px] leading-6 mb-3 uppercase">
+              Your Order
+            </h2>
 
-            <div className="space-y-4">
-              <h3 className="text-[#D0252d] font-bold text-lg uppercase tracking-tight">
-                In Case of Any Assistance WRT Your Purchase;
-              </h3>
-              <div className="text-sm space-y-3 text-[#333]">
-                <p>
-                  <span className=" ">Bhupinder Kaur</span> | +91-9654155065 |
-                  bhupinder@witnesslive.in
-                </p>
-                <p>
-                  <span className=" ">Neelima Maheshwari</span> | +91-8800841600
-                  | neelima.maheshwari@witnesslive.in
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div className="overflow-x-auto">
+              <table className="min-w-[600px] w-full border-collapse">
+                <thead>
+                  <tr className="bg-[#D0252D] text-white">
+                    <th className="px-4 py-3 font-semibold uppercase text-sm border border-gray-300">
+                      Product
+                    </th>
+                    <th className=" px-4 py-3 font-semibold uppercase text-sm border border-gray-300">
+                      Subtotal
+                    </th>
+                  </tr>
+                </thead>
 
-        {/* Order Summary Table */}
-        <div className="mt-16">
-          <h2 className="text-[#D0252d] font-bold text-[21px] leading-6 mb-3 uppercase">
-            Your Order
-          </h2>
+                <tbody className="text-sm">
+                  {cartItems.map((item: any) => (
+                    <tr key={item.id}>
+                      <td className="px-4 py-2 font-normal text-[#333] border border-gray-300">
+                        {item.plan_name}
+                        <span className="font-bold"> × {item.quantity}</span>
+                      </td>
 
-          <div className="overflow-x-auto rounded-sm">
-            <table className="w-full table-fixed text-left border border-gray-300 border-collapse ">
-              <thead>
-                <tr className="bg-[#D0252D] text-white">
-                  <th className="px-4 py-3 font-semibold uppercase text-sm border border-gray-300">
-                    Product
-                  </th>
-                  <th className="w-[420px] px-4 py-3 font-semibold uppercase text-sm border border-gray-300">
-                    Subtotal
-                  </th>
-                </tr>
-              </thead>
+                      <td className="px-4 py-2 font-bold text-[#333] border border-gray-300">
+                        ₹
+                        {Number(item.price * item.quantity).toLocaleString(
+                          "en-IN",
+                        )}
+                      </td>
+                    </tr>
+                  ))}
 
-              <tbody className="text-sm">
-                {cartItems.map((item: any) => (
-                  <tr key={item.id}>
-                    <td className="px-4 py-2 font-normal text-[#333] border border-gray-300">
-                      {item.plan_name}
-                      <span className="font-bold"> × {item.quantity}</span>
+                  <tr className="bg-gray-50/50">
+                    <td className="px-4 py-2 font-bold border border-gray-300">
+                      Subtotal
+                    </td>
+
+                    <td className="px-4 py-2 font-bold text-[#333] border border-gray-300">
+                      ₹{Number(cartTotal?.subtotal || 0).toLocaleString("en-IN")}
+                    </td>
+                  </tr>
+
+                  {cartTotal?.coupon && (
+                    <tr>
+                      <td className="px-4 py-2 font-bold border border-gray-300">
+                        Coupon ({cartTotal.coupon.code})
+                      </td>
+
+                      <td className="px-4 py-2 font-bold border border-gray-300">
+                        <div className="flex items-center gap-2">
+                          <span>
+                            -₹
+                            {Number(cartTotal.discount || 0).toLocaleString(
+                              "en-IN",
+                            )}
+                          </span>
+
+                          <button
+                            onClick={handleRemoveCoupon}
+                            disabled={removeCouponMutation.isPending}
+                            className="text-[#D12229] inline-flex items-center justify-center w-[70px] h-[20px] cursor-pointer hover:underline"
+                          >
+                            {removeCouponMutation.isPending ? (
+                              <MiniLoader />
+                            ) : (
+                              "[Remove]"
+                            )}
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+
+                  <tr>
+                    <td className="px-4 py-2 font-bold text-[#333] border border-gray-300">
+                      GST ({cartTotal?.gst_percent || 18}%)
                     </td>
 
                     <td className="px-4 py-2 font-bold text-[#333] border border-gray-300">
                       ₹
-                      {Number(item.price * item.quantity).toLocaleString(
-                        "en-IN",
-                      )}
+                      {Number(cartTotal?.gst_amount || 0).toLocaleString("en-IN")}
                     </td>
                   </tr>
-                ))}
-
-                <tr className="bg-gray-50/50">
-                  <td className="px-4 py-2 font-bold border border-gray-300">
-                    Subtotal
-                  </td>
-
-                  <td className="px-4 py-2 font-bold text-[#333] border border-gray-300">
-                    ₹{Number(cartTotal?.subtotal || 0).toLocaleString("en-IN")}
-                  </td>
-                </tr>
-
-                {cartTotal?.coupon && (
-                  <tr>
-                    <td className="px-4 py-2 font-bold border border-gray-300">
-                      Coupon ({cartTotal.coupon.code})
+                  <tr className="bg-gray-100">
+                    <td className="px-4 py-1 font-bold text-lg text-[#333] border border-gray-300">
+                      Total
                     </td>
 
-                    <td className="px-4 py-2 font-bold border border-gray-300">
-                      <div className="flex items-center gap-2">
-                        <span>
-                          -₹
-                          {Number(cartTotal.discount || 0).toLocaleString(
-                            "en-IN",
-                          )}
-                        </span>
-
-                        <button
-                          onClick={handleRemoveCoupon}
-                          disabled={removeCouponMutation.isPending}
-                          className="text-[#D12229] inline-flex items-center justify-center w-[70px] h-[20px] cursor-pointer hover:underline"
-                        >
-                          {removeCouponMutation.isPending ? (
-                            <MiniLoader />
-                          ) : (
-                            "[Remove]"
-                          )}
-                        </button>
-                      </div>
+                    <td className="px-4 py-1 font-bold text-lg text-[#333] border border-gray-300">
+                      ₹{Number(cartTotal?.total || 0).toLocaleString("en-IN")}
                     </td>
                   </tr>
-                )}
-
-                <tr>
-                  <td className="px-4 py-2 font-bold text-[#333] border border-gray-300">
-                    GST ({cartTotal?.gst_percent || 18}%)
-                  </td>
-
-                  <td className="px-4 py-2 font-bold text-[#333] border border-gray-300">
-                    ₹
-                    {Number(cartTotal?.gst_amount || 0).toLocaleString("en-IN")}
-                  </td>
-                </tr>
-                <tr className="bg-gray-100">
-                  <td className="px-4 py-1 font-bold text-lg text-[#333] border border-gray-300">
-                    Total
-                  </td>
-
-                  <td className="px-4 py-1 font-bold text-lg text-[#333] border border-gray-300">
-                    ₹{Number(cartTotal?.total || 0).toLocaleString("en-IN")}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Payment Section */}
-        <div className="bg-[#816e9924] rounded-sm">
-          <div className="mt-8   rounded-md overflow-hidden">
-            <div className="p-6   flex items-center  gap-2">
-              <span className="text-[#333] flex font-medium">
-                Credit Card/Debit Card/NetBanking
-                <img
-                  src="https://cdn.razorpay.com/static/assets/logo/rzp_payment_icon.svg"
-                  className="h-5 md:h-10 w-auto ml-auto -mt-2"
-                  alt="Credit Card/Debit Card/NetBanking"
-                />
-              </span>
-            </div>
-
-            <div className="mx-6  p-4 bg-gray-300 text-[#333] text-sm relative">
-              <div className="absolute -top-2 left-4 w-4 h-4 bg-gray-300 rotate-45"></div>
-              Pay securely by Credit or Debit card or Internet Banking through
-              Razorpay.
+                </tbody>
+              </table>
             </div>
           </div>
-          <hr className="border-gray-300 mt-8" />
-          {/* Footer Actions */}
-          <div className="mt-8 ">
-            <p className="text-xs md:text-sm text-[#333] leading-relaxed px-6">
-              Your personal data will be used to process your order, support
-              your experience throughout this website, and for other purposes
-              described in our{" "}
-              <button className="text-[#D0252D] hover:underline">
-                privacy policy
-              </button>
-              .
-            </p>
-            <div className="flex justify-end">
-              <button
-                type="button"
-                onClick={handleOrder}
-                disabled={loading}
-                className="font-roboto cursor-pointer leading-4 bg-[#D0252D] text-white px-4 py-2.5 m-3 font-bold text-[15px]  rounded disabled:opacity-50"
-              >
-                {loading ? "Processing..." : "Place Order"}
-              </button>
+
+          {/* Payment Section */}
+          <div className="bg-[#816e9924] rounded-sm">
+            <div className="mt-8   rounded-md overflow-hidden">
+              <div className="p-6   flex items-center  gap-2">
+                <span className="text-[#333] flex font-medium">
+                  Credit Card/Debit Card/NetBanking
+                  <img
+                    src="https://cdn.razorpay.com/static/assets/logo/rzp_payment_icon.svg"
+                    className="h-5 md:h-10 w-auto ml-auto -mt-2"
+                    alt="Credit Card/Debit Card/NetBanking"
+                  />
+                </span>
+              </div>
+
+              <div className="mx-6  p-4 bg-gray-300 text-[#333] text-sm relative">
+                <div className="absolute -top-2 left-4 w-4 h-4 bg-gray-300 rotate-45"></div>
+                Pay securely by Credit or Debit card or Internet Banking through
+                Razorpay.
+              </div>
+            </div>
+            <hr className="border-gray-300 mt-8" />
+            {/* Footer Actions */}
+            <div className="mt-8 ">
+              <p className="text-xs md:text-sm text-[#333] leading-relaxed px-6">
+                Your personal data will be used to process your order, support
+                your experience throughout this website, and for other purposes
+                described in our{" "}
+                <button className="text-[#D0252D] hover:underline">
+                  privacy policy
+                </button>
+                .
+              </p>
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={handleOrder}
+                  disabled={loading}
+                  className="font-roboto cursor-pointer leading-4 bg-[#D0252D] text-white px-4 py-2.5 m-3 font-bold text-[15px]  rounded disabled:opacity-50"
+                >
+                  {loading ? "Processing..." : "Place Order"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

@@ -145,7 +145,7 @@ const Home = () => {
                 <img
                   src={icon.src}
                   alt={icon.alt}
-                  className="w-4 h-4 md:w-6 md:h-6 cursor-pointer transition-transform hover:scale-110"
+                  className="mt-8 w-7 h-7 md:w-6 md:h-6 md:mt-0 cursor-pointer transition-transform hover:scale-110"
                 />
               </a>
             ))}
@@ -155,7 +155,7 @@ const Home = () => {
           <img
             src={logo}
             alt="logo"
-            className="w-[110px] sm:w-[150px] md:w-[190px] mb-2 mt-1"
+            className="w-[210px] sm:w-[150px] md:w-[190px] mb-2 mt-1"
           />
 
           <h2 className="font-roboto text-xs sm:text-sm md:text-[18px] tracking-[2px] md:tracking-[3px] font-bold text-[#333] leading-7 md:leading-8 mb-2">
