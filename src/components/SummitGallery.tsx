@@ -213,7 +213,7 @@ const SummitGallery = () => {
           </div>
 
           {/* Triangle Indicator */}
-          <div className="absolute bottom-[-1px] left-0 w-full pointer-events-none">
+          <div className="absolute  left-0 w-full pointer-events-none">
             <div
               className="hidden sm:block absolute w-0 h-0
       border-l-[12px] border-l-transparent
