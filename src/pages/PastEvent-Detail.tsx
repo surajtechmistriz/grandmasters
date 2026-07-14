@@ -3,6 +3,70 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getPastEditionDetail } from "../services/APIs/pastEdition";
 
+const staticDignitaries: Record<string, any[]> = {
+  "2023-New Delhi": [
+    {
+      name: "Hon’ble Justice Manmohan",
+      designation: "Judge, Delhi High Court",
+    },
+    {
+      name: "Dr. PSN Prasad",
+      designation: "Member (J), NCLT Bench, New Delhi",
+    },
+    {
+      name: "Sr. Advocate R. Venkataramani",
+      designation: "Attorney- General for India",
+    },
+  ],
+
+  "2023-Bengaluru": [
+    {
+      name: "Hon’ble Mr. Justice M.I. Arun",
+      designation: "Judge, Karnataka High Court",
+    },
+
+  ],
+};
+
+const staticSpeakerHeadings: Record<string, string> = {
+
+  //2017
+  "2017-New Delhi":
+    "Badrinath Durvasula, Senior Vice President, Adani Group Summit Chair, The Grand Masters 2017 – New Delhi Edition",
+
+  "2017-Mumbai":
+    "Debolina Partap, VP & General Counsel, Wockhardt Group Summit Chair, The Grand Masters 2017 – Mumbai Edition",
+
+  "2017-Bengaluru":
+    "Pawan Singhal, Executive Director of Legal and General Counsel, 3M India Summit Chair, The Grand Masters 2017 – Bengaluru Edition",
+
+  // 2018
+  "2018-New Delhi":
+    "Badrinath Durvasula, Senior Vice President, Adani Group Summit Chair, The Grand Masters 2018 – New Delhi Edition",
+
+  "2018-Mumbai":
+    "Debolina Partap, Sr. Vice President and General Counsel, Wockhardt Summit Chair, The Grand Masters 2018 – Mumbai Edition",
+
+  "2018-Bengaluru":
+    "KS Suresh, Group General Counsel, ITC Ltd. Summit Chair, The Grand Masters 2018 – Bengaluru Edition",
+
+  // 2019
+  "2019-New Delhi":
+    "Manjaree Chowdhary, General Counsel, Maruti Suzuki India Summit Chair, The Grand Masters 2019 – New Delhi Edition",
+
+  "2019-Mumbai":
+    "Debolina Partap, Vice President and General Counsel, Wockhardt Summit Chair, The Grand Masters 2019 – Mumbai Edition",
+
+  "2019-Bengaluru":
+    "Thirumalesh Gangappa, Country Counsel, Google India Summit Chair, The Grand Masters 2019 – Bengaluru Edition",
+
+  // 2015
+  "2015-Mumbai":
+    "AS KUMARGeneral Counsel, Dr. Reddy’s – Summit Chair for The Grand Masters 2015, Mumbai Edition",
+};
+
+
+
 const EditionOverview = () => {
   const { slug } = useParams();
   const location = useLocation();
@@ -13,7 +77,8 @@ const EditionOverview = () => {
   const [eventData, setEventData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  const [activeTab, setActiveTab] = useState("speakers");
+  // const [activeTab, setActiveTab] = useState("speakers");
+  const [activeTab, setActiveTab] = useState("");
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -35,6 +100,17 @@ const EditionOverview = () => {
 
     fetchDetail();
   }, [id, year]);
+
+  useEffect(() => {
+    if (!eventData) return;
+
+    const dignitaryKey = `${eventData.year}-${eventData.city?.name}`;
+
+    const hasDignitaries =
+      (staticDignitaries[dignitaryKey] || eventData.dignitaries || []).length > 0;
+
+    setActiveTab(hasDignitaries ? "dignitaries" : "speakers");
+  }, [eventData]);
 
   useEffect(() => {
     if (!selectedImage) return;
@@ -82,7 +158,13 @@ const EditionOverview = () => {
       </div>
     );
   }
+  const dignitaryKey = `${eventData?.year}-${eventData?.city?.name}`;
+  const dignitaries =
+    staticDignitaries[dignitaryKey] || eventData?.dignitaries || [];
+  const hasDignitaries = dignitaries.length > 0;
 
+  const speakerHeading =
+    staticSpeakerHeadings[dignitaryKey] || "";
 
   // Temporary static report
   // const reportUrl = "/sample.pdf";
@@ -111,6 +193,18 @@ const EditionOverview = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-12 lg:py-10">
         {/* Tabs */}
         <div className="flex justify-center md:gap-0.5 border-b border-[#D0252D] overflow-x-auto no-scrollbar">
+          {hasDignitaries && (
+            <button
+              onClick={() => setActiveTab("dignitaries")}
+              className={`font-roboto px-4 py-5 text-sm font-bold border border-b-0 transition
+      ${activeTab === "dignitaries"
+                  ? "bg-[#D0252D] text-white border-[#D0252D]"
+                  : "bg-white text-[#333] border-gray-300"
+                }`}
+            >
+              Dignitaries
+            </button>
+          )}
           <button
             onClick={() => setActiveTab("speakers")}
             className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${activeTab === "speakers"
@@ -144,9 +238,37 @@ const EditionOverview = () => {
           )}
         </div>
 
+        {/* Dignitaries Tab */}
+        {activeTab === "dignitaries" && (
+          <div className="mt-3 px-2 sm:px-4 text-[15px] font-roboto leading-7 text-[#333] md:px-8 pb-8">
+            <div className="space-y-1">
+              {dignitaries.map((item, index) => (
+                <div key={index} className="flex items-baseline gap-1 capitalize">
+                  <p className="-mb-1">
+                    <span className="font-bold text-[#333]">
+                      {toTitleCase(item.name)}
+                    </span>
+                    <span className="text-[#333]">, </span>
+                    <span className="text-[#333]">
+                      {item.designation}
+                    </span>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Speakers Tab */}
         {activeTab === "speakers" && (
           <div className="mt-3 px-2 sm:px-4 text-[15px] font-roboto leading-7 text-[#333] md:px-8 pb-8">
+            {speakerHeading && (
+              <div className="mb-3">
+                <p className="text-center font-bold text-[#333] text-[15px] leading-7">
+                  {speakerHeading}
+                </p>
+              </div>
+            )}
             <div className="space-y-1">
               {eventData?.speakers?.map((item: any) => (
                 <div key={item.id} className="flex items-baseline gap-1 capitalize">
