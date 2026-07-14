@@ -23,8 +23,6 @@ const Cart = () => {
   const cartItems = cartData?.data?.items || [];
   const cartTotal = cartData?.data || null;
 
-  // const [cartItems, setCartItems] = useState<any[]>([]);
-  // const [cartTotal, setCartTotal] = useState<any>(null);
   const [couponCode, setCouponCode] = useState("");
   const [updatedQuantities, setUpdatedQuantities] = useState<{
     [key: number]: number;

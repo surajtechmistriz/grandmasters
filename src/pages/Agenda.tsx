@@ -53,6 +53,34 @@ const SummitAgenda = () => {
       })) || [],
   }));
 
+
+  const formatEventDate = (dateString: string) => {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "long" });
+
+    const getSuffix = (day: number) => {
+      if (day >= 11 && day <= 13) return "TH";
+
+      switch (day % 10) {
+        case 1:
+          return "ST";
+        case 2:
+          return "ND";
+        case 3:
+          return "RD";
+        default:
+          return "TH";
+      }
+    };
+
+    return `${day}${getSuffix(day)} ${month}`;
+  };
+
+
   return (
     <div className="max-w-5xl mx-auto py-8 md:pb-12 md:pt-4 px-4 bg-white font-roboto">
       <div className="text-center mb-8 md:mb-12">
@@ -82,8 +110,7 @@ const SummitAgenda = () => {
                   className={`text-[15px] font-bold leading-7 tracking-widest ${isActive ? "text-[#D0252D]" : "text-[#333]"
                     }`}
                 >
-                  {/* {event.date} */}
-                  {event.date?.split(" ").slice(0, 2).join(" ")}
+                  {formatEventDate(event.date)}
                 </p>
 
                 <p

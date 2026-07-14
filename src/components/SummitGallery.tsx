@@ -201,9 +201,9 @@ const SummitGallery = () => {
                   key={event.id}
                   ref={(el) => (tabRefs.current[index] = el)}
                   onClick={() => handleTabClick(event, index)}
-                  className={`flex-shrink-0 pb-3 sm:pb-4 text-xs sm:text-sm md:text-[15px] font-bold tracking-wide transition cursor-pointer ${activeTab === event.city?.name
-                      ? "text-[#D0252D]"
-                      : "text-[#333] hover:text-black"
+                  className={`flex-shrink-0 pb-3 sm:pb-4 text-xs sm:text-sm md:text-[15px] font-bold tracking-[0.07rem]   transition cursor-pointer leading-7 ${activeTab === event.city?.name
+                    ? "text-[#D0252D]"
+                    : "text-[#333] hover:text-black"
                     }`}
                 >
                   {event.city?.name} Edition
@@ -229,16 +229,16 @@ const SummitGallery = () => {
         </div>
 
         {/* Images */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-1 mt-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-0.5 mt-4 sm:px-6">
           {galleryImages.map((item, index) => (
             <div
               key={item.id}
-              className="aspect-[4/3] overflow-hidden bg-gray-100"
+              className="overflow-hidden"
             >
               <img
                 src={`${IMAGE_URL}${item.image}`}
                 alt={`Gallery ${index}`}
-                className="w-full h-full object-cover cursor-pointer"
+                className="w-full h-auto block cursor-pointer"
                 onClick={() => {
                   setSelectedIndex(index);
                   setSelectedImage(`${IMAGE_URL}${item.image}`);

@@ -55,7 +55,14 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#D0252D]">www.itlegalsummit.com</span>
+                  <a
+                    href="https://www.itlegalsummit.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D0252D] hover:underline"
+                  >
+                    www.itlegalsummit.com
+                  </a>
                 </p>
               </div>
 
@@ -80,7 +87,14 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-5">
                   To access past editions, visit{" "}
-                  <span className="text-[#D0252D]">www.grandmasters.in</span>
+                  <a
+                    href="https://www.grandmasters.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D0252D] hover:underline"
+                  >
+                    www.grandmasters.in
+                  </a>
                 </p>
               </div>
             </div>
@@ -98,10 +112,16 @@ export default function Footer() {
                 <p className="text-[13px] leading-6">
                   A Cross-Sectional Legal Dig on M&E Sector & More
                 </p>
-
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#D0252D]">www.maels.in</span>
+                  <a
+                    href="https://www.maels.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D0252D] hover:underline"
+                  >
+                    www.maels.in
+                  </a>
                 </p>
               </div>
 
@@ -116,7 +136,14 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#D0252D]">www.plcs.co.in</span>
+                  <a
+                    href="https://www.plcs.co.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D0252D] hover:underline"
+                  >
+                    www.plcs.co.in
+                  </a>
                 </p>
               </div>
 
@@ -131,7 +158,14 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#D0252D]">www.bfls.in</span>
+                  <a
+                    href="https://www.bfls.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D0252D] hover:underline"
+                  >
+                    www.bfls.in
+                  </a>
                 </p>
               </div>
 
@@ -147,7 +181,14 @@ export default function Footer() {
 
                 <p className="text-[13px] mt-2">
                   To access past editions, visit{" "}
-                  <span className="text-[#D0252D]">www.rcls.in</span>
+                  <a
+                    href="https://www.rcls.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D0252D] hover:underline"
+                  >
+                    www.rcls.in
+                  </a>
                 </p>
               </div>
             </div>
@@ -193,7 +234,7 @@ export default function Footer() {
       </div>
 
       {/* WhatsApp Button */}
-      <div className="fixed bottom-8 right-4 md:bottom-22 md:right-6 z-50 group">
+      <div className="fixed bottom-8 right-4 md:bottom-24 md:right-6 z-50 group">
         {/* Tooltip */}
         <a
           href="https://api.whatsapp.com/send?phone=919899332111&text=Hello%2C%20I%20am%20interested%20in%20The%20Grand%20Masters%202026%20Summit%20Series"

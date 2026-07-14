@@ -48,7 +48,7 @@ const SummitSecretariat = () => {
               please contact us. purposes.
             </p>
 
-            <p className="mt-4 mb-6 text-sm sm:text-base font-bold text-[#333]">
+            <p className="mt-4 mb-5 text-sm sm:text-base font-bold text-[#333]">
               Meanwhile here's a gist of The Lex{" "}
               <span className="text-[#D0252D]">Witness</span> Summits so far;
             </p>
@@ -78,7 +78,7 @@ const SummitSecretariat = () => {
                         <FaCaretDown className="text-[#D0252D] shrink-0" />
                       )}
 
-                      <span className="text-sm sm:text-[15px] font-medium">
+                      <span className="font-roboto text-[17px] sm:text-[17px] leading-5 font-normal">
                         {item.title}
                       </span>
                     </button>
@@ -102,7 +102,7 @@ const SummitSecretariat = () => {
                                 }}
                               />
 
-                              <p className="font-roboto text-sm sm:text-[15px] leading-relaxed text-[#333]">
+                              <p className="font-roboto text-sm sm:text-[15px] leading-7 text-[#333]">
                                 {summit.description}
                               </p>
 

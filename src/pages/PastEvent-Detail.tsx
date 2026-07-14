@@ -92,6 +92,10 @@ const EditionOverview = () => {
     ? `${REPORT_BASE_URL}/${eventData.summit_report}`
     : "";
 
+  const toTitleCase = (str = "") =>
+    str
+      .toLowerCase()
+      .replace(/\b\w/g, (char) => char.toUpperCase());
   return (
     <div className="min-h-screen font-roboto bg-white mt-16 lg:mt-[98px]">
       {/* Header */}
@@ -110,8 +114,8 @@ const EditionOverview = () => {
           <button
             onClick={() => setActiveTab("speakers")}
             className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${activeTab === "speakers"
-                ? "bg-[#D0252D] text-white border-[#D0252D]"
-                : "bg-white text-[#333] border-gray-300"
+              ? "bg-[#D0252D] text-white border-[#D0252D]"
+              : "bg-white text-[#333] border-gray-300"
               }`}
           >
             Speakers
@@ -119,9 +123,9 @@ const EditionOverview = () => {
 
           <button
             onClick={() => setActiveTab("gallery")}
-            className={` font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${activeTab === "gallery"
-                ? "bg-[#D0252D] text-white border-[#D0252D]"
-                : "bg-white text-[#333] border-gray-300"
+            className={` font-roboto px-4 sm:px-2 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${activeTab === "gallery"
+              ? "bg-[#D0252D] text-white border-[#D0252D]"
+              : "bg-white text-[#333] border-gray-300"
               }`}
           >
             Gallery
@@ -131,8 +135,8 @@ const EditionOverview = () => {
             <button
               onClick={() => setActiveTab("report")}
               className={`font-roboto px-4 sm:px-1 py-5 text-sm font-bold border border-b-0 transition cursor-pointer ${activeTab === "report"
-                  ? "bg-[#D0252D] text-white border-[#D0252D]"
-                  : "bg-white text-[#333] border-gray-300"
+                ? "bg-[#D0252D] text-white border-[#D0252D]"
+                : "bg-white text-[#333] border-gray-300"
                 }`}
             >
               Summit Report {eventData?.year}
@@ -145,13 +149,13 @@ const EditionOverview = () => {
           <div className="mt-3 px-2 sm:px-4 text-[15px] font-roboto leading-7 text-[#333] md:px-8 pb-8">
             <div className="space-y-1">
               {eventData?.speakers?.map((item: any) => (
-                <div key={item.id} className="flex items-baseline gap-1">
+                <div key={item.id} className="flex items-baseline gap-1 capitalize">
                   <p className="-mb-1">
                     <span className="font-bold text-[#333]">
-                      {item.speaker?.name}
+                      {toTitleCase(item.speaker?.name)}
                     </span>
-                    <span className="text-gray-600">, </span>
-                    <span className="text-gray-600">
+                    <span className="text-[#333]">, </span>
+                    <span className="text-[#333]">
                       {item.speaker?.designation}
                     </span>
                   </p>
@@ -163,10 +167,10 @@ const EditionOverview = () => {
 
         {/* Gallery Tab */}
         {activeTab === "gallery" && (
-          <div className="py-6 sm:py-10">
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1">
+          <div className="py-0 my-4 sm:px-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
               {eventData?.gallery?.images?.map((img: string, index: number) => (
-                <div key={index} className="overflow-hidden bg-white shadow-sm">
+                <div key={index} className="overflow-hidden">
                   <img
                     src={img}
                     onClick={() => {
@@ -174,7 +178,7 @@ const EditionOverview = () => {
                       setSelectedImage(img);
                     }}
                     alt={`Gallery ${index + 1}`}
-                    className="w-full h-[220px] object-cover cursor-pointer transition-transform duration-300  "
+                    className="w-full h-auto block cursor-pointer"
                   />
                 </div>
               ))}
