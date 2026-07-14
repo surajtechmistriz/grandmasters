@@ -21,26 +21,34 @@ function ScrollToTop() {
   const location = useLocation();
 
   useEffect(() => {
+    // Disable browser scroll restoration
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     if (location.hash) {
       const id = location.hash.replace("#", "");
 
       setTimeout(() => {
-       const element = document.getElementById(id);
+        const element = document.getElementById(id);
 
-if (element) {
-  const y =
-    element.getBoundingClientRect().top +
-    window.pageYOffset -
-    120; // navbar height + spacing
+        if (element) {
+          const y =
+            element.getBoundingClientRect().top +
+            window.pageYOffset -
+            120;
 
-  window.scrollTo({
-    top: y,
-    behavior: "smooth",
-  });
-}
+          window.scrollTo({
+            top: y,
+            behavior: "auto",
+          });
+        }
       }, 200);
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
     }
   }, [location.pathname, location.hash]);
 
