@@ -288,25 +288,28 @@ const EditionOverview = () => {
         )}
 
         {/* Gallery Tab */}
-        {activeTab === "gallery" && (
-          <div className="py-0 my-4 sm:px-4">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
-              {eventData?.gallery?.images?.map((img: string, index: number) => (
-                <div key={index} className="overflow-hidden">
-                  <img
-                    src={img}
-                    onClick={() => {
-                      setSelectedIndex(index);
-                      setSelectedImage(img);
-                    }}
-                    alt={`Gallery ${index + 1}`}
-                    className="w-full h-auto block cursor-pointer"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+       {activeTab === "gallery" && (
+  <div className="py-0 my-4 sm:px-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
+      {eventData?.gallery?.images?.map((img: string, index: number) => (
+        <div
+          key={index}
+          className="overflow-hidden aspect-[235/156]"
+        >
+          <img
+            src={img}
+            onClick={() => {
+              setSelectedIndex(index);
+              setSelectedImage(img);
+            }}
+            alt={`Gallery ${index + 1}`}
+            className="w-full h-full object-cover cursor-pointer"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+)}
 
         {activeTab === "report" && reportUrl && (
           <div className="py-8">
