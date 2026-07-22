@@ -17,6 +17,14 @@ import { getCities, getCountries, getStates } from "../services/APIs/location";
 
 const CheckoutPage = () => {
    const { data: cartData, isLoading, refetch } = useCart();
+
+   useEffect(()=>{
+      window.scrollTo({
+         top:0,
+         behavior:"smooth",
+      })
+   }, [])
+
    const applyCouponMutation = useApplyCoupon();
    const removeCouponMutation = useRemoveCoupon();
 
