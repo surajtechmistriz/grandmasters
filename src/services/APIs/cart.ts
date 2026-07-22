@@ -13,7 +13,7 @@ export const addToCart = async (data: {
 
 export const getCart = async () => {
   const res = await api.get("/cart/summary");
-
+console.log("Cart data", res)
   return res;
 };
 

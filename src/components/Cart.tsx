@@ -32,7 +32,7 @@ const Cart = () => {
   const [cartMessage, setCartMessage] = useState("");
   const [showUndo, setShowUndo] = useState(false);
   const [loadingAction, setLoadingAction] = useState<string | null>(null);
-
+  
   const showMessage = (msg: string) => {
     setCartMessage(msg);
 

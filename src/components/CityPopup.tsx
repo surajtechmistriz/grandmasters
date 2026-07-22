@@ -68,11 +68,9 @@ const CitySelectorModal = ({
         queryKey: ["cart"],
       });
 
-      navigate("/cart");
-
-      navigate("/cart");
-
       onClose();
+      navigate("/checkout");
+
     } catch (err: any) {
       console.error("  ADD TO CART ERROR:", err);
 

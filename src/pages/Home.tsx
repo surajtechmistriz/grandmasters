@@ -55,24 +55,28 @@ const Home = () => {
   const cities = citiesData?.data || [];
 
   // Optimize heavy string parsing and array sorting using useMemo
-  const { lineOne, lineTwo } = useMemo(() => {
-    const cleanedCities = cities
-      .filter((item: any) => TARGET_CITY_IDS.includes(item.id))
-      .sort((a: any, b: any) => a.id - b.id)
-      .map((item: any) => item.name.replace(" Edition", ""));
+const desiredOrder = [
+  "Pune",
+  "Chennai",
+  "New Delhi",
+  "Mumbai",
+  "Bengaluru",
+];
 
-    if (cleanedCities.length >= 5) {
-      return {
-        lineOne: `${cleanedCities.slice(0, 3).join(", ")},`,
-        lineTwo: `${cleanedCities.slice(3).join(" & ")} Editions - Launching Soon!`,
-      };
-    }
+const { lineOne, lineTwo } = useMemo(() => {
+  const availableCities = cities.map((city: any) =>
+    city.name.replace(" Edition", "")
+  );
 
-    return {
-      lineOne: "Pune, Chennai, New Delhi,",
-      lineTwo: "Mumbai & Bengaluru Editions - Launching Soon!",
-    };
-  }, [cities]);
+  const orderedCities = desiredOrder.filter((city) =>
+    availableCities.includes(city)
+  );
+
+  return {
+    lineOne: `${orderedCities.slice(0, 3).join(", ")},`,
+    lineTwo: `${orderedCities.slice(3).join(" & ")} Editions - Launching Soon!`,
+  };
+}, [cities]);
 
   const location = useLocation();
 
