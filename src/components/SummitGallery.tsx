@@ -251,14 +251,7 @@ const SummitGallery = () => {
         {/* View More */}
         <button
           onClick={() => {
-            if (!activeEvent) return;
-
-            navigate(`/${createSlug(activeEvent.year, activeEvent.title)}`, {
-              state: {
-                id: activeEvent.id,
-                year: activeEvent.year,
-              },
-            });
+            navigate(`/${activeEvent.slug}-edition-an-overview`);
           }}
           className="mt-8 mb-8 md:mb-0 md:mt-10 px-6 py-3 rounded-sm border border-[#D0252D] text-[#D0252D] text-[11px] font-bold tracking-[0.2rem] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
         >

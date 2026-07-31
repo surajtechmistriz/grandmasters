@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useSponsors } from "../hooks/useSponsors";
 
+
 const imgUrl = import.meta.env.VITE_SPONSORS_BASE_URL;
 
 export default function SponsorsCarousel() {
@@ -27,37 +28,41 @@ export default function SponsorsCarousel() {
           <ChevronRight size={18} />
         </button>
 
-        <Swiper
-          modules={[Navigation, Autoplay]}
-          navigation={{
-            prevEl: ".custom-prev",
-            nextEl: ".custom-next",
-          }}
-          loop={true}
-          spaceBetween={20}
-          slidesPerGroup={1}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-            },
-            640: {
-              slidesPerView: 2,
-            },
-            768: {
-              slidesPerView: 3,
-            },
-            1024: {
-              slidesPerView: 5,
-            },
-          }}
-        >
+       <Swiper
+  modules={[Navigation, Autoplay]}
+  navigation={{
+    prevEl: ".custom-prev",
+    nextEl: ".custom-next",
+  }}
+  loop={true}
+  loopAdditionalSlides={sponsors.length}
+  speed={4000} // controls smooth scrolling speed
+  spaceBetween={20}
+  slidesPerGroup={1}
+  autoplay={{
+    delay: 0, // no pause between slides
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true, // pause on hover
+  }}
+  allowTouchMove={true}
+  breakpoints={{
+    320: {
+      slidesPerView: 1,
+    },
+    640: {
+      slidesPerView: 2,
+    },
+    768: {
+      slidesPerView: 3,
+    },
+    1024: {
+      slidesPerView: 5,
+    },
+  }}
+>
           {sponsors.map((item) => (
             <SwiperSlide key={item.id}>
-              <div className="h-[220px] border border-[#f1f1f1] bg-white flex flex-col rounded-sm">
+              <div className="h-[220px] border border-[#f1f1f1] bg-white flex flex-col rounded-sm cursor-pointer">
                 {/* Partner Type */}
                 <div className="">
                   <h3 className="font-roboto text-center pt-6 text-[15px] leading-6 font-bold text-[#333]">

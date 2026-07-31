@@ -109,3 +109,7 @@ html {
     margin: 0 auto 1.5rem;
   }
 }
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
