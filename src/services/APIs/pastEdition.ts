@@ -12,12 +12,8 @@ export const getPastEdition = async () => {
 };
 
 export const getPastEditionDetail = async (
-  id: number | string,
-  year?: number | string,
+  idOrSlug: number | string
 ) => {
-  const res = await api.get(`/event/${id}`, {
-    params: { year },
-  });
-
+  const res = await api.get(`/event/${idOrSlug}`);
   return res;
 };

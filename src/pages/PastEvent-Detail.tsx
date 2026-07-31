@@ -84,12 +84,13 @@ const EditionOverview = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showControls, setShowControls] = useState(true);
 
+
   useEffect(() => {
     const fetchDetail = async () => {
       try {
-        if (!id || !year) return;
+        if (!slug) return;
 
-        const res = await getPastEditionDetail(id, year);
+        const res = await getPastEditionDetail(slug);
         setEventData(res.data.data);
       } catch (error) {
         console.error(error);
@@ -99,7 +100,7 @@ const EditionOverview = () => {
     };
 
     fetchDetail();
-  }, [id, year]);
+  }, [slug]);
 
   useEffect(() => {
     if (!eventData) return;
@@ -178,6 +179,9 @@ const EditionOverview = () => {
     str
       .toLowerCase()
       .replace(/\b\w/g, (char) => char.toUpperCase());
+
+
+  console.log(eventData)
   return (
     <div className="min-h-screen font-roboto bg-white mt-16 lg:mt-[98px]">
       {/* Header */}
@@ -288,28 +292,28 @@ const EditionOverview = () => {
         )}
 
         {/* Gallery Tab */}
-       {activeTab === "gallery" && (
-  <div className="py-0 my-4 sm:px-4">
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
-      {eventData?.gallery?.images?.map((img: string, index: number) => (
-        <div
-          key={index}
-          className="overflow-hidden aspect-[235/156]"
-        >
-          <img
-            src={img}
-            onClick={() => {
-              setSelectedIndex(index);
-              setSelectedImage(img);
-            }}
-            alt={`Gallery ${index + 1}`}
-            className="w-full h-full object-cover cursor-pointer"
-          />
-        </div>
-      ))}
-    </div>
-  </div>
-)}
+        {activeTab === "gallery" && (
+          <div className="py-0 my-4 sm:px-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
+              {eventData?.gallery?.images?.map((img: string, index: number) => (
+                <div
+                  key={index}
+                  className="overflow-hidden aspect-[235/156]"
+                >
+                  <img
+                    src={img}
+                    onClick={() => {
+                      setSelectedIndex(index);
+                      setSelectedImage(img);
+                    }}
+                    alt={`Gallery ${index + 1}`}
+                    className="w-full h-full object-cover cursor-pointer"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {activeTab === "report" && reportUrl && (
           <div className="py-8">

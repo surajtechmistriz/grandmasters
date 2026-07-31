@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getPastEdition } from "../services/APIs/pastEdition";
 
 type EventItem = {
+  slug: any;
   id: number;
   title: string;
   city?: {
@@ -47,6 +48,8 @@ const PastEdition = () => {
 
     dataFetch();
   }, []);
+
+  console.log("past edition data", sections)
 
   if (loading) {
     return (
@@ -108,17 +111,7 @@ const PastEdition = () => {
                       <div className="p-8">
                         <img
                           onClick={() => {
-                            const slug = `the-grand-masters-${section.year}-${event.city?.name
-                              ?.toLowerCase()
-                              .replace(/\s+/g, "-")}-edition-an-overview`;
-
-                            navigate(`/${slug}`, {
-                              state: {
-                                id: event.id,
-                                year: section.year,
-                                event,
-                              },
-                            });
+                            navigate(`/${event.slug}-edition-an-overview`);
                           }}
                           src={
                             event?.image ? `${imgUrl}/${event.image}` : defaultImg
@@ -134,17 +127,7 @@ const PastEdition = () => {
                       <div className="pb-4 text-center">
                         <h2
                           onClick={() => {
-                            const slug = `the-grand-masters-${section.year}-${event.city?.name
-                              ?.toLowerCase()
-                              .replace(/\s+/g, "-")}-edition-an-overview`;
-
-                            navigate(`/${slug}`, {
-                              state: {
-                                id: event.id,
-                                year: section.year,
-                                event,
-                              },
-                            });
+                            navigate(`/${event.slug}-edition-an-overview`);
                           }}
                           className="font-roboto text-[20px] font-normal text-[#d71920] hover:underline cursor-pointer"
                         >
