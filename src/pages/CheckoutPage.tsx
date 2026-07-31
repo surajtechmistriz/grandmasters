@@ -141,7 +141,7 @@ const CheckoutPage = () => {
 
    const handleOrder = async () => {
       try {
-         setLoading(true);
+         
 
          if (
             !formData.first_name ||
@@ -160,6 +160,8 @@ const CheckoutPage = () => {
             toast.error("Please fill all required fields");
             return;
          }
+
+         setLoading(true);
 
          const registerResponse = await registerOrder({
             first_name: formData.first_name,

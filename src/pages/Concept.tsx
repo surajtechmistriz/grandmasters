@@ -418,7 +418,7 @@ const Concept = () => {
                           "",
                         );
 
-                        navigate(`/official-message/${cleanSlug}`, {
+                        navigate(`/official-messages/${cleanSlug}`, {
                           state: {
                             id: item.id,
                           },

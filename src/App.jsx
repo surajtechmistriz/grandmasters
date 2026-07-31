@@ -62,10 +62,10 @@ console.log("API:", import.meta.env.VITE_API_BASE_URL);
         <Route path="/past-editions" element={<PastEdition />} />
         <Route path="/:slug" element={<EditionOverview />} />
         <Route path="/audience-profile" element={<AudienceProfile />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/official-message/:slug" element={<OfficialMessage />} />
+        <Route path="/about-lex-witness/" element={<AboutUs />} />
+        <Route path="/official-messages/:slug/" element={<OfficialMessage />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/summit-secretariat" element={<SummitSecretariat />} />
+        <Route path="/summit-secretariat/" element={<SummitSecretariat />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/payment-success" element={<PaymentSuccess/>}/>
         <Route path="*" element={<NotFound />} />

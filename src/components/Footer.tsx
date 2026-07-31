@@ -217,14 +217,14 @@ export default function Footer() {
           {/* Right */}
           <div className="flex flex-wrap justify-center gap-6 text-[13px]">
             <button
-              onClick={() => navigate("/about-us")}
+              onClick={() => navigate("/about-lex-witness/")}
               className="hover:text-[#D0252D] transition cursor-pointer"
             >
               About Lex Witness
             </button>
 
             <button
-              onClick={() => navigate("/summit-secretariat")}
+              onClick={() => navigate("/summit-secretariat/")}
               className="hover:text-[#D0252D] transition cursor-pointer"
             >
               Summit Secretariat

@@ -54,7 +54,7 @@ const OfficialMessagesSidebar = () => {
                     // Remove the trailing "-number" from the slug
                     const cleanSlug = item.speaker.slug.replace(/-\d+$/, "");
 
-                    navigate(`/official-message/${cleanSlug}`, {
+                    navigate(`/official-messages/${cleanSlug}`, {
                       state: {
                         id: item.id,
                       },
