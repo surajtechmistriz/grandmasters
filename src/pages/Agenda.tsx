@@ -31,6 +31,7 @@ const SummitAgenda = () => {
     fetchData();
   }, []);
 
+  console.log("Events", events)
   //  get event by city
   const selectedEvent = events.find(
     (event) => event.city?.name?.toLowerCase() === activeTab,
@@ -132,7 +133,7 @@ const SummitAgenda = () => {
 
       {/* TIMELINE (UNCHANGED UI) */}
       <div className="relative md:ml-20">
-        <div className="hidden md:block absolute left-8 top-0 bottom-0 w-[1px] bg-gray-200"></div>
+        <div className="hidden md:block absolute left-8 top-0 bottom-20 w-[1px] bg-gray-200"></div>
 
         <div className="space-y-0">
           {agendaItems.map((item: any) => (
@@ -168,7 +169,8 @@ const SummitAgenda = () => {
 
                   {(item.description || item.hasSpeakers) && (
                     <ChevronDown
-                      className={`transition-transform text-[#c9060a] cursor-pointer ${expandedId === item.id ? "rotate-180" : ""
+                      size={24}
+                      className={`flex-shrink-0 cursor-pointer text-[#c9060a] transition-transform duration-300 ${expandedId === item.id ? "rotate-180" : "rotate-0"
                         }`}
                     />
                   )}
@@ -176,39 +178,41 @@ const SummitAgenda = () => {
                 <div className="h-px bg-gray-100  mt-2" />
 
                 {/* speakers (UNCHANGED UI) */}
-                {expandedId === item.id && (
-                  <>
-                    {/* SPEAKERS (UNCHANGED UI) */}
-                    {item.hasSpeakers && (
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 mt-8">
-                        {item.speakers.map((speaker: any, idx: number) => (
-                          <div key={idx} className="text-center">
-                            <div className="w-24 h-24 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
-                              <img
-                                src={speaker.img}
-                                onError={handleImageError}
-                                className="w-full h-full object-cover  transition"
-                              />
-                            </div>
-
-                            <h4 className="text-[#D0252D] font-black text-xs md:text-[17px] leading-5 md:leading-7 mt-2 uppercase">
-                              {speaker.name}
-                            </h4>
-
-                            <p className="text-[15px] font-normal leading-6 text-[#333] px-2">
-                              {speaker.role}
-                            </p>
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${expandedId === item.id
+                      ? "max-h-[2000px] opacity-100 mt-6"
+                      : "max-h-0 opacity-0 mt-0"
+                    }`}
+                >
+                  {item.hasSpeakers && (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 mt-8">
+                      {item.speakers.map((speaker: any, idx: number) => (
+                        <div key={idx} className="text-center">
+                          <div className="w-24 h-24 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mx-auto">
+                            <img
+                              src={speaker.img}
+                              onError={handleImageError}
+                              className="w-full h-full object-cover transition"
+                            />
                           </div>
-                        ))}
-                      </div>
-                    )}
-                    {/* 333 DESCRIPTION (HTML RENDERED) */}
-                    <div
-                      className="mt-6 text-sm text-[#333] leading-6 agenda-html"
-                      dangerouslySetInnerHTML={{ __html: item.description }}
-                    />
-                  </>
-                )}
+
+                          <h4 className="text-[#D0252D] font-black text-xs md:text-[17px] leading-5 md:leading-7 mt-2 uppercase">
+                            {speaker.name}
+                          </h4>
+
+                          <p className="text-[15px] font-normal leading-6 text-[#333] px-2">
+                            {speaker.role}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div
+                    className="mt-6 text-sm text-[#333] leading-6 agenda-html"
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
+                </div>
               </div>
             </div>
           ))}

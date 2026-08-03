@@ -54,6 +54,8 @@ const Home = () => {
   const events = eventsData?.data?.events || [];
   const cities = citiesData?.data || [];
 
+  console.log("Events", events)
+
   // Optimize heavy string parsing and array sorting using useMemo
 const desiredOrder = [
   "Pune",
@@ -61,6 +63,7 @@ const desiredOrder = [
   "New Delhi",
   "Mumbai",
   "Bengaluru",
+  "Hyderabad"
 ];
 
 const { lineOne, lineTwo } = useMemo(() => {
@@ -72,13 +75,15 @@ const { lineOne, lineTwo } = useMemo(() => {
     availableCities.includes(city)
   );
 
+  console.log("Cities", orderedCities)
   return {
-    lineOne: `${orderedCities.slice(0, 3).join(", ")},`,
-    lineTwo: `${orderedCities.slice(3).join(" & ")} Editions - Launching Soon!`,
+    lineOne: `${orderedCities.slice(0, 4).join(", ")},`,
+    lineTwo: `${orderedCities.slice(4).join(" & ")} Editions - Launching Soon!`,
   };
 }, [cities]);
 
   const location = useLocation();
+
 
   useEffect(() => {
     if (!location.hash) return;

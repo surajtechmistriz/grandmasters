@@ -65,57 +65,63 @@ const SummitSecretariat = () => {
                   >
                     {/* Header */}
                     <button
-                      onClick={() => toggleSection(item.year)}
-                      className={`w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 text-left transition-colors cursor-pointer ${
-                        isOpen
-                          ? "bg-[#D12229] text-white"
-                          : "bg-white text-[#333] hover:bg-gray-50"
-                      }`}
-                    >
-                      {isOpen ? (
-                        <FaCaretUp className="shrink-0" />
-                      ) : (
-                        <FaCaretDown className="text-[#D0252D] shrink-0" />
-                      )}
+  onClick={() => toggleSection(item.year)}
+  className={`w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 text-left transition-colors cursor-pointer ${
+    isOpen
+      ? "bg-[#D12229] text-white"
+      : "bg-white text-[#333] hover:bg-gray-50"
+  }`}
+>
+  <FaCaretDown
+    className={`transition-transform duration-300 flex-shrink-0 ${
+      isOpen ? "rotate-180 text-white" : "rotate-0 text-[#D0252D]"
+    }`}
+  />
 
-                      <span className="font-roboto text-[17px] sm:text-[17px] leading-5 font-normal">
-                        {item.title}
-                      </span>
-                    </button>
+  <span className="font-roboto text-[17px] leading-5 font-normal">
+    {item.title}
+  </span>
+</button>
 
                     {/* Content */}
-                    {isOpen && (
-                      <div className="p-4 sm:p-6 lg:p-8 bg-white space-y-8 sm:space-y-8">
-                        {item.content ? (
-                          item.content.map((summit, index) => (
-                            <div
-                              key={index}
-                              className="border-b border-gray-200 last:border-0 pb-6 sm:pb-4 last:pb-0"
-                            >
-                              <img
-                                src={summit.logo || defaultImg}
-                                alt="Summit Logo"
-                                className="float-left w-[300px] h-[158px] object-contain mr-6 mb-4"
-                                onError={(e) => {
-                                  e.currentTarget.onerror = null; // prevent infinite loop
-                                  e.currentTarget.src = defaultImg;
-                                }}
-                              />
+                   <div
+  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+    isOpen
+      ? "max-h-[5000px] opacity-100"
+      : "max-h-0 opacity-0"
+  }`}
+>
+  <div className="p-4 sm:p-6 lg:p-8 bg-white space-y-8">
+    {item.content ? (
+      item.content.map((summit, index) => (
+        <div
+          key={index}
+          className="border-b border-gray-200 last:border-0 pb-6 sm:pb-4 last:pb-0"
+        >
+          <img
+            src={summit.logo || defaultImg}
+            alt="Summit Logo"
+            className="float-left w-[300px] h-[158px] object-contain mr-6 mb-4"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = defaultImg;
+            }}
+          />
 
-                              <p className="font-roboto text-sm sm:text-[15px] leading-7 text-[#333]">
-                                {summit.description}
-                              </p>
+          <p className="font-roboto text-sm sm:text-[15px] leading-7 text-[#333]">
+            {summit.description}
+          </p>
 
-                              <div className="clear-both" />
-                            </div>
-                          ))
-                        ) : (
-                          <p className="text-[#8D93A0] italic">
-                            Details for {item.year} coming soon...
-                          </p>
-                        )}
-                      </div>
-                    )}
+          <div className="clear-both" />
+        </div>
+      ))
+    ) : (
+      <p className="text-[#8D93A0] italic">
+        Details for {item.year} coming soon...
+      </p>
+    )}
+  </div>
+</div>
                   </div>
                 );
               })}
