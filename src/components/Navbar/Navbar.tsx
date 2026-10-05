@@ -10,11 +10,11 @@ const Navbar = () => {
 
   const navItems = [
     { id: "concept", label: "CONCEPT", type: "section" },
-    { id: "speakers", label: "SPEAK", type: "section" },
+    { id: "speak", label: "SPEAK", type: "section" },
     { id: "agenda", label: "AGENDA", type: "section" },
-    { id: "sponsors", label: "SPONSOR", type: "section" },
+    { id: "sponsor", label: "SPONSOR", type: "section" },
     { id: "/past-editions", label: "PAST EDITIONS", type: "route" },
-    { id: "connect", label: "CONNECT", type: "section" },
+    { id: "contact", label: "CONNECT", type: "section" },
   ];
 
   useEffect(() => {

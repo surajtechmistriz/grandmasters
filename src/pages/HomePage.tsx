@@ -21,7 +21,7 @@ export default function HomePage() {
         <Concept />
       </section>
 
-      <section id="speakers" className="scroll-mt-24">
+      <section id="speak" className="scroll-mt-24">
         <SpeakersSection />
       </section>
       <section id="agenda" className="scroll-mt-24">
@@ -47,7 +47,7 @@ export default function HomePage() {
         <SponsorsPartners />
       </section>
 
-      <section id="connect" className="scroll-mt-24">
+      <section id="contact" className="scroll-mt-24">
         <ContactSection />
       </section>
     </>

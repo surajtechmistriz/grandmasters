@@ -455,10 +455,10 @@ const Concept = () => {
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mt-8">
             {[
-              { label: "SPEAK", to: "/#speakers" },
-              { label: "SPONSOR", to: "/#sponsors" },
+              { label: "SPEAK", to: "/#speak" },
+              { label: "SPONSOR", to: "/#sponsor" },
               { label: "REGISTER NOW", to: "/#register" },
-              { label: "CONNECT", to: "/#connect" },
+              { label: "CONNECT", to: "/#contact" },
             ].map(({ label, to }) => (
               <Link
                 key={label}

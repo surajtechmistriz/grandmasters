@@ -15,5 +15,6 @@ export const getPastEditionDetail = async (
   idOrSlug: number | string
 ) => {
   const res = await api.get(`/event/${idOrSlug}`);
+  console.log(res)
   return res;
 };
