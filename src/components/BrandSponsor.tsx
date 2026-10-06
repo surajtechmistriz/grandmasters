@@ -29,7 +29,7 @@ const BrandSponsorship = () => {
           </p>
 
           <div className="flex justify-center">
-             <Link to="/#connect">
+             <Link to="/#contact">
             <button className="font-custom w-full sm:w-auto border border-white px-6 sm:px-8 md:px-6 py-4 md:py-5 sm:py-5 rounded-sm text-[10px] sm:text-[11px] font-bold tracking-[0.15rem] md:tracking-[0.6em] md:leading-[11px] sm:tracking-[0.3rem] uppercase  hover:bg-white hover:text-[#D0252D] transition-all duration-300 cursor-pointer">
               Explore Sponsorship Opportunities
             </button>
