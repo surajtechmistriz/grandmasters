@@ -16,7 +16,7 @@ export default function Footer() {
               About Lex <span className="text-[#D0252D]">Witness</span>
             </h2>
 
-            <p className="text-[13px] leading-6 text-black font-roboto">
+            <p className="text-[13px] leading-6 text-black font-roboto text-justify">
               Lex Witness, ever since its inception in 2009, has become India’s
               most credible platform for the legal luminaries here to opine,
               comment and share their views. With an interesting blend of
@@ -49,11 +49,11 @@ export default function Footer() {
                   The 11th Annual IT Legal Summit 2026 / Bengaluru
                 </h3>
 
-                <p className="text-[13px] leading-6">
+                <p className="text-[13px] leading-6 italic">
                   IT / ITeS / e-Commerce / Gaming & More
                 </p>
 
-                <p className="text-[13px] mt-2">
+                <p className="text-[13px] mt-2 italic">
                   To access past editions, visit{" "}
                   <a
                     href="https://www.itlegalsummit.com"
@@ -71,21 +71,15 @@ export default function Footer() {
                   The 12th Annual Grand Masters 2026
                 </h3>
 
-                <p className="text-[13px] leading-6 mt-2">
-                  A 7-city pan-India General Counsel Summit Series
+                <p className="text-[13px] leading-6 mt-2 italic text-justify">
+                  A 7-city pan-India General Counsel Summit Series:{"  "} <br />
+                  <span className="">
+                    New Delhi, Mumbai, Bengaluru, Hyderabad, <br /> Ahmedabad, Pune
+                    , Chennai
+                  </span>
                 </p>
 
-                <ul className="mt-4 space-y-1 text-[13px] font-bold">
-                  <li>Hyderabad Edition</li>
-                  <li>Pune Edition</li>
-                  <li>Chennai Edition</li>
-                  <li>Ahmedabad Edition</li>
-                  <li>New Delhi Edition</li>
-                  <li>Mumbai Edition</li>
-                  <li>Bengaluru Edition</li>
-                </ul>
-
-                <p className="text-[13px] mt-5">
+                <p className="text-[13px] mt-2 mb-3">
                   To access past editions, visit{" "}
                   <a
                     href="https://www.grandmasters.in"
@@ -98,21 +92,16 @@ export default function Footer() {
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Events */}
-          <div className="font-roboto">
-            <div className="space-y-6">
               <div>
                 <h3 className="font-bold text-[13px] leading-6">
                   The 11th Annual Media, Advertising & Entertainment Legal
                   Summit 2026 / Mumbai
                 </h3>
 
-                <p className="text-[13px] leading-6">
+                <p className="text-[13px] leading-6 italic">
                   A Cross-Sectional Legal Dig on M&E Sector & More
                 </p>
-                <p className="text-[13px] mt-2">
+                <p className="text-[13px] mt-2 italic">
                   To access past editions, visit{" "}
                   <a
                     href="https://www.maels.in"
@@ -124,17 +113,22 @@ export default function Footer() {
                   </a>
                 </p>
               </div>
+          </div>
+
+          {/* Events */}
+          <div className="font-roboto">
+            <div className="space-y-6">
 
               <div>
                 <h3 className="font-bold text-[13px] leading-6">
                   The 12th Annual Pharma Legal & Compliance Summit 2026 / Mumbai
                 </h3>
 
-                <p className="text-[13px] leading-6">
+                <p className="text-[13px] leading-6 italic">
                   Pharma / Healthcare / Medical Devices & More
                 </p>
 
-                <p className="text-[13px] mt-2">
+                <p className="text-[13px] mt-2 italic">
                   To access past editions, visit{" "}
                   <a
                     href="https://www.plcs.co.in"
@@ -152,11 +146,11 @@ export default function Footer() {
                   The 9th Annual Banking & Finance Legal Summit 2026 / Mumbai
                 </h3>
 
-                <p className="text-[13px] leading-6">
+                <p className="text-[13px] leading-6 italic">
                   Banking / Crypto / Fintech & More
                 </p>
 
-                <p className="text-[13px] mt-2">
+                <p className="text-[13px] mt-2 italic">
                   To access past editions, visit{" "}
                   <a
                     href="https://www.bfls.in"
@@ -175,11 +169,11 @@ export default function Footer() {
                   New Delhi
                 </h3>
 
-                <p className="text-[13px] leading-6">
+                <p className="text-[13px] leading-6 italic">
                   Real Estate / Infra / Construction & More
                 </p>
 
-                <p className="text-[13px] mt-2">
+                <p className="text-[13px] mt-2 italic">
                   To access past editions, visit{" "}
                   <a
                     href="https://www.rcls.in"

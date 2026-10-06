@@ -194,7 +194,7 @@ const SummitGallery = () => {
           <div className="overflow-x-auto no-scrollbar">
             <div
               ref={tabsContainerRef}
-              className="flex justify-start sm:justify-center gap-5 sm:gap-8 whitespace-nowrap px-2"
+             className="flex justify-center gap-5 sm:gap-8 whitespace-nowrap px-2"
             >
               {events.map((event, index) => (
                 <button

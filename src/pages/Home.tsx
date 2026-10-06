@@ -54,36 +54,35 @@ const Home = () => {
   const events = eventsData?.data?.events || [];
   const cities = citiesData?.data || [];
 
-  console.log("Events", events)
+  console.log("Events", events);
 
   // Optimize heavy string parsing and array sorting using useMemo
-const desiredOrder = [
-  "Pune",
-  "Chennai",
-  "New Delhi",
-  "Mumbai",
-  "Bengaluru",
-  "Hyderabad"
-];
+  const desiredOrder = [
+    "Pune",
+    "Chennai",
+    "New Delhi",
+    "Mumbai",
+    "Bengaluru",
+    "Hyderabad",
+  ];
 
-const { lineOne, lineTwo } = useMemo(() => {
-  const availableCities = cities.map((city: any) =>
-    city.name.replace(" Edition", "")
-  );
+  const { lineOne, lineTwo } = useMemo(() => {
+    const availableCities = cities.map((city: any) =>
+      city.name.replace(" Edition", ""),
+    );
 
-  const orderedCities = desiredOrder.filter((city) =>
-    availableCities.includes(city)
-  );
+    const orderedCities = desiredOrder.filter((city) =>
+      availableCities.includes(city),
+    );
 
-  console.log("Cities", orderedCities)
-  return {
-    lineOne: `${orderedCities.slice(0, 4).join(", ")},`,
-    lineTwo: `${orderedCities.slice(4).join(" & ")} Editions - Launching Soon!`,
-  };
-}, [cities]);
+    console.log("Cities", orderedCities);
+    return {
+      lineOne: `${orderedCities.slice(0, 4).join(", ")},`,
+      lineTwo: `${orderedCities.slice(4).join(" & ")} Editions - Launching Soon!`,
+    };
+  }, [cities]);
 
   const location = useLocation();
-
 
   useEffect(() => {
     if (!location.hash) return;
@@ -223,7 +222,7 @@ const { lineOne, lineTwo } = useMemo(() => {
                 REGISTER NOW
               </button>
             </Link>
-            <Link to="/#connect" className="w-full sm:w-auto">
+            <Link to="/#contact" className="w-full sm:w-auto">
               <button className="w-full text-[#D0252D] px-2 py-3 border border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition rounded-sm font-semibold tracking-[0.26rem] bg-white/70 cursor-pointer">
                 CONTACT US
               </button>
