@@ -41,7 +41,6 @@ const Concept = () => {
   const [active, setActive] = useState("agenda");
 
   const navigate = useNavigate();
-
   const location = useLocation();
 
   const [startCount, setStartCount] = useState(false);
@@ -50,9 +49,7 @@ const Concept = () => {
   const { data, isLoading } = useOfficialMessages(1);
 
   const apiData = data?.data ?? {};
-
   const luminaries = data?.data?.["2025"] || [];
-
 
   useEffect(() => {
     setStartCount(false);
@@ -79,6 +76,217 @@ const Concept = () => {
 
   const navigation = useNavigate();
 
+  /* ---------------- TAB CONTENT RENDER HELPER ---------------- */
+  const renderTabContent = (tabId) => {
+    switch (tabId) {
+      case "agenda":
+        return (
+          <div className="font-roboto text-[15px] md:text-[15px] flex flex-col md:flex-row items-center gap-6 mt-8 px-5 max-w-5xl mx-auto text-left">
+            <div className="flex justify-center shrink-0">
+              <img
+                src={agendaImg}
+                className="w-full max-w-[260px] md:max-w-64 rounded-lg object-contain"
+                alt="Agenda"
+              />
+            </div>
+            <div className="flex-1 text-[#333]">
+              <p className="mb-2">
+                There Are In-House Counsel and There Are Grand Masters.
+                <span className="text-[#cd151d] font-semibold"> Choose.</span>
+              </p>
+
+              <p className="mb-2">
+                Do You Choose Client Delight Over the Billing Delight?
+                <span className="text-[#cd151d] font-semibold"> Stand Out.</span>
+              </p>
+
+              <p className="mb-2">
+                Have You Moved on from Court Room to Board Room?
+                <span className="text-[#cd151d] font-semibold"> Differentiate.</span>
+              </p>
+
+              <p className="my-2">
+                Here’s a Wire-frame of the Power-Packed Sessions for the Summit:
+              </p>
+
+              <ul className="space-y-1">
+                <li>
+                  #The{" "}
+                  <span className="text-[#cd151d] font-semibold">
+                    Strategic Counsel
+                  </span>{" "}
+                  – Are You Future Ready?
+                </li>
+                <li>
+                  #India Inc. 3.0 –{" "}
+                  <span className="text-[#cd151d] font-semibold">
+                    Pharma & Lifesciences Track
+                  </span>{" "}
+                  – Hyderabad Special
+                </li>
+                <li>
+                  #India Inc. 3.0 –{" "}
+                  <span className="text-[#cd151d] font-semibold">
+                    Pharma & Lifesciences Track
+                  </span>{" "}
+                  – Ahmedabad Special
+                </li>
+                <li>
+                  #India Inc. 3.0 –{" "}
+                  <span className="text-[#cd151d] font-semibold">
+                    Real Estate & Infra Track
+                  </span>{" "}
+                  – Hyderabad Special
+                </li>
+                <li>
+                  #The{" "}
+                  <span className="text-[#cd151d] font-semibold">
+                    Intellectual
+                  </span>{" "}
+                  You – IP in the Age of AI
+                </li>
+                <li>
+                  #The New India{" "}
+                  <span className="text-[#cd151d] font-semibold">
+                    Dispute Resolution
+                  </span>{" "}
+                  Wave – Smart Enough?
+                </li>
+              </ul>
+            </div>
+          </div>
+        );
+
+      case "audience":
+        return (
+          <div className="mt-8 flex flex-col md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
+            {/* TEXT SECTION */}
+            <div className="space-y-4 text-[#333] flex-1">
+              <h3 className="text-[15px] font-bold leading-[28px]">
+                Organizational Participation
+              </h3>
+
+              <p className="text-[15px] font-normal leading-[28px]">
+                3M India, 9X Media, ABB India, Accel Partners, Accenture,
+                ACCOR, Accuracy Adani Group, Adani Parts And SEZ, Adidas
+                Group, Aditya Birla Fashion and Retail ADP India, Advaya
+                Legal, AGS Health, Ahuja Group, Air Infotech, Airtel,
+                AkzoNobel India, ALMT Legal, Alpha Partners, Alstom, Amar
+                Chitra Katha, Amar Ujala Publications, Amazon.in, Amdipharm
+                Mercury (AMCo) Group, American Express, American Towers,
+                Amicus Services, Amira Nature Foods, Anantraj, Ani
+                Technologies, Ansal API, ArcelorMittal Distribution Solutions
+                India, ARCIL, Ardent Legal, Aricent, Ashland India
+              </p>
+
+              <h3 className="font-semibold mt-6">
+                Hierarchical Participation
+              </h3>
+
+              <p className="leading-relaxed">
+                Add. Chief Manager – Legal, Additional Manager – Legal, IP
+                Attorney, AGM – Legal AGM Legal & Asst. Co. Sec., APAC Legal
+                Counsel, Assistant Director, Assistant General Counsel
+                Associate, Associate Director – Legal & Compliance, Associate
+                Director Human Resources
+              </p>
+
+              <button
+                onClick={() => navigation("/audience-profile")}
+                className="font-custom mt-4 py-3.5 text-[#D0252D] text-[11px] font-bold leading-2.75 px-7 tracking-[0.3rem] border rounded-sm border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
+              >
+                VIEW MORE
+              </button>
+            </div>
+
+            {/* IMAGE SECTION */}
+            <div className="w-full max-w-84.75 md:w-85 mx-auto">
+              <img
+                src={audienceImg}
+                className="rounded-xl w-full object-cover"
+                alt="Audience Profile"
+              />
+            </div>
+          </div>
+        );
+
+      case "sponsor":
+        return (
+          <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] font-roboto text-[15px] md:font-normal md:leading-[1.9] px-4 md:px-8 gap-4 mt-8 md:mt-12 items-center max-w-4xl text-left">
+            <div className="flex justify-start">
+              <img
+                src={sponsorImg}
+                className="w-full max-w-[320px] mx-auto rounded-lg"
+                alt="Sponsor"
+              />
+            </div>
+            <div className="text-[#333]">
+              <p className="leading-7">
+                Partnering with{" "}
+                <span className="text-[#D0252D] font-bold">
+                  The Grand Masters 2026 Summit Series
+                </span>{" "}
+                Series will enable you to brand and promote your service
+                expertise to a unique and interesting set of senior in-house
+                counsel. Summit attendees include senior professionals
+                interested in updating their knowledge and involved in legal
+                and commercial elements of complex business deals. We have a
+                set of standard branding solutions that we can customize based
+                on your specific needs.
+              </p>
+
+              <p className="font-semibold text-[#333] mt-4">
+                For more details, contact:
+              </p>
+
+              <p className="break-all md:break-normal mt-2">
+                <span className="text-[#333] font-normal">
+                  Bhupinder Kaur
+                </span>{" "}
+                |{" "}
+                <a
+                  href="tel:+919654155065"
+                  className="text-[#cd151d] hover:underline"
+                >
+                  +91-9654155065
+                </a>{" "}
+                |{" "}
+                <a
+                  href="mailto:bhupinder@witnesslive.in"
+                  className="text-[#cd151d] hover:underline"
+                >
+                  bhupinder@witnesslive.in
+                </a>
+              </p>
+
+              <p className="break-all md:break-normal">
+                <span className="text-[#333] font-normal">
+                  Neelima Maheshwari
+                </span>{" "}
+                |{" "}
+                <a
+                  href="tel:+918800841600"
+                  className="text-[#cd151d] hover:underline"
+                >
+                  +91-8800841600
+                </a>{" "}
+                |{" "}
+                <a
+                  href="mailto:neelima.maheshwari@witnesslive.in"
+                  className="text-[#cd151d] hover:underline"
+                >
+                  neelima.maheshwari@witnesslive.in
+                </a>
+              </p>
+            </div>
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
   return (
     <section
       className="relative font-roboto w-full min-h-screen bg-center bg-cover md:bg-fixed"
@@ -86,11 +294,11 @@ const Concept = () => {
     >
       <div className="absolute inset-0 bg-black/20" />
 
-      <div className="relative z-10 mx-auto  text-center">
+      <div className="relative z-10 mx-auto text-center">
         {/* HEADER */}
         <div className="backdrop-blur-md bg-white shadow-xl px-5 py-8 md:p-10 flex flex-col items-center">
-          <img src={icon} className="h-14 bg-white text-[#D0252D]" />
-          <h2 className="font-roboto text-[34px] sm:text-4xl md:text-[50px] leading-tight md:leading-[1.1] tracking-tight md:tracking-[-0.05em] text-[#333333] text-center my-3 px-2">
+          <img src={icon} className="h-14 bg-white text-[#D0252D]" alt="Icon" />
+          <h2 className="font-roboto text-[46px] sm:text-4xl md:text-[50px] leading-tight md:leading-[1.1] tracking-tight md:tracking-[-0.05em] text-[#333333] text-center my-3 px-2">
             Are You A Grand Master?
           </h2>
 
@@ -100,23 +308,32 @@ const Concept = () => {
             Gathering
           </p>
 
-          {/* TABS */}
+          {/* TABS CONTAINER */}
           <div className="relative flex flex-col md:flex-row justify-center gap-3 md:gap-20 mt-8 border-b border-gray-300 pb-4 w-full md:w-fit mx-auto">
-            {" "}
             {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActive(tab.id)}
-                className={`w-full md:w-auto flex items-center justify-center gap-3 md:gap-12 py-2 font-bold text-xs sm:text-sm md:text-[15px] cursor-pointer ${active === tab.id
-                    ? "text-[#D0252D]"
-                    : "text-[#333] hover:text-[#D0252D]"
+              <div key={tab.id} className="w-full md:w-auto flex flex-col">
+                <button
+                  onClick={() => setActive(tab.id)}
+                  className={`w-full md:w-auto flex items-center justify-center gap-3 md:gap-12 py-2 font-bold text-[20px] sm:text-sm md:text-[15px] cursor-pointer ${
+                    active === tab.id
+                      ? "text-[#D0252D]"
+                      : "text-[#333] hover:text-[#D0252D]"
                   }`}
-              >
-                {tab.icon}
-                {tab.label}
-              </button>
+                >
+                  {tab.icon}
+                  {tab.label}
+                </button>
+
+                {/* MOBILE ONLY TAB CONTENT (Appears directly below active tab button) */}
+                {active === tab.id && (
+                  <div className="block md:hidden w-full my-4">
+                    {renderTabContent(tab.id)}
+                  </div>
+                )}
+              </div>
             ))}
-            {/* 🔺 TRIANGLE UNDER ACTIVE TAB */}
+
+            {/* 🔺 TRIANGLE UNDER ACTIVE TAB (DESKTOP ONLY) */}
             {tabs.map((tab, i) =>
               active === tab.id ? (
                 <span
@@ -140,219 +357,10 @@ const Concept = () => {
             )}
           </div>
 
-          {/* ---------------- TAB CONTENT ---------------- */}
-
-          {/* AGENDA TAB */}
-          {active === "agenda" && (
-            <div className="font-roboto text-[15px] md:text-[15px] flex flex-col md:flex-row items-center gap-6 mt-8 px-5 max-w-5xl mx-auto text-left">
-              {" "}
-              <div className="flex justify-center shrink-0">
-                <img
-                  src={agendaImg}
-                  className="w-full max-w-[260px] md:max-w-64 rounded-lg object-contain"
-                  alt="Agenda"
-                />
-              </div>
-              <div className="flex-1    text-[#333]">
-                <p className="mb-2">
-                  There Are In-House Counsel and There Are Grand Masters.
-                  <span className="text-[#cd151d] font-semibold"> Choose.</span>
-                </p>
-
-                <p className="mb-2">
-                  Do You Choose Client Delight Over the Billing Delight?
-                  <span className="text-[#cd151d] font-semibold">
-                    {" "}
-                    Stand Out.
-                  </span>
-                </p>
-
-                <p className="mb-2">
-                  Have You Moved on from Court Room to Board Room?
-                  <span className="text-[#cd151d] font-semibold">
-                    {" "}
-                    Differentiate.
-                  </span>
-                </p>
-
-                <p className="my-2">
-                  Here’s a Wire-frame of the Power-Packed Sessions for the
-                  Summit:
-                </p>
-
-                <ul className="space-y-1">
-                  <li>
-                    #The{" "}
-                    <span className="text-[#cd151d] font-semibold">
-                      Strategic Counsel
-                    </span>{" "}
-                    – Are You Future Ready?
-                  </li>
-                  <li>
-                    #India Inc. 3.0 –{" "}
-                    <span className="text-[#cd151d] font-semibold">
-                      Pharma & Lifesciences Track
-                    </span>{" "}
-                    – Hyderabad Special
-                  </li>
-                  <li>
-                    #India Inc. 3.0 –{" "}
-                    <span className="text-[#cd151d] font-semibold">
-                      Pharma & Lifesciences Track
-                    </span>{" "}
-                    – Ahmedabad Special
-                  </li>
-                  <li>
-                    #India Inc. 3.0 –{" "}
-                    <span className="text-[#cd151d] font-semibold">
-                      Real Estate & Infra Track
-                    </span>{" "}
-                    – Hyderabad Special
-                  </li>
-                  <li>
-                    #The{" "}
-                    <span className="text-[#cd151d] font-semibold">
-                      Intellectual
-                    </span>{" "}
-                    You – IP in the Age of AI
-                  </li>
-                  <li>
-                    #The New India{" "}
-                    <span className="text-[#cd151d] font-semibold">
-                      Dispute Resolution
-                    </span>{" "}
-                    Wave – Smart Enough?
-                  </li>
-                </ul>
-              </div>
-            </div>
-          )}
-
-          {/* AUDIENCE TAB */}
-          {active === "audience" && (
-            <div className="mt-8 flex flex-col md:flex-row gap-8 px-4 md:px-8 text-left max-w-4xl mx-auto items-start">
-              {" "}
-              {/* TEXT SECTION */}
-              <div className="space-y-4 text-[#333] flex-1">
-                <h3 className="text-[15px] font-bold leading-[28px]">
-                  Organizational Participation
-                </h3>
-
-                <p className="text-[15px] font-normal leading-[28px]">
-                  3M India, 9X Media, ABB India, Accel Partners, Accenture,
-                  ACCOR, Accuracy Adani Group, Adani Parts And SEZ, Adidas
-                  Group, Aditya Birla Fashion and Retail ADP India, Advaya
-                  Legal, AGS Health, Ahuja Group, Air Infotech, Airtel,
-                  AkzoNobel India, ALMT Legal, Alpha Partners, Alstom, Amar
-                  Chitra Katha, Amar Ujala Publications, Amazon.in, Amdipharm
-                  Mercury (AMCo) Group, American Express, American Towers,
-                  Amicus Services, Amira Nature Foods, Anantraj, Ani
-                  Technologies, Ansal API, ArcelorMittal Distribution Solutions
-                  India, ARCIL, Ardent Legal, Aricent, Ashland India
-                </p>
-
-                <h3 className="font-semibold mt-6">
-                  Hierarchical Participation
-                </h3>
-
-                <p className="leading-relaxed">
-                  Add. Chief Manager – Legal, Additional Manager – Legal, IP
-                  Attorney, AGM – Legal AGM Legal & Asst. Co. Sec., APAC Legal
-                  Counsel, Assistant Director, Assistant General Counsel
-                  Associate, Associate Director – Legal & Compliance, Associate
-                  Director Human Resources
-                </p>
-
-                <button
-                  onClick={() => navigation("/audience-profile")}
-                  className="font-custom mt-4 py-3.5  text-[#D0252D] text-[11px] font-bold leading-2.75 px-7 tracking-[0.3rem]  border rounded-sm border-[#D0252D] hover:bg-[#D0252D] hover:text-white transition cursor-pointer"
-                >
-                  VIEW MORE
-                </button>
-              </div>
-              {/* IMAGE SECTION */}
-              <div className="w-full max-w-84.75 md:w-85 mx-auto">
-                {" "}
-                <img
-                  src={audienceImg}
-                  className="rounded-xl w-full object-cover"
-                />
-              </div>
-            </div>
-          )}
-
-          {/* SPONSOR TAB */}
-          {active === "sponsor" && (
-            <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] font-roboto text-[15px] md:font-normal md:leading-[1.9] px-4 md:px-8 gap-4 mt-12 items-center max-w-4xl text-left">
-              {" "}
-              <div className="flex justify-start">
-                <img
-                  src={sponsorImg}
-                  className="w-full max-w-[320px] mx-auto rounded-lg"
-                  alt="Sponsor"
-                />
-              </div>
-              <div className=" text-[#333]">
-                <p className="leading-7">
-                  Partnering with{" "}
-                  <span className="text-[#D0252D] font-bold">
-                    The Grand Masters 2026 Summit Series
-                  </span>{" "}
-                  Series will enable you to brand and promote your service
-                  expertise to a unique and interesting set of senior in-house
-                  counsel. Summit attendees include senior professionals
-                  interested in updating their knowledge and involved in legal
-                  and commercial elements of complex business deals. We have a
-                  set of standard branding solutions that we can customize based
-                  on your specific needs.
-                </p>
-
-                <p className="font-semibold text-[#333]">
-                  For more details, contact:
-                </p>
-
-                <p className="break-all md:break-normal mt-2">
-                  <span className="text-[#333] font-normal">
-                    Bhupinder Kaur
-                  </span>{" "}
-                  |{" "}
-                  <a
-                    href="tel:+919654155065"
-                    className="text-[#cd151d] hover:underline"
-                  >
-                    +91-9654155065
-                  </a>{" "}
-                  |{" "}
-                  <a
-                    href="mailto:bhupinder@witnesslive.in"
-                    className="text-[#cd151d] hover:underline"
-                  >
-                    bhupinder@witnesslive.in
-                  </a>
-                </p>
-
-                <p className="break-all md:break-normal">
-                  <span className="text-[#333] font-normal">
-                    Neelima Maheshwari
-                  </span>{" "}
-                  |{" "}
-                  <a
-                    href="tel:+918800841600"
-                    className="text-[#cd151d] hover:underline"
-                  >
-                    +91-8800841600
-                  </a>{" "}
-                  |{" "}
-                  <a
-                    href="mailto:neelima.maheshwari@witnesslive.in"
-                    className="text-[#cd151d] hover:underline"
-                  >
-                    neelima.maheshwari@witnesslive.in
-                  </a>
-                </p>
-              </div>
-            </div>
-          )}
+          {/* DESKTOP ONLY TAB CONTENT (Placed under the whole tab row) */}
+          <div className="hidden md:block w-full">
+            {renderTabContent(active)}
+          </div>
         </div>
 
         {/* STATS */}
@@ -360,7 +368,7 @@ const Concept = () => {
           <div className="font-roboto max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, i) => (
               <div key={i}>
-                <div className="text-3xl sm:text-5xl md:text-[80px] md:text-[80px] font-bold text-white">
+                <div className="text-3xl sm:text-5xl md:text-[80px] font-bold text-white">
                   {startCount ? (
                     <Counter
                       key={`${location.pathname}-${stat.label}`}
@@ -385,13 +393,13 @@ const Concept = () => {
             <img
               src={icon2}
               className="flex justify-center h-24 mx-auto bg-white text-[#D0252D]"
+              alt="Icon"
             />
 
-            <h2 className="text-3xl sm:text-4xl md:text-[50px] tracking-tighter font-roboto font-normal mt-">
-              {" "}
+            <h2 className="text-[46px] text-[#333] sm:text-4xl md:text-[50px] tracking-tighter font-roboto font-normal">
               Past Official Messages
             </h2>
-            <p className="font-roboto text-[15px] font-normal leading-[28px] text-[#8d93a0] mt-2 mb-12  ">
+            <p className="font-roboto text-[16px] font-normal leading-[28px] text-[#8d93a0] mt-2 mb-12">
               Messages from{" "}
               <span className="text-[#D0252D]">Various Legal Luminaries</span>
             </p>
@@ -402,7 +410,7 @@ const Concept = () => {
                   Loading...
                 </div>
               ) : (
-                luminaries.map((item: any) => (
+                luminaries.map((item) => (
                   <div key={item.id}>
                     <img
                       src={`${IMAGE_URL}/${item.speaker?.image}`}
@@ -412,7 +420,6 @@ const Concept = () => {
 
                     <h3
                       onClick={() => {
-                        // Remove the trailing "-number" from the slug
                         const cleanSlug = item.speaker.slug.replace(
                           /-\d+$/,
                           "",
@@ -429,13 +436,9 @@ const Concept = () => {
                       {item.speaker?.name}
                     </h3>
 
-                    <p className="font-roboto text-[15px] leading-7 text-[#8d93a0] mt-2">
+                    {/* <p className="font-roboto text-[15px] leading-7 text-[#8d93a0] mt-2">
                       {item.speaker?.designation}, {item.speaker?.company}
-                    </p>
-
-                    {/* <p className="font-roboto text-[14px] text-[#666]">
-                      {item.speaker?.company}
-                    </p>  */}
+                    </p> */}
                   </div>
                 ))
               )}
@@ -444,9 +447,10 @@ const Concept = () => {
         </div>
 
         {/* CTA */}
-        <div className="w-full bg-black/30 py-12 px-4 text-white">
+        <div className="relative w-full py-12 px-4 text-white bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${bgImg})` }}
+        >
           <h1 className="font-roboto text-3xl sm:text-4xl md:text-[50px] font-bold leading-tight">
-            {" "}
             Get Involved
           </h1>
           <p className="mb-4 font-roboto text-[15px] font-normal leading-[28px]">

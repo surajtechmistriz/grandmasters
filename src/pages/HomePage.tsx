@@ -9,6 +9,7 @@ import SpecialDiscounts from "../components/SpecialDiscounts";
 import GetInvolved from "../components/GetInvolvedForm";
 import SummitGallery from "../components/SummitGallery";
 import BrandSponsorship from "../components/BrandSponsor";
+import { EVENT_CONFIG } from "../constant/event";
 
 export default function HomePage() {
   return (
@@ -24,26 +25,36 @@ export default function HomePage() {
       <section id="speak" className="scroll-mt-24">
         <SpeakersSection />
       </section>
+
       <section id="agenda" className="scroll-mt-24">
         <SummitAgenda />
       </section>
-      <section id="register" className="scroll-mt-24">
-        <RegisterPricing />
-      </section>
-      <section id="discount" className="scroll-mt-24">
-        <SpecialDiscounts />
-      </section>
+
+      {EVENT_CONFIG.registrationOpen && (
+        <>
+          <section id="register" className="scroll-mt-24">
+            <RegisterPricing />
+          </section>
+
+          <section id="discount" className="scroll-mt-24">
+            <SpecialDiscounts />
+          </section>
+        </>
+      )}
+
       <section id="get-involved" className="scroll-mt-24">
         <GetInvolved />
       </section>
+
       <section id="summit-gallery" className="scroll-mt-24">
         <SummitGallery />
       </section>
+
       <section id="brand-sponsor" className="scroll-mt-24">
         <BrandSponsorship />
       </section>
 
-      <section id="sponsors" className="scroll-mt-24">
+      <section id="sponsor" className="scroll-mt-24">
         <SponsorsPartners />
       </section>
 

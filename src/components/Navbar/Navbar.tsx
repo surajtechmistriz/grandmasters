@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
+import { EVENT_CONFIG } from "../../constant/event";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -16,6 +17,18 @@ const Navbar = () => {
     { id: "/past-editions", label: "PAST EDITIONS", type: "route" },
     { id: "contact", label: "CONNECT", type: "section" },
   ];
+
+  const actionButton = EVENT_CONFIG.registrationOpen
+    ? {
+        label: "Register Now",
+        to: "/#register",
+        type: "section" as const,
+      }
+    : {
+        label: "Summit Gallery",
+        to: "/#summit-gallery",
+        type: "section" as const,
+      };
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -46,28 +59,24 @@ const Navbar = () => {
 
   const handleSectionClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    id: string
+    id: string,
   ) => {
     e.preventDefault();
 
     setMobileMenu(false);
 
-    // If not on Home, navigate there first
     if (location.pathname !== "/") {
       window.location.href = `/#${id}`;
       return;
     }
 
-    // Update the URL even if the hash is already the same
     window.history.replaceState({}, "", `/#${id}`);
 
     const element = document.getElementById(id);
 
     if (element) {
       const y =
-        element.getBoundingClientRect().top +
-        window.pageYOffset -
-        96;
+        element.getBoundingClientRect().top + window.pageYOffset - 96;
 
       window.scrollTo({
         top: y,
@@ -100,10 +109,11 @@ const Navbar = () => {
                 <Link
                   key={item.id}
                   to={item.id}
-                  className={`transition ${location.pathname === item.id
-                    ? "text-[#D0252D]"
-                    : "text-black hover:text-[#D0252D]"
-                    }`}
+                  className={`transition ${
+                    location.pathname === item.id
+                      ? "text-[#D0252D]"
+                      : "text-black hover:text-[#D0252D]"
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -117,30 +127,36 @@ const Navbar = () => {
                 key={item.id}
                 to={`/#${item.id}`}
                 onClick={(e) => handleSectionClick(e, item.id)}
-                className={`relative transition ${isActive
-                  ? "text-[#D0252D]"
-                  : "text-black hover:text-[#D0252D]"
-                  }`}
+                className={`relative transition ${
+                  isActive
+                    ? "text-[#D0252D]"
+                    : "text-black hover:text-[#D0252D]"
+                }`}
               >
                 {item.label}
 
                 <span
-                  className={`absolute left-0 -bottom-1 h-[2px] bg-[#D0252D] transition-all duration-300 ${isActive ? "w-full" : "w-0"
-                    }`}
+                  className={`absolute left-0 -bottom-1 h-[2px] bg-[#D0252D] transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0"
+                  }`}
                 />
               </Link>
             );
           })}
         </ul>
 
-        {/* Desktop Register */}
+        {/* Desktop Action Button */}
         <Link
-          to="/#register"
-          onClick={(e) => handleSectionClick(e, "register")}
+          to={actionButton.to}
+          onClick={(e) => handleSectionClick(e, actionButton.type === "section"
+            ? EVENT_CONFIG.registrationOpen
+              ? "register"
+              : "summit-gallery"
+            : "")}
           className="hidden md:block"
         >
           <button className="rounded-sm border border-[#D0252D] px-3 py-3 text-sm font-bold uppercase tracking-[4px] text-[#D0252D] transition hover:bg-[#D0252D] hover:text-white cursor-pointer">
-            Register Now
+            {actionButton.label}
           </button>
         </Link>
 
@@ -155,8 +171,9 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden bg-[#E9E9E9] shadow-lg transition-all duration-300 ease-in-out ${mobileMenu ? "max-h-screen" : "max-h-0"
-          }`}
+        className={`md:hidden overflow-hidden bg-[#E9E9E9] shadow-lg transition-all duration-300 ease-in-out ${
+          mobileMenu ? "max-h-screen" : "max-h-0"
+        }`}
       >
         <div className="flex flex-col px-5 py-3">
           {navItems.map((item) => {
@@ -166,15 +183,17 @@ const Navbar = () => {
                   key={item.id}
                   to={item.id}
                   onClick={() => setMobileMenu(false)}
-                  className={`py-4 border-b font-semibold tracking-wide transition ${location.pathname === item.id
-                    ? "text-[#D0252D]"
-                    : "text-black"
-                    }`}
+                  className={`py-4 border-b font-semibold tracking-wide transition ${
+                    location.pathname === item.id
+                      ? "text-[#D0252D]"
+                      : "text-black"
+                  }`}
                 >
                   {item.label}
                 </Link>
               );
             }
+
             const isActive = active === item.id;
 
             return (
@@ -182,20 +201,29 @@ const Navbar = () => {
                 key={item.id}
                 to={`/#${item.id}`}
                 onClick={(e) => handleSectionClick(e, item.id)}
-                className={`py-4 border-b font-semibold tracking-wide transition ${isActive ? "text-[#D0252D]" : "text-black"
-                  }`}
+                className={`py-4 border-b font-semibold tracking-wide transition ${
+                  isActive ? "text-[#D0252D]" : "text-black"
+                }`}
               >
                 {item.label}
               </Link>
             );
           })}
 
+          {/* Mobile Action Button */}
           <Link
-            to="/#register"
-            onClick={(e) => handleSectionClick(e, "register")}
+            to={actionButton.to}
+            onClick={(e) =>
+              handleSectionClick(
+                e,
+                EVENT_CONFIG.registrationOpen
+                  ? "register"
+                  : "summit-gallery",
+              )
+            }
           >
             <button className="mt-5 w-full rounded-sm border border-[#D0252D] py-3 text-sm font-bold uppercase tracking-[3px] text-[#D0252D] transition hover:bg-[#D0252D] hover:text-white">
-              Register Now
+              {actionButton.label}
             </button>
           </Link>
         </div>
