@@ -20,18 +20,17 @@ const SummitAgenda = () => {
         const eventList = res?.data?.events || [];
 
         setEvents(eventList);
-
+        console.log(eventList);
         if (eventList.length > 0) {
           setActiveTab(eventList[0].city?.name.toLowerCase());
         }
-      } catch (err) {
-      }
+      } catch (err) {}
     };
 
     fetchData();
   }, []);
 
-  console.log("Events", events)
+  console.log("Events", events);
   //  get event by city
   const selectedEvent = events.find(
     (event) => event.city?.name?.toLowerCase() === activeTab,
@@ -53,7 +52,6 @@ const SummitAgenda = () => {
         img: `${imgUrl}/${s.speaker?.image}`,
       })) || [],
   }));
-
 
   const formatEventDate = (dateString: string) => {
     if (!dateString) return "";
@@ -81,7 +79,6 @@ const SummitAgenda = () => {
     return `${day}${getSuffix(day)} ${month}`;
   };
 
-
   return (
     <div className="max-w-5xl mx-auto py-8 md:pb-12 md:pt-4 px-4 bg-white font-roboto">
       <div className="text-center mb-8 md:mb-12">
@@ -108,15 +105,17 @@ const SummitAgenda = () => {
                 className="w-full md:w-auto py-3 md:pb-4 cursor-pointer relative text-center"
               >
                 <p
-                  className={`text-[15px] font-bold leading-7 tracking-widest ${isActive ? "text-[#D0252D]" : "text-[#333]"
-                    }`}
+                  className={`text-[15px] font-bold leading-7 tracking-widest ${
+                    isActive ? "text-[#D0252D]" : "text-[#333]"
+                  }`}
                 >
                   {formatEventDate(event.date)}
                 </p>
 
                 <p
-                  className={`uppercase font-bold ${isActive ? "text-[#D0252D]" : "text-[#333]"
-                    }`}
+                  className={`uppercase font-bold ${
+                    isActive ? "text-[#D0252D]" : "text-[#333]"
+                  }`}
                 >
                   {event.city?.name} Edition
                 </p>
@@ -148,7 +147,11 @@ const SummitAgenda = () => {
                 className="hidden md:block absolute left-3 top-4 w-10 h-10 rounded-full bg-[#DA2127] object-cover"
               />
               <div
-                className="py-10 "
+                className={`py-10 ${
+                  item.description || item.hasSpeakers
+                    ? "cursor-pointer"
+                    : "cursor-default"
+                }`}
                 onClick={() => {
                   if (item.description || item.hasSpeakers) {
                     setExpandedId(expandedId === item.id ? null : item.id);
@@ -163,15 +166,17 @@ const SummitAgenda = () => {
 
                 {/* title */}
                 <div className="flex justify-between items-start gap-4">
-                  <h3 className="text-lg md:text-[22px] font-bold text-[#333] leading-7">
-                    {item.title}
-                  </h3>
+                  <h3
+                    className="text-lg md:text-[22px] font-bold text-[#333] leading-7 [&_span]:text-[#D0252D]"
+                    dangerouslySetInnerHTML={{ __html: item.title }}
+                  />
 
                   {(item.description || item.hasSpeakers) && (
                     <ChevronDown
                       size={24}
-                      className={`flex-shrink-0 cursor-pointer text-[#c9060a] transition-transform duration-300 ${expandedId === item.id ? "rotate-180" : "rotate-0"
-                        }`}
+                      className={`flex-shrink-0 cursor-pointer text-[#D0252D] transition-transform duration-300 ${
+                        expandedId === item.id ? "rotate-180" : "rotate-0"
+                      }`}
                     />
                   )}
                 </div>
@@ -179,10 +184,11 @@ const SummitAgenda = () => {
 
                 {/* speakers (UNCHANGED UI) */}
                 <div
-                  className={`overflow-hidden transition-all duration-500 ease-in-out ${expandedId === item.id
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    expandedId === item.id
                       ? "max-h-[2000px] opacity-100 mt-6"
                       : "max-h-0 opacity-0 mt-0"
-                    }`}
+                  }`}
                 >
                   {item.hasSpeakers && (
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 mt-8">
