@@ -17,7 +17,6 @@ const GetInvolvedForm = () => {
     confirmation: false,
   });
 
-
   const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormdata({
       ...formdata,
@@ -43,7 +42,6 @@ const GetInvolvedForm = () => {
         captcha: captchaToken,
       };
 
-
       const response = await submitShowcase(payload);
 
       toast.success("Submitted successfully!");
@@ -57,7 +55,6 @@ const GetInvolvedForm = () => {
 
       recaptchaRef.current?.reset();
       setCaptchaToken("");
-
     } catch (error: any) {
       console.error("❌ API Error:", error);
       console.error("Response:", error?.response);
@@ -109,25 +106,30 @@ const GetInvolvedForm = () => {
             <input
               type="text"
               name="name"
+              required
               value={formdata.name}
               onChange={handlechange}
-              placeholder="Nelle Wilkinson"
+              placeholder="Name"
               className="w-full text-[13px] tracking-tighter px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
             <input
               type="email"
               name="email"
+              required
               value={formdata.email}
               onChange={handlechange}
-              placeholder="helipi@mailinator.com"
+              placeholder="E-mail"
               className="w-full text-[13px] px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
             <input
               type="tel"
               name="phone"
+              required
               value={formdata.phone}
               onChange={handlechange}
-              placeholder="+1 (961) 837-8638"
+              placeholder="Phone"
+              maxLength={10}
+              inputMode="numeric"
               className="w-full text-[13px] px-3 py-2.5 bg-white text-[#333] rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all"
             />
 
