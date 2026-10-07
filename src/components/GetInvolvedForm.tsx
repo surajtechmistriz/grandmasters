@@ -3,6 +3,7 @@ import bgImg from "../assets/images/chess.jpg";
 import { submitShowcase } from "../services/APIs/getInvolved";
 import { toast } from "sonner";
 import ReCAPTCHA from "react-google-recaptcha";
+import { APP_EVENT_TYPE } from "../constant/config";
 
 const GetInvolvedForm = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -34,7 +35,7 @@ const GetInvolvedForm = () => {
 
     try {
       const payload = {
-        event_type_id: "6",
+        event_type_id: APP_EVENT_TYPE,
         name: formdata.name,
         email: formdata.email,
         phone: formdata.phone,
